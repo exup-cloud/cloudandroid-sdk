@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="market_title_bar_height">40dp</dimen>
+    <dimen name="title_bar_height">48dp</dimen>
+    <dimen name="title_bar_content">47dp</dimen>
+    <dimen name="main_tab_height">55dp</dimen>
+    <dimen name="line_height">1dp</dimen>
+    <dimen name="padding_tab_text">5dp</dimen>
+    <dimen name="tab_line_height">2dp</dimen>
+    <dimen name="tab_line_width">45dp</dimen>
+
+    <dimen name="text_size_title">18sp</dimen>
+    <dimen name="text_size_tab">15sp</dimen>
+    <dimen name="text_size_maintab">16sp</dimen>
+    <dimen name="home_banner_height">268dp</dimen>
+
+</resources>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sl_colorPrimary">#181a22</color>
+    <color name="sl_colorPrimaryDark">#121419</color>
+    <color name="sl_colorAccent">#0DFFAB</color>
+
+    <color name="sl_colorDefault">#181a22</color>
+    <color name="sl_colorDefault2">#1F222B</color>
+    <color name="sl_colorDefaultDark">#121419</color>
+    <color name="sl_colorDefaultTrans">#1e283a</color>
+    <color name="sl_colorTextSelector">#00D492</color>
+    <color name="sl_colorTextPress">#0DFFAB</color>
+
+    <color name="sl_colorWhite">#ffffff</color>
+    <color name="sl_colorBlack">#000000</color>
+    <color name="sl_colorRed">#fd3a3a</color>
+    <color name="sl_colorOrange">#f97474</color>
+    <color name="sl_colorGreen">#2eb564</color>
+    <color name="sl_colorRedTrans">#20fd3a3a</color>
+    <color name="sl_colorGreenTrans">#202eb564</color>
+    <color name="sl_transparent">#00000000</color>
+    <color name="sl_colorRed2">#f88464</color>
+    <color name="sl_colorGreen2">#52fb96</color>
+
+    <color name="sl_blueTrans">#8020a4c0</color>
+    <color name="sl_blueTrans2">#37584c</color>
+    <color name="sl_defaultLine">#121318</color>
+    <color name="sl_whiteText">#cdd5df</color>
+    <color name="sl_grayText">#8090aa</color>
+    <color name="sl_grayText2">#85a2b2</color>
+    <color name="sl_grayText3">#6E8693</color>
+    <color name="sl_grayText4">#7F8FA9</color>
+    <color name="sl_depthChartLine">#121318</color>
+
+    <color name="sl_colorYellowPress">#e7b164</color>
+    <color name="sl_colorYellowNormal">#c9954c</color>
+    <color name="sl_colorYellowTransparent">#1ed9a959</color>
+    <color name="sl_colorBonus">#e5bd93</color>
+</resources>

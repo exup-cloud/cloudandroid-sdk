@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    compile 'com.android.support:multidex:1.0.0'
+    //-----------------------------------------------
+    api 'com.android.support:recyclerview-v7:26.1.0'
+    api files('libs/kchartlib-release1.0.aar')
+    api files('libs/MPChartLib-release1.0.aar')
+    api 'com.squareup.okhttp3:okhttp:3.11.0'
+    api 'org.web3j:core:3.0.1-android'
+    api 'org.apache.httpcomponents:httpcore:4.4.2'
+    api 'com.nineoldandroids:library:2.4.0'
+    api ('com.github.bumptech.glide:glide:4.8.0'){
+        exclude group: 'com.android.support'
+    }
+    annotationProcessor ('com.github.bumptech.glide:compiler:4.8.0') {
+        exclude group: 'com.android.support'
+    }
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+    api files('libs/FlycoTabLayout_Lib-1.0.aar')
+    api 'com.github.yidun:captcha-android-demo:2.4.3.1'
+    api files('libs/sdklibrary-release_1.0.aar')
+
+}

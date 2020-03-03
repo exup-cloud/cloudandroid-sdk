@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/sl_colorDefaultDark" >
+
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <com.bmtc.sdk.library.common.material.MaterialButton
+            android:id="@+id/ktab_1min"
+            style="@style/KTabRbStyle"
+            android:text="@string/sl_str_1min"
+            android:textSize="13sp" />
+
+        <com.bmtc.sdk.library.common.material.MaterialButton
+            android:id="@+id/ktab_30min"
+            style="@style/KTabRbStyle"
+            android:text="@string/sl_str_30min"
+            android:textSize="13sp" />
+
+        <com.bmtc.sdk.library.common.material.MaterialButton
+            android:id="@+id/ktab_2hour"
+            style="@style/KTabRbStyle"
+            android:text="@string/sl_str_2hour"
+            android:textSize="13sp" />
+
+        <com.bmtc.sdk.library.common.material.MaterialButton
+            android:id="@+id/ktab_4hour"
+            style="@style/KTabRbStyle"
+            android:text="@string/sl_str_4hour"
+            android:textSize="13sp" />
+
+        <com.bmtc.sdk.library.common.material.MaterialButton
+            android:id="@+id/ktab_6hour"
+            style="@style/KTabRbStyle"
+            android:text="@string/sl_str_6hour"
+            android:textSize="13sp" />
+
+        <com.bmtc.sdk.library.common.material.MaterialButton
+            android:id="@+id/ktab_12hour"
+            style="@style/KTabRbStyle"
+            android:text="@string/sl_str_12hour"
+            android:textSize="13sp" />
+
+        <com.bmtc.sdk.library.common.material.MaterialButton
+            android:id="@+id/ktab_1week"
+            style="@style/KTabRbStyle"
+            android:text="@string/sl_str_1week"
+            android:textSize="13sp" />
+
+    </RadioGroup>
+
+</RelativeLayout>

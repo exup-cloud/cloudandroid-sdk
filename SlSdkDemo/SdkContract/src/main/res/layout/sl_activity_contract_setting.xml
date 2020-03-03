@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sl_colorDefaultDark"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/sl_colorDefault">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:src="@drawable/sl_btn_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/sl_whiteText"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textSize="18sp"
+            android:text="@string/sl_str_contract_settings"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/sl_colorDefaultDark"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:orientation="vertical"
+        android:background="@color/sl_colorDefault">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/sl_str_display_unit"
+            android:textColor="@color/sl_whiteText"
+            android:textSize="17sp"
+            />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
+
+            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                android:id="@+id/tab_contracts_unit"
+                android:layout_height="match_parent"
+                android:layout_width="70dp"
+                android:gravity="center"
+                android:button="@null"
+                android:checked="true"
+                android:focusable="false"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:text="@string/sl_str_contracts_unit2"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="14sp" />
+
+            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                android:id="@+id/tab_coin_unit"
+                android:layout_height="match_parent"
+                android:layout_width="70dp"
+                android:gravity="center"
+                android:button="@null"
+                android:focusable="false"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:text="@string/sl_str_coin_unit2"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="14sp" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/sl_colorDefaultDark"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:orientation="vertical"
+        android:background="@color/sl_colorDefault">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/sl_str_pnl_calculator"
+            android:textColor="@color/sl_whiteText"
+            android:textSize="17sp"
+            />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
+
+            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                android:id="@+id/tab_fair_price"
+                android:layout_height="match_parent"
+                android:layout_width="70dp"
+                android:gravity="center"
+                android:button="@null"
+                android:checked="true"
+                android:focusable="false"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:text="@string/sl_str_fair_price"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="14sp" />
+
+            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                android:id="@+id/tab_latest_price"
+                android:layout_height="match_parent"
+                android:layout_width="70dp"
+                android:gravity="center"
+                android:button="@null"
+                android:focusable="false"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:text="@string/sl_str_latest_price"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="14sp" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/sl_colorDefaultDark"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/sl_colorDefault">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/sl_str_plan_entrust"
+            android:textColor="@color/sl_whiteText"
+            android:textSize="17sp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/sl_colorDefault">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/sl_strategy_effective_time"
+            android:textColor="@color/sl_whiteText"
+            android:textSize="16sp"
+            />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                android:id="@+id/tab_24hours"
+                android:layout_height="match_parent"
+                android:layout_width="70dp"
+                android:gravity="center"
+                android:button="@null"
+                android:checked="true"
+                android:focusable="false"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:text="@string/sl_str_in_24_hours"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="14sp" />
+
+            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                android:id="@+id/tab_7days"
+                android:layout_height="match_parent"
+                android:layout_width="70dp"
+                android:gravity="center"
+                android:button="@null"
+                android:focusable="false"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:text="@string/sl_str_in_7_days"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="14sp" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/sl_colorDefault"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/sl_str_execution"
+            android:textColor="@color/sl_whiteText"
+            android:textSize="16sp"
+            />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                android:id="@+id/tab_execution_limit"
+                android:layout_height="match_parent"
+                android:layout_width="70dp"
+                android:gravity="center"
+                android:button="@null"
+                android:checked="true"
+                android:focusable="false"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:text="@string/sl_str_limit_order"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="14sp" />
+
+            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                android:id="@+id/tab_execution_market"
+                android:layout_height="match_parent"
+                android:layout_width="70dp"
+                android:gravity="center"
+                android:button="@null"
+                android:focusable="false"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:text="@string/sl_str_market_order"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="14sp" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:orientation="horizontal"
+        android:background="@color/sl_colorDefault">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/sl_str_trigger_price_type"
+            android:textColor="@color/sl_whiteText"
+            android:textSize="16sp"
+            />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                android:id="@+id/tab_trigger_last_price"
+                android:layout_height="match_parent"
+                android:layout_width="70dp"
+                android:gravity="center"
+                android:button="@null"
+                android:checked="true"
+                android:focusable="false"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:text="@string/sl_str_latest_price"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="14sp" />
+
+            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                android:id="@+id/tab_trigger_fair_price"
+                android:layout_height="match_parent"
+                android:layout_width="70dp"
+                android:gravity="center"
+                android:button="@null"
+                android:focusable="false"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:text="@string/sl_str_fair_price"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="14sp" />
+
+            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                android:id="@+id/tab_trigger_index_price"
+                android:layout_height="match_parent"
+                android:layout_width="70dp"
+                android:gravity="center"
+                android:button="@null"
+                android:focusable="false"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:text="@string/sl_str_index_price"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="14sp" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/sl_str_caution"
+        android:textColor="@color/sl_grayText"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/sl_str_plan_setting_caution"
+        android:textColor="@color/sl_grayText"
+        android:textSize="16sp"
+        />
+
+</LinearLayout>

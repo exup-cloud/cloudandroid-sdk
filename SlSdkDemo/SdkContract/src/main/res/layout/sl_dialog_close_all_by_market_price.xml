@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#a0000000" >
+
+    <LinearLayout
+        android:id="@+id/ll_frame"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/sl_dialog_prompt_bg"
+        android:paddingBottom="8dp"
+        android:orientation="vertical" >
+
+        <!-- Title -->
+
+        <RelativeLayout
+            android:id="@+id/title_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" >
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                android:text="@string/sl_str_close_all_by_market_price"
+                android:textSize="18sp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/sl_colorBlack" />
+
+            <Button
+                android:id="@+id/btn_close"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:focusable="true"
+                android:background="@drawable/sl_icon_close2"/>
+
+        </RelativeLayout>
+        <!-- Content -->
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="10dp" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/rl_cancel_tips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_cancel_tips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sl_str_close_position_tips"
+                        android:textAlignment="center"
+                        android:textColor="@color/sl_colorBlack"
+                        android:textSize="16sp" />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@id/tv_cancel_tips"
+                        android:background="@color/sl_whiteText">
+                        <TextView
+                            android:id="@+id/tv_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_centerVertical="true"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:text="@string/sl_str_buy_open"
+                            android:textColor="@color/sl_colorGreen"
+                            android:textSize="16sp"
+                            android:background="@drawable/sl_border_green"/>
+
+                        <TextView
+                            android:id="@+id/tv_contract_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/tv_type"
+                            android:layout_marginLeft="5dp"
+                            android:layout_centerVertical="true"
+                            android:text="--"
+                            android:textColor="@color/sl_colorBlack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_volume_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="5dp"
+                            android:layout_centerVertical="true"
+                            android:text="--"
+                            android:textColor="@color/sl_colorBlack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_volume"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/tv_volume_value"
+                            android:layout_marginRight="3dp"
+                            android:layout_centerVertical="true"
+                            android:text="@string/sl_str_entrust_volume"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_cancelling"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/iv_loading"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:src="@drawable/sl_anim_loading"-->
+<!--                        android:tint="#4c000000"/>-->
+
+                    <TextView
+                        android:id="@+id/tv_cancelling"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/sl_str_cancelling_orders"
+                        android:textAlignment="center"
+                        android:textColor="@color/sl_colorBlack"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_cancelling_tips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/tv_cancelling"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/sl_str_cancelling_orders_tips"
+                        android:textAlignment="center"
+                        android:textColor="@color/sl_grayText"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_cancelled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" >
+
+                    <ImageView
+                        android:id="@+id/iv_complete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/sl_icon_ok"
+                        android:tint="#4c000000"/>
+
+                    <TextView
+                        android:id="@+id/tv_cancel_complete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/iv_complete"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/sl_str_cancel_orders_succeed_tips"
+                        android:textAlignment="center"
+                        android:textColor="@color/sl_colorBlack"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <!-- OK&Cancel Button -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp">
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/sl_border_corner_blue"
+                android:textAllCaps="false"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="@string/sl_str_cancel"
+                android:textSize="15sp"
+				android:focusable="true"
+                android:textColor="@color/sl_colorTextSelector" />
+
+            <Button
+                android:id="@+id/btn_cancel_orders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/sl_btn_blue_selector"
+                android:textAllCaps="false"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="@string/sl_str_cancel_orders"
+                android:textSize="15sp"
+				android:focusable="true"
+                android:textColor="@color/sl_colorWhite" />
+
+            <Button
+                android:id="@+id/btn_close_all"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/sl_btn_blue_selector"
+                android:textAllCaps="false"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="@string/sl_str_close_all_by_market_price"
+                android:textSize="15sp"
+                android:focusable="true"
+                android:textColor="@color/sl_colorWhite"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

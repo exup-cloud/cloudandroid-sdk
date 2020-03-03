@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#a0000000" >
+
+    <LinearLayout
+        android:id="@+id/ll_frame"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/sl_dialog_prompt_bg"
+        android:paddingBottom="8dp"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/title_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" >
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/sl_str_funds_rate"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/sl_colorBlack" />
+
+            <Button
+                android:id="@+id/btn_close"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:focusable="true"
+                android:background="@drawable/sl_icon_close2"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="255dp"
+            android:layout_toRightOf="@+id/rl_radio">
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:focusable="true"
+                android:text="@string/sl_str_funds_rate_intro"
+                android:textSize="15sp"
+                android:textColor="@color/sl_colorBlack" />
+
+            <TextView
+                android:id="@+id/tv_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/sl_str_learn_more"
+                android:textSize="15sp"
+                android:textColor="@color/sl_colorTextSelector" />
+
+            <com.bmtc.sdk.library.common.scrollview.ObservableRecyclerView
+                android:id="@+id/rv_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@+id/tv_content"
+                android:layout_above="@+id/tv_more"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/sl_btn_blue_selector"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/sl_str_isee"
+                android:textSize="16sp"
+                android:focusable="true"
+                android:textColor="@color/sl_colorWhite" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

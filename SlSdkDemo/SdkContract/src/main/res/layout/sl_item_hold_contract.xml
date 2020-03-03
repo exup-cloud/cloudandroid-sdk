@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/sl_colorDefault">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/sl_defaultLine"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/sl_colorDefault"
+        >
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="@string/sl_str_buy_open"
+            android:textColor="@color/sl_colorGreen"
+            android:textSize="13sp"
+            android:background="@drawable/sl_border_green"/>
+
+        <TextView
+            android:id="@+id/tv_contract_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_type"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:text="--"
+            android:textColor="@color/sl_colorWhite"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_open_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/iv_share"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:text="--"
+            android:textColor="@color/sl_colorWhite"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_share"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/sl_icon_share2"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/sl_colorDefault"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/sl_defaultLine"/>
+
+        <TextView
+            android:id="@+id/tv_open_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="@string/sl_str_open_price2"
+            android:textColor="@color/sl_grayText"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_open_price_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_open_price"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="--"
+            android:textColor="@color/sl_colorWhite"
+            android:textSize="14sp" />
+
+        <View
+            android:id="@+id/vSplit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/tv_floating_gains_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/vSplit"
+            android:layout_below="@+id/tv_floating_gains"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_centerVertical="true"
+            android:text="--"
+            android:textColor="@color/sl_colorWhite"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_floating_gains"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/vSplit"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/sl_str_floating_gains2"
+            android:textColor="@color/sl_grayText"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/sl_colorDefault"
+        >
+
+        <TextView
+            android:id="@+id/tv_floating_gains_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="@string/sl_str_floating_gains_balance"
+            android:textColor="@color/sl_grayText"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_floating_gains_balance_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:text="--"
+            android:textColor="@color/sl_colorWhite"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/sl_defaultLine"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/sl_colorDefault"
+        >
+
+        <TextView
+            android:id="@+id/tv_leverage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="@string/sl_str_actual_lever"
+            android:textColor="@color/sl_grayText"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_leverage_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:text="--"
+            android:textColor="@color/sl_colorWhite"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/sl_defaultLine"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/sl_colorDefault"
+        >
+
+        <TextView
+            android:id="@+id/tv_holdings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="@string/sl_str_holdings"
+            android:textColor="@color/sl_grayText"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_holdings_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:text="--"
+            android:textColor="@color/sl_colorWhite"
+            android:textSize="14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/sl_defaultLine"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/sl_colorDefault"
+        >
+
+        <TextView
+            android:id="@+id/tv_amount_can_be_liquidated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="@string/sl_str_amount_can_be_liquidated"
+            android:textColor="@color/sl_grayText"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_amount_can_be_liquidated_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:text="--"
+            android:textColor="@color/sl_colorWhite"
+            android:textSize="14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/sl_defaultLine"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/sl_colorDefault"
+        >
+
+        <TextView
+            android:id="@+id/tv_tag_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="@string/sl_str_position_value"
+            android:textColor="@color/sl_grayText"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_tag_price_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:text="--"
+            android:textColor="@color/sl_colorWhite"
+            android:textSize="14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/sl_defaultLine"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/sl_colorDefault"
+        >
+
+        <TextView
+            android:id="@+id/tv_forced_close_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="@string/sl_str_forced_close_price"
+            android:textColor="@color/sl_grayText"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_forced_close_price_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:text="--"
+            android:textColor="@color/sl_colorWhite"
+            android:textSize="14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/sl_defaultLine"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/sl_colorDefault"
+        >
+
+        <TextView
+            android:id="@+id/tv_margins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="@string/sl_str_margins"
+            android:textColor="@color/sl_grayText"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_margins_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:text="--"
+            android:textColor="@color/sl_colorWhite"
+            android:textSize="14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/sl_defaultLine"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/sl_colorDefault"
+        >
+
+        <TextView
+            android:id="@+id/tv_gains_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="@string/sl_str_gains_balance"
+            android:textColor="@color/sl_grayText"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_gains_balance_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:text="--"
+            android:textColor="@color/sl_colorWhite"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/sl_defaultLine"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/sl_defaultLine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/sl_colorDefault"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tv_adjust_margins"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:text="@string/sl_str_adjust_margins"
+            android:gravity="center"
+            android:textColor="@color/sl_colorTextSelector"
+            android:textSize="16sp"/>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/sl_defaultLine"/>
+
+        <TextView
+            android:id="@+id/tv_close_position"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:text="@string/sl_str_close_position"
+            android:gravity="center"
+            android:textColor="@color/sl_colorTextSelector"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/sl_defaultLine"/>
+</LinearLayout>

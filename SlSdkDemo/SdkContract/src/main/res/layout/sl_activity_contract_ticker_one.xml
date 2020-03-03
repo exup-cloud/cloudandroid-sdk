@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sl_colorDefaultDark">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapse_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:gravity="top"
+                android:minHeight="40dp"
+                app:layout_collapseMode="pin" >
+
+            </android.support.v7.widget.Toolbar>
+
+            <RelativeLayout
+                android:id="@+id/header_panel"
+                android:layout_width="match_parent"
+                android:layout_height="490dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginBottom="40dp"
+                android:background="@color/sl_colorDefaultDark"
+                android:baselineAligned="false" >
+
+                <LinearLayout
+                    android:id="@+id/ll_spot_ticker"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_alignParentTop="true"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/tv_last_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="--"
+                            android:textColor="@color/sl_colorGreen"
+                            android:textSize="24sp"
+                            android:textStyle="bold"/>
+
+
+                        <TextView
+                            android:id="@+id/tv_usd_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_last_price"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:text="--"
+                            android:textColor="@color/sl_whiteText"
+                            android:textSize="14sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_rise_fall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_usd_price"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:text="--"
+                            android:textColor="@color/sl_colorGreen"
+                            android:textSize="14sp" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_high_low_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.2">
+
+                            <TextView
+                                android:id="@+id/tv_high"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="12dp"
+                                android:text="@string/sl_str_fair_price"
+                                android:textAlignment="center"
+                                android:textColor="@color/sl_grayText"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_high_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_high"
+                                android:layout_marginLeft="10dp"
+                                android:text=""
+                                android:textAlignment="center"
+                                android:textColor="@color/sl_whiteText"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_low"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_high_value"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="12dp"
+                                android:text="@string/sl_str_index_price"
+                                android:textAlignment="center"
+                                android:textColor="@color/sl_grayText"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_low_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_low"
+                                android:layout_marginLeft="10dp"
+                                android:text=""
+                                android:textAlignment="center"
+                                android:textColor="@color/sl_whiteText"
+                                android:textSize="12sp" />
+
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/tv_volume"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text="@string/sl_str_funds_rate"
+                                android:textColor="@color/sl_grayText"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_volume_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_volume"
+                                android:text=""
+                                android:textColor="@color/sl_whiteText"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_total_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_volume_value"
+                                android:layout_marginTop="12dp"
+                                android:text="@string/sl_str_24h_vol"
+                                android:textColor="@color/sl_grayText"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_total_value_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_total_value"
+                                android:text=""
+                                android:textColor="@color/sl_whiteText"
+                                android:textSize="12sp" />
+
+
+                            <ImageView
+                                android:id="@+id/iv_next"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/sl_btn_next"
+                                android:layout_marginRight="5dp" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_below="@+id/ll_spot_ticker"
+                    android:background="@color/sl_colorDefault"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        android:id="@+id/rg_tab"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:orientation="horizontal">
+
+                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                            android:id="@+id/ktab_time"
+                            style="@style/KTabRbStyle"
+                            android:text="@string/sl_str_time"
+                            android:textSize="13sp" />
+
+                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                            android:id="@+id/ktab_5min"
+                            style="@style/KTabRbStyle"
+                            android:text="@string/sl_str_5min"
+                            android:textSize="13sp" />
+
+                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                            android:id="@+id/ktab_15min"
+                            style="@style/KTabRbStyle"
+                            android:text="@string/sl_str_15min"
+                            android:textSize="13sp" />
+
+                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                            android:id="@+id/ktab_60min"
+                            style="@style/KTabRbStyle"
+                            android:text="@string/sl_str_60min"
+                            android:textSize="13sp" />
+
+                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                            android:id="@+id/ktab_1day"
+                            style="@style/KTabRbStyle"
+                            android:text="@string/sl_str_1day"
+                            android:textSize="13sp" />
+
+                    </RadioGroup>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_more"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.5"
+                            android:gravity="center"
+                            android:text="@string/sl_str_more"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="13sp"
+                            android:background="@drawable/sl_icon_more"/>
+
+                        <ImageView
+                            android:id="@+id/iv_full_screen"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:src="@drawable/icon_full_screen"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_below="@+id/ll_spot_ticker"
+                    android:background="@color/sl_colorDefault"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_open_close"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/tv_high_low"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/tv_chg_vol"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/sl_grayText"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <com.github.tifezh.kchartlib.chart.KChartView
+                    android:id="@+id/kchart_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="340dp"
+                    android:layout_below="@+id/ll_tab"
+                    android:layout_toLeftOf="@+id/rl_index"
+                    android:layout_marginTop="1dp"/>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_tab_full_screen"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_below="@+id/kchart_view"
+                    android:background="@color/sl_colorDefault"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <RadioGroup
+                        android:id="@+id/rg_tab_full_screen"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:orientation="horizontal">
+
+                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                            android:id="@+id/ktab_time_full_screen"
+                            style="@style/KTabRbStyle"
+                            android:text="@string/sl_str_time"
+                            android:textSize="14sp" />
+
+                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                            android:id="@+id/ktab_5min_full_screen"
+                            style="@style/KTabRbStyle"
+                            android:text="@string/sl_str_5min"
+                            android:textSize="14sp" />
+
+                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                            android:id="@+id/ktab_15min_full_screen"
+                            style="@style/KTabRbStyle"
+                            android:text="@string/sl_str_15min"
+                            android:textSize="14sp" />
+
+                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                            android:id="@+id/ktab_60min_full_screen"
+                            style="@style/KTabRbStyle"
+                            android:text="@string/sl_str_60min"
+                            android:textSize="14sp" />
+
+                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                            android:id="@+id/ktab_1day_full_screen"
+                            style="@style/KTabRbStyle"
+                            android:text="@string/sl_str_1day"
+                            android:textSize="14sp" />
+
+                    </RadioGroup>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_more_full_screen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/sl_str_more"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="14sp"
+                            android:background="@drawable/sl_icon_more"
+                            />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_index"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/ll_tab_full_screen"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/sl_colorDefault"
+                    android:visibility="gone">
+
+                    <com.bmtc.sdk.library.common.SmartScrollView
+                        android:id="@+id/sv_index"
+                        android:layout_width="65dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/sl_border_main_vice"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:gravity="center"
+                                android:text="@string/sl_str_main_figure"
+                                android:textSize="14sp"
+                                android:textColor="@color/sl_colorTextSelector" />
+
+                            <RadioGroup
+                                android:id="@+id/rg_main_figure"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                    android:id="@+id/mtab_ma"
+                                    android:layout_height="25dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:button="@null"
+                                    android:checked="true"
+                                    android:text="MA"
+                                    android:textColor="@drawable/sl_usertab_text_selector"
+                                    android:textSize="12sp" />
+
+                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                    android:id="@+id/mtab_ema"
+                                    android:layout_height="25dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:button="@null"
+                                    android:text="EMA"
+                                    android:textColor="@drawable/sl_usertab_text_selector"
+                                    android:textSize="12sp" />
+
+                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                    android:id="@+id/mtab_boll"
+                                    android:layout_height="25dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:button="@null"
+                                    android:text="BOLL"
+                                    android:textColor="@drawable/sl_usertab_text_selector"
+                                    android:textSize="12sp" />
+
+                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                    android:id="@+id/mtab_sar"
+                                    android:layout_height="25dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:button="@null"
+                                    android:text="SAR"
+                                    android:textColor="@drawable/sl_usertab_text_selector"
+                                    android:textSize="12sp" />
+                            </RadioGroup>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:gravity="center"
+                                android:text="@string/sl_str_vice_figure"
+                                android:textSize="14sp"
+                                android:textColor="@color/sl_colorTextSelector" />
+
+                            <RadioGroup
+                                android:id="@+id/rg_vice_figure"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                    android:id="@+id/mtab_vol"
+                                    android:layout_height="25dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:button="@null"
+                                    android:checked="true"
+                                    android:text="VOL"
+                                    android:textColor="@drawable/sl_usertab_text_selector"
+                                    android:textSize="12sp" />
+
+                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                    android:id="@+id/mtab_macd"
+                                    android:layout_height="25dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:button="@null"
+                                    android:text="MACD"
+                                    android:textColor="@drawable/sl_usertab_text_selector"
+                                    android:textSize="12sp" />
+
+                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                    android:id="@+id/mtab_kdj"
+                                    android:layout_height="25dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:button="@null"
+                                    android:text="KDJ"
+                                    android:textColor="@drawable/sl_usertab_text_selector"
+                                    android:textSize="12sp" />
+
+                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                    android:id="@+id/mtab_rsi"
+                                    android:layout_height="25dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:button="@null"
+                                    android:text="RSI"
+                                    android:textColor="@drawable/sl_usertab_text_selector"
+                                    android:textSize="12sp" />
+
+                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                    android:id="@+id/mtab_mtm"
+                                    android:layout_height="25dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:button="@null"
+                                    android:text="MTM"
+                                    android:textColor="@drawable/sl_usertab_text_selector"
+                                    android:textSize="12sp" />
+
+                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                    android:id="@+id/mtab_wr"
+                                    android:layout_height="25dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:button="@null"
+                                    android:text="WR"
+                                    android:textColor="@drawable/sl_usertab_text_selector"
+                                    android:textSize="12sp" />
+
+                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                    android:id="@+id/mtab_cci"
+                                    android:layout_height="25dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center"
+                                    android:button="@null"
+                                    android:text="CCI"
+                                    android:textColor="@drawable/sl_usertab_text_selector"
+                                    android:textSize="12sp" />
+                            </RadioGroup>
+                        </LinearLayout>
+                    </com.bmtc.sdk.library.common.SmartScrollView>
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                android:background="@color/sl_colorDefault"
+                android:textAllCaps="false"
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                app:tabMaxWidth="0dp"
+                app:tabIndicatorColor="@color/sl_colorTextSelector"
+                app:tabIndicatorHeight="2dp"
+                app:tabPaddingStart="5dp"
+                app:tabPaddingEnd="5dp"
+                app:tabSelectedTextColor="@color/sl_colorTextSelector"
+                app:tabTextColor="@color/sl_grayText"/>
+
+            <RelativeLayout
+                android:id="@+id/rl_title"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="top"
+                android:background="@color/sl_colorDefault"
+                app:layout_collapseMode="pin">
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/sl_btn_back"
+                    android:layout_marginLeft="10dp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textAlignment="center"
+                        android:textColor="@color/sl_colorWhite"
+                        android:textSize="18sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_stock_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/tv_title"
+                        android:layout_marginLeft="5dp"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:textColor="@color/sl_colorTextSelector"
+                        android:textSize="11sp"
+                        android:background="@drawable/sl_border_corner_blue"/>
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/iv_share"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/sl_icon_share"
+                    android:layout_marginRight="10dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_title_full_screen"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="top"
+                android:background="@color/sl_colorDefault"
+                android:visibility="gone"
+                app:layout_collapseMode="pin">
+
+                <TextView
+                    android:id="@+id/tv_fs_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="@color/sl_colorWhite"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_fs_last_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tv_fs_title"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text=""
+                    android:textColor="@color/sl_colorGreen"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_fs_rise_fall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tv_fs_usd_price"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="@color/sl_colorGreen"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_fs_usd_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tv_fs_last_price"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="@color/sl_grayText"
+                    android:textSize="13sp" />
+
+                <ImageView
+                    android:id="@+id/iv_fs_close"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:src="@drawable/sl_icon_close2"/>
+
+                <LinearLayout
+                    android:layout_width="270dp"
+                    android:layout_height="40dp"
+                    android:layout_toLeftOf="@+id/iv_fs_close"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/sl_colorDefault"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/sl_str_fair_price"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="11sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/sl_str_index_price"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="11sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/sl_str_24h_vol"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/tv_fs_high"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/sl_whiteText"
+                            android:textSize="11sp" />
+                        <TextView
+                            android:id="@+id/tv_fs_low"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/sl_whiteText"
+                            android:textSize="11sp" />
+                        <TextView
+                            android:id="@+id/tv_fs_volum"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/sl_whiteText"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <LinearLayout
+        android:id="@+id/ll_buy_sell"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/sl_colorDefault2"
+        android:layout_gravity="bottom">
+        <Button
+            android:id="@+id/btn_buy"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textAllCaps="false"
+            android:background="@color/sl_colorGreen"
+            android:text="@string/sl_str_buy_open_long"
+            android:textColor="@color/sl_colorWhite"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_sell"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textAllCaps="false"
+            android:background="@color/sl_colorRed"
+            android:text="@string/sl_str_sell_open_short"
+            android:textColor="@color/sl_colorWhite"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="9dp"
+            android:layout_marginRight="10dp">
+            <CheckBox
+                android:id="@+id/cb_collect"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/sl_check_collect"
+                android:button="@null"
+                android:checked="false" />
+            <TextView
+                android:id="@+id/tv_collect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cb_collect"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/sl_whiteText"
+                android:textSize="11sp"
+                android:text="@string/sl_str_optional"/>
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
+

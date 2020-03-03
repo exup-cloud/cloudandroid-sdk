@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/sl_colorDefaultDark">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapse_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="top"
+                android:minHeight="48dp"
+                app:layout_collapseMode="pin" >
+
+            </android.support.v7.widget.Toolbar>
+
+            <LinearLayout
+                android:id="@+id/rl_trade_option"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:orientation="horizontal"
+                android:overScrollMode="never">
+
+                <LinearLayout
+                    android:id="@+id/ll_option"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:id="@+id/tv_order_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@string/sl_str_market_order"
+                            android:textSize="15sp"
+                            android:textColor="@color/sl_whiteText" />
+
+                        <ImageView
+                            android:id="@+id/iv_sel_order_type"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/tv_order_type"
+                            android:src="@drawable/sl_icon_drop_down_white" />
+
+
+                        <ImageView
+                            android:id="@+id/iv_setting"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_toRightOf="@+id/iv_sel_order_type"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/sl_icon_introduce3"
+                            android:visibility="gone"/>
+
+
+                        <RelativeLayout
+                            android:id="@+id/rl_leverage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true">
+
+                            <TextView
+                                android:id="@+id/tv_select_leverage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="--"
+                                android:textSize="14sp"
+                                android:textColor="@color/sl_whiteText" />
+
+                            <ImageView
+                                android:id="@+id/iv_select_leverage"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@+id/tv_select_leverage"
+                                android:src="@drawable/sl_icon_drop_down_white" />
+
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/rl_trigger_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/sl_border_corner_bluetrans"
+                        android:padding="1dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_trigger_price_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:text="USDT"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/et_trigger_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_toLeftOf="@+id/tv_trigger_price_unit"
+                            android:layout_marginLeft="5dp"
+                            android:background="@null"
+                            android:hint="@string/sl_str_trigger_price"
+                            android:textColorHint="@color/sl_grayText"
+                            android:focusableInTouchMode="true"
+                            android:layout_centerVertical="true"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:textColor="@color/sl_whiteText" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_limit_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/sl_border_corner_bluetrans"
+                        android:padding="1dp">
+
+                        <RelativeLayout
+                            android:id="@+id/rl_price2market"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true">
+
+                            <TextView
+                                android:id="@+id/tv_price_unit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="3dp"
+                                android:layout_centerVertical="true"
+                                android:text="USDT"
+                                android:textColor="@color/sl_grayText"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/tv_price2market"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:layout_marginRight="3dp"
+                                android:layout_toRightOf="@+id/tv_price_unit"
+                                android:background="@drawable/sl_border_corner_gray"
+                                android:layout_centerVertical="true"
+                                android:text="@string/sl_str_market_price_simple"
+                                android:textColor="@color/sl_whiteText"
+                                android:textSize="16sp"/>
+
+                        </RelativeLayout>
+
+                        <EditText
+                            android:id="@+id/et_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_toLeftOf="@+id/rl_price2market"
+                            android:layout_marginLeft="5dp"
+                            android:background="@null"
+                            android:hint="@string/sl_str_price"
+                            android:textColorHint="@color/sl_grayText"
+                            android:focusableInTouchMode="true"
+                            android:layout_centerVertical="true"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:textColor="@color/sl_whiteText" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_market_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/sl_border_corner_bluetrans"
+                        android:padding="1dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_market_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="1dp"
+                            android:paddingLeft="5dp"
+                            android:text="@string/sl_str_market_price"
+                            android:gravity="center"
+                            android:textColor="@color/sl_colorWhite"
+                            android:textSize="16sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_price2limit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:layout_marginRight="3dp"
+                            android:layout_alignParentRight="true"
+                            android:background="@drawable/sl_border_corner_blue"
+                            android:layout_centerVertical="true"
+                            android:text="@string/sl_str_market_price_simple"
+                            android:textColor="@color/sl_colorTextSelector"
+                            android:textSize="16sp"/>
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tv_price_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="16dp"
+                        android:layout_marginTop="5dp"
+                        android:text="≈ --"
+                        android:textColor="@color/sl_grayText"
+                        android:textSize="14sp" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_order_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="9dp"
+                        android:orientation="horizontal">
+
+                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                            android:id="@+id/tab_market_price"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:button="@null"
+                            android:focusable="false"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/sl_position_background_selector"
+                            android:text="@string/sl_str_market_order"
+                            android:textColor="@drawable/sl_maintab_text_selector"
+                            android:textSize="13sp" />
+
+                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                            android:id="@+id/tab_buy1"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:button="@null"
+                            android:focusable="false"
+                            android:background="@drawable/sl_position_background_selector"
+                            android:text="@string/sl_str_buy1_price"
+                            android:textColor="@drawable/sl_maintab_text_selector"
+                            android:textSize="13sp" />
+
+                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                            android:id="@+id/tab_sell1"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:button="@null"
+                            android:focusable="false"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/sl_position_background_selector"
+                            android:text="@string/sl_str_sell1_price"
+                            android:textColor="@drawable/sl_maintab_text_selector"
+                            android:textSize="13sp" />
+                    </RadioGroup>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/sl_border_corner_bluetrans"
+                        android:padding="1dp">
+
+                        <TextView
+                            android:id="@+id/tv_volume_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:text="@string/sl_str_contracts_unit"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/et_volume"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_toLeftOf="@+id/tv_volume_unit"
+                            android:layout_marginLeft="5dp"
+                            android:background="@null"
+                            android:hint="@string/sl_str_amount"
+                            android:imeOptions="actionDone"
+                            android:textColorHint="@color/sl_grayText"
+                            android:focusableInTouchMode="true"
+                            android:layout_centerVertical="true"
+                            android:inputType="numberDecimal"
+                            android:textSize="16sp"
+                            android:textColor="@color/sl_whiteText" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tv_volume_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="≈ --"
+                        android:textColor="@color/sl_grayText"
+                        android:textSize="14sp" />
+
+                    <com.bmtc.sdk.contract.view.LoadingButton
+                        android:id="@+id/btn_buy"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
+                        app:lbBackground="@drawable/sl_btn_green_selector"
+                        app:lbText="@string/sl_str_buy_open_long"
+                        app:lbTextColor="@color/sl_colorWhite"
+                        app:lbTextSize="15sp"
+                        app:lbProgressColor="@android:color/white" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_long_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp">
+
+                        <TextView
+                            android:id="@+id/tv_long_intro1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sl_str_entrust_cost"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="13sp"
+                            android:visibility="gone"/>
+
+
+                        <TextView
+                            android:id="@+id/tv_long_value1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="3dp"
+                            android:layout_toRightOf="@+id/tv_long_intro1"
+                            android:layout_toLeftOf="@+id/tv_long_intro2"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:text="--"
+                            android:textSize="13sp"
+                            android:textColor="@color/sl_grayText"
+                            android:visibility="gone" />
+
+
+                        <TextView
+                            android:id="@+id/tv_long_intro2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sl_str_buy_open_up_to"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tv_long_value2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="3dp"
+                            android:layout_toRightOf="@+id/tv_long_intro2"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:text="--"
+                            android:textSize="13sp"
+                            android:textColor="@color/sl_grayText" />
+                    </RelativeLayout>
+
+                    <com.bmtc.sdk.contract.view.LoadingButton
+                        android:id="@+id/btn_sell"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        app:lbBackground="@drawable/sl_btn_red_selector"
+                        app:lbText="@string/sl_str_sell_open_short"
+                        app:lbTextColor="@color/sl_colorWhite"
+                        app:lbTextSize="15sp"
+                        app:lbProgressColor="@android:color/white"/>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_short_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp">
+
+                        <TextView
+                            android:id="@+id/tv_short_intro1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sl_str_entrust_cost"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="13sp"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:id="@+id/tv_short_value1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="3dp"
+                            android:layout_toRightOf="@+id/tv_short_intro1"
+                            android:layout_toLeftOf="@+id/tv_short_intro2"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:text="--"
+                            android:textSize="13sp"
+                            android:textColor="@color/sl_grayText"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:id="@+id/tv_short_intro2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sl_str_sell_open_up_to"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tv_short_value2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="3dp"
+                            android:layout_toRightOf="@+id/tv_short_intro2"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:text="--"
+                            android:textSize="13sp"
+                            android:textColor="@color/sl_grayText" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_aavl"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sl_str_avbl"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tv_aavl_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/tv_aavl"
+                            android:layout_marginLeft="5dp"
+                            android:text="--"
+                            android:textColor="@color/sl_whiteText"
+                            android:textSize="15sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_funds_transfer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_aavl"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/sl_str_funds_transfer"
+                            android:textColor="@color/sl_colorTextSelector"
+                            android:textSize="15sp" />
+
+
+                        <ImageView
+                            android:id="@+id/iv_funds_transfer"
+                            android:layout_width="20dp"
+                            android:layout_height="16dp"
+                            android:layout_marginTop="9dp"
+                            android:paddingLeft="5dp"
+                            android:layout_below="@+id/tv_aavl"
+                            android:layout_toRightOf="@+id/tv_funds_transfer"
+                            android:src="@drawable/sl_icon_transfer2"
+                            />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_buy_sells"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="3dp">
+
+                        <TextView
+                            android:id="@+id/tv_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sl_str_price"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="5dp"
+                            android:text="@string/sl_str_amount"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+
+                    <com.bmtc.sdk.library.common.scrollview.ObservableRecyclerView
+                        android:id="@+id/rv_list_sell"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:nestedScrollingEnabled="false"
+                        tools:targetApi="lollipop" />
+
+                    <View
+                        android:id="@+id/dotted_line"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:background="@drawable/sl_bg_dotted_line"
+                        android:layerType="software"
+                        />
+
+                    <com.bmtc.sdk.library.common.scrollview.ObservableRecyclerView
+                        android:id="@+id/rv_list_buy"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:nestedScrollingEnabled="false"
+                        tools:targetApi="lollipop" />
+
+                    <View
+                        android:id="@+id/dotted_line2"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/sl_bg_dotted_line"
+                        android:layerType="software"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/tv_index_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sl_str_index_price"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tv_index_price_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="5dp"
+                            android:text="--"
+                            android:textColor="@color/sl_whiteText"
+                            android:textSize="13sp" />
+
+
+                        <ImageView
+                            android:id="@+id/iv_price_intro"
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_toRightOf="@+id/tv_index_price"
+                            android:layout_marginLeft="3dp"
+                            android:src="@drawable/sl_icon_introduce"
+                            android:visibility="gone"
+                            />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/tv_fair_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sl_str_fair_price"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tv_fair_price_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="5dp"
+                            android:text="--"
+                            android:textColor="@color/sl_whiteText"
+                            android:textSize="13sp" />
+
+                        <ImageView
+                            android:id="@+id/iv_fair_price_value"
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_toRightOf="@+id/tv_fair_price"
+                            android:layout_marginLeft="3dp"
+                            android:src="@drawable/sl_icon_introduce3"
+                            />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/tv_funds_rate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sl_str_funds_rate"
+                            android:textColor="@color/sl_grayText"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tv_funds_rate_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="5dp"
+                            android:text="--"
+                            android:textColor="@color/sl_whiteText"
+                            android:textSize="13sp" />
+
+                        <ImageView
+                            android:id="@+id/iv_funds_rate_value"
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_toRightOf="@+id/tv_funds_rate"
+                            android:layout_marginLeft="3dp"
+                            android:src="@drawable/sl_icon_introduce3"
+                            />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_market_trades_title"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_gravity="bottom">
+
+            <View
+                android:id="@+id/vLine"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/sl_defaultLine"/>
+            </RelativeLayout>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="bottom"
+                android:background="@color/sl_colorDefault"
+                android:textAllCaps="false"
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                app:tabMaxWidth="0dp"
+                app:tabIndicatorColor="@color/sl_colorTextSelector"
+                app:tabIndicatorHeight="2dp"
+                app:tabPaddingStart="5dp"
+                app:tabPaddingEnd="5dp"
+                app:tabSelectedTextColor="@color/sl_colorTextSelector"
+                app:tabTextColor="@color/sl_grayText"/>
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</android.support.design.widget.CoordinatorLayout>

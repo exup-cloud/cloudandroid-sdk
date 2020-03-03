@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sl_colorDefaultDark">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/sl_colorDefault">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:src="@drawable/sl_btn_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/sl_whiteText"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textSize="18sp"
+            android:text="@string/sl_str_funds_transfer"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_transfer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_top"
+        android:layout_marginTop="10dp"
+        android:background="@color/sl_colorDefault">
+
+        <ImageView
+            android:id="@+id/iv_transfer"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/sl_icon_exchange"/>
+
+        <TextView
+            android:id="@+id/tv_mywallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/iv_transfer"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="@string/sl_str_my_wallet"
+            android:textAlignment="center"
+            android:textColor="@color/sl_whiteText"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_contract_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_transfer"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:textAlignment="center"
+            android:text="@string/sl_str_contract_account"
+            android:textColor="@color/sl_whiteText"
+            android:textSize="16sp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_select_coin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/rl_transfer"
+        android:layout_marginTop="10dp"
+        android:background="@color/sl_colorDefault"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_select_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:text="@string/sl_str_select_coin"
+            android:textColor="@color/sl_whiteText"
+            android:textSize="16sp"
+            />
+
+        <ImageView
+            android:id="@+id/iv_coin_next"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/sl_btn_next"/>
+
+
+        <TextView
+            android:id="@+id/tv_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/iv_coin_next"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:text="****"
+            android:textColor="@color/sl_whiteText"
+            android:textSize="16sp"
+            />
+
+        <ImageView
+            android:id="@+id/iv_coin"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_toLeftOf="@+id/tv_coin"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/rl_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_select_coin"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:background="@color/sl_colorDefault">
+
+        <TextView
+            android:id="@+id/tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/sl_whiteText"
+            android:text="@string/sl_str_transfer_amount"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_amount"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:maxLength="20"
+            android:inputType="numberDecimal"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:hint="@string/sl_str_amount"
+            android:textColorHint="@color/sl_grayText"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:textColor="@color/sl_whiteText"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_amount"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/sl_str_available_funds"
+        android:textColor="@color/sl_grayText"
+        android:textSize="13sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_available_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_amount"
+        android:layout_toRightOf="@+id/tv_available"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:text="0"
+        android:textColor="@color/sl_whiteText"
+        android:textSize="13sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_available_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_amount"
+        android:layout_toRightOf="@+id/tv_available_value"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="@string/sl_str_all"
+        android:textColor="@color/sl_colorTextSelector"
+        android:textSize="13sp"
+        />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_available"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:textColor="@color/sl_colorWhite"
+        android:text="@string/sl_str_confirm"
+        android:textSize="18sp"
+        android:background="@drawable/sl_btn_blue_selector"
+        />
+
+</RelativeLayout>

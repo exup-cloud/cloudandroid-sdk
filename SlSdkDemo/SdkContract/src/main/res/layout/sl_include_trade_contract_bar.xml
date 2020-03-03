@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toprela"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:background="@color/sl_colorDefaultDark">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/sl_colorDefault">
+
+        <ImageView
+            android:id="@+id/iv_menu"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/sl_icon_menu" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/iv_sel_stock_code"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignTop="@+id/tv_stock_type"
+                android:layout_marginTop="-1dp"
+                android:layout_toRightOf="@+id/tv_stock_type"
+                android:src="@drawable/sl_icon_drop_down_white" />
+
+            <TextView
+                android:id="@+id/tv_stock_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_toRightOf="@+id/tv_stock_code"
+                android:background="@drawable/sl_border_corner_blue"
+                android:paddingLeft="2dp"
+                android:textColor="@color/sl_colorTextSelector"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/tv_stock_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text=""
+                android:textColor="@color/sl_whiteText"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_no_network"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/rl_title"
+        android:background="#26fea674"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:id="@+id/iv_warn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/sl_icon_warn"/>
+
+        <TextView
+            android:id="@+id/tv_no_network"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_warn"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="@string/sl_str_no_network_tips"
+            android:textColor="#fea674"
+            android:textSize="16sp"
+            />
+
+        <ImageView
+            android:id="@+id/iv_next"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/sl_btn_next3"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/sl_defaultLine"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/rl_stock"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/rl_no_network"
+        android:background="@color/sl_colorDefault"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_weight="4"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                android:id="@+id/tab_open_position"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:button="@null"
+                android:checked="true"
+                android:focusable="false"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:text="@string/sl_str_open_position"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="15sp" />
+
+            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                android:id="@+id/tab_close_position"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:button="@null"
+                android:focusable="false"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:text="@string/sl_str_close_position"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="15sp" />
+
+        </RadioGroup>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+            <RelativeLayout
+                android:id="@id/rl_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/sl_bg_corner_green_small">
+
+                <TextView
+                    android:id="@+id/tv_stock_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="2dp"
+                    android:text="+0.00%"
+                    android:textColor="@color/sl_colorWhite"
+                    android:textSize="13sp" />
+
+                <ImageView
+                    android:id="@+id/iv_index"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tv_stock_rate"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="2dp"
+                    android:src="@drawable/sl_icon_index" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_stock_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/rl_rate"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="0.00"
+                android:textColor="@color/sl_colorGreen"
+                android:textSize="16sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/rl_stock"
+        android:background="@color/sl_defaultLine" />
+
+</RelativeLayout>
