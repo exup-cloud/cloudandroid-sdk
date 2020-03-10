@@ -19,10 +19,8 @@ import com.bmtc.sdk.library.trans.BTContract;
 import com.bmtc.sdk.library.trans.IResponse;
 import com.bmtc.sdk.library.trans.data.Contract;
 import com.bmtc.sdk.library.trans.data.SLUser;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
 import com.bmtc.sdk.library.uilogic.LogicSDKState;
 import com.bmtc.sdk.library.uilogic.LogicWebSocketContract;
-import com.bmtc.sdk.library.uilogic.LogicWebSocketSpot;
 import com.bmtc.sdk.library.utils.PreferenceManager;
 import com.bmtc.sdk.library.utils.ShareToolUtil;
 import com.bmtc.sdk.simple.contract.UsdtActivity;
@@ -65,10 +63,11 @@ public class MainActivity extends AppCompatActivity implements LogicWebSocketCon
     private void initSLSDKAgent() {
         //设置http接口相关参数
         HttpRequestConfigs httpRequestConfigs = new HttpRequestConfigs()
-                .setPrefixHeader("tmex")//设置header前缀
-                .setHttpDevHost("api.tigermex.com")//设置HTTP接口请求域名
-                .setHttpReleaseHost("api.tigermex.com")
-                .setHttpPrivateKey("OZ1WNXAlbe84Kpq8"); //设置接口加密密钥
+                .setPrefixHeader("ex")//设置header前缀
+                .setHttpReleaseHost("http://co.mybts.info")//设置HTTP接口请求域名
+                .setHttpWebSocketHost("ws://ws3.mybts.info/wsswap/realTime")//websocket
+                .setExpiredTs("1583901738000000")//过期时间
+                .setAccesskey("3e0b5935-6e67-4b55-b345-6f0ed43fafa8");
         httpRequestConfigs.bulid();
         SLSDKAgent.setHttpRequestConfigs(httpRequestConfigs);
         //初始化
@@ -79,7 +78,8 @@ public class MainActivity extends AppCompatActivity implements LogicWebSocketCon
         SLSDKAgent.setHttpIsDev(true);
         //构造用户user相关信息
         SLUser user = new SLUser();
-        String token = PreferenceManager.getString(MainActivity.this,LoginActivity.sTokenKey,"");
+     //   user.setToken("7af5683c07c58db9c110149dee090df2");
+        String token = "7af5683c07c58db9c110149dee090df2";//PreferenceManager.getString(MainActivity.this,LoginActivity.sTokenKey,"");
         if(!TextUtils.isEmpty(token)){
             user.setToken(token);
             //设置全局user对象
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements LogicWebSocketCon
                     }
                     if(contracts.size() > 0){
                         //订阅合约ticker
-                        SLSDKAgent.sendContractSubscribe(LogicWebSocketSpot.WEBSOCKET_TICKER,contracts);
+                        SLSDKAgent.sendContractSubscribe(LogicWebSocketContract.WEBSOCKET_TICKER,contracts);
                     }
                 }
             }
