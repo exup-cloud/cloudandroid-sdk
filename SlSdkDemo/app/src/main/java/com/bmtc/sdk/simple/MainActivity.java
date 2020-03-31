@@ -1,6 +1,7 @@
 package com.bmtc.sdk.simple;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,19 +11,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.bmtc.sdk.contract.PNLShareActivity;
+import com.bmtc.sdk.contract.UserContractActivity;
 import com.bmtc.sdk.library.SLSDKAgent;
 import com.bmtc.sdk.library.base.HttpRequestConfigs;
+import com.bmtc.sdk.library.constants.BTConstants;
 import com.bmtc.sdk.library.trans.BTContract;
 import com.bmtc.sdk.library.trans.IResponse;
 import com.bmtc.sdk.library.trans.data.Contract;
+import com.bmtc.sdk.library.trans.data.ContractAccount;
 import com.bmtc.sdk.library.trans.data.SLUser;
 import com.bmtc.sdk.library.uilogic.LogicSDKState;
 import com.bmtc.sdk.library.uilogic.LogicWebSocketContract;
 import com.bmtc.sdk.library.utils.PreferenceManager;
 import com.bmtc.sdk.library.utils.ShareToolUtil;
+import com.bmtc.sdk.library.utils.ToastUtil;
 import com.bmtc.sdk.simple.contract.UsdtActivity;
 
 import java.util.ArrayList;
@@ -32,7 +38,7 @@ import static com.bmtc.sdk.library.uilogic.LogicSDKState.STATE_LOGIN;
 
 
 public class MainActivity extends AppCompatActivity implements LogicWebSocketContract.IWebSocketListener, LogicSDKState.ISDKStateListener,View.OnClickListener {
-    private TextView tv_usdt_contract,tv_coin_contract,tv_trade_contract;
+    private TextView tv_usdt_contract,tv_coin_contract,tv_trade_contract,tv_contract_account;
     private TextView tv_login;
     private TextView tv_share,tv_share2;
 
@@ -48,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements LogicWebSocketCon
         tv_usdt_contract = findViewById(R.id.tv_usdt_contract);
         tv_coin_contract = findViewById(R.id.tv_coin_contract);
         tv_trade_contract = findViewById(R.id.tv_trade_contract);
+        tv_contract_account = findViewById(R.id.tv_contract_account);
         tv_login = findViewById(R.id.tv_login);
         tv_share = findViewById(R.id.tv_share);
         tv_share2 = findViewById(R.id.tv_share2);
@@ -55,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements LogicWebSocketCon
         tv_usdt_contract.setOnClickListener(this);
         tv_coin_contract.setOnClickListener(this);
         tv_trade_contract.setOnClickListener(this);
+        tv_contract_account.setOnClickListener(this);
         tv_login.setOnClickListener(this);
         tv_share.setOnClickListener(this);
         tv_share2.setOnClickListener(this);
@@ -62,12 +70,18 @@ public class MainActivity extends AppCompatActivity implements LogicWebSocketCon
 
     private void initSLSDKAgent() {
         //设置http接口相关参数
+//        HttpRequestConfigs httpRequestConfigs = new HttpRequestConfigs()
+//                .setPrefixHeader("ex")//设置header前缀
+//                .setHttpReleaseHost("http://co.mybts.info")//设置HTTP接口请求域名
+//                .setHttpWebSocketHost("ws://ws3.mybts.info/wsswap/realTime")//websocket
+//                .setExpiredTs("1583901738000000")//过期时间
+//                .setAccesskey("3e0b5935-6e67-4b55-b345-6f0ed43fafa8");
         HttpRequestConfigs httpRequestConfigs = new HttpRequestConfigs()
                 .setPrefixHeader("ex")//设置header前缀
                 .setHttpReleaseHost("http://co.mybts.info")//设置HTTP接口请求域名
                 .setHttpWebSocketHost("ws://ws3.mybts.info/wsswap/realTime")//websocket
-                .setExpiredTs("1583901738000000")//过期时间
-                .setAccesskey("3e0b5935-6e67-4b55-b345-6f0ed43fafa8");
+                .setExpiredTs("1757922153811000")//过期时间
+                .setAccesskey("7b58ed73-fe7b-40c8-bce2-73f49edda6db");
         httpRequestConfigs.bulid();
         SLSDKAgent.setHttpRequestConfigs(httpRequestConfigs);
         //初始化
@@ -79,11 +93,17 @@ public class MainActivity extends AppCompatActivity implements LogicWebSocketCon
         //构造用户user相关信息
         SLUser user = new SLUser();
      //   user.setToken("7af5683c07c58db9c110149dee090df2");
-        String token = "7af5683c07c58db9c110149dee090df2";//PreferenceManager.getString(MainActivity.this,LoginActivity.sTokenKey,"");
+        String token = "15e3d8b4870d4682f863560887c24f82";//PreferenceManager.getString(MainActivity.this,LoginActivity.sTokenKey,"");
         if(!TextUtils.isEmpty(token)){
             user.setToken(token);
             //设置全局user对象
             SLSDKAgent.bindSLUser(user);
+            //登录成功，获取合约资产
+            BTContract.getInstance().accounts(0, new IResponse<List<ContractAccount>>() {
+                @Override
+                public void onResponse(String errno, String message, List<ContractAccount> data) {
+                }
+            });
         }
 
         //注册SDK请求客服端事件监听
@@ -138,6 +158,14 @@ public class MainActivity extends AppCompatActivity implements LogicWebSocketCon
                 break;
             case R.id.tv_trade_contract:
                 UsdtActivity.show(MainActivity.this,2);
+                break;
+            case R.id.tv_contract_account:
+                if(SLSDKAgent.isLogin()){
+                    Intent intent = new Intent(MainActivity.this, UserContractActivity.class);
+                    startActivity(intent);
+                }else {
+                    ToastUtil.shortToast(this,"需要先登录");
+                }
                 break;
             case R.id.tv_login:
                 LoginActivity.show(MainActivity.this);

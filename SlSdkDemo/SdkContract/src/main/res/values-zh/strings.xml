@@ -331,4 +331,18 @@
     <string name="sl_str_show_off">炫耀一下</string>
     <string name="sl_str_comfort">求安慰</string>
     <string name="sl_str_swap">永续合约</string>
+    <string name="sl_str_account_assets">账户权益</string>
+    <string name="sl_str_wallet_balance">钱包余额</string>
+    <string name="sl_str_margin_balance">保证金余额</string>
+    <string name="sl_str_account_details">账户明细</string>
+    <string name="sl_str_account_balance">账户总额</string>
+    <string name="sl_str_transfer">划转</string>
+    <string name="sl_str_trade">交易</string>
+    <string name="sl_str_funds_flow">资金流水</string>
+    <string name="sl_str_amount2">金额</string>
+    <string name="sl_str_fee2">手续费</string>
+    <string name="sl_str_balance">余额</string>
+    <string name="sl_str_transferim_position2contract">减少保证金</string>
+    <string name="sl_str_transferim_contract2position">增加保证金</string>
+    <string name="sl_str_position_fee">资金费率</string>
 </resources>

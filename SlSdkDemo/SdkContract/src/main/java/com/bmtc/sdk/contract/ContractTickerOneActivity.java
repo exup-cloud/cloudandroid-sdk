@@ -1240,7 +1240,8 @@ public class ContractTickerOneActivity extends BaseActivity implements
             }
 
             String[] argGroup = group.split(":");
-            if (argGroup.length == 1) {
+            if (argGroup.length == 2) {
+
                 if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_TICKER)) {
                     JSONObject dataObj = jsonObject.optJSONObject("data");
                     if (dataObj == null) {
@@ -1252,17 +1253,15 @@ public class ContractTickerOneActivity extends BaseActivity implements
                         return;
                     }
 
-                    ContractTicker ticker = new ContractTicker();
-                    ticker.fromJson(dataObj);
-                    updateTickerData(ticker);
 
-                } else {
-                    return;
-                }
+                    ContractTicker originTicker = LogicGlobal.getContractTicker(mContractId);
+                    if (originTicker == null) {
+                        return;
+                    }
+                    originTicker.verifyFromJson(dataObj);
+                    updateTickerData(originTicker);
 
-            } else if (argGroup.length == 2) {
-
-                if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_DEPTH)) {
+                } else if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_DEPTH)) {
 
                     if (mContractId != Integer.parseInt(argGroup[1])) {
                         return;

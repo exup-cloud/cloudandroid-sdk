@@ -331,4 +331,18 @@
     <string name="sl_str_show_off">Share it</string>
     <string name="sl_str_comfort">Share it</string>
     <string name="sl_str_swap">Swap</string>
+    <string name="sl_str_account_assets">Account Assets</string>
+    <string name="sl_str_wallet_balance">Wallet Balance</string>
+    <string name="sl_str_margin_balance">Margin Balance</string>
+    <string name="sl_str_account_details">Details</string>
+    <string name="sl_str_account_balance">Account Balance</string>
+    <string name="sl_str_transfer">Transfer</string>
+    <string name="sl_str_trade">Trade</string>
+    <string name="sl_str_funds_flow">Funds Flow</string>
+    <string name="sl_str_amount2">Amount</string>
+    <string name="sl_str_fee2">Fee</string>
+    <string name="sl_str_balance">Balance</string>
+    <string name="sl_str_transferim_position2contract">Reduce Margin</string>
+    <string name="sl_str_transferim_contract2position">Increase Margin</string>
+    <string name="sl_str_position_fee">Funding Rates</string>
 </resources>

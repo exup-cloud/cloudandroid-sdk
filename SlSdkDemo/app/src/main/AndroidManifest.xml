@@ -72,6 +72,17 @@
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:theme="@style/ActivityDialog"
             android:screenOrientation="portrait" />
+        UserContractActivity
+        <!--合约账户-->
+        <activity
+            android:name="com.bmtc.sdk.contract.UserContractActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:screenOrientation="portrait" />
+        <!--资金流水-->
+        <activity
+            android:name="com.bmtc.sdk.contract.FundsFlowActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"

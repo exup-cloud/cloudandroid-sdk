@@ -1,80 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical"
-   >
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical"
-        >
-    <TextView
-        android:textColor="@color/sl_whiteText"
-        android:id="@+id/tv_usdt_contract"
-        android:layout_margin="5dp"
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="USDT合约"
-        />
+        android:orientation="vertical">
 
-    <TextView
-        android:textColor="@color/sl_whiteText"
-        android:id="@+id/tv_coin_contract"
-        android:layout_margin="5dp"
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="币本位合约"
-        />
+        <TextView
+            android:id="@+id/tv_usdt_contract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:text="USDT合约"
+            android:textColor="@color/sl_whiteText" />
 
-    <TextView
-        android:textColor="@color/sl_whiteText"
-        android:id="@+id/tv_trade_contract"
-        android:layout_margin="5dp"
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="合约交易"
-        />
+        <TextView
+            android:id="@+id/tv_coin_contract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:text="币本位合约"
+            android:textColor="@color/sl_whiteText" />
 
-    <TextView
-        android:textColor="@color/sl_whiteText"
-        android:id="@+id/tv_login"
-        android:layout_margin="5dp"
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="登录"
-        />
+        <TextView
+            android:id="@+id/tv_trade_contract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:text="合约交易"
+            android:textColor="@color/sl_whiteText" />
 
-    <TextView
-        android:textColor="@color/sl_whiteText"
-        android:id="@+id/tv_share"
-        android:layout_margin="5dp"
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="分享1"
-        />
+        <TextView
+            android:id="@+id/tv_contract_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:text="合约账户"
+            android:textColor="@color/sl_whiteText" />
 
-    <TextView
-        android:textColor="@color/sl_whiteText"
-        android:id="@+id/tv_share2"
-        android:layout_margin="5dp"
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="分享2"
-        />
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:text="登录"
+            android:textColor="@color/sl_whiteText" />
+
+        <TextView
+            android:id="@+id/tv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:text="分享1"
+            android:textColor="@color/sl_whiteText" />
+
+        <TextView
+            android:id="@+id/tv_share2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:text="分享2"
+            android:textColor="@color/sl_whiteText" />
+    </LinearLayout>
+
     <LinearLayout
-        android:orientation="vertical"
         android:id="@+id/ll_share_placeholder_layout"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="invisible" />
 </RelativeLayout>
