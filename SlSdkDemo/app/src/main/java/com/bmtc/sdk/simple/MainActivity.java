@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements LogicWebSocketCon
 //                .setAccesskey("3e0b5935-6e67-4b55-b345-6f0ed43fafa8");
         HttpRequestConfigs httpRequestConfigs = new HttpRequestConfigs()
                 .setPrefixHeader("ex")//设置header前缀
-                .setHttpReleaseHost("http://co.mybts.info")//设置HTTP接口请求域名
+                .setHttpReleaseHost("http://co.mybts.info/fe-cov2-api/swap")//设置HTTP接口请求域名
                 .setHttpWebSocketHost("ws://ws3.mybts.info/wsswap/realTime")//websocket
                 .setExpiredTs("1757922153811000")//过期时间
                 .setAccesskey("7b58ed73-fe7b-40c8-bce2-73f49edda6db");

@@ -72,7 +72,6 @@
             android:configChanges="orientation|keyboardHidden|keyboard"
             android:theme="@style/ActivityDialog"
             android:screenOrientation="portrait" />
-        UserContractActivity
         <!--合约账户-->
         <activity
             android:name="com.bmtc.sdk.contract.UserContractActivity"
