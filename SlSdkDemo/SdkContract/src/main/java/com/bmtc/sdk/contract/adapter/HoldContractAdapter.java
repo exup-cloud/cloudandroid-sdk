@@ -152,7 +152,7 @@ public class HoldContractAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             profitAmount += ContractCalculate.CalculateCloseLongProfitAmount(
                     mNews.get(position).getCur_qty(),
-                    mNews.get(position).getAvg_open_px(),
+                    mNews.get(position).getAvg_cost_px(),
                     (pnl_calculate == 0) ? contractTicker.getFair_px() : contractTicker.getLast_px(),
                     contract.getFace_value(),
                     contract.isReserve());
@@ -170,7 +170,7 @@ public class HoldContractAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             profitAmount += ContractCalculate.CalculateCloseShortProfitAmount(
                     mNews.get(position).getCur_qty(),
-                    mNews.get(position).getAvg_open_px(),
+                    mNews.get(position).getAvg_cost_px(),
                     (pnl_calculate == 0) ? contractTicker.getFair_px() : contractTicker.getLast_px(),
                     contract.getFace_value(),
                     contract.isReserve());

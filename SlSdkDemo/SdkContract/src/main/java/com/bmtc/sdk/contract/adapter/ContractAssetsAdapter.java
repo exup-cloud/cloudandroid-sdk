@@ -138,14 +138,14 @@ public class ContractAssetsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     if (contractPosition.getSide() == 1) { //开多
                         longProfitAmount += ContractCalculate.CalculateCloseLongProfitAmount(
                                 contractPosition.getCur_qty(),
-                                contractPosition.getAvg_open_px(),
+                                contractPosition.getAvg_cost_px(),
                                 contractTicker.getFair_px(),
                                 positionContract.getFace_value(),
                                 positionContract.isReserve());
                     } else if (contractPosition.getSide() == 2) { //开空
                         shortProfitAmount += ContractCalculate.CalculateCloseShortProfitAmount(
                                 contractPosition.getCur_qty(),
-                                contractPosition.getAvg_open_px(),
+                                contractPosition.getAvg_cost_px(),
                                 contractTicker.getFair_px(),
                                 positionContract.getFace_value(),
                                 positionContract.isReserve());

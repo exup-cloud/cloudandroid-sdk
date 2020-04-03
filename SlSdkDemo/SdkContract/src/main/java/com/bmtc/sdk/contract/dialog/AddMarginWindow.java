@@ -159,11 +159,11 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
         double IMR = ContractCalculate.CalculatePositionIMR(mContractPosition, contract, contractBasic);
         double value = ContractCalculate.CalculateContractValue(
                 mContractPosition.getCur_qty(),
-                mContractPosition.getAvg_close_px(),
+                mContractPosition.getAvg_cost_px(),
                 contract);
 
-        mMaxReduce = Math.min(MathHelper.sub(MathHelper.round(mContractPosition.getOim()), MathHelper.mul(value, IMR)),
-                MathHelper.sub(MathHelper.round(mContractPosition.getOim()), MathHelper.mul(value, MathHelper.sub("1", contract.getLiquidation_warn_ratio()))));
+        mMaxReduce = Math.min(MathHelper.sub(MathHelper.round(mContractPosition.getIm()), MathHelper.mul(value, IMR)),
+                MathHelper.sub(MathHelper.round(mContractPosition.getIm()), MathHelper.mul(value, MathHelper.sub("1", contract.getLiquidation_warn_ratio()))));
 
         mMaxReduce = Math.max(0, mMaxReduce);
         mForcedClosePriceTv.setText(dfDefault.format(MathHelper.round(mLiqPrice, contract.getPrice_index())) + contract.getQuote_coin());
