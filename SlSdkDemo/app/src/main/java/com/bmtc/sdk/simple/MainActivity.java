@@ -78,10 +78,10 @@ public class MainActivity extends AppCompatActivity implements LogicWebSocketCon
 //                .setAccesskey("3e0b5935-6e67-4b55-b345-6f0ed43fafa8");
         HttpRequestConfigs httpRequestConfigs = new HttpRequestConfigs()
                 .setPrefixHeader("ex")//设置header前缀
-                .setHttpReleaseHost("http://co.mybts.info/fe-cov2-api/swap")//设置HTTP接口请求域名
-                .setHttpWebSocketHost("ws://ws3.mybts.info/wsswap/realTime")//websocket
-                .setExpiredTs("1757922153811000")//过期时间
-                .setAccesskey("7b58ed73-fe7b-40c8-bce2-73f49edda6db");
+                .setHttpReleaseHost("http://swapapi.huaxue-edu.cn")//设置HTTP接口请求域名
+                .setHttpWebSocketHost("ws://swapws.huaxue-edu.cn/realTime")//websocket
+                .setExpiredTs("1761014159458000")//过期时间
+                .setAccesskey("d78e3e05-1157-41c4-829a-71cb6ad8a125");
         httpRequestConfigs.bulid();
         SLSDKAgent.setHttpRequestConfigs(httpRequestConfigs);
         //初始化
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements LogicWebSocketCon
         //构造用户user相关信息
         SLUser user = new SLUser();
      //   user.setToken("7af5683c07c58db9c110149dee090df2");
-        String token = "15e3d8b4870d4682f863560887c24f82";//PreferenceManager.getString(MainActivity.this,LoginActivity.sTokenKey,"");
+        String token = "4458b9596c035b4c00dcf2d1e90824e3";//PreferenceManager.getString(MainActivity.this,LoginActivity.sTokenKey,"");
         if(!TextUtils.isEmpty(token)){
             user.setToken(token);
             //设置全局user对象

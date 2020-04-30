@@ -45,7 +45,7 @@ dependencies {
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
     api files('libs/FlycoTabLayout_Lib-1.0.aar')
     api 'com.github.yidun:captcha-android-demo:2.4.3.1'
-    //api project(path: ':SdkLibrary')
     api files('libs/sdklibrary-release_1.0.aar')
+    
 
 }

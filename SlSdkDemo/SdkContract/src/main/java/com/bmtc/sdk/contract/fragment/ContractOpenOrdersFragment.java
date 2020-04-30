@@ -417,7 +417,7 @@ public class ContractOpenOrdersFragment extends BaseFragment implements
         }
 
         mLoadingPlan = true;
-        BTContract.getInstance().userPlanOrders(mContractId, offset, mLimit, ContractOrder.ORDER_STATE_APPROVAL, new IResponse<List<ContractOrder>>() {
+        BTContract.getInstance().userPlanOrders(mContractId, offset, mLimit, ContractOrder.ORDER_STATE_APPROVAL|ContractOrder.ORDER_STATE_ENTRUST, new IResponse<List<ContractOrder>>() {
             @Override
             public void onResponse(String errno, String message, List<ContractOrder> data) {
 

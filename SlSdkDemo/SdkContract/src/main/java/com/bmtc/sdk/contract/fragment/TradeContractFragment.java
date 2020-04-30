@@ -43,6 +43,7 @@ import com.bmtc.sdk.library.trans.data.ContractTicker;
 import com.bmtc.sdk.library.trans.data.Depth;
 import com.bmtc.sdk.library.trans.data.DepthData;
 import com.bmtc.sdk.library.uilogic.LogicContractOrder;
+import com.bmtc.sdk.library.uilogic.LogicContractTicker;
 import com.bmtc.sdk.library.uilogic.LogicGlobal;
 import com.bmtc.sdk.library.uilogic.LogicLanguage;
 import com.bmtc.sdk.library.uilogic.LogicSDKState;
@@ -642,6 +643,8 @@ public class TradeContractFragment extends BaseFragment implements
                     originTicker.verifyFromJson(dataObj);
                     if (mBuySellContractFragment != null) {
                         mBuySellContractFragment.updateContract(originTicker, false);
+
+                        LogicContractTicker.getInstance().refresh(originTicker);
                     }
                     updateView(originTicker);
 

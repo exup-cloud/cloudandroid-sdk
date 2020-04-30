@@ -161,7 +161,7 @@ public class HoldContractAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             double plus = MathHelper.mul(
                     MathHelper.round(mNews.get(position).getTax()),
                     MathHelper.div(MathHelper.round(mNews.get(position).getCur_qty()), p));
-            profitRate = MathHelper.div(profitAmount, MathHelper.add(MathHelper.round(mNews.get(position).getOim()), plus)) * 100;
+            profitRate = MathHelper.div(profitAmount, MathHelper.add(MathHelper.round(mNews.get(position).getIm()), plus)) * 100;
 
         } else if (side == 2) { //空仓
             itemViewHolder.tvType.setText(R.string.sl_str_sell_open);
@@ -179,7 +179,7 @@ public class HoldContractAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             double plus = MathHelper.mul(
                     MathHelper.round(mNews.get(position).getTax()),
                     MathHelper.div(MathHelper.round(mNews.get(position).getCur_qty()), p));
-            profitRate = MathHelper.div(profitAmount, MathHelper.add(MathHelper.round(mNews.get(position).getOim()), plus)) * 100;
+            profitRate = MathHelper.div(profitAmount, MathHelper.add(MathHelper.round(mNews.get(position).getIm()), plus)) * 100;
         }
 
         double liqPrice = 0.0;  //强平价
@@ -188,6 +188,8 @@ public class HoldContractAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             itemViewHolder.tvOpenType.setText(R.string.sl_str_gradually_position);
             liqPrice = ContractCalculate.CalculatePositionLiquidatePrice(
                     mNews.get(position), null, contractBasic);
+            //计算杠杆
+            itemViewHolder.tvLeverage.setText(ContractCalculate.CalculatePositionLeverage(mNews.get(position), contractBasic) + mContext.getString(R.string.sl_str_bei));
         } else if (open_type == 2) {
             itemViewHolder.tvOpenType.setText(R.string.sl_str_full_position);
 
@@ -196,6 +198,8 @@ public class HoldContractAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 liqPrice = ContractCalculate.CalculatePositionLiquidatePrice(
                         mNews.get(position), contractAccount, contractBasic);
             }
+            //计算杠杆
+            itemViewHolder.tvLeverage.setText(ContractCalculate.calculateRealPositionLeverage(mNews.get(position),contractAccount, contractBasic) + mContext.getString(R.string.sl_str_bei));
         }
 
         itemViewHolder.tvContractName.setText(contract.getSymbol());
@@ -214,10 +218,9 @@ public class HoldContractAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 contract);
 
         itemViewHolder.tvTagPrice.setText(dfDefault.format(MathHelper.round(value, contract.getValue_index())) + contract.getMargin_coin());
-        itemViewHolder.tvMargins.setText(dfDefault.format(MathHelper.round(mNews.get(position).getOim(), contract.getValue_index())) + contract.getMargin_coin());
+        itemViewHolder.tvMargins.setText(dfDefault.format(MathHelper.round(mNews.get(position).getIm(), contract.getValue_index())) + contract.getMargin_coin());
 
-        double leverage = ContractCalculate.CalculatePositionLeverage(mNews.get(position), contractBasic);
-        itemViewHolder.tvLeverage.setText(leverage + mContext.getString(R.string.sl_str_bei));
+
 
         double profit = MathHelper.round(mNews.get(position).getEarnings());
         itemViewHolder.tvGainsBalance.setText(dfDefault.format(MathHelper.round(profit, contract.getValue_index())) + contract.getMargin_coin());
