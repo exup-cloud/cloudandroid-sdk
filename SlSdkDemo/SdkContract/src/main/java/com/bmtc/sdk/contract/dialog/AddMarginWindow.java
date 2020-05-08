@@ -138,7 +138,7 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
         }
 
         mAvailableTv.setText(balance);
-        mMarginsTv.setText(dfDefault.format(MathHelper.round(mContractPosition.getOim(), contract.getValue_index())) + contract.getMargin_coin());
+        mMarginsTv.setText(dfDefault.format(MathHelper.round(mContractPosition.getIm(), contract.getValue_index())) + contract.getMargin_coin());
         mHoldingsTv.setText(ContractCalculate.getVolUnit(contract, mContractPosition.getCur_qty(), contractTicker.getFair_px()));
 
         int open_type = mContractPosition.getPosition_type();
@@ -382,10 +382,10 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
                 mLimitInfoTv.setTextColor(context.getResources().getColor(R.color.sl_colorRed));
                 mAllTv.setVisibility(View.GONE);
             }
-            newIm = MathHelper.add(mContractPosition.getOim(), amount);
+            newIm = MathHelper.add(mContractPosition.getIm(), amount);
         } else if (mOperateType == 2) {
             mLimitInfoTv.setTextColor(context.getResources().getColor(R.color.sl_grayText));
-            newIm = MathHelper.sub(mContractPosition.getOim(), amount);
+            newIm = MathHelper.sub(mContractPosition.getIm(), amount);
         }
 
         if (MathHelper.round(amount) <= 0) {
@@ -394,7 +394,7 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
 
         ContractPosition position = new ContractPosition();
         position.fromJson(mContractPosition.toJson());
-        position.setOim(dfValue.format(newIm));
+        position.setIm(dfValue.format(newIm));
 
         double liqPrice = 0;  //强平价
 
