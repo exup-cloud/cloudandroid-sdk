@@ -384,4 +384,14 @@ public class UserContractActivity extends BaseActivity implements
         } catch (JSONException ignored) {
         }
     }
+
+    @Override
+    public void connectFail(String url, int reCount) {
+
+    }
+
+    @Override
+    public void reConnectSuccess(String url, int reCount) {
+
+    }
 }

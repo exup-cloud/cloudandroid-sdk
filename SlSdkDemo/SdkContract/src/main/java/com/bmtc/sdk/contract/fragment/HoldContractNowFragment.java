@@ -495,4 +495,14 @@ public class HoldContractNowFragment extends BaseFragment implements
         }
     }
 
+    @Override
+    public void connectFail(String url, int reCount) {
+
+    }
+
+    @Override
+    public void reConnectSuccess(String url, int reCount) {
+
+    }
+
 }

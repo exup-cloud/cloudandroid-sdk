@@ -1405,6 +1405,16 @@ public class ContractTickerOneActivity extends BaseActivity implements
         }
     }
 
+    @Override
+    public void connectFail(String url, int reCount) {
+
+    }
+
+    @Override
+    public void reConnectSuccess(String url, int reCount) {
+
+    }
+
     private void updateKLine(JSONObject jsonObj, int contractId, List<KLineEntity> minuteLine, KChartAdapter adapter, KChartView view) {
         if (mContractId != contractId || minuteLine == null) {
             return;

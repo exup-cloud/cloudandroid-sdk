@@ -807,6 +807,15 @@ public class ContractOpenOrdersFragment extends BaseFragment implements
     }
 
     @Override
+    public void connectFail(String url, int reCount) {
+
+    }
+
+    @Override
+    public void reConnectSuccess(String url, int reCount) {
+
+    }
+    @Override
     public void onContractOrderSubmit(ContractOrder order) {
         if (mType == 0) {
             setContractId(mContractId, true);
