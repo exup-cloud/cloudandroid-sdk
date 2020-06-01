@@ -554,8 +554,14 @@ public class TradeContractFragment extends BaseFragment implements
 
         if (!LogicWebSocketContract.getInstance().isConnected()) {
             if (mBuySellContractFragment != null) {
+
                 mBuySellContractFragment.updateOpenOrder(mContractId);
-                mBuySellContractFragment.updateUserAsset();
+                BTContract.getInstance().accounts(0, new IResponse<List<ContractAccount>>() {
+                    @Override
+                    public void onResponse(String errno, String message, List<ContractAccount> data) {
+                        mBuySellContractFragment.updateUserAsset();
+                    }
+                });
                 mBuySellContractFragment.updateInfoValue(true);
             }
 
@@ -613,12 +619,28 @@ public class TradeContractFragment extends BaseFragment implements
             if (argGroup.length == 1) {
                 if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_CUD)) {
 
+                    JSONArray dataArray =jsonObject.optJSONArray("data");
+                    if(dataArray == null){
+                        return;
+                    }
+                    for (int i = 0 ; i < dataArray.length() ; i++){
+                            JSONObject obj = dataArray.optJSONObject(i);
+                        JSONObject assetObj =  obj.optJSONObject("c_assets");
+                        if(assetObj == null){
+                            return;
+                        }
+                        ContractAccount account = new ContractAccount();
+                        account.fromJson(assetObj);
+                        BTContract.getInstance().setContractAccount(account);
+                    }
+
                     if (mViewPager != null) {
                         mViewPager.postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 if (mBuySellContractFragment != null) {
                                     mBuySellContractFragment.updateInfoValue(true);
+                                    mBuySellContractFragment.updateUserAsset();
                                 }
                             }
                         }, 500);

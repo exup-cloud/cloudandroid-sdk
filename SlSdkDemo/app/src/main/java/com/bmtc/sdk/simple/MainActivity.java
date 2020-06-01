@@ -23,13 +23,18 @@ import com.bmtc.sdk.library.trans.BTContract;
 import com.bmtc.sdk.library.trans.IResponse;
 import com.bmtc.sdk.library.trans.data.Contract;
 import com.bmtc.sdk.library.trans.data.ContractAccount;
+import com.bmtc.sdk.library.trans.data.ContractPosition;
+import com.bmtc.sdk.library.trans.data.GlobalLeverage;
 import com.bmtc.sdk.library.trans.data.SLUser;
 import com.bmtc.sdk.library.uilogic.LogicSDKState;
 import com.bmtc.sdk.library.uilogic.LogicWebSocketContract;
+import com.bmtc.sdk.library.utils.LogUtil;
 import com.bmtc.sdk.library.utils.PreferenceManager;
 import com.bmtc.sdk.library.utils.ShareToolUtil;
 import com.bmtc.sdk.library.utils.ToastUtil;
 import com.bmtc.sdk.simple.contract.UsdtActivity;
+
+import org.web3j.protocol.core.methods.response.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,9 +84,9 @@ public class MainActivity extends AppCompatActivity implements LogicWebSocketCon
         HttpRequestConfigs httpRequestConfigs = new HttpRequestConfigs()
                 .setPrefixHeader("ex")//设置header前缀
                 .setHttpReleaseHost("http://swapapi.bgex.com")//设置HTTP接口请求域名
-                .setHttpWebSocketHost("wss://swapws.bgex.com/realTime")//websocket
-                .setExpiredTs("1761014159458000")//过期时间
-                .setAccesskey("d78e3e05-1157-41c4-829a-71cb6ad8a125");
+                .setHttpWebSocketHost("ws://devswapws.bgex.info/realTime")//websocket
+                .setExpiredTs("1763348866725000")//过期时间
+                .setAccesskey("5def371e-ea80-4d77-9a69-978fa16672dc");
         httpRequestConfigs.bulid();
         SLSDKAgent.setHttpRequestConfigs(httpRequestConfigs);
         //初始化
@@ -93,11 +98,11 @@ public class MainActivity extends AppCompatActivity implements LogicWebSocketCon
         //构造用户user相关信息
         SLUser user = new SLUser();
         //   user.setToken("7af5683c07c58db9c110149dee090df2");
-        String token = "4458b9596c035b4c00dcf2d1e90824e3";//PreferenceManager.getString(MainActivity.this,LoginActivity.sTokenKey,"");
+        String token = "307a68c52393c4f6e02bd32b702a56ed";//PreferenceManager.getString(MainActivity.this,LoginActivity.sTokenKey,"");
         if (!TextUtils.isEmpty(token)) {
             user.setToken(token);
             //设置全局user对象
-            SLSDKAgent.bindSLUser(user);
+           // SLSDKAgent.bindSLUser(user);
             //登录成功，获取合约资产
             BTContract.getInstance().accounts(0, new IResponse<List<ContractAccount>>() {
                 @Override
@@ -191,8 +196,28 @@ public class MainActivity extends AppCompatActivity implements LogicWebSocketCon
                 break;
             case R.id.tv_share:
                 PNLShareActivity.show(MainActivity.this, "", 0);
+
+                BTContract.getInstance().getGlobalLeverage(6,new IResponse<List<GlobalLeverage>>(){
+
+                    @Override
+                    public void onResponse(String errno, String message, List<GlobalLeverage> data) {
+                        LogUtil.d( SLSDKAgent.TAG,"data1:"+data);
+                    }
+                });
+
+
                 break;
             case R.id.tv_share2:
+
+                   BTContract.getInstance().setGlobalLeverage(6, 41,1, new IResponse<List<GlobalLeverage>>() {
+
+                       @Override
+                       public void onResponse(String errno, String message, List<GlobalLeverage> data) {
+                           LogUtil.d( SLSDKAgent.TAG,"data2:"+data);
+                       }
+                   });
+
+
                 LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
                 final View shotView = inflater.inflate(com.bmtc.sdk.contract.R.layout.sl_pnl_share, null);
                 final LinearLayout warpLayout = findViewById(R.id.ll_share_placeholder_layout);

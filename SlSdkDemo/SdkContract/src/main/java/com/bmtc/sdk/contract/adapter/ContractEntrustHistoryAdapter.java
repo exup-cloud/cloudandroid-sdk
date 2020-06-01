@@ -302,7 +302,7 @@ public class ContractEntrustHistoryAdapter extends RecyclerView.Adapter<Recycler
     }
 
     private void queryDetail(final View view, final ContractOrder order) {
-        BTContract.getInstance().liqRecord(order.getOid(), new IResponse<List<ContractLiqRecord>>() {
+        BTContract.getInstance().liqRecord(order.getOid(), order.getInstrument_id(),new IResponse<List<ContractLiqRecord>>() {
             @Override
             public void onResponse(String errno, String message, List<ContractLiqRecord> data) {
                 if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {

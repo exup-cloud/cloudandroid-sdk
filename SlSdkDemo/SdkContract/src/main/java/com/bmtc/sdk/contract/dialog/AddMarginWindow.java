@@ -161,26 +161,28 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
                 mContractPosition.getCur_qty(),
                 mContractPosition.getAvg_cost_px(),
                 contract);
+        //新增
+        mMaxReduce = ContractCalculate.doCalculateCanMinMargin(mContractPosition,contract,contractTicker);
 
-        mMaxReduce = Math.min(MathHelper.sub(MathHelper.round(mContractPosition.getIm()), MathHelper.mul(value, IMR)),
-                MathHelper.sub(MathHelper.round(mContractPosition.getIm()), MathHelper.mul(value, MathHelper.sub("1", contract.getLiquidation_warn_ratio()))));
-
-        mMaxReduce = Math.max(0, mMaxReduce);
+//        mMaxReduce = Math.min(MathHelper.sub(MathHelper.round(mContractPosition.getIm()), MathHelper.mul(value, IMR)),
+//                MathHelper.sub(MathHelper.round(mContractPosition.getIm()), MathHelper.mul(value, MathHelper.sub("1", contract.getLiquidation_warn_ratio()))));
+//
+//        mMaxReduce = Math.max(0, mMaxReduce);
         mForcedClosePriceTv.setText(dfDefault.format(MathHelper.round(mLiqPrice, contract.getPrice_index())) + contract.getQuote_coin());
         mExpectPriceTv.setText(dfDefault.format(MathHelper.round(mLiqPrice, contract.getPrice_index())) + "(0)" + contract.getQuote_coin());
-
-        BTContract.getInstance().calculate(contract.getInstrument_id(),
-                64,
-                mContractPosition.getPid(),
-                (mContractPosition.getPosition_type() == 1) ? true : false,
-                new IResponse<ContractPosition>() {
-                    @Override
-                    public void onResponse(String errno, String message, ContractPosition data) {
-                        if (data != null) {
-                            mMaxReduce = MathHelper.round(data.getDeductible_margin(), contract.getValue_index());
-                        }
-                    }
-                });
+//
+//        BTContract.getInstance().calculate(contract.getInstrument_id(),
+//                64,
+//                mContractPosition.getPid(),
+//                (mContractPosition.getPosition_type() == 1) ? true : false,
+//                new IResponse<ContractPosition>() {
+//                    @Override
+//                    public void onResponse(String errno, String message, ContractPosition data) {
+//                        if (data != null) {
+//                            mMaxReduce = MathHelper.round(data.getDeductible_margin(), contract.getValue_index());
+//                        }
+//                    }
+//                });
     }
 
     private void initView(View view) {

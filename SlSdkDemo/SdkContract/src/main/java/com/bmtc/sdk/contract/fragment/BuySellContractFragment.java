@@ -823,7 +823,7 @@ public class BuySellContractFragment extends BaseFragment implements
         updateInfoValue(false);
     }
 
-    public void updateInfoValue(boolean priceChange) {
+    public void  updateInfoValue(boolean priceChange) {
         if (mPriceEt == null || mVolumeEt == null || mVolumeValueTv == null ||
                 mLongValue1 == null || mLongValue2 == null||
                 mShortValue1 == null || mShortValue2 == null) {
@@ -1916,6 +1916,8 @@ public class BuySellContractFragment extends BaseFragment implements
                     ToastUtil.shortToast(getActivity(), message);
                     return;
                 }
+
+
 
                 ToastUtil.shortToast(getActivity(), getString(R.string.sl_str_order_submit_success));
 

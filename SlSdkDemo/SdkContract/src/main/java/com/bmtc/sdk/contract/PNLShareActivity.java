@@ -285,7 +285,7 @@ public class PNLShareActivity extends BaseActivity {
 
                 profitAmount += ContractCalculate.CalculateCloseLongProfitAmount(
                         mContractPosition.getCur_qty(),
-                        mContractPosition.getAvg_open_px(),
+                        mContractPosition.getAvg_cost_px(),
                         (pnl_calculate == 0) ? contractTicker.getFair_px() : contractTicker.getLast_px(),
                         contract.getFace_value(),
                         contract.isReserve());
@@ -294,7 +294,9 @@ public class PNLShareActivity extends BaseActivity {
                 double plus = MathHelper.mul(
                         MathHelper.round(mContractPosition.getTax()),
                         MathHelper.div(MathHelper.round(mContractPosition.getCur_qty()), p));
-                profitRate = MathHelper.div(profitAmount, MathHelper.add(MathHelper.round(mContractPosition.getOim()), plus)) * 100;
+                //profitRate = MathHelper.div(profitAmount, MathHelper.add(MathHelper.round(mContractPosition.getOim()), plus)) * 100;
+
+                profitRate =ContractCalculate.calculateProfitByAmount(String.valueOf(profitAmount),mContractPosition.getOim()) * 100;
 
             } else if (position_type == 2) { //空仓
                 tv_type.setText(R.string.sl_str_open_short);
@@ -302,7 +304,7 @@ public class PNLShareActivity extends BaseActivity {
 
                 profitAmount += ContractCalculate.CalculateCloseShortProfitAmount(
                         mContractPosition.getCur_qty(),
-                        mContractPosition.getAvg_open_px(),
+                        mContractPosition.getAvg_cost_px(),
                         (pnl_calculate == 0) ? contractTicker.getFair_px() : contractTicker.getLast_px(),
                         contract.getFace_value(),
                         contract.isReserve());
@@ -311,7 +313,9 @@ public class PNLShareActivity extends BaseActivity {
                 double plus = MathHelper.mul(
                         MathHelper.round(mContractPosition.getTax()),
                         MathHelper.div(MathHelper.round(mContractPosition.getCur_qty()), p));
-                profitRate = MathHelper.div(profitAmount, MathHelper.add(MathHelper.round(mContractPosition.getOim()), plus)) * 100;
+                //profitRate = MathHelper.div(profitAmount, MathHelper.add(MathHelper.round(mContractPosition.getOim()), plus)) * 100;
+
+                profitRate =ContractCalculate.calculateProfitByAmount(String.valueOf(profitAmount),mContractPosition.getOim()) * 100;
             }
 
             tv_contract_value.setText(contract.getSymbol());

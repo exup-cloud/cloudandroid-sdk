@@ -1,1 +1,1 @@
-include ':app', ':SdkContract'
+include ':app', ':SdkContract', ':SdkLibrary'

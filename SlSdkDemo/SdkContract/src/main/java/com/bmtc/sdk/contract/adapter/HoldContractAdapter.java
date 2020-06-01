@@ -158,10 +158,10 @@ public class HoldContractAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     contract.isReserve());
 
             double p = MathHelper.add(mNews.get(position).getCur_qty(), mNews.get(position).getClose_qty());
-            double plus = MathHelper.mul(
-                    MathHelper.round(mNews.get(position).getTax()),
-                    MathHelper.div(MathHelper.round(mNews.get(position).getCur_qty()), p));
-            profitRate = MathHelper.div(profitAmount, MathHelper.add(MathHelper.round(mNews.get(position).getIm()), plus)) * 100;
+//            double plus = MathHelper.mul(
+//                    MathHelper.round(mNews.get(position).getTax()),
+//                    MathHelper.div(MathHelper.round(mNews.get(position).getCur_qty()), p));
+            profitRate =ContractCalculate.calculateProfitByAmount(String.valueOf(profitAmount),mNews.get(position).getOim()) * 100;
 
         } else if (side == 2) { //空仓
             itemViewHolder.tvType.setText(R.string.sl_str_sell_open);
@@ -176,10 +176,11 @@ public class HoldContractAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     contract.isReserve());
 
             double p = MathHelper.add(mNews.get(position).getCur_qty(), mNews.get(position).getClose_qty());
-            double plus = MathHelper.mul(
-                    MathHelper.round(mNews.get(position).getTax()),
-                    MathHelper.div(MathHelper.round(mNews.get(position).getCur_qty()), p));
-            profitRate = MathHelper.div(profitAmount, MathHelper.add(MathHelper.round(mNews.get(position).getIm()), plus)) * 100;
+//            double plus = MathHelper.mul(
+//                    MathHelper.round(mNews.get(position).getTax()),
+//                    MathHelper.div(MathHelper.round(mNews.get(position).getCur_qty()), p));
+//            //profitRate = MathHelper.div(profitAmount, MathHelper.add(MathHelper.round(mNews.get(position).getIm()), plus)) * 100;
+            profitRate =ContractCalculate.calculateProfitByAmount(String.valueOf(profitAmount),mNews.get(position).getOim()) * 100;
         }
 
         double liqPrice = 0.0;  //强平价
