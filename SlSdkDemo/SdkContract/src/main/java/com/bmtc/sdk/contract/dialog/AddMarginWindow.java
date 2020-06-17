@@ -16,23 +16,30 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.contract.ContractCalculate;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractAccount;
-import com.bmtc.sdk.library.trans.data.ContractPosition;
-import com.bmtc.sdk.library.trans.data.ContractTicker;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
-import com.bmtc.sdk.library.utils.ToastUtil;
+import com.bmtc.sdk.contract.uiLogic.LogicContractSetting;
+import com.bmtc.sdk.contract.utils.ContractUtils;
+import com.bmtc.sdk.contract.utils.ToastUtil;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.ContractUserDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractAccount;
+import com.contract.sdk.data.ContractOrder;
+import com.contract.sdk.data.ContractPosition;
+import com.contract.sdk.data.ContractTicker;
+import com.contract.sdk.extra.Contract.ContractCalculate;
+import com.contract.sdk.impl.IResponse;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.text.DecimalFormat;
 import java.util.List;
+
+import static com.bmtc.sdk.contract.uiLogic.LogicContractSetting.getPnlCalculate;
 
 /**
  * 增加/减少保证金
@@ -119,10 +126,9 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
         }
         mContractPosition = position;
 
-        Contract contractBasic = LogicGlobal.getContractBasic(mContractPosition.getInstrument_id());
-        final Contract contract = LogicGlobal.getContract(mContractPosition.getInstrument_id());
-        ContractTicker contractTicker = LogicGlobal.getContractTicker(mContractPosition.getInstrument_id());
-        if (contract == null || contractBasic == null || contractTicker == null) {
+        final Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractPosition.getInstrument_id());
+        ContractTicker contractTicker = ContractPublicDataAgent.INSTANCE.getContractTicker(mContractPosition.getInstrument_id());
+        if (contract == null || contractTicker == null) {
             return;
         }
 
@@ -131,7 +137,7 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
         DecimalFormat dfPrice = NumberUtil.getDecimal(contract.getPrice_index());
 
         String balance = dfDefault.format(0.0);
-        ContractAccount contractAccount = BTContract.getInstance().getContractAccount(contract.getMargin_coin());
+        ContractAccount contractAccount = ContractUserDataAgent.INSTANCE.getContractAccount(contract.getMargin_coin());
         if (contractAccount != null) {
             mMaxIncrease = contractAccount.getAvailable_vol_real();
             balance = dfDefault.format(MathHelper.round(mMaxIncrease, contract.getValue_index())) + contract.getMargin_coin();
@@ -139,16 +145,16 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
 
         mAvailableTv.setText(balance);
         mMarginsTv.setText(dfDefault.format(MathHelper.round(mContractPosition.getIm(), contract.getValue_index())) + contract.getMargin_coin());
-        mHoldingsTv.setText(ContractCalculate.getVolUnit(contract, mContractPosition.getCur_qty(), contractTicker.getFair_px()));
+        mHoldingsTv.setText(ContractUtils.INSTANCE.getVolUnit(context,contract, mContractPosition.getCur_qty(), contractTicker.getFair_px()));
 
         int open_type = mContractPosition.getPosition_type();
         if (open_type == 1) {
-            mLiqPrice = ContractCalculate.CalculatePositionLiquidatePrice(
-                    mContractPosition, null, contractBasic);
+            mLiqPrice = ContractCalculate.INSTANCE.CalculatePositionLiquidatePrice(
+                    mContractPosition, null, contract);
         } else if (open_type == 2) {
             if (contractAccount != null) {
-                mLiqPrice = ContractCalculate.CalculatePositionLiquidatePrice(
-                        mContractPosition, contractAccount, contractBasic);
+                mLiqPrice = ContractCalculate.INSTANCE.CalculatePositionLiquidatePrice(
+                        mContractPosition, contractAccount, contract);
             }
         }
 
@@ -156,13 +162,14 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
         mLimitInfoTv.setText(context.getString(R.string.sl_str_max_increase) + balance);
         mAllTv.setVisibility(View.VISIBLE);
 
-        double IMR = ContractCalculate.CalculatePositionIMR(mContractPosition, contract, contractBasic);
-        double value = ContractCalculate.CalculateContractValue(
+        double IMR = ContractCalculate.INSTANCE.CalculatePositionIMR(mContractPosition, contract);
+        double value = ContractCalculate.INSTANCE.CalculateContractValue(
                 mContractPosition.getCur_qty(),
                 mContractPosition.getAvg_cost_px(),
                 contract);
         //新增
-        mMaxReduce = ContractCalculate.doCalculateCanMinMargin(mContractPosition,contract,contractTicker);
+        int pnl_calculate = LogicContractSetting.getPnlCalculate(context);
+        mMaxReduce = ContractCalculate.INSTANCE.doCalculateCanMinMargin(mContractPosition,contract,pnl_calculate==0?contractTicker.getFair_px():contractTicker.getLast_px());
 
 //        mMaxReduce = Math.min(MathHelper.sub(MathHelper.round(mContractPosition.getIm()), MathHelper.mul(value, IMR)),
 //                MathHelper.sub(MathHelper.round(mContractPosition.getIm()), MathHelper.mul(value, MathHelper.sub("1", contract.getLiquidation_warn_ratio()))));
@@ -216,14 +223,14 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
         mAllTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Contract contract = LogicGlobal.getContract(mContractPosition.getInstrument_id());
+                Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractPosition.getInstrument_id());
                 if (contract == null) {
                     return;
                 }
 
                 DecimalFormat dfDefault = NumberUtil.getDecimal(-1);
                 String balance = dfDefault.format(0.0);
-                ContractAccount contractAccount = BTContract.getInstance().getContractAccount(contract.getMargin_coin());
+                ContractAccount contractAccount = ContractUserDataAgent.INSTANCE.getContractAccount(contract.getMargin_coin());
                 if (contractAccount != null) {
                     double vol = contractAccount.getAvailable_vol_real();
                     balance = dfDefault.format(MathHelper.round(vol, contract.getValue_index()));
@@ -251,7 +258,7 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
             public void onClick(View view) {
                 mOperateType = 2;
 
-                Contract contract = LogicGlobal.getContract(mContractPosition.getInstrument_id());
+                Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractPosition.getInstrument_id());
                 if (contract == null) {
                     return;
                 }
@@ -295,7 +302,7 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
             return;
         }
 
-        Contract contract = LogicGlobal.getContract(mContractPosition.getInstrument_id());
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractPosition.getInstrument_id());
         if (contract == null) {
             return;
         }
@@ -303,32 +310,21 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
         String amount = etVolume.getText().toString();
 
         btnOk.setEnabled(false);
-        BTContract.getInstance().marginOper(
-                contract.getInstrument_id(),
-                mContractPosition.getPid(),
-                amount,
-                mOperateType,
-                new IResponse<Void>() {
-                    @Override
-                    public void onResponse(String errno, String message, Void data) {
-                        btnOk.setEnabled(true);
-                        if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                            ToastUtil.shortToast(LogicGlobal.sContext, message);
-                            return;
-                        }
 
-                        BTContract.getInstance().accounts(0, new IResponse<List<ContractAccount>>() {
-                            @Override
-                            public void onResponse(String errno, String message, List<ContractAccount> data) {
+        ContractUserDataAgent.INSTANCE.doAdjustMargin(contract.getInstrument_id(), mContractPosition.getPid(), amount, mOperateType, new IResponse<String>() {
+            @Override
+            public void onSuccess(@NotNull String data) {
+                btnOk.setEnabled(true);
+                ToastUtil.shortToast(context, context.getString(R.string.sl_str_adjust_succeed));
+                dismiss();
+            }
 
-                            }
-                        });
-
-                        ToastUtil.shortToast(LogicGlobal.sContext, context.getString(R.string.sl_str_adjust_succeed));
-                        dismiss();
-                    }
-                }
-        );
+            @Override
+            public void onFail(@NotNull String code, @NotNull String msg) {
+                btnOk.setEnabled(true);
+                ToastUtil.shortToast(context, msg);
+            }
+        });
 
     }
 
@@ -339,10 +335,9 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
             return;
         }
 
-        Contract contractBasic = LogicGlobal.getContractBasic(mContractPosition.getInstrument_id());
-        Contract contract = LogicGlobal.getContract(mContractPosition.getInstrument_id());
-        ContractTicker contractTicker = LogicGlobal.getContractTicker(mContractPosition.getInstrument_id());
-        if (contract == null || contractBasic == null || contractTicker == null) {
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractPosition.getInstrument_id());
+        ContractTicker contractTicker =  ContractPublicDataAgent.INSTANCE.getContractTicker(mContractPosition.getInstrument_id());
+        if (contract == null || contractTicker == null) {
             return;
         }
 
@@ -402,8 +397,8 @@ public class AddMarginWindow extends PopupWindow implements View.OnClickListener
 
         int open_type = mContractPosition.getPosition_type();
         if (open_type == 1) {
-            liqPrice = ContractCalculate.CalculatePositionLiquidatePrice(
-                    position, null, contractBasic);
+            liqPrice = ContractCalculate.INSTANCE.CalculatePositionLiquidatePrice(
+                    position, null, contract);
         } else if (open_type == 2) {
 //            ContractAccount contractAccount = BTContract.getInstance().getContractAccount(contract.getMargin_coin());
 //            if (contractAccount != null) {

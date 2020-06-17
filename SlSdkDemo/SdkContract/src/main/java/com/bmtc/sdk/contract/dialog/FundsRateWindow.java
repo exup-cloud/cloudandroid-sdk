@@ -3,10 +3,10 @@ package com.bmtc.sdk.contract.dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SimpleItemAnimator;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +16,12 @@ import android.widget.PopupWindow;
 import com.bmtc.sdk.contract.ContractDetailActivity;
 import com.bmtc.sdk.contract.R;
 import com.bmtc.sdk.contract.adapter.FundsRateDlgAdapter;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.ContractFundingRate;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.ToastUtil;
+import com.bmtc.sdk.contract.utils.ToastUtil;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.ContractFundingRate;
+import com.contract.sdk.impl.IResponse;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,14 +129,10 @@ public class FundsRateWindow extends PopupWindow {
     }
 
     public void updateData() {
-        BTContract.getInstance().fundingrate(mContractId, new IResponse<List<ContractFundingRate>>() {
-            @Override
-            public void onResponse(String errno, String message, List<ContractFundingRate> data) {
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    ToastUtil.shortToast(LogicGlobal.sContext, message);
-                    return;
-                }
 
+        ContractPublicDataAgent.INSTANCE.loadFundingRate(mContractId, new IResponse<List<ContractFundingRate>>() {
+            @Override
+            public void onSuccess(List<ContractFundingRate> data) {
                 if (data != null && data.size() > 0) {
                     List<ContractFundingRate> newData = new ArrayList<>();
                     for (int i=0; i<Math.min(data.size(), 4); i++) {
@@ -145,6 +141,11 @@ public class FundsRateWindow extends PopupWindow {
 
                     setData(newData);
                 }
+            }
+
+            @Override
+            public void onFail(@NotNull String code, @NotNull String msg) {
+                ToastUtil.shortToast(context, msg);
             }
         });
     }

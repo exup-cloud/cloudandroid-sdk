@@ -2,7 +2,6 @@ package com.bmtc.sdk.contract.common.chart;
 
 
 
-import com.bmtc.sdk.library.trans.data.KLineEntity;
 import com.github.tifezh.kchartlib.chart.BaseKChartAdapter;
 
 import java.util.ArrayList;
@@ -68,6 +67,10 @@ public class KChartAdapter extends BaseKChartAdapter {
             datas.addAll(0, data);
             notifyDataSetChanged();
         }
+    }
+
+    public List<KLineEntity> getData(){
+        return datas;
     }
     /**
      * 改变某个点的值

@@ -2,24 +2,24 @@ package com.bmtc.sdk.simple.contract;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Handler;
 import android.text.TextUtils;
 
 
 import com.bmtc.sdk.contract.fragment.CoinContractFragment;
 import com.bmtc.sdk.contract.fragment.TradeContractFragment;
 import com.bmtc.sdk.contract.fragment.USDTContractFragment;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.ContractTicker;
-import com.bmtc.sdk.library.utils.LogUtil;
 import com.bmtc.sdk.simple.R;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.ContractTicker;
+import com.contract.sdk.impl.IResponse;
+import com.contract.sdk.utils.SDKLogUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,7 +49,7 @@ public class UsdtActivity extends AppCompatActivity {
         transaction = fragmentManager.beginTransaction();
 
         from = getIntent().getIntExtra("from",from);
-        LogUtil.d("DEBUG","from:"+from);
+        SDKLogUtil.INSTANCE.d("DEBUG","from:"+from);
         if(from == 0){
             usdtContractFragment = new USDTContractFragment();
             transaction
@@ -63,28 +63,25 @@ public class UsdtActivity extends AppCompatActivity {
             transaction
                     .add(R.id.fl_layout, tradeContractFragment);
         }
-        transaction.commit();
+        transaction.commitNow();
 
-        queryContractData();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                queryContractData();
+            }
+        },1000);
     }
 
     private void queryContractData() {
-        BTContract.getInstance().tickers(0, new IResponse<List<ContractTicker>>() {
-            @Override
-            public void onResponse(String errno, String message, List<ContractTicker> data) {
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    return;
-                }
-                if (data != null) {
-                        if(from == 0){
-                            usdtContractFragment.updateTicker(data);
-                        }else if(from == 1){
-                            coinContractFragment.updateTicker(data);
-                        }else {
-                            tradeContractFragment.updateStock(data.get(0).getInstrument_id());
-                        }
-                }
-            }
-        });
+        List<ContractTicker> data =   ContractPublicDataAgent.INSTANCE.getContractTickers();
+
+        if(from == 0){
+            usdtContractFragment.updateTicker(data);
+        }else if(from == 1){
+            coinContractFragment.updateTicker(data);
+        }else {
+            tradeContractFragment.updateStock(data.get(0).getInstrument_id());
+        }
     }
 }

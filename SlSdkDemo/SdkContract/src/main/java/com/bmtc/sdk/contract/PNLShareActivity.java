@@ -1,15 +1,13 @@
 package com.bmtc.sdk.contract;
 
-import android.accounts.Account;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.text.TextUtils;
-import android.text.format.DateUtils;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,24 +16,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.bmtc.sdk.contract.base.BaseActivity;
 import com.bmtc.sdk.contract.common.SlLoadingDialog;
-import com.bmtc.sdk.library.base.BaseActivity;
-import com.bmtc.sdk.library.common.DataHelper;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.contract.ContractCalculate;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractPosition;
-import com.bmtc.sdk.library.trans.data.ContractTicker;
-import com.bmtc.sdk.library.uilogic.LogicContractSetting;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.uilogic.LogicLanguage;
-import com.bmtc.sdk.library.utils.LogUtil;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
-import com.bmtc.sdk.library.utils.SaveImageTask;
-import com.bmtc.sdk.library.utils.ShareToolUtil;
-import com.github.tifezh.kchartlib.utils.DateUtil;
+import com.bmtc.sdk.contract.uiLogic.LogicContractSetting;
+import com.bmtc.sdk.contract.utils.SaveImageTask;
+import com.bmtc.sdk.contract.utils.ShareToolUtil;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.ContractUserDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractPosition;
+import com.contract.sdk.data.ContractTicker;
+import com.contract.sdk.extra.Contract.ContractCalculate;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
+import com.contract.sdk.utils.SDKLogUtil;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -244,7 +238,7 @@ public class PNLShareActivity extends BaseActivity {
         TextView tv_share_type = itemView.findViewById(R.id.tv_share_type);
         TextView tv_share_time = itemView.findViewById(R.id.tv_share_time);
 
-        LogUtil.d("lb",index+"---");
+        SDKLogUtil.INSTANCE.d("lb",index+"---");
         if(index == 0){
             tv_share_type.setText(getResources().getString(R.string.sl_str_earned_rate));
         }else {
@@ -253,7 +247,7 @@ public class PNLShareActivity extends BaseActivity {
 
         tv_share_time.setText("2019-09-03 24:00:00");
 
-        List<ContractPosition> contractPositions = BTContract.getInstance().getCoinPositions(mCoincode);
+        List<ContractPosition> contractPositions = ContractUserDataAgent.INSTANCE.getCoinPositions(mCoincode,false);
         if (contractPositions != null) {
             for (int i = 0; i < contractPositions.size(); i++) {
                 ContractPosition position = contractPositions.get(i);
@@ -268,11 +262,11 @@ public class PNLShareActivity extends BaseActivity {
         }
 
         if (mContractPosition != null) {
-            Contract contract = LogicGlobal.getContract(mContractPosition.getInstrument_id());
+            Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractPosition.getInstrument_id());
             if (contract == null) {
                 return itemView;
             }
-            ContractTicker contractTicker = LogicGlobal.getContractTicker(mContractPosition.getInstrument_id());
+            ContractTicker contractTicker =  ContractPublicDataAgent.INSTANCE.getContractTicker(mContractPosition.getInstrument_id());
             if (contractTicker == null) {
                 return itemView;
             }
@@ -296,7 +290,7 @@ public class PNLShareActivity extends BaseActivity {
                         MathHelper.div(MathHelper.round(mContractPosition.getCur_qty()), p));
                 //profitRate = MathHelper.div(profitAmount, MathHelper.add(MathHelper.round(mContractPosition.getOim()), plus)) * 100;
 
-                profitRate =ContractCalculate.calculateProfitByAmount(String.valueOf(profitAmount),mContractPosition.getOim()) * 100;
+                profitRate =ContractCalculate.INSTANCE.calculateProfitByAmount(String.valueOf(profitAmount),mContractPosition.getOim()) * 100;
 
             } else if (position_type == 2) { //空仓
                 tv_type.setText(R.string.sl_str_open_short);
@@ -315,7 +309,7 @@ public class PNLShareActivity extends BaseActivity {
                         MathHelper.div(MathHelper.round(mContractPosition.getCur_qty()), p));
                 //profitRate = MathHelper.div(profitAmount, MathHelper.add(MathHelper.round(mContractPosition.getOim()), plus)) * 100;
 
-                profitRate =ContractCalculate.calculateProfitByAmount(String.valueOf(profitAmount),mContractPosition.getOim()) * 100;
+                profitRate =ContractCalculate.INSTANCE.calculateProfitByAmount(String.valueOf(profitAmount),mContractPosition.getOim()) * 100;
             }
 
             tv_contract_value.setText(contract.getSymbol());
@@ -401,12 +395,12 @@ public class PNLShareActivity extends BaseActivity {
             }
 
         }else {
-            Contract contract = LogicGlobal.getContract(mCoincode);
+            Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mCoincode);
             if (contract == null) {
                 return itemView;
             }
 
-            ContractTicker contractTicker = LogicGlobal.getContractTicker(contract.getInstrument_id());
+            ContractTicker contractTicker = ContractPublicDataAgent.INSTANCE.getContractTicker(contract.getInstrument_id());
             if (contractTicker == null) {
                 return itemView;
             }

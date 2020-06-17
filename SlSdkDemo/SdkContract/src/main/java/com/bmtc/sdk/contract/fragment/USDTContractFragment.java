@@ -3,11 +3,13 @@ package com.bmtc.sdk.contract.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SimpleItemAnimator;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +23,14 @@ import android.widget.TextView;
 
 import com.bmtc.sdk.contract.R;
 import com.bmtc.sdk.contract.adapter.ContractAdapter;
-import com.bmtc.sdk.library.base.BaseFragment;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractTicker;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
+import com.bmtc.sdk.contract.base.BaseFragment;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractTicker;
+import com.contract.sdk.impl.ContractTickerListener;
+import com.contract.sdk.utils.MathHelper;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -72,7 +77,7 @@ public class USDTContractFragment extends BaseFragment implements
             }
         });
 
-        mRotate = AnimationUtils.loadAnimation(getActivity(), R.anim.sl_array_rotate);
+        mRotate = AnimationUtils.loadAnimation(getActivity(), R.anim.array_rotate);
         mRotate.setInterpolator(new LinearInterpolator());
 
         mCurrentTv = m_RootView.findViewById(R.id.tv_current);
@@ -125,6 +130,27 @@ public class USDTContractFragment extends BaseFragment implements
         return m_RootView;
     }
 
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        /**
+         * 订阅Ticker
+         */
+        ContractPublicDataAgent.INSTANCE.registerTickerWsListener(this, new ContractTickerListener() {
+            @Override
+            public void onWsContractTicker(@NotNull ContractTicker ticker) {
+                for (int i = 0 ; i < mContractTickers.size() ; i++){
+                    if(mContractTickers.get(i).getInstrument_id() == ticker.getInstrument_id()){
+                        mContractTickers.set(i,ticker) ;
+                        break;
+                    }
+                }
+                mContractAdapter.notifyDataSetChanged();
+            }
+        });
+    }
 
     @Override
     public void onResume() {
@@ -199,8 +225,8 @@ public class USDTContractFragment extends BaseFragment implements
             public int compare(ContractTicker o1, ContractTicker o2) {
                 {
                     if (state == 0) {
-                        Contract c1 = LogicGlobal.getContract(o1.getInstrument_id());
-                        Contract c2 = LogicGlobal.getContract(o2.getInstrument_id());
+                        Contract c1 = ContractPublicDataAgent.INSTANCE.getContract(o1.getInstrument_id());
+                        Contract c2 = ContractPublicDataAgent.INSTANCE.getContract(o2.getInstrument_id());
                         if (c1 == null || c2 == null) {
                             return 1;
                         }
@@ -256,60 +282,6 @@ public class USDTContractFragment extends BaseFragment implements
         mContractAdapter.setData(mContractTickers);
         mContractAdapter.notifyDataSetChanged();
     }
-    private void removeContractTicker(List<ContractTicker> tickerList ,int id){
-        int removeIndex = -1;
-        if(tickerList!=null){
-            for (int i =0 ; i< tickerList.size() ; i++){
-                if(tickerList.get(i).getInstrument_id() == id){
-                    removeIndex = id;
-                    break;
-                }
-            }
-        }
-
-        if(removeIndex > 0){
-            tickerList.remove(removeIndex);
-        }
-    }
-    public void updateTicker(ContractTicker ticker) {
-        if (mContractTickers == null || mContractTickers.size() <= 0) {
-            return;
-        }
-
-        int position = 0;
-        int changed = 0;
-        if(ticker.getActionType()==4) {//插入
-            LogicGlobal.sContractTickers.add(ticker);
-        }else if(ticker.getActionType()==5) {//删除
-            removeContractTicker(mContractTickers,ticker.getInstrument_id());
-        }else if(ticker.getActionType()==2) {//更新
-            for (int i=0; i<mContractTickers.size(); i++) {
-                ContractTicker item = mContractTickers.get(i);
-                if (item == null) {
-                    continue;
-                }
-
-                if (ticker.getInstrument_id() == item.getInstrument_id()) {
-                    if (ticker.getLast_px().compareTo(item.getLast_px()) > 0) {
-                        changed = 1;
-                    } else if (ticker.getLast_px().compareTo(item.getLast_px()) < 0) {
-                        changed = 2;
-                    }
-                    mContractTickers.set(i, ticker);
-                    position = i;
-                    break;
-                }
-            }
-        }
-
-
-        if (mContractAdapter == null) {
-            mContractAdapter = new ContractAdapter(getActivity());
-        }
-
-        mContractAdapter.setData(mContractTickers, changed, position);
-        mContractAdapter.notifyItemChanged(position);
-    }
 
     public void updateTicker(List<ContractTicker> list) {
         if (list == null) {
@@ -320,10 +292,6 @@ public class USDTContractFragment extends BaseFragment implements
         for (int i=0; i<list.size(); i++) {
             ContractTicker item = list.get(i);
             if (item == null) {
-                continue;
-            }
-
-            if (!item.isOnline()) {
                 continue;
             }
 

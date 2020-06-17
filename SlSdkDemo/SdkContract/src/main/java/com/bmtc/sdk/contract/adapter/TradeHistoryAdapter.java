@@ -1,7 +1,9 @@
 package com.bmtc.sdk.contract.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +12,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.contract.ContractCalculate;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.SDStockTrade;
-import com.bmtc.sdk.library.trans.data.Stock;
-import com.bmtc.sdk.library.uilogic.LogicContractSetting;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
+import com.bmtc.sdk.contract.uiLogic.LogicContractSetting;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractTrade;
+import com.contract.sdk.data.SDStockTrade;
+import com.contract.sdk.extra.Contract.ContractCalculate;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -34,7 +36,7 @@ import java.util.TimeZone;
 public class TradeHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
-    private List<SDStockTrade> mNews = new ArrayList<>();
+    private List<ContractTrade> mNews = new ArrayList<>();
 
     private SimpleDateFormat gmtSdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
     private SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
@@ -78,11 +80,11 @@ public class TradeHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         gmtSdf.setTimeZone(TimeZone.getTimeZone("GMT"));
     }
 
-    public void setData(List<SDStockTrade> news) {
+    public void setData(List<ContractTrade> news) {
         mNews = news;
     }
 
-    public SDStockTrade getItem(int position) {
+    public ContractTrade getItem(int position) {
         return mNews.get(position);
     }
 
@@ -110,56 +112,26 @@ public class TradeHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
         DecimalFormat dfVol = NumberUtil.getDecimal(0);
         DecimalFormat dfPrice = NumberUtil.getDecimal(0);
-        if (TextUtils.isEmpty(mNews.get(position).getSymbol())) {
-            int contractId = mNews.get(position).getContractId();
-            Contract contract = LogicGlobal.getContract(contractId);
-            if (contract != null) {
-                int unit = LogicContractSetting.getContractUint(mContext);
-                itemViewHolder.tvVolume.setText(mContext.getString(R.string.sl_str_amount) + "("  + (unit == 0 ? mContext.getString(R.string.sl_str_contracts_unit) : contract.getBase_coin()) + ")");
-                itemViewHolder.tvPrice.setText(mContext.getString(R.string.sl_str_price) + "(" + contract.getQuote_coin() + ")");
-                dfPrice = NumberUtil.getDecimal(contract.getPrice_index() - 1);
-
-                int way = mNews.get(position).getSide();
-                double deal_price = MathHelper.round(mNews.get(position).getPx(), 8);
-                double deal_volume = MathHelper.round(mNews.get(position).getQty(), 8);
-
-                itemViewHolder.tvDirection.setVisibility(View.GONE);
-                itemViewHolder.tvDirectionValue.setVisibility(View.GONE);
-
-                itemViewHolder.tvPriceValue.setTextColor((way == 1) ? mContext.getResources().getColor(R.color.sl_colorGreen): mContext.getResources().getColor(R.color.sl_colorRed));
-                itemViewHolder.tvPriceValue.setText(dfPrice.format(deal_price));
-
-                itemViewHolder.tvVolumeValue.setText(ContractCalculate.getVolUnitNoSuffix(contract, deal_volume, deal_price));
-            }
-        } else {
-
-            Stock stock =  null;// LogicGlobal.getStock(mNews.get(position).getSymbol());
-            if (stock != null) {
-                dfVol = NumberUtil.getDecimal(stock.getVol_index());
-                dfPrice = NumberUtil.getDecimal(stock.getPrice_index());
-            }
-
-
-            String []codes = mNews.get(position).getSymbol().split("/");
-            itemViewHolder.tvPrice.setText(mContext.getString(R.string.sl_str_price) + "(" + codes[1] + ")");
-            itemViewHolder.tvVolume.setText(mContext.getString(R.string.sl_str_amount) + "(" + codes[0] + ")");
+        int contractId = mNews.get(position).getInstrument_id();
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(contractId);
+        if (contract != null) {
+            int unit = LogicContractSetting.getContractUint(mContext);
+            itemViewHolder.tvVolume.setText(mContext.getString(R.string.sl_str_amount) + "(" + (unit == 0 ? mContext.getString(R.string.sl_str_contracts_unit) : contract.getBase_coin()) + ")");
+            itemViewHolder.tvPrice.setText(mContext.getString(R.string.sl_str_price) + "(" + contract.getQuote_coin() + ")");
+            dfPrice = NumberUtil.getDecimal(contract.getPrice_index() - 1);
 
             int way = mNews.get(position).getSide();
             double deal_price = MathHelper.round(mNews.get(position).getPx(), 8);
             double deal_volume = MathHelper.round(mNews.get(position).getQty(), 8);
 
-            itemViewHolder.tvDirection.setVisibility(View.VISIBLE);
-            itemViewHolder.tvDirectionValue.setVisibility(View.VISIBLE);
+            itemViewHolder.tvDirection.setVisibility(View.GONE);
+            itemViewHolder.tvDirectionValue.setVisibility(View.GONE);
 
-            itemViewHolder.tvDirectionValue.setTextColor((way == 1) ? mContext.getResources().getColor(R.color.sl_colorGreen): mContext.getResources().getColor(R.color.sl_colorRed));
-            itemViewHolder.tvDirectionValue.setText((way == 1) ? mContext.getString(R.string.sl_str_buy) : mContext.getString(R.string.sl_str_sell));
-
-            itemViewHolder.tvPriceValue.setTextColor((way == 1) ? mContext.getResources().getColor(R.color.sl_colorGreen): mContext.getResources().getColor(R.color.sl_colorRed));
+            itemViewHolder.tvPriceValue.setTextColor((way == 1) ? mContext.getResources().getColor(R.color.sl_colorGreen) : mContext.getResources().getColor(R.color.sl_colorRed));
             itemViewHolder.tvPriceValue.setText(dfPrice.format(deal_price));
 
-            itemViewHolder.tvVolumeValue.setText(dfVol.format(deal_volume));
+            itemViewHolder.tvVolumeValue.setText(ContractCalculate.getVolUnitNoSuffix(contract, deal_volume, deal_price,LogicContractSetting.getContractUint(mContext)));
         }
-
         itemViewHolder.rlTitle.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
         itemViewHolder.tvTimeValue.setText(formatTime(mNews.get(position).getCreated_at()));
 

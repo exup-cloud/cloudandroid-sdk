@@ -138,7 +138,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"></RelativeLayout>
-        <com.bmtc.sdk.library.common.scrollview.ObservableRecyclerView
+        <com.bmtc.sdk.contract.view.scrollview.ObservableRecyclerView
             android:id="@+id/rv_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

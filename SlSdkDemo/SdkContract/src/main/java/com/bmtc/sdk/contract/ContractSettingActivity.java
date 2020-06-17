@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
-import com.bmtc.sdk.library.base.BaseActivity;
-import com.bmtc.sdk.library.uilogic.LogicContractSetting;
+import com.bmtc.sdk.contract.base.BaseActivity;
+import com.bmtc.sdk.contract.uiLogic.LogicContractSetting;
 
 /**
  *  合约设置

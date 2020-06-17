@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.uilogic.LogicBuySell;
+import com.bmtc.sdk.contract.uiLogic.LogicBuySell;
 
 
 public class ContractTradeConfirmWindow extends PopupWindow implements View.OnClickListener {

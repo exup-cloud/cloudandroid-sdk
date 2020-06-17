@@ -2,10 +2,10 @@ package com.bmtc.sdk.contract.dialog;
 
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SimpleItemAnimator;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +15,13 @@ import android.widget.RadioButton;
 
 import com.bmtc.sdk.contract.R;
 import com.bmtc.sdk.contract.adapter.ContractDropAdapter;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractTicker;
-import com.bmtc.sdk.library.uilogic.LogicCollects;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
+import com.bmtc.sdk.contract.uiLogic.LogicCollects;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.ContractSDKAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractTicker;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class DropContractWindow extends PopupWindow implements ContractDropAdapter.OnContractDropClickedListener{
@@ -115,7 +114,7 @@ public class DropContractWindow extends PopupWindow implements ContractDropAdapt
         });
 
         mTabSimulation = view.findViewById(R.id.tab_simulation);
-        mTabSimulation.setVisibility(LogicGlobal.isSimulation() ? View.VISIBLE:View.INVISIBLE);
+        mTabSimulation.setVisibility(ContractPublicDataAgent.INSTANCE.getSimulationContract().size()>0 ? View.VISIBLE:View.INVISIBLE);
         mTabSimulation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,16 +187,13 @@ public class DropContractWindow extends PopupWindow implements ContractDropAdapt
 
     private void updateData() {
 
-        List<ContractTicker> data = LogicGlobal.sContractTickers;
+
+        List<ContractTicker> data = ContractPublicDataAgent.INSTANCE.getContractTickers();
         if (data != null) {
             List<ContractTicker> tickers = new ArrayList<>();
             for (int i=0; i<data.size(); i++) {
                 ContractTicker item = data.get(i);
                 if (item == null) {
-                    continue;
-                }
-
-                if (!item.isOnline()) {
                     continue;
                 }
 
@@ -214,7 +210,7 @@ public class DropContractWindow extends PopupWindow implements ContractDropAdapt
                         tickers.add(item);
                     }
                 } else if (mTab == 5) {
-                    if (LogicCollects.getInstance().get(item.getName()) != null) {
+                    if (LogicCollects.getInstance().get(item.getSymbol()) != null) {
                         tickers.add(item);
                     }
                 }

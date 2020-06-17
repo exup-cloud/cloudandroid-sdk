@@ -2,7 +2,9 @@ package com.bmtc.sdk.contract.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,14 +13,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.contract.ContractCalculate;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractOrder;
-import com.bmtc.sdk.library.trans.data.DepthData;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
+import com.bmtc.sdk.contract.uiLogic.LogicContractSetting;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractOrder;
+import com.contract.sdk.data.DepthData;
+import com.contract.sdk.extra.Contract.ContractCalculate;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -42,11 +44,14 @@ public class BuySellContractAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private List<DepthData> mNews = new ArrayList<>();
     private OnBuySellContractClickedListener mListener;
     private Contract mContract;
+    private  DecimalFormat dfPirce;
 
     public interface OnBuySellContractClickedListener {
         void onBuySellContractClick(DepthData depthData, String showVol, int flag);
+
         void onBuySellContractVolClick(DepthData depthData, String showVol, int flag);
     }
+
     public static class BuySellContractHolder extends RecyclerView.ViewHolder {
 
         View vRoot;
@@ -70,87 +75,35 @@ public class BuySellContractAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         mListener = listener;
     }
 
-    public void setData(final List<DepthData> news, final int flag, final int decimals, final int show_num, int contractId) {
+
+    public void bindContract(Contract contract) {
+        mContract = contract;
+        if (mContract != null) {
+            mVolIndex = mContract.getVol_index();
+            mPriceIndex = mContract.getPrice_index() - 1;
+            dfPirce = NumberUtil.getDecimal(mPriceIndex);
+        }
+    }
+
+    public List<DepthData> getNews() {
+        return mNews;
+    }
+
+    public void setData(final List<DepthData> news, final int flag, final int decimals, final int show_num) {
 
         mFlag = flag;
         mDecimals = decimals;
         mShowNum = show_num;
+        mNews = news;
 
-        if (news != null) {
-            Collections.sort(news, new Comparator<DepthData>() {
-                @Override
-                public int compare(DepthData o1, DepthData o2) {
-                    if (MathHelper.round(o1.getPrice(), 8) > MathHelper.round(o2.getPrice(), 8)) {
-                        return -1;
-                    } else {
-                        return 1;
-                    }
-                }
-            });
-
-            List<DepthData> data = new ArrayList<>();
-            for (int i=0; i<news.size(); i++) {
-
-                if (data.size() > 0) {
-                    if (data.get(data.size() - 1).getPriceDemals(decimals) == news.get(i).getPriceDemals(decimals)) {
-                        String vol = MathHelper.add2String(data.get(data.size() - 1).getVol(), news.get(i).getVol());
-                        data.get(data.size() - 1).setVol(vol);
-                    } else {
-                        DepthData depthData = new DepthData();
-                        depthData.setVol(news.get(i).getVol());
-                        depthData.setPrice(news.get(i).getPrice());
-                        data.add(depthData);
-                    }
-
-                } else {
-                    DepthData depthData = new DepthData();
-                    depthData.setVol(news.get(i).getVol());
-                    depthData.setPrice(news.get(i).getPrice());
-                    data.add(depthData);
-                }
-            }
-
-            mNews.clear();
-
-            if (mFlag == 1) {
-                if (data.size() > show_num) {
-                    mNews.addAll(data.subList(0, show_num));
-                } else {
-                    mNews.addAll(data);
-                }
-            } else if (mFlag == 2) {
-                if (data.size() > show_num) {
-                    mNews.addAll(data.subList(data.size()-show_num, data.size()));
-                } else {
-                    mNews.addAll(data);
-                    int emptyNum = show_num - data.size();
-                    for (int i=0; i<emptyNum; i++) {
-                        DepthData depthData = new DepthData();
-                        depthData.setPrice("");
-                        depthData.setVol("");
-                        mNews.add(0, depthData);
-                    }
-                }
-            }
-
-            mMaxVol = 0;
-            for (int i=0; i<mNews.size(); i++) {
-                if (TextUtils.isEmpty(mNews.get(i).getVol())) {
-                    continue;
-                }
-
-                if (MathHelper.round(mNews.get(i).getVol(), 8) > mMaxVol) {
-                    mMaxVol = MathHelper.round(mNews.get(i).getVol(), mDecimals);
-                }
+        mMaxVol = 0;
+        for (int i = 0; i < mNews.size(); i++) {
+            if (mNews.get(i).getVol() > mMaxVol) {
+                mMaxVol = MathHelper.round(mNews.get(i).getVol(), mDecimals);
             }
         }
 
 
-        mContract = LogicGlobal.getContract(contractId);
-        if (mContract != null) {
-            mVolIndex = mContract.getVol_index();
-            mPriceIndex = mContract.getPrice_index() - 1;
-        }
     }
 
     @Override
@@ -172,43 +125,25 @@ public class BuySellContractAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final BuySellContractHolder itemViewHolder = (BuySellContractHolder) holder;
 
-        if (TextUtils.isEmpty(mNews.get(position).getVol()) || TextUtils.isEmpty(mNews.get(position).getPrice())) {
-            itemViewHolder.vRoot.setVisibility(View.GONE);
+        if (mNews.get(position).getVol() == 0 || TextUtils.isEmpty(mNews.get(position).getPrice())) {
+            //itemViewHolder.vRoot.setVisibility(View.GONE);
             return;
         }
 
-        DecimalFormat dfPirce = NumberUtil.getDecimal(mPriceIndex);
+
 
         double maxVol = mMaxVol;
         double vol = MathHelper.round(mNews.get(position).getVol(), mVolIndex);
         double price = MathHelper.round(mNews.get(position).getPrice(), mPriceIndex);
 
-        if (mContract != null) {
-            List<ContractOrder> contractOrders = BTContract.getInstance().getContractOrder(mContract.getInstrument_id());
-            if (contractOrders != null) {
-                for (int i=0; i<contractOrders.size(); i++) {
-                    ContractOrder order = contractOrders.get(i);
-                    if (order == null) {
-                        continue;
-                    }
-                    double orderPrice = MathHelper.round(order.getPx(), mPriceIndex);
-                    if (orderPrice == price) {
-                        itemViewHolder.tvVolume.setTextColor(mContext.getResources().getColor(R.color.sl_colorYellowNormal));
-                    } else {
-                        itemViewHolder.tvVolume.setTextColor(mContext.getResources().getColor(R.color.sl_grayText));
-                    }
-                }
-            }
-        }
-
-        itemViewHolder.tvVolume.setText(ContractCalculate.getVolUnitNoSuffix(mContract, vol, price));
+        itemViewHolder.tvVolume.setText(ContractCalculate.getVolUnitNoSuffix(mContract, vol, price, LogicContractSetting.getContractUint(mContext)));
         itemViewHolder.tvPrice.setText(dfPirce.format(price));
         itemViewHolder.pbVolume.setProgress(100 - (int) (100 * vol / maxVol));
 
-        int color = (mFlag == 1) ? mContext.getResources().getColor(R.color.sl_colorGreen): mContext.getResources().getColor(R.color.sl_colorRed);
+        int color = (mFlag == 1) ? mContext.getResources().getColor(R.color.sl_colorGreen) : mContext.getResources().getColor(R.color.sl_colorRed);
         itemViewHolder.tvPrice.setTextColor(color);
 
-        Drawable drawable = (mFlag == 1) ? mContext.getResources().getDrawable(R.drawable.sl_buy_progress): mContext.getResources().getDrawable(R.drawable.sl_sell_progress);
+        Drawable drawable = (mFlag == 1) ? mContext.getResources().getDrawable(R.drawable.sl_buy_progress) : mContext.getResources().getDrawable(R.drawable.sl_sell_progress);
         itemViewHolder.pbVolume.setProgressDrawable(drawable);
 
         itemViewHolder.tvPrice.setOnClickListener(new View.OnClickListener() {
@@ -217,22 +152,12 @@ public class BuySellContractAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 if (mListener == null) {
                     return;
                 }
-
-                if (mFlag == 1) {
-                    String total = "0";
-                    for (int i=0; i<=position; i++) {
-                        total = MathHelper.add2String(total, mNews.get(i).getVol());
-                    }
-
-                    mListener.onBuySellContractClick(mNews.get(position), total, mFlag);
-                } else {
-                    String total = "0";
-                    for (int i=position; i<mNews.size(); i++) {
-                        total = MathHelper.add2String(total, mNews.get(i).getVol());
-                    }
-
-                    mListener.onBuySellContractClick(mNews.get(position), total, mFlag);
+                int total = 0;
+                for (int i = 0; i <= position; i++) {
+                    total = total + mNews.get(i).getVol();
                 }
+
+                mListener.onBuySellContractClick(mNews.get(position), total + "", mFlag);
             }
         });
         itemViewHolder.tvVolume.setOnClickListener(new View.OnClickListener() {
@@ -242,21 +167,12 @@ public class BuySellContractAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     return;
                 }
 
-                if (mFlag == 1) {
-                    String total = "0";
-                    for (int i=0; i<=position; i++) {
-                        total = MathHelper.add2String(total, mNews.get(i).getVol());
-                    }
-
-                    mListener.onBuySellContractVolClick(mNews.get(position), total, mFlag);
-                } else {
-                    String total = "0";
-                    for (int i=position; i<mNews.size(); i++) {
-                        total = MathHelper.add2String(total, mNews.get(i).getVol());
-                    }
-
-                    mListener.onBuySellContractVolClick(mNews.get(position), total, mFlag);
+                int total = 0;
+                for (int i = 0; i <= position; i++) {
+                    total = total + mNews.get(i).getVol();
                 }
+
+                mListener.onBuySellContractVolClick(mNews.get(position), total + "", mFlag);
             }
         });
     }

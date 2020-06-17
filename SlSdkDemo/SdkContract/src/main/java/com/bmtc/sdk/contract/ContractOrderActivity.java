@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,16 +22,16 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 
+import com.bmtc.sdk.contract.base.BaseActivity;
+import com.bmtc.sdk.contract.base.BaseFragmentPagerAdapter;
 import com.bmtc.sdk.contract.fragment.ContractEntrustHistoryFragment;
 import com.bmtc.sdk.contract.fragment.ContractOpenOrdersFragment;
 import com.bmtc.sdk.contract.fragment.ContractPlanOrderFragment;
 import com.bmtc.sdk.contract.fragment.ContractTradeRecordFragment;
 import com.bmtc.sdk.contract.fragment.HoldContractHistoryFragment;
-import com.bmtc.sdk.library.base.BaseActivity;
-import com.bmtc.sdk.library.base.BaseFragmentPagerAdapter;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.UtilSystem;
+import com.bmtc.sdk.contract.utils.UtilSystem;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;
@@ -133,7 +133,7 @@ public class ContractOrderActivity extends BaseActivity {
             }
         });
 
-        Contract contract = LogicGlobal.getContract(mContractId);
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract != null) {
             mContractType.setText(contract.getDisplayName(this));
         }
@@ -209,7 +209,7 @@ public class ContractOrderActivity extends BaseActivity {
 
 
     private void updateData() {
-        Contract contract = LogicGlobal.getContract(mContractId);
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract != null) {
             mContractType.setText(contract.getDisplayName(this));
         }
@@ -240,7 +240,7 @@ public class ContractOrderActivity extends BaseActivity {
     }
 
     private void showSpotWindow() {
-        final List<Contract> contractBasics = LogicGlobal.getOnlineContractBasic();
+        final List<Contract> contractBasics = ContractPublicDataAgent.INSTANCE.getContracts();
         if (contractBasics == null || contractBasics.size() <= 0) {
             return;
         }

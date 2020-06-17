@@ -1,7 +1,7 @@
 package com.bmtc.sdk.contract.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,14 +12,13 @@ import android.widget.TextView;
 
 
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.contract.ContractCalculate;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.DepthData;
-import com.bmtc.sdk.library.trans.data.Stock;
-import com.bmtc.sdk.library.uilogic.LogicContractSetting;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
+import com.bmtc.sdk.contract.uiLogic.LogicContractSetting;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.DepthData;
+import com.contract.sdk.extra.Contract.ContractCalculate;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -91,20 +90,12 @@ public class OrderBookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         mContext = context;
     }
 
-    public void setData(final List<DepthData> sells, final List<DepthData> buys, String stockCode, int contractId) {
+    public void setData(final List<DepthData> sells, final List<DepthData> buys,  int contractId) {
 
-        if (!TextUtils.isEmpty(stockCode)) {
-            mStockCode = stockCode;
-            Stock stock = null ;//LogicGlobal.getStock(stockCode);
-            if (stock != null) {
-                mPriceIndex = stock.getPrice_index();
-                mVolIndex = stock.getVol_index();
-            }
-        }
 
         if (contractId > 0) {
             mContractId = contractId;
-            Contract contract = LogicGlobal.getContract(contractId);
+            Contract contract = ContractPublicDataAgent.INSTANCE.getContract(contractId);
             if (contract != null) {
                 mPriceIndex = contract.getPrice_index() - 1;
                 mVolIndex = contract.getVol_index();
@@ -115,12 +106,12 @@ public class OrderBookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 mSells.addAll(sells);
                 mMaxSellVol = 0;
                 for (int i=0; i<mSells.size(); i++) {
-                    if (TextUtils.isEmpty(mSells.get(i).getVol())) {
+                    if (mSells.get(i).getVol()==0) {
                         continue;
                     }
 
-                    if (MathHelper.round(mSells.get(i).getVol()) > mMaxSellVol) {
-                        mMaxSellVol = MathHelper.round(mSells.get(i).getVol());
+                    if (mSells.get(i).getVol() > mMaxSellVol) {
+                        mMaxSellVol = mSells.get(i).getVol();
                     }
                 }
             }
@@ -130,12 +121,12 @@ public class OrderBookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 mBuys.addAll(buys);
                 mMaxBuyVol = 0;
                 for (int i=0; i<mBuys.size(); i++) {
-                    if (TextUtils.isEmpty(mBuys.get(i).getVol())) {
+                    if (mBuys.get(i).getVol() == 0) {
                         continue;
                     }
 
-                    if (MathHelper.round(mBuys.get(i).getVol()) > mMaxBuyVol) {
-                        mMaxBuyVol = MathHelper.round(mBuys.get(i).getVol());
+                    if (mBuys.get(i).getVol()> mMaxBuyVol) {
+                        mMaxBuyVol = mBuys.get(i).getVol();
                     }
                 }
             }
@@ -143,102 +134,19 @@ public class OrderBookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         if (sells != null) {
-            Collections.sort(sells, new Comparator<DepthData>() {
-                @Override
-                public int compare(DepthData o1, DepthData o2) {
-                    if (MathHelper.round(o1.getPrice(), 8) < MathHelper.round(o2.getPrice(), 8)) {
-                        return -1;
-                    } else {
-                        return 1;
-                    }
-                }
-            });
 
-            List<DepthData> data = new ArrayList<>();
-            for (int i=0; i<sells.size(); i++) {
-
-                if (data.size() > 0) {
-                    if (data.get(data.size() - 1).getPriceDemals(8) == sells.get(i).getPriceDemals(8)) {
-                        String vol = MathHelper.add2String(data.get(data.size() - 1).getVol(), sells.get(i).getVol());
-                        data.get(data.size() - 1).setVol(vol);
-                    } else {
-                        DepthData depthData = new DepthData();
-                        depthData.setVol(sells.get(i).getVol());
-                        depthData.setPrice(sells.get(i).getPrice());
-                        data.add(depthData);
-                    }
-
-                } else {
-                    DepthData depthData = new DepthData();
-                    depthData.setVol(sells.get(i).getVol());
-                    depthData.setPrice(sells.get(i).getPrice());
-                    data.add(depthData);
-                }
-            }
 
             mSells.clear();
-            mSells.addAll(data);
+            mSells.addAll(sells);
 
             mMaxSellVol = 0;
             for (int i=0; i<mSells.size(); i++) {
-                if (TextUtils.isEmpty(mSells.get(i).getVol())) {
-                    continue;
-                }
-
-                if (MathHelper.round(mSells.get(i).getVol()) > mMaxSellVol) {
-                    mMaxSellVol = MathHelper.round(mSells.get(i).getVol());
+                if (mSells.get(i).getVol() > mMaxSellVol) {
+                    mMaxSellVol = mSells.get(i).getVol();
                 }
             }
         }
 
-        if (buys != null) {
-            Collections.sort(buys, new Comparator<DepthData>() {
-                @Override
-                public int compare(DepthData o1, DepthData o2) {
-                    if (MathHelper.round(o1.getPrice(), 8) > MathHelper.round(o2.getPrice(), 8)) {
-                        return -1;
-                    } else {
-                        return 1;
-                    }
-                }
-            });
-
-            List<DepthData> data = new ArrayList<>();
-            for (int i=0; i<buys.size(); i++) {
-
-                if (data.size() > 0) {
-                    if (data.get(data.size() - 1).getPriceDemals(8) == buys.get(i).getPriceDemals(8)) {
-                        String vol = MathHelper.add2String(data.get(data.size() - 1).getVol(), buys.get(i).getVol());
-                        data.get(data.size() - 1).setVol(vol);
-                    } else {
-                        DepthData depthData = new DepthData();
-                        depthData.setVol(buys.get(i).getVol());
-                        depthData.setPrice(buys.get(i).getPrice());
-                        data.add(depthData);
-                    }
-
-                } else {
-                    DepthData depthData = new DepthData();
-                    depthData.setVol(buys.get(i).getVol());
-                    depthData.setPrice(buys.get(i).getPrice());
-                    data.add(depthData);
-                }
-            }
-
-            mBuys.clear();
-            mBuys.addAll(data);
-
-            mMaxBuyVol = 0;
-            for (int i=0; i<mBuys.size(); i++) {
-                if (TextUtils.isEmpty(mBuys.get(i).getVol())) {
-                    continue;
-                }
-
-                if (MathHelper.round(mBuys.get(i).getVol()) > mMaxBuyVol) {
-                    mMaxBuyVol = MathHelper.round(mBuys.get(i).getVol());
-                }
-            }
-        }
     }
 
     @Override
@@ -274,7 +182,7 @@ public class OrderBookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         if (mContractId > 0) {
-            Contract contract = LogicGlobal.getContract(mContractId);
+            Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
             if (contract != null) {
                 int unit = LogicContractSetting.getContractUint(mContext);
                 itemViewHolder.tvBid.setText(mContext.getString(R.string.sl_str_amount) + "("  + (unit == 0 ? mContext.getString(R.string.sl_str_contracts_unit) : contract.getBase_coin()) + ")");
@@ -292,9 +200,9 @@ public class OrderBookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             itemViewHolder.pbBidVolume.setProgress(100 - (int) (100 * vol / mMaxBuyVol));
 
             if (mContractId > 0) {
-                Contract contract = LogicGlobal.getContract(mContractId);
+                Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
                 if (contract != null) {
-                    itemViewHolder.tvBidVolume.setText(ContractCalculate.getVolUnitNoSuffix(contract, vol, price));
+                    itemViewHolder.tvBidVolume.setText(ContractCalculate.INSTANCE.getVolUnitNoSuffix(contract, vol, Double.valueOf(price),LogicContractSetting.getContractUint(mContext)));
                 }
             }
         } else {
@@ -313,9 +221,9 @@ public class OrderBookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             itemViewHolder.pbAskVolume.setProgress((int) (100 * vol / mMaxSellVol));
 
             if (mContractId > 0) {
-                Contract contract = LogicGlobal.getContract(mContractId);
+                Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
                 if (contract != null) {
-                    itemViewHolder.tvAskVolume.setText(ContractCalculate.getVolUnitNoSuffix(contract, vol, price));
+                    itemViewHolder.tvBidVolume.setText(ContractCalculate.INSTANCE.getVolUnitNoSuffix(contract, vol, Double.valueOf(price),LogicContractSetting.getContractUint(mContext)));
                 }
             }
         } else {

@@ -126,7 +126,7 @@
             android:layout_gravity="center_vertical"
             android:orientation="horizontal">
 
-            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+            <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                 android:id="@+id/tab_open_position"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
@@ -141,7 +141,7 @@
                 android:textColor="@drawable/sl_maintab_text_selector"
                 android:textSize="15sp" />
 
-            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+            <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                 android:id="@+id/tab_close_position"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"

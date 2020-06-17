@@ -36,14 +36,12 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
+import androidx.core.graphics.ColorUtils;
+
 import com.bmtc.sdk.contract.HtmlActivity;
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.utils.CertificateUtil;
-import com.bmtc.sdk.library.utils.ColorUtils;
-import com.bmtc.sdk.library.utils.HttpUtils;
-import com.bmtc.sdk.library.utils.ToastUtil;
-import com.bmtc.sdk.library.utils.UtilSystem;
+import com.bmtc.sdk.contract.utils.ToastUtil;
+import com.bmtc.sdk.contract.utils.UtilSystem;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -194,67 +192,6 @@ public class ProgressWebView extends LinearLayout {
                 super.onReceivedError(view, errorCode, description, failingUrl);
             }
 
-            @Override
-            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-                try {
-                    TrustManagerFactory tmf = CertificateUtil.getInstance().getTrustManagerFactory();
-
-                    for(TrustManager t: tmf.getTrustManagers()){
-                        if (t instanceof X509TrustManager) {
-
-                            X509TrustManager trustManager = (X509TrustManager) t;
-
-                            Bundle bundle = SslCertificate.saveState(error.getCertificate());
-                            X509Certificate x509Certificate;
-                            byte[] bytes = bundle.getByteArray("x509-certificate");
-                            if (bytes == null) {
-                                x509Certificate = null;
-                            } else {
-                                CertificateFactory certFactory = CertificateFactory.getInstance("X.509", "BC");
-                                Certificate cert = certFactory.generateCertificate(new ByteArrayInputStream(bytes));
-                                x509Certificate = (X509Certificate) cert;
-                            }
-                            X509Certificate[] x509Certificates = new X509Certificate[1];
-                            x509Certificates[0] = x509Certificate;
-
-                            trustManager.checkServerTrusted(x509Certificates, "ECDH_RSA");
-                        }
-                    }
-
-                    handler.proceed();
-
-                } catch(Exception e) {
-                    final SslErrorHandler mHandler ;
-                    mHandler = handler;
-                    AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                    builder.setMessage(R.string.sl_str_ssl_error);
-                    builder.setPositiveButton(R.string.sl_str_continue, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            mHandler.proceed();
-                        }
-                    });
-                    builder.setNegativeButton(R.string.sl_str_cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            mHandler.cancel();
-                        }
-                    });
-                    builder.setOnKeyListener(new DialogInterface.OnKeyListener() {
-                        @Override
-                        public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-                            if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
-                                mHandler.cancel();
-                                dialog.dismiss();
-                                return true;
-                            }
-                            return false;
-                        }
-                    });
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                }
-            }
         });
 
         // 设置WebChromeClient
@@ -306,60 +243,6 @@ public class ProgressWebView extends LinearLayout {
                 return false;
             }
         });
-    }
-
-    @JavascriptInterface
-    public void HttpRequest(String object){
-        Log.d("WebView" , "HttpRequest() called!\n"
-                + object + "\n");
-
-        try {
-            JSONObject jsonObject = new JSONObject(object);
-
-            String url = jsonObject.optString("url");
-            String method = jsonObject.optString("method");
-            String body = jsonObject.optString("body");
-            final String succeedCallback = jsonObject.optString("succeedCallback");
-            final String failCallBack = jsonObject.optString("failCallBack");
-
-            if (TextUtils.equals(method, "POST")) {
-                HttpUtils httpUtils = new HttpUtils(mContext);
-                httpUtils.postJson(url, body, new HttpUtils.HttpCallback() {
-                    @Override
-                    public void onSuccess(Headers headers, final String data) {
-                        String jsInvoke = String.format("javascript:%s('%s')", succeedCallback, data);
-                        mWebView.loadUrl(jsInvoke);
-                    }
-
-                    @Override
-                    public void onError(final String msg) {
-                        String jsInvoke = String.format("javascript:%s('%s')", failCallBack, msg);
-                        mWebView.loadUrl(jsInvoke);
-                    }
-                });
-
-            } else {
-                HttpUtils httpUtils = new HttpUtils(mContext);
-                httpUtils.get(url, new HttpUtils.HttpCallback() {
-                    @Override
-                    public void onSuccess(Headers headers, final String data) {
-                        String jsInvoke = String.format("javascript:%s('%s')", succeedCallback, data);
-                        mWebView.loadUrl(jsInvoke);
-                    }
-
-                    @Override
-                    public void onError(final String msg) {
-                        String jsInvoke = String.format("javascript:%s('%s')", failCallBack, msg);
-                        mWebView.loadUrl(jsInvoke);
-                    }
-                });
-            }
-
-
-        } catch (JSONException ignored) {
-
-        }
-
     }
 
     @JavascriptInterface
@@ -422,7 +305,6 @@ public class ProgressWebView extends LinearLayout {
             String succeedCallback = jsonObject.optString("succeedCallback");
             String failCallBack = jsonObject.optString("failCallBack");
 
-            doSavePhoto(imageUrl, succeedCallback, failCallBack);
 
         } catch (JSONException ignored) {
 
@@ -632,78 +514,5 @@ public class ProgressWebView extends LinearLayout {
         return true;
     }
 
-    private void doSavePhoto(final String imgUrl, final String succeedCallback, final String failCallback) {
-        if (TextUtils.isEmpty(imgUrl)) {
-            return;
-        }
-
-        final Bitmap[] bitmap = {null};
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                String base64 = imgUrl.substring(imgUrl.lastIndexOf(","));
-                Bitmap bb = ColorUtils.base64ToBitmap(base64);
-
-                if(bb != null){
-                    bitmap[0] = bb;
-                }
-
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                if (bitmap[0] != null) {
-                    new SaveImageTask().execute(bitmap[0]);
-
-                    String jsInvoke = String.format("javascript:%s()", succeedCallback);
-                    mWebView.loadUrl(jsInvoke);
-                } else {
-
-                    String jsInvoke = String.format("javascript:%s()", failCallback);
-                    mWebView.loadUrl(jsInvoke);
-                }
-            }
-        }.execute();
-    }
-    private class SaveImageTask extends AsyncTask<Bitmap, Void, String> {
-        @Override
-        protected String doInBackground(Bitmap... params) {
-            String result = mContext.getString(R.string.sl_str_save_failed);
-
-            try {
-                String sdcard = Environment.getExternalStorageDirectory().toString();
-                File file = new File(sdcard + "/" + BTConstants.SAVE_PATH + "/Photo");
-                if (!file.exists()) {
-                    file.mkdirs();
-                }
-
-                DateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmss");
-                String fileName = fmt.format(new Date()) + ".jpg";
-                File imageFile = new File(file.getAbsolutePath(), fileName);
-                FileOutputStream outStream = null;
-                outStream = new FileOutputStream(imageFile);
-                Bitmap image = params[0];
-                image.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
-
-                MediaStore.Images.Media.insertImage(mContext.getContentResolver(), imageFile.getAbsolutePath(), fileName, null);
-                //保存图片后发送广播通知更新数据库
-                Uri uri = Uri.fromFile(imageFile);
-                mContext.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
-
-                outStream.flush();
-                outStream.close();
-                result = mContext.getString(R.string.sl_str_save_succeed) +  file.getAbsolutePath();
-            } catch (Exception e) {
-                Log.d("WebView" , "SaveImageTask " + e.toString());
-            }
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            Toast.makeText(mContext, result, Toast.LENGTH_SHORT).show();
-        }
-    }
 
 }

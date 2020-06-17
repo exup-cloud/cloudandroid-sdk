@@ -1,7 +1,7 @@
 package com.bmtc.sdk.contract.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -10,21 +10,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.common.dialog.PromptWindow;
-import com.bmtc.sdk.library.common.pswkeyboard.OnPasswordInputFinish;
-import com.bmtc.sdk.library.common.pswkeyboard.widget.PopEnterPassword;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.contract.ContractCalculate;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractOrder;
-import com.bmtc.sdk.library.trans.data.ContractOrders;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
-import com.bmtc.sdk.library.utils.ToastUtil;
-import com.bmtc.sdk.library.utils.UtilSystem;
+import com.bmtc.sdk.contract.dialog.PromptWindow;
+import com.bmtc.sdk.contract.utils.ToastUtil;
+import com.bmtc.sdk.contract.utils.UtilSystem;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.ContractUserDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractOrder;
+import com.contract.sdk.data.ContractOrders;
+import com.contract.sdk.extra.Contract.ContractCalculate;
+import com.contract.sdk.impl.IResponse;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -108,7 +108,7 @@ public class ContractOpenOrderAdapter extends RecyclerView.Adapter<RecyclerView.
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final ContractOpenOrderHolder itemViewHolder = (ContractOpenOrderHolder) holder;
 
-        Contract contract = LogicGlobal.getContract(mNews.get(position).getInstrument_id());
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mNews.get(position).getInstrument_id());
         if (contract == null) {
             return;
         }
@@ -142,7 +142,7 @@ public class ContractOpenOrderAdapter extends RecyclerView.Adapter<RecyclerView.
         itemViewHolder.tvEntrustPrice.setText(mNews.get(position).getPx() + contract.getQuote_coin());
         itemViewHolder.tvDealPrice.setText(dfDefault.format(MathHelper.round(mNews.get(position).getAvg_px(), contract.getPrice_index())) + contract.getQuote_coin());
 
-        double value = ContractCalculate.CalculateContractValue(
+        double value = ContractCalculate.INSTANCE.CalculateContractValue(
                 mNews.get(position).getQty(),
                 mNews.get(position).getPx(),
                 contract);
@@ -218,38 +218,20 @@ public class ContractOpenOrderAdapter extends RecyclerView.Adapter<RecyclerView.
         orders.setContract_id(order.getInstrument_id());
         orders.getOrders().add(order);
 
-        IResponse<List<Long>> response = new IResponse<List<Long>>() {
+
+        ContractUserDataAgent.INSTANCE.doCancelOrders(orders, new IResponse<List<Long>>() {
             @Override
-            public void onResponse(String errno, String message, List<Long> data) {
-                if (TextUtils.equals(errno, BTConstants.ERRNO_PERMISSION_DENIED)) {
-                    final PopEnterPassword popEnterPassword = new PopEnterPassword(mContext);
-                    popEnterPassword.showAtLocation(view, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
-                    popEnterPassword.setOnFinishInput(new OnPasswordInputFinish() {
-                        @Override
-                        public void inputFinish(String password) {
-                            doCancel(view, order, UtilSystem.toMD5(password));
-                            popEnterPassword.dismiss();
-                        }
-                    });
-                    return;
-                }
-
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    ToastUtil.shortToast(LogicGlobal.sContext, message);
-                    return;
-                }
-
+            public void onSuccess(@NotNull List<Long> data) {
                 if (data != null && data.size() > 0) {
-                    ToastUtil.shortToast(LogicGlobal.sContext, mContext.getString(R.string.sl_str_some_orders_cancel_failed));
+                    ToastUtil.shortToast(mContext, mContext.getString(R.string.sl_str_some_orders_cancel_failed));
                 }
             }
-        };
 
-        if (TextUtils.isEmpty(pwd)) {
-            BTContract.getInstance().cancelOrders(orders, response);
-        } else {
-            BTContract.getInstance().cancelOrders(orders, pwd, response);
-        }
+            @Override
+            public void onFail(@NotNull String code, @NotNull String msg) {
+                ToastUtil.shortToast(mContext, msg);
+            }
+        });
     }
 
     @Override

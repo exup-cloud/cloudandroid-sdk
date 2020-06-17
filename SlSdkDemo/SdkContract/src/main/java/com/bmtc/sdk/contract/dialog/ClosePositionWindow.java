@@ -16,23 +16,23 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.bmtc.sdk.contract.R;
+import com.bmtc.sdk.contract.utils.ToastUtil;
+import com.bmtc.sdk.contract.utils.UtilSystem;
 import com.bmtc.sdk.contract.view.bubble.BubbleSeekBar;
-import com.bmtc.sdk.library.common.pswkeyboard.OnPasswordInputFinish;
-import com.bmtc.sdk.library.common.pswkeyboard.widget.PopEnterPassword;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractAccount;
-import com.bmtc.sdk.library.trans.data.ContractOrder;
-import com.bmtc.sdk.library.trans.data.ContractPosition;
-import com.bmtc.sdk.library.trans.data.ContractTicker;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.ToastUtil;
-import com.bmtc.sdk.library.utils.UtilSystem;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.ContractUserDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractAccount;
+import com.contract.sdk.data.ContractOrder;
+import com.contract.sdk.data.ContractPosition;
+import com.contract.sdk.data.ContractTicker;
+import com.contract.sdk.impl.IResponse;
+import com.contract.sdk.utils.MathHelper;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -101,7 +101,7 @@ public class ClosePositionWindow extends PopupWindow implements View.OnClickList
         }
         mContractPosition = position;
 
-        Contract contract = LogicGlobal.getContract(mContractPosition.getInstrument_id());
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractPosition.getInstrument_id());
         if (contract == null) {
             return;
         }
@@ -112,7 +112,7 @@ public class ClosePositionWindow extends PopupWindow implements View.OnClickList
                 MathHelper.round(MathHelper.sub(mContractPosition.getCur_qty(), mContractPosition.getFreeze_qty()), 0) +
                 context.getString(R.string.sl_str_contracts_unit));
 
-        ContractTicker ticker = LogicGlobal.getContractTicker(mContractPosition.getInstrument_id());
+        ContractTicker ticker = ContractPublicDataAgent.INSTANCE.getContractTicker(mContractPosition.getInstrument_id());
         if (ticker != null) {
             etPrice.setText(ticker.getLast_px());
         }
@@ -239,7 +239,7 @@ public class ClosePositionWindow extends PopupWindow implements View.OnClickList
             return;
         }
 
-        Contract contract = LogicGlobal.getContract(mContractPosition.getInstrument_id());
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractPosition.getInstrument_id());
         if (contract == null) {
             return;
         }
@@ -285,7 +285,7 @@ public class ClosePositionWindow extends PopupWindow implements View.OnClickList
             return;
         }
 
-        Contract contract = LogicGlobal.getContract(mContractPosition.getInstrument_id());
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractPosition.getInstrument_id());
         if (contract == null) {
             return;
         }
@@ -352,7 +352,7 @@ public class ClosePositionWindow extends PopupWindow implements View.OnClickList
             return;
         }
 
-        Contract contract = LogicGlobal.getContract(mContractPosition.getInstrument_id());
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractPosition.getInstrument_id());
         if (contract == null) {
             return;
         }
@@ -375,44 +375,21 @@ public class ClosePositionWindow extends PopupWindow implements View.OnClickList
         order.setCategory(ContractOrder.ORDER_CATEGORY_NORMAL);
 
         btnOk.setEnabled(false);
-        IResponse<String> response = new IResponse<String>() {
+
+        ContractUserDataAgent.INSTANCE.doSubmitOrder(order, new IResponse<String>() {
             @Override
-            public void onResponse(String errno, String message, String data) {
+            public void onSuccess(@NotNull String data) {
                 btnOk.setEnabled(true);
-
-                if (TextUtils.equals(errno, BTConstants.ERRNO_PERMISSION_DENIED)) {
-                    final PopEnterPassword popEnterPassword = new PopEnterPassword(context);
-                    popEnterPassword.showAtLocation(btnOk, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
-                    popEnterPassword.setOnFinishInput(new OnPasswordInputFinish() {
-                        @Override
-                        public void inputFinish(String password) {
-                            closePosition(price, transVol, UtilSystem.toMD5(password));
-                            popEnterPassword.dismiss();
-                        }
-                    });
-                    return;
-                }
-
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    ToastUtil.shortToast(LogicGlobal.sContext, message);
-                    return;
-                }
-
-                ToastUtil.shortToast(LogicGlobal.sContext, LogicGlobal.sContext.getString(R.string.sl_str_order_submit_success));
-                BTContract.getInstance().accounts(0, new IResponse<List<ContractAccount>>() {
-                    @Override
-                    public void onResponse(String errno, String message, List<ContractAccount> data) {
-
-                    }
-                });
+                ToastUtil.shortToast(context, context.getString(R.string.sl_str_order_submit_success));
             }
-        };
 
-        if (TextUtils.isEmpty(pwd)) {
-            BTContract.getInstance().submitOrder(order, response);
-        } else {
-            BTContract.getInstance().submitOrder(order, response);
-        }
+            @Override
+            public void onFail(@NotNull String code, @NotNull String msg) {
+                btnOk.setEnabled(true);
+                ToastUtil.shortToast(context, msg);
+            }
+        });
+
     }
 
 }

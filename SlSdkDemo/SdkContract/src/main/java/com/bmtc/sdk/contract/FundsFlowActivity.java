@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -25,15 +25,18 @@ import android.widget.TextView;
 
 
 import com.bmtc.sdk.contract.adapter.FundsFlowAdapter;
-import com.bmtc.sdk.library.base.BaseActivity;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.ContractAccount;
-import com.bmtc.sdk.library.trans.data.ContractCashBook;
-import com.bmtc.sdk.library.uilogic.LogicLoadAnimation;
-import com.bmtc.sdk.library.utils.ToastUtil;
-import com.bmtc.sdk.library.utils.UtilSystem;
+import com.bmtc.sdk.contract.base.BaseActivity;
+import com.bmtc.sdk.contract.uiLogic.LogicLoadAnimation;
+import com.bmtc.sdk.contract.utils.ToastUtil;
+import com.bmtc.sdk.contract.utils.UtilSystem;
+import com.contract.sdk.ContractUserDataAgent;
+import com.contract.sdk.data.ContractAccount;
+import com.contract.sdk.data.ContractCashBook;
+import com.contract.sdk.data.ContractOrder;
+import com.contract.sdk.impl.IResponse;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -265,25 +268,15 @@ public class FundsFlowActivity extends BaseActivity {
         }
 
         mLoading = true;
-        BTContract.getInstance().cashBooks(0, action, mCoincode, mLimit, mOffset, new IResponse<List<ContractCashBook>>() {
+        ContractUserDataAgent.INSTANCE.loadCashBooks(0, action, mCoincode, mLimit, mOffset, new IResponse<List<ContractCashBook>>() {
             @Override
-            public void onResponse(String errno, String message, List<ContractCashBook> data) {
+            public void onSuccess(@NotNull List<ContractCashBook> data) {
                 mLoading = false;
-
                 if (mLoadingPage.IsLoadingShow()) {
                     mLoadingPage.ExitLoadAnimation();
                 }
-
                 mOffset = offset;
 
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    ToastUtil.shortToast(FundsFlowActivity.this, message);
-                    if (mOffset == 0) {
-                        mNoresultIv.setVisibility(View.VISIBLE);
-                        clearData();
-                    }
-                    return;
-                }
 
                 if (data != null && data.size() > 0) {
 
@@ -326,7 +319,22 @@ public class FundsFlowActivity extends BaseActivity {
                     mNoresultIv.setVisibility(View.VISIBLE);
                 }
             }
+
+            @Override
+            public void onFail(@NotNull String code, @NotNull String msg) {
+                mLoading = false;
+                if (mLoadingPage.IsLoadingShow()) {
+                    mLoadingPage.ExitLoadAnimation();
+                }
+                mOffset = offset;
+                ToastUtil.shortToast(FundsFlowActivity.this, msg);
+                if (mOffset == 0) {
+                    mNoresultIv.setVisibility(View.VISIBLE);
+                    clearData();
+                }
+            }
         });
+
     }
 
     private void clearData() {
@@ -340,7 +348,7 @@ public class FundsFlowActivity extends BaseActivity {
     }
 
     private void showSpotWindow() {
-        final List<ContractAccount> contractAccounts = BTContract.getInstance().getContractAccountList();
+        final List<ContractAccount> contractAccounts = ContractUserDataAgent.INSTANCE.getContractAccounts(false);
         if (contractAccounts == null || contractAccounts.size() <= 0) {
             return;
         }

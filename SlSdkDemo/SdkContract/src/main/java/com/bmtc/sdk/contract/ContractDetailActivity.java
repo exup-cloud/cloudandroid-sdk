@@ -1,13 +1,28 @@
 package com.bmtc.sdk.contract;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+
+import com.bmtc.sdk.contract.base.BaseActivity;
+import com.bmtc.sdk.contract.base.BaseFragmentPagerAdapter;
+import com.bmtc.sdk.contract.utils.UtilSystem;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractOrder;
+import com.contract.sdk.data.ContractTicker;
+import com.contract.sdk.data.ContractWsKlineType;
+import com.contract.sdk.data.KLineData;
+import com.contract.sdk.extra.dispense.DataKLineHelper;
+import com.contract.sdk.impl.IResponse;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,19 +32,9 @@ import android.widget.TextView;
 import com.bmtc.sdk.contract.fragment.ContractIntroduceFragment;
 import com.bmtc.sdk.contract.fragment.FundsRateFragment;
 import com.bmtc.sdk.contract.fragment.InsuranceFundFragment;
-import com.bmtc.sdk.library.base.BaseActivity;
-import com.bmtc.sdk.library.base.BaseFragmentPagerAdapter;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractSpot;
-import com.bmtc.sdk.library.trans.data.ContractTicker;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.uilogic.LogicTimer;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
-import com.bmtc.sdk.library.utils.UtilSystem;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -41,8 +46,7 @@ import java.util.List;
  * Created by zj on 2018/3/8.
  */
 
-public class ContractDetailActivity extends BaseActivity implements
-        LogicTimer.ITimerListener {
+public class ContractDetailActivity extends BaseActivity  {
 
     private int mContractId;
     private int mPageIndex;
@@ -83,7 +87,6 @@ public class ContractDetailActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sl_activity_contract_detail);
 
-        LogicTimer.getInstance().registListener(this);
         try {
             mContractId = getIntent().getIntExtra("contract_id", 1);
             mPageIndex = getIntent().getIntExtra("page_index", 0);
@@ -92,11 +95,6 @@ public class ContractDetailActivity extends BaseActivity implements
         setView();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        LogicTimer.getInstance().unregistListener(this);
-    }
 
     @Override
     protected void onStart() {
@@ -116,7 +114,7 @@ public class ContractDetailActivity extends BaseActivity implements
     @Override
     public void setView() {
         super.setView();
-        Contract contract = LogicGlobal.getContract(mContractId);
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract == null) {
             return;
         }
@@ -189,19 +187,19 @@ public class ContractDetailActivity extends BaseActivity implements
     }
 
     public void updateData() {
-        final Contract contract = LogicGlobal.getContract(mContractId);
+        final Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract == null) {
             return;
         }
 
-        final ContractTicker ticker = LogicGlobal.getContractTicker(mContractId);
+        final ContractTicker ticker = ContractPublicDataAgent.INSTANCE.getContractTicker(mContractId);
         if (ticker == null) {
             return;
         }
 
         final DecimalFormat df = NumberUtil.getDecimal(-1);
 
-        String name = ticker.getName();
+        String name = ticker.getSymbol();
         if (name.contains("[")) {
             name = name.substring(0, name.indexOf("["));
         }
@@ -261,80 +259,75 @@ public class ContractDetailActivity extends BaseActivity implements
         calendar.setTime(dt);
         calendar.add(Calendar.DAY_OF_YEAR, -30);
         Date dt1 = calendar.getTime();
-        BTContract.getInstance().queryContractSpot(mContractId, dt1.getTime() / 1000, dt.getTime() / 1000, 1, "D", new IResponse<List<ContractSpot>>() {
-            @Override
-            public void onResponse(String errno, String message, List<ContractSpot> data) {
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    return;
-                }
 
-                if (data != null) {
-                    double high = 0;
-                    double low = Integer.MAX_VALUE;
-                    for (int i=0; i<data.size(); i++) {
-                        ContractSpot item = data.get(i);
-                        if (item == null) {
-                            continue;
-                        }
+        ContractPublicDataAgent.INSTANCE.loadContractSpot(mContractId, dt1.getTime() / 1000, dt.getTime() / 1000,
+                ContractWsKlineType.WEBSOCKET_BIN1D, new IResponse<List<KLineData>>() {
+                    @Override
+                    public void onSuccess(@NotNull List<KLineData> data) {
+                        if (data != null) {
+                            double high = 0;
+                            double low = Integer.MAX_VALUE;
+                            for (int i=0; i<data.size(); i++) {
+                                KLineData item = data.get(i);
+                                if (item == null) {
+                                    continue;
+                                }
 
-                        double h = MathHelper.round(item.getHigh());
-                        double l = MathHelper.round(item.getLow());
-                        if (h > high) {
-                            high = h;
-                        }
-                        if (l < low) {
-                            low = l;
+                                double h = item.getHigh();
+                                double l = item.getLow();
+                                if (h > high) {
+                                    high = h;
+                                }
+                                if (l < low) {
+                                    low = l;
+                                }
+                            }
+
+                            DecimalFormat df = NumberUtil.getDecimal(-1);
+                            mLast30DayTv.setText(getString(R.string.sl_str_last) + df.format(MathHelper.round(ticker.getLast_px(), contract.getPrice_index())));
+                            mLow30DayTv.setText(getString(R.string.sl_str_lowp) + df.format(MathHelper.round(low, contract.getPrice_index())));
+                            mHigh30DayTv.setText(getString(R.string.sl_str_highp) + df.format(MathHelper.round(high, contract.getPrice_index())));
+
+                            final double high30Day = high;
+                            final double low30Day = low;
+                            final double highDay = MathHelper.round(ticker.getHigh());
+                            final double lowDay = MathHelper.round(ticker.getLow());
+                            final double lastDay = MathHelper.round(ticker.getLast_px());
+
+                            mBkg30DayRl.post(new Runnable() {
+                                @Override
+                                public void run() {
+
+
+                                    int width30Day = mBkg30DayRl.getMeasuredWidth(); // 获取宽度;
+                                    int widthLastDay = mLast30DayRl.getMeasuredWidth();
+
+                                    int intervalDay = (int) (width30Day * (Math.abs(highDay - lowDay)) / (high30Day - low30Day));
+                                    int startDay = (int) (width30Day * (lowDay - low30Day) / (high30Day - low30Day));
+
+                                    int lastPosDay = (int) (width30Day * (lastDay - low30Day) / (high30Day - low30Day) - widthLastDay / 2);
+
+                                    RelativeLayout.LayoutParams lp0 = (RelativeLayout.LayoutParams) mLast30DayRl.getLayoutParams();
+                                    lp0.setMargins(Math.min(width30Day - widthLastDay, Math.max(lastPosDay, 0)),0,0,UtilSystem.dip2px(ContractDetailActivity.this, 3));
+                                    mLast30DayRl.setLayoutParams(lp0);
+
+                                    RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(intervalDay, UtilSystem.dip2px(ContractDetailActivity.this, 20));
+                                    lp.setMargins(startDay,0,0,0);
+                                    lp.addRule(RelativeLayout.BELOW, R.id.rl_last_30day);
+                                    mFore30DayRl.setLayoutParams(lp);
+                                    mFore30DayRl.setBackgroundColor(getResources().getColor(R.color.sl_colorTextSelector));
+                                }
+                            });
+
                         }
                     }
-
-                    DecimalFormat df = NumberUtil.getDecimal(-1);
-                    mLast30DayTv.setText(getString(R.string.sl_str_last) + df.format(MathHelper.round(ticker.getLast_px(), contract.getPrice_index())));
-                    mLow30DayTv.setText(getString(R.string.sl_str_lowp) + df.format(MathHelper.round(low, contract.getPrice_index())));
-                    mHigh30DayTv.setText(getString(R.string.sl_str_highp) + df.format(MathHelper.round(high, contract.getPrice_index())));
-
-                    final double high30Day = high;
-                    final double low30Day = low;
-                    final double highDay = MathHelper.round(ticker.getHigh());
-                    final double lowDay = MathHelper.round(ticker.getLow());
-                    final double lastDay = MathHelper.round(ticker.getLast_px());
-
-                    mBkg30DayRl.post(new Runnable() {
-                        @Override
-                        public void run() {
-
-
-                            int width30Day = mBkg30DayRl.getMeasuredWidth(); // 获取宽度;
-                            int widthLastDay = mLast30DayRl.getMeasuredWidth();
-
-                            int intervalDay = (int) (width30Day * (Math.abs(highDay - lowDay)) / (high30Day - low30Day));
-                            int startDay = (int) (width30Day * (lowDay - low30Day) / (high30Day - low30Day));
-
-                            int lastPosDay = (int) (width30Day * (lastDay - low30Day) / (high30Day - low30Day) - widthLastDay / 2);
-
-                            RelativeLayout.LayoutParams lp0 = (RelativeLayout.LayoutParams) mLast30DayRl.getLayoutParams();
-                            lp0.setMargins(Math.min(width30Day - widthLastDay, Math.max(lastPosDay, 0)),0,0,UtilSystem.dip2px(ContractDetailActivity.this, 3));
-                            mLast30DayRl.setLayoutParams(lp0);
-
-                            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(intervalDay, UtilSystem.dip2px(ContractDetailActivity.this, 20));
-                            lp.setMargins(startDay,0,0,0);
-                            lp.addRule(RelativeLayout.BELOW, R.id.rl_last_30day);
-                            mFore30DayRl.setLayoutParams(lp);
-                            mFore30DayRl.setBackgroundColor(getResources().getColor(R.color.sl_colorTextSelector));
-                        }
-                    });
-
-                }
-
-            }
-        });
-    }
-
-
-    @Override
-    public void onTimer(int times) {
+                });
 
     }
 
+
+
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     public void onBackPressed() {
         boolean isVertical = (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT);

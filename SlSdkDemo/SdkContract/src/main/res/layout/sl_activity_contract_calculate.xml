@@ -76,7 +76,7 @@
             android:orientation="horizontal"
             >
 
-            <com.bmtc.sdk.library.common.material.MaterialTextView
+            <com.bmtc.sdk.contract.view.material.MaterialTextView
                 android:id="@+id/pl_calculate_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -88,7 +88,7 @@
                 android:textColor="@color/sl_whiteText"
                 android:textSize="@dimen/text_size_tab" />
 
-            <com.bmtc.sdk.library.common.material.MaterialTextView
+            <com.bmtc.sdk.contract.view.material.MaterialTextView
                 android:id="@+id/liquidation_price_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -100,7 +100,7 @@
                 android:textColor="@color/sl_whiteText"
                 android:textSize="@dimen/text_size_tab" />
 
-            <com.bmtc.sdk.library.common.material.MaterialTextView
+            <com.bmtc.sdk.contract.view.material.MaterialTextView
                 android:id="@+id/profit_rate_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -136,7 +136,7 @@
 
     </RelativeLayout>
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

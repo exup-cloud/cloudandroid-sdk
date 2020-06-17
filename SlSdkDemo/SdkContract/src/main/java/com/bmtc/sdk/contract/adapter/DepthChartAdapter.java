@@ -2,8 +2,8 @@ package com.bmtc.sdk.contract.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +11,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.DepthData;
-import com.bmtc.sdk.library.trans.data.Stock;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.DepthData;
+import com.contract.sdk.utils.MathHelper;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -50,7 +49,6 @@ public class DepthChartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private List<DepthData> mSells = new ArrayList<>();
     private List<DepthData> mBuys = new ArrayList<>();
 
-    private String mStockCode;
     private int mContractId;
 
     public static class DepthChartViewHolder extends RecyclerView.ViewHolder {
@@ -103,7 +101,7 @@ public class DepthChartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         mContext = context;
     }
 
-    public void setData(final List<DepthData> sells, final List<DepthData> buys, String stockCode, int contractId) {
+    public void setData(final List<DepthData> sells, final List<DepthData> buys, int contractId) {
 
         if (sells != null) {
             Collections.sort(sells, new Comparator<DepthData>() {
@@ -136,7 +134,6 @@ public class DepthChartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             mBuys.addAll(buys);
         }
 
-        mStockCode = stockCode;
         mContractId = contractId;
     }
 
@@ -238,14 +235,8 @@ public class DepthChartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             leftAxis.setAxisMaximum((float) maxVol);
             leftAxis.setAxisMinimum((float) 0);
 
-            if (!TextUtils.isEmpty(mStockCode)) {
-                Stock stock = null;//LogicGlobal.getStock(mStockCode);
-                if (stock != null) {
-                    leftAxis.setValueFormatter(new DefaultAxisValueFormatter(stock.getVol_index()));
-                }
-            }
             if (mContractId > 0) {
-                Contract contract = LogicGlobal.getContract(mContractId);
+                Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
                 if (contract != null) {
                     leftAxis.setValueFormatter(new DefaultAxisValueFormatter(contract.getVol_index()));
                 }
@@ -304,14 +295,8 @@ public class DepthChartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             leftAxis.setLabelCount(5, true);
             leftAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
             leftAxis.setYOffset(-5.0f);
-            if (!TextUtils.isEmpty(mStockCode)) {
-                Stock stock = null ;//LogicGlobal.getStock(mStockCode);
-                if (stock != null) {
-                    leftAxis.setValueFormatter(new DefaultAxisValueFormatter(stock.getVol_index()));
-                }
-            }
             if (mContractId > 0) {
-                Contract contract = LogicGlobal.getContract(mContractId);
+                Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
                 if (contract != null) {
                     leftAxis.setValueFormatter(new DefaultAxisValueFormatter(contract.getVol_index()));
                 }

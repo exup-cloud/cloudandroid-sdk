@@ -1,7 +1,7 @@
 package com.bmtc.sdk.contract.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +9,12 @@ import android.widget.TextView;
 
 
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.contract.ContractCalculate;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractTrade;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractTrade;
+import com.contract.sdk.extra.Contract.ContractCalculate;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -91,7 +91,7 @@ public class ContractTradeRecordAdapter extends RecyclerView.Adapter<RecyclerVie
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final ContractTradeRecordHolder itemViewHolder = (ContractTradeRecordHolder) holder;
-        Contract contract = LogicGlobal.getContract(mNews.get(position).getInstrument_id());
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mNews.get(position).getInstrument_id());
         if (contract == null) {
             return;
         }
@@ -121,7 +121,7 @@ public class ContractTradeRecordAdapter extends RecyclerView.Adapter<RecyclerVie
         itemViewHolder.tvContractName.setText(contract.getSymbol());
         itemViewHolder.tvVolume.setText(dfVol.format(MathHelper.round(mNews.get(position).getQty())) + mContext.getString(R.string.sl_str_contracts_unit));
         itemViewHolder.tvPrice.setText(mNews.get(position).getPx() + contract.getQuote_coin());
-        double value = ContractCalculate.CalculateContractValue(
+        double value = ContractCalculate.INSTANCE.CalculateContractValue(
                 mNews.get(position).getQty(),
                 mNews.get(position).getPx(),
                 contract);

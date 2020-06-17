@@ -42,7 +42,7 @@
                 android:layout_marginRight="40dp"
                 android:orientation="horizontal">
 
-                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                     android:id="@+id/tab_add_margin"
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
@@ -57,7 +57,7 @@
                     android:textColor="@drawable/sl_usertab_text_selector"
                     android:textSize="14sp" />
 
-                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                     android:id="@+id/tab_reduce_margin"
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"

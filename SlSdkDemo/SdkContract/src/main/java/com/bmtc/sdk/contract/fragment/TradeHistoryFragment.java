@@ -1,21 +1,20 @@
 package com.bmtc.sdk.contract.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bmtc.sdk.contract.R;
 import com.bmtc.sdk.contract.adapter.TradeHistoryAdapter;
-import com.bmtc.sdk.library.SLSDKAgent;
-import com.bmtc.sdk.library.base.BaseFragment;
-import com.bmtc.sdk.library.trans.data.SDStockTrade;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.UtilSystem;
+import com.bmtc.sdk.contract.base.BaseFragment;
+import com.bmtc.sdk.contract.utils.UtilSystem;
+import com.contract.sdk.data.ContractTrade;
+import com.contract.sdk.data.SDStockTrade;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +27,7 @@ public class TradeHistoryFragment extends BaseFragment {
 
     private View m_RootView;
 
-    private List<SDStockTrade> mTradeList = new ArrayList<>();
+    private List<ContractTrade> mTradeList = new ArrayList<>();
 
     private RecyclerView mRecyclerView;
     private TradeHistoryAdapter mTradeHistoryAdapter;
@@ -80,7 +79,7 @@ public class TradeHistoryFragment extends BaseFragment {
     }
 
     public boolean isForeground() {
-        return getActivity() != null && isAdded() && !getHidden() && UtilSystem.isActivityForeground(LogicGlobal.sContext, getActivity());
+        return getActivity() != null && isAdded() && !getHidden();
     }
 
     @Override
@@ -93,7 +92,7 @@ public class TradeHistoryFragment extends BaseFragment {
         super.onDestroy();
     }
 
-    public void setData(List<SDStockTrade> list) {
+    public void setData(List<ContractTrade> list) {
 
         mTradeList.clear();
         mTradeList.addAll(list);

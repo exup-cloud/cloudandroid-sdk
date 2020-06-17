@@ -2,9 +2,9 @@ package com.bmtc.sdk.contract;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
@@ -15,23 +15,26 @@ import android.widget.TextView;
 
 
 import com.bmtc.sdk.contract.adapter.ContractAssetsAdapter;
-import com.bmtc.sdk.library.SLSDKAgent;
-import com.bmtc.sdk.library.base.BaseActivity;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.contract.ContractCalculate;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractAccount;
-import com.bmtc.sdk.library.trans.data.ContractPosition;
-import com.bmtc.sdk.library.trans.data.ContractTicker;
-import com.bmtc.sdk.library.uilogic.LogicBuySell;
-import com.bmtc.sdk.library.uilogic.LogicContractTicker;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.uilogic.LogicWebSocketContract;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.PreferenceManager;
+import com.bmtc.sdk.contract.base.BaseActivity;
+import com.bmtc.sdk.contract.uiLogic.LogicBuySell;
+import com.bmtc.sdk.contract.utils.PreferenceManager;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.ContractSDKAgent;
+import com.contract.sdk.ContractUserDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractAccount;
+import com.contract.sdk.data.ContractPosition;
+import com.contract.sdk.data.ContractTicker;
+import com.contract.sdk.extra.Contract.ContractCalculate;
+import com.contract.sdk.impl.ContractAccountListener;
+import com.contract.sdk.impl.ContractPositionListener;
+import com.contract.sdk.impl.ContractTickerListener;
+import com.contract.sdk.impl.IResponse;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.ws.LogicWebSocketContract;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,9 +48,7 @@ import java.util.Locale;
  * Created by zj on 2018/3/8.
  */
 
-public class UserContractActivity extends BaseActivity implements
-        LogicWebSocketContract.IWebSocketListener,
-        LogicContractTicker.IContractTickerListener {
+public class UserContractActivity extends BaseActivity  {
 
     private ImageView mBackIv;
 
@@ -73,8 +74,6 @@ public class UserContractActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sl_fragment_user_contract);
 
-        LogicWebSocketContract.getInstance().registListener(this);
-        LogicContractTicker.getInstance().registListener(this);
 
         mCloseEye = PreferenceManager.getInstance(this).getSharedBoolean(PreferenceManager.PREF_CLOSEEYE, false);
 
@@ -82,27 +81,38 @@ public class UserContractActivity extends BaseActivity implements
         } catch (Exception ignored) {
         }
 
-        LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_TICKER, 0);
+
+        /**
+         * Ticker监听
+         */
+        ContractPublicDataAgent.INSTANCE.registerTickerWsListener(this, new ContractTickerListener() {
+            @Override
+            public void onWsContractTicker(@NotNull ContractTicker ticker) {
+                setHeaderView();
+            }
+        });
+        /**
+         * 监听账户资产变动
+         */
+        ContractUserDataAgent.INSTANCE.registerContractAccountWsListener(this, new ContractAccountListener() {
+            @Override
+            public void onWsContractAccount(@Nullable ContractAccount contractAccount) {
+                setHeaderView();
+            }
+        });
+        /**
+         * 监听仓位变化
+         */
+        ContractUserDataAgent.INSTANCE.registerContractPositionWsListener(this, new ContractPositionListener() {
+            @Override
+            public void onWsContractPosition() {
+                setHeaderView();
+            }
+        });
 
         setView();
     }
 
-    @Override
-    protected void onDestroy() {
-
-        super.onDestroy();
-        LogicWebSocketContract.getInstance().unregistListener(this);
-        LogicContractTicker.getInstance().unregistListener(this);
-
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        try {
-        } catch (Exception ignored) {
-        }
-    }
 
     public void setView() {
 
@@ -151,9 +161,10 @@ public class UserContractActivity extends BaseActivity implements
         mTransferRl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(UserContractActivity.this, FundsTransferActivity.class);
-                startActivity(intent);
+                //TODO 接入方 自己实现划转需求
+//                Intent intent = new Intent();
+//                intent.setClass(UserContractActivity.this, FundsTransferActivity.class);
+//                startActivity(intent);
             }
         });
 
@@ -167,7 +178,7 @@ public class UserContractActivity extends BaseActivity implements
         if (mContractAssetAdapter == null) {
             mContractAssetAdapter = new ContractAssetsAdapter(this);
             mRecyclerView.setAdapter(mContractAssetAdapter);
-            mContractAssetAdapter.setData(BTContract.getInstance().getContractAccountList());
+            mContractAssetAdapter.setData(ContractUserDataAgent.INSTANCE.getContractAccounts(true));
         }
 
         updateHeaderData();
@@ -177,34 +188,16 @@ public class UserContractActivity extends BaseActivity implements
 
         setHeaderView();
 
-        if (!SLSDKAgent.isLogin()) {
+        if (!ContractSDKAgent.INSTANCE.isLogin()) {
             return;
         }
-
-        BTContract.getInstance().accounts(0, new IResponse<List<ContractAccount>>() {
-            @Override
-            public void onResponse(String errno, String message, List<ContractAccount> data) {
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    return;
-                }
-                setHeaderView();
-            }
-        });
-
-        BTContract.getInstance().userPositions(0, 1, 0, 0, new IResponse<List<ContractPosition>>() {
-            @Override
-            public void onResponse(String errno, String message, List<ContractPosition> data) {
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    return;
-                }
-                setHeaderView();
-            }
-        });
+        //加载一次全量仓位
+        ContractUserDataAgent.INSTANCE.getCoinPositions("",true);
     }
 
     private void setHeaderView() {
 
-        List<ContractAccount> contractAccounts = BTContract.getInstance().getContractAccountList();
+        List<ContractAccount> contractAccounts = ContractUserDataAgent.INSTANCE.getContractAccounts(false);
         if (contractAccounts == null || contractAccounts.size() == 0) {
             mNoResultIv.setVisibility(View.VISIBLE);
             return;
@@ -234,7 +227,7 @@ public class UserContractActivity extends BaseActivity implements
 
     static public double calculateTotalBalance() {
 
-        List<ContractAccount> contractAccounts = BTContract.getInstance().getContractAccountList();
+        List<ContractAccount> contractAccounts = ContractUserDataAgent.INSTANCE.getContractAccounts(false);
         if (contractAccounts == null) {
             return 0;
         }
@@ -254,7 +247,7 @@ public class UserContractActivity extends BaseActivity implements
 
             double position_margin = 0.0;
 
-            List<ContractPosition> contractPositions = BTContract.getInstance().getCoinPositions(account.getCoin_code());
+            List<ContractPosition> contractPositions = ContractUserDataAgent.INSTANCE.getCoinPositions(account.getCoin_code(),false);
             if (contractPositions != null && contractPositions.size() > 0) {
                 for (int j = 0; j < contractPositions.size(); j++) {
                     ContractPosition contractPosition = contractPositions.get(j);
@@ -262,8 +255,8 @@ public class UserContractActivity extends BaseActivity implements
                         continue;
                     }
 
-                    Contract positionContract = LogicGlobal.getContract(contractPosition.getInstrument_id());
-                    ContractTicker contractTicker = LogicGlobal.getContractTicker(contractPosition.getInstrument_id());
+                    Contract positionContract = ContractPublicDataAgent.INSTANCE.getContract(contractPosition.getInstrument_id());
+                    ContractTicker contractTicker = ContractPublicDataAgent.INSTANCE.getContractTicker(contractPosition.getInstrument_id());
                     if (positionContract == null || contractTicker == null) {
                         continue;
                     }
@@ -303,95 +296,4 @@ public class UserContractActivity extends BaseActivity implements
         return  total_balance;
     }
 
-    @Override
-    public void onContractTickerChanged(ContractTicker ticker) {
-        if (ticker == null) {
-            return;
-        }
-
-        Contract contract = LogicGlobal.getContract(ticker.getInstrument_id());
-        if (contract == null) {
-            return;
-        }
-
-        if (BTContract.getInstance().getCoinPositions(contract.getMargin_coin()) != null) {
-            setHeaderView();
-        }
-
-    }
-
-    @Override
-    public void onContractMessage(String data) {
-
-        try {
-            JSONObject jsonObject = new JSONObject(data);
-
-            String action = jsonObject.optString("action");
-            String group = jsonObject.optString("group");
-            if (TextUtils.isEmpty(group)) {
-                return;
-            }
-
-            String[] argGroup = group.split(":");
-            if (argGroup.length == 1) {
-                if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_CUD)) {
-
-                    JSONArray dataArray = jsonObject.optJSONArray("data");
-                    if (dataArray == null) {
-                        return;
-                    }
-
-                    boolean update = false;
-                    for (int i = 0; i < dataArray.length(); i++) {
-                        JSONObject obj = dataArray.optJSONObject(i);
-                        if (obj == null) {
-                            continue;
-                        }
-
-                        JSONObject positionObj = obj.optJSONObject("position");
-                        if (positionObj == null) {
-                            continue;
-                        }
-
-                        update = true;
-                    }
-
-                    for (int i = dataArray.length() - 1; i >= 0; i--) {
-                        JSONObject obj = dataArray.optJSONObject(i);
-                        if (obj == null) {
-                            break;
-                        }
-
-                        JSONObject assetObj = obj.optJSONObject("c_assets");
-                        if (assetObj == null) {
-                            break;
-                        }
-
-                        update = true;
-                        break;
-                    }
-
-                    if (update) {
-                        setHeaderView();
-                    }
-                }
-
-            } else {
-                return;
-            }
-
-
-        } catch (JSONException ignored) {
-        }
-    }
-
-    @Override
-    public void connectFail(String url, int reCount) {
-
-    }
-
-    @Override
-    public void reConnectSuccess(String url, int reCount) {
-
-    }
 }

@@ -7,8 +7,6 @@
     <string name="sl_str_name">Name</string>
     <string name="sl_str_main">Main</string>
     <string name="sl_str_new">New</string>
-    <string name="sl_str_fair_price">A reasonable price</string>
-    <string name="sl_str_index_price">Index of the price</string>
     <string name="sl_str_funds_rate">Funds rate</string>
     <string name="sl_str_24h_vol">24h Vol</string>
     <string name="sl_str_time">Time</string>
@@ -31,14 +29,11 @@
     <string name="sl_str_buy_open_long">Buy Open(Long)</string>
     <string name="sl_str_sell_open_short">Sell Open(Short)</string>
     <string name="sl_str_optional">Favorites</string>
-    <string name="sl_str_loading">Data Loading</string>
     <string name="sl_str_order_book">Order Book</string>
     <string name="sl_str_trade_history">Trade History</string>
     <string name="sl_str_depth_chart">Depth Chart</string>
     <string name="sl_str_inverse">Inverse</string>
     <string name="sl_str_simulation">Mock</string>
-    <string name="sl_str_bid">Bid</string>
-    <string name="sl_str_ask">Ask</string>
     <string name="sl_str_amount">Amount</string>
     <string name="sl_str_price">Price</string>
     <string name="sl_str_bid_buy">Bid</string>
@@ -85,8 +80,6 @@
     <string name="sl_str_iceberg_entrust">Iceberg Order</string>
     <string name="sl_str_passive_entrust">Post-only</string>
     <string name="sl_str_trigger_entrust" translatable="false">Trigger Order</string>
-    <string name="sl_str_limit_entrust">Limit</string>
-    <string name="sl_str_market_entrust">Market</string>
     <string name="sl_str_stop_loss_entrust">Stop Limited</string>
     <string name="sl_str_stop_surplus_entrust">Take Profit</string>
     <string name="sl_str_entrust_price">Order Price</string>
@@ -98,7 +91,6 @@
     <string name="sl_str_execution_volume">Execution Volume</string>
     <string name="sl_str_execution">Execution</string>
     <string name="sl_str_deadline">Deadline</string>
-    <string name="sl_str_some_orders_cancel_failed">Part of the orders cancellation failed, please cancel manually</string>
     <string name="sl_str_index_price_simple">Index</string>
     <string name="sl_str_tag_price_simple">Mark</string>
     <string name="sl_str_fair_price_simple">Fair</string>
@@ -107,10 +99,6 @@
     <string name="sl_str_open_plan">Open Plans</string>
     <string name="sl_str_order_history">Order History</string>
     <string name="sl_str_plan_history">Plan History</string>
-    <string name="sl_str_none">None</string>
-    <string name="sl_str_no_order">No Order</string>
-    <string name="sl_str_cancel_all_orders">Cancel all orders</string>
-    <string name="sl_str_cancel_all_orders_single">Cancel all %1$s orders</string>
     <string name="sl_str_order_complete">Complete</string>
     <string name="sl_str_order_canceled">Canceled</string>
     <string name="sl_str_user_canceled">User Canceled</string>
@@ -188,7 +176,6 @@
     <string name="sl_str_commission_rate">Fee</string>
     <string name="sl_str_record">Record</string>
     <string name="sl_str_holdings_history">Positions History</string>
-    <string name="sl_str_holdings_now">Positions</string>
     <string name="sl_str_display_unit">Display Unit</string>
     <string name="sl_str_pnl_calculator">PNL Calculator</string>
     <string name="sl_strategy_effective_time">Strategy Effective Time</string>
@@ -199,8 +186,6 @@
     <string name="sl_str_caution">Caution</string>
     <string name="sl_str_plan_setting_caution">The options changed only effect to plan orders in future，will not affect the plan before.</string>
     <string name="sl_str_copy_succeed">Copy Succeed</string>
-    <string name="sl_str_save_failed">Save Failed</string>
-    <string name="sl_str_save_succeed">Save Succeed</string>
     <string name="sl_str_calculate_type">Type</string>
     <string name="sl_str_calculate">Calculate</string>
     <string name="sl_str_leverage">Leverage</string>
@@ -345,4 +330,57 @@
     <string name="sl_str_transferim_position2contract">Reduce Margin</string>
     <string name="sl_str_transferim_contract2position">Increase Margin</string>
     <string name="sl_str_position_fee">Funding Rates</string>
+    <string name="sl_str_no_network">Network Connection Exception</string>
+    <string name="sl_str_contracts_unit">piece</string>
+    <string name="sl_str_mals">Unit</string>
+    <string name="sl_str_limit_entrust">Limit</string>
+    <string name="sl_str_market_entrust">Market</string>
+    <string name="sl_str_normal_order">Normal Order</string>
+    <string name="sl_str_plan_entrust">Plan</string>
+    <string name="sl_str_default">Default</string>
+    <string name="sl_str_bid">Bid</string>
+    <string name="sl_str_ask">Ask</string>
+    <string name="sl_str_input_fund_pwd">Input Fund Password</string>
+    <string name="sl_str_pwd_effect_time">Password Effect Time</string>
+    <string name="sl_str_set_funds_password">Set Fund Password</string>
+    <string name="sl_str_modify_funds_password">Modify Fund Password</string>
+    <string name="sl_str_set_fund_pwd_tips">Set fund password, funds transactions will be more secure</string>
+    <string name="sl_str_password_verify">Input login password to verify</string>
+    <string name="sl_str_repeat_password">Repeat password</string>
+    <string name="sl_str_two_input_is_inconsistent">Two input is inconsistent</string>
+    <string name="sl_str_confirm">Confirm</string>
+    <string name="sl_str_secure_keyboard">Secure Keyboard</string>
+    <string name="sl_str_loading">Data Loading</string>
+    <string name="sl_str_cancel">Cancel</string>
+    <string name="sl_str_trigger_failed">Trigger Failed</string>
+    <string name="sl_str_cancel_all_orders">Cancel all orders</string>
+    <string name="sl_str_cancel_all_orders_single">Cancel all %1$s orders</string>
+    <string name="sl_str_some_orders_cancel_failed">Part of the orders cancellation failed, please cancel manually</string>
+    <string name="sl_str_none">None</string>
+    <string name="sl_str_no_order">No Order</string>
+    <string name="sl_str_price_too_low">The price is too low</string>
+    <string name="sl_str_volume_too_low">The volume is too low</string>
+    <string name="sl_str_no_contract_account">Please transfer %1$s to contract account first</string>
+    <string name="sl_str_open_risk_tips">Opening price deviation from the latest transaction price is too large, please pay attention to the risk</string>
+    <string name="sl_str_close_risk_tips">Closing price deviation from the latest transaction price is too large, please pay attention to the risk</string>
+    <string name="sl_str_open_market_risk_tips">It is estimated that the opening average price is too large from the latest transaction price, please pay attention to the risk</string>
+    <string name="sl_str_close_market_risk_tips">It is estimated that the average closing price is too large from the latest transaction price, please pay attention to the risk</string>
+    <string name="sl_str_index_price">Index Price</string>
+    <string name="sl_str_tag_price">Mark Price</string>
+    <string name="sl_str_fair_price">Fair Price</string>
+    <string name="sl_str_latest_price">Latest Price</string>
+    <string name="sl_str_plan_entrust_intro">When the latest price/reasonable price/index price reaches the trigger price, the warehouse receipt will be automatically issued according to the pre-set strike price and quantity.\n
+The plan delegate is valid for 7days by default, and the default trigger price is the latest price, which can be modified in the contract Settings.
+</string>
+    <string name="sl_str_login">Login</string>
+    <string name="sl_str_isee">I See</string>
+    <string name="sl_str_fair_price_intro">A reasonable price is the price of the underlying index plus a capital expense basis that decreases over time in order to avoid unnecessary liquidation due to high leverage.\n\n
+        reasonable price affects the forced liquidation, that is, when the reasonable price reaches the bursting price, the system will execute the forced liquidation operation.</string>
+    <string name="sl_str_holdings_now">Positions</string>
+    <string name="sl_str_ssl_error">SSL Certificate Verification Failed</string>
+    <string name="sl_str_continue">Continue</string>
+    <string name="sl_str_tips">tips</string>
+    <string name="sl_str_cancel_order_tips">Are you sure to cancel order?</string>
+    <string name="sl_str_save_failed">Save Failed</string>
+    <string name="sl_str_save_succeed">Save Succeed</string>
 </resources>

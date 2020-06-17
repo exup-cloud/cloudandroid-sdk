@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/sl_colorDefaultDark">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <android.support.design.widget.CollapsingToolbarLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapse_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
-            <android.support.v7.widget.Toolbar
+            <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="88dp"
@@ -28,7 +28,7 @@
                 android:minHeight="40dp"
                 app:layout_collapseMode="pin" >
 
-            </android.support.v7.widget.Toolbar>
+            </androidx.appcompat.widget.Toolbar>
 
             <RelativeLayout
                 android:id="@+id/header_panel"
@@ -224,31 +224,31 @@
                         android:layout_weight="5"
                         android:orientation="horizontal">
 
-                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                        <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                             android:id="@+id/ktab_time"
                             style="@style/KTabRbStyle"
                             android:text="@string/sl_str_time"
                             android:textSize="13sp" />
 
-                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                        <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                             android:id="@+id/ktab_5min"
                             style="@style/KTabRbStyle"
                             android:text="@string/sl_str_5min"
                             android:textSize="13sp" />
 
-                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                        <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                             android:id="@+id/ktab_15min"
                             style="@style/KTabRbStyle"
                             android:text="@string/sl_str_15min"
                             android:textSize="13sp" />
 
-                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                        <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                             android:id="@+id/ktab_60min"
                             style="@style/KTabRbStyle"
                             android:text="@string/sl_str_60min"
                             android:textSize="13sp" />
 
-                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                        <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                             android:id="@+id/ktab_1day"
                             style="@style/KTabRbStyle"
                             android:text="@string/sl_str_1day"
@@ -353,31 +353,31 @@
                         android:layout_weight="5"
                         android:orientation="horizontal">
 
-                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                        <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                             android:id="@+id/ktab_time_full_screen"
                             style="@style/KTabRbStyle"
                             android:text="@string/sl_str_time"
                             android:textSize="14sp" />
 
-                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                        <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                             android:id="@+id/ktab_5min_full_screen"
                             style="@style/KTabRbStyle"
                             android:text="@string/sl_str_5min"
                             android:textSize="14sp" />
 
-                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                        <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                             android:id="@+id/ktab_15min_full_screen"
                             style="@style/KTabRbStyle"
                             android:text="@string/sl_str_15min"
                             android:textSize="14sp" />
 
-                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                        <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                             android:id="@+id/ktab_60min_full_screen"
                             style="@style/KTabRbStyle"
                             android:text="@string/sl_str_60min"
                             android:textSize="14sp" />
 
-                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                        <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                             android:id="@+id/ktab_1day_full_screen"
                             style="@style/KTabRbStyle"
                             android:text="@string/sl_str_1day"
@@ -415,7 +415,7 @@
                     android:background="@color/sl_colorDefault"
                     android:visibility="gone">
 
-                    <com.bmtc.sdk.library.common.SmartScrollView
+                    <com.bmtc.sdk.contract.view.scrollview.SmartScrollView
                         android:id="@+id/sv_index"
                         android:layout_width="65dp"
                         android:layout_height="match_parent"
@@ -444,7 +444,7 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
 
-                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                                     android:id="@+id/mtab_ma"
                                     android:layout_height="25dp"
                                     android:layout_width="wrap_content"
@@ -456,7 +456,7 @@
                                     android:textColor="@drawable/sl_usertab_text_selector"
                                     android:textSize="12sp" />
 
-                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                                     android:id="@+id/mtab_ema"
                                     android:layout_height="25dp"
                                     android:layout_width="wrap_content"
@@ -467,7 +467,7 @@
                                     android:textColor="@drawable/sl_usertab_text_selector"
                                     android:textSize="12sp" />
 
-                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                                     android:id="@+id/mtab_boll"
                                     android:layout_height="25dp"
                                     android:layout_width="wrap_content"
@@ -478,7 +478,7 @@
                                     android:textColor="@drawable/sl_usertab_text_selector"
                                     android:textSize="12sp" />
 
-                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                                     android:id="@+id/mtab_sar"
                                     android:layout_height="25dp"
                                     android:layout_width="wrap_content"
@@ -504,7 +504,7 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
 
-                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                                     android:id="@+id/mtab_vol"
                                     android:layout_height="25dp"
                                     android:layout_width="wrap_content"
@@ -516,7 +516,7 @@
                                     android:textColor="@drawable/sl_usertab_text_selector"
                                     android:textSize="12sp" />
 
-                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                                     android:id="@+id/mtab_macd"
                                     android:layout_height="25dp"
                                     android:layout_width="wrap_content"
@@ -527,7 +527,7 @@
                                     android:textColor="@drawable/sl_usertab_text_selector"
                                     android:textSize="12sp" />
 
-                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                                     android:id="@+id/mtab_kdj"
                                     android:layout_height="25dp"
                                     android:layout_width="wrap_content"
@@ -538,7 +538,7 @@
                                     android:textColor="@drawable/sl_usertab_text_selector"
                                     android:textSize="12sp" />
 
-                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                                     android:id="@+id/mtab_rsi"
                                     android:layout_height="25dp"
                                     android:layout_width="wrap_content"
@@ -549,7 +549,7 @@
                                     android:textColor="@drawable/sl_usertab_text_selector"
                                     android:textSize="12sp" />
 
-                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                                     android:id="@+id/mtab_mtm"
                                     android:layout_height="25dp"
                                     android:layout_width="wrap_content"
@@ -560,7 +560,7 @@
                                     android:textColor="@drawable/sl_usertab_text_selector"
                                     android:textSize="12sp" />
 
-                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                                     android:id="@+id/mtab_wr"
                                     android:layout_height="25dp"
                                     android:layout_width="wrap_content"
@@ -571,7 +571,7 @@
                                     android:textColor="@drawable/sl_usertab_text_selector"
                                     android:textSize="12sp" />
 
-                                <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                                <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                                     android:id="@+id/mtab_cci"
                                     android:layout_height="25dp"
                                     android:layout_width="wrap_content"
@@ -583,12 +583,12 @@
                                     android:textSize="12sp" />
                             </RadioGroup>
                         </LinearLayout>
-                    </com.bmtc.sdk.library.common.SmartScrollView>
+                    </com.bmtc.sdk.contract.view.scrollview.SmartScrollView>
                 </RelativeLayout>
 
             </RelativeLayout>
 
-            <android.support.design.widget.TabLayout
+            <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -804,11 +804,11 @@
                 </LinearLayout>
             </RelativeLayout>
 
-        </android.support.design.widget.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -877,5 +877,5 @@
                 android:text="@string/sl_str_optional"/>
         </RelativeLayout>
     </LinearLayout>
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 

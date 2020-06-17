@@ -8,9 +8,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bmtc.sdk.contract.base.BaseActivity;
 import com.bmtc.sdk.contract.view.ProgressWebView;
-import com.bmtc.sdk.library.base.BaseActivity;
-import com.bmtc.sdk.library.utils.LogUtil;
+import com.contract.sdk.utils.SDKLogUtil;
 
 
 /**
@@ -98,7 +98,7 @@ public class HtmlActivity extends BaseActivity {
             titleTv.setText("");
         }
         //接收一个url用于加载网页
-        LogUtil.d("DEBUG",url);
+        SDKLogUtil.INSTANCE.d("DEBUG",url);
         progressWebView.loadUrl(url, method, body);
     }
 

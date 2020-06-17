@@ -19,7 +19,7 @@
             android:layout_marginLeft="10dp"
             android:orientation="horizontal">
 
-            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+            <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                 android:id="@+id/tab_normal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -33,7 +33,7 @@
                 android:textColor="@drawable/sl_maintab_text_selector"
                 android:textSize="14sp" />
 
-            <com.bmtc.sdk.library.common.material.MaterialRadioButton
+            <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                 android:id="@+id/tab_plan"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
@@ -62,7 +62,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"></RelativeLayout>
-        <com.bmtc.sdk.library.common.scrollview.ObservableRecyclerView
+        <com.bmtc.sdk.contract.view.scrollview.ObservableRecyclerView
             android:id="@+id/rv_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"></RelativeLayout>
-        <com.bmtc.sdk.library.common.scrollview.ObservableRecyclerView
+        <com.bmtc.sdk.contract.view.scrollview.ObservableRecyclerView
             android:id="@+id/rv_plan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

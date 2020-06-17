@@ -1,7 +1,7 @@
 package com.bmtc.sdk.contract.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +11,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.common.dialog.PromptWindow;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractOrder;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
+import com.bmtc.sdk.contract.dialog.PromptWindow;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractOrder;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -105,7 +105,7 @@ public class ContractPlanHistoryAdapter extends RecyclerView.Adapter<RecyclerVie
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final ContractEntrustHistoryHolder itemViewHolder = (ContractEntrustHistoryHolder) holder;
 
-        Contract contract = LogicGlobal.getContract(mNews.get(position).getInstrument_id());
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mNews.get(position).getInstrument_id());
         if (contract == null) {
             return;
         }
@@ -247,7 +247,7 @@ public class ContractPlanHistoryAdapter extends RecyclerView.Adapter<RecyclerVie
 
     private void queryDetail(final View view, final ContractOrder order) {
 
-        Contract contract = LogicGlobal.getContract(order.getInstrument_id());
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(order.getInstrument_id());
         if (contract == null) {
             return;
         }

@@ -7,8 +7,6 @@
     <string name="sl_str_name">名称</string>
     <string name="sl_str_main">主区</string>
     <string name="sl_str_new">创新区</string>
-    <string name="sl_str_fair_price">合理价格</string>
-    <string name="sl_str_index_price">指数价格</string>
     <string name="sl_str_funds_rate">资金费率</string>
     <string name="sl_str_24h_vol">24h量</string>
     <string name="sl_str_time">分时</string>
@@ -31,7 +29,6 @@
     <string name="sl_str_buy_open_long">买入开多(看多)</string>
     <string name="sl_str_sell_open_short">卖出开空(看空)</string>
     <string name="sl_str_optional">自选</string>
-    <string name="sl_str_loading">数据加载中</string>
     <string name="sl_str_order_book">委托</string>
     <string name="sl_str_trade_history">成交</string>
     <string name="sl_str_depth_chart">深度</string>
@@ -98,7 +95,6 @@
     <string name="sl_str_execution_volume">执行数量</string>
     <string name="sl_str_execution">执行策略</string>
     <string name="sl_str_deadline">到期时间</string>
-    <string name="sl_str_some_orders_cancel_failed">部分订单取消失败，请手动取消</string>
     <string name="sl_str_index_price_simple">指数价</string>
     <string name="sl_str_tag_price_simple">标记价</string>
     <string name="sl_str_fair_price_simple">合理价</string>
@@ -107,10 +103,6 @@
     <string name="sl_str_open_plan">当前计划</string>
     <string name="sl_str_order_history">历史委托</string>
     <string name="sl_str_plan_history">历史计划</string>
-    <string name="sl_str_none">暂无</string>
-    <string name="sl_str_no_order">暂无委托</string>
-    <string name="sl_str_cancel_all_orders">一键取消全部委托单</string>
-    <string name="sl_str_cancel_all_orders_single">一键取消全部%1$s委托单</string>
     <string name="sl_str_order_complete">订单完成</string>
     <string name="sl_str_order_canceled">订单被取消</string>
     <string name="sl_str_user_canceled">用户取消</string>
@@ -188,7 +180,6 @@
     <string name="sl_str_commission_rate">佣金费</string>
     <string name="sl_str_record">交易记录</string>
     <string name="sl_str_holdings_history">历史持仓</string>
-    <string name="sl_str_holdings_now">当前持仓</string>
     <string name="sl_str_display_unit">仓位展示单位</string>
     <string name="sl_str_pnl_calculator">未实现盈亏计算</string>
     <string name="sl_strategy_effective_time">有效时间</string>
@@ -199,8 +190,6 @@
     <string name="sl_str_caution">注意</string>
     <string name="sl_str_plan_setting_caution">修改后的计划委托仅对以后提交的计划委托生效，不会影响之前的计划委托</string>
     <string name="sl_str_copy_succeed">拷贝成功</string>
-    <string name="sl_str_save_failed">保存失败</string>
-    <string name="sl_str_save_succeed">保存成功</string>
     <string name="sl_str_calculate_type">计算类型</string>
     <string name="sl_str_calculate">计算</string>
     <string name="sl_str_leverage">杠杆倍数</string>
@@ -345,4 +334,52 @@
     <string name="sl_str_transferim_position2contract">减少保证金</string>
     <string name="sl_str_transferim_contract2position">增加保证金</string>
     <string name="sl_str_position_fee">资金费率</string>
+    <string name="sl_str_no_network">网络连接异常</string>
+    <string name="sl_str_contracts_unit">张</string>
+    <string name="sl_str_mals">位小数</string>
+    <string name="sl_str_normal_order">普通委托</string>
+    <string name="sl_str_plan_entrust">计划委托</string>
+    <string name="sl_str_default">默认</string>
+    <string name="sl_str_input_fund_pwd">请输入资金密码</string>
+    <string name="sl_str_pwd_effect_time">密码有效时间</string>
+    <string name="sl_str_set_funds_password">设置资金密码</string>
+    <string name="sl_str_modify_funds_password">修改资金密码</string>
+    <string name="sl_str_set_fund_pwd_tips">设置资金密码，交易、提现更安全</string>
+    <string name="sl_str_password_verify">输入登录密码验证</string>
+    <string name="sl_str_repeat_password">再次输入密码</string>
+    <string name="sl_str_two_input_is_inconsistent">两次输入不一致</string>
+    <string name="sl_str_confirm">确认</string>
+    <string name="sl_str_secure_keyboard">安全键盘</string>
+    <string name="sl_str_loading">数据加载中</string>
+    <string name="sl_str_cancel">取消</string>
+    <string name="sl_str_trigger_failed">触发失败</string>
+    <string name="sl_str_cancel_all_orders">一键取消全部委托单</string>
+    <string name="sl_str_cancel_all_orders_single">一键取消全部%1$s委托单</string>
+    <string name="sl_str_some_orders_cancel_failed">部分订单取消失败，请手动取消</string>
+    <string name="sl_str_none">暂无</string>
+    <string name="sl_str_no_order">暂无委托</string>sl_
+    <string name="sl_str_price_too_low">价格太低</string>
+    <string name="sl_str_volume_too_low">数量太低</string>
+    <string name="sl_str_no_contract_account">请先划转%1$s到合约账户</string>
+    <string name="sl_str_open_risk_tips">开价格偏离最新成交价过大，请注意风险</string>
+    <string name="sl_str_close_risk_tips">平仓价格偏离最新成交价过大，请注意风险</string>
+    <string name="sl_str_open_market_risk_tips">预计开仓均价偏离最新成交价过大，请注意风险</string>
+    <string name="sl_str_close_market_risk_tips">预计平仓均价偏离最新成交价过大，请注意风险</string>
+    <string name="sl_str_index_price">指数价格</string>
+    <string name="sl_str_tag_price">标记价格</string>
+    <string name="sl_str_fair_price">合理价格</string>
+    <string name="sl_str_latest_price">最新价格</string>
+    <string name="sl_str_plan_entrust_intro">当市场最新价/合理价格/指数价格达到触发价时，按预先设置的执行价格和数量自动下开仓单。\n
+计划委托默认有效期为7天,默认触发价为最新价，可到合约设置中修改。</string>
+    <string name="sl_str_login">登录</string>
+    <string name="sl_str_isee">我知道了</string>
+    <string name="sl_str_fair_price_intro">合理价格等于标的指数价格加上随时间递减的资金费用基差，主要是为了避免高杠杆发生不必要平仓。 \n\n
+        合理价格影响强平，即当合理价格达到爆仓价格时系统将执行强制平仓操作。</string>
+    <string name="sl_str_holdings_now">当前持仓</string>
+    <string name="sl_str_ssl_error">ssl证书验证失败</string>
+    <string name="sl_str_continue">继续</string>
+    <string name="sl_str_tips">提示</string>
+    <string name="sl_str_cancel_order_tips">您确认取消这条订单么？</string>
+    <string name="sl_str_save_failed">保存失败</string>
+    <string name="sl_str_save_succeed">保存成功</string>
 </resources>

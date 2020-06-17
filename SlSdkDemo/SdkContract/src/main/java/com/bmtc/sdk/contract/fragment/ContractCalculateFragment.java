@@ -18,15 +18,15 @@ import android.widget.TextView;
 
 
 import com.bmtc.sdk.contract.R;
+import com.bmtc.sdk.contract.base.BaseFragment;
+import com.bmtc.sdk.contract.utils.ToastUtil;
 import com.bmtc.sdk.contract.view.pickwindow.PickPopupWindow;
-import com.bmtc.sdk.library.base.BaseFragment;
-import com.bmtc.sdk.library.contract.ContractCalculate;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractOrder;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
-import com.bmtc.sdk.library.utils.ToastUtil;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractOrder;
+import com.contract.sdk.extra.Contract.ContractCalculate;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -254,7 +254,7 @@ public class ContractCalculateFragment extends BaseFragment {
         if (m_RootView == null) {
             return;
         }
-        Contract contract = LogicGlobal.getContract(mContractId);
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract == null) {
             return;
         }
@@ -373,7 +373,7 @@ public class ContractCalculateFragment extends BaseFragment {
         String price = etPrice.getText().toString();
         price = price.replace(",", ".");
 
-        Contract contract = LogicGlobal.getContract(mContractId);
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract == null) {
             return;
         }
@@ -407,7 +407,7 @@ public class ContractCalculateFragment extends BaseFragment {
         String vol = etVolum.getText().toString();
         vol = vol.replace(",", ".");
 
-        Contract contract = LogicGlobal.getContract(mContractId);
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract == null) {
             return;
         }
@@ -437,7 +437,7 @@ public class ContractCalculateFragment extends BaseFragment {
         String vol = etValue.getText().toString();
         vol = vol.replace(",", ".");
 
-        Contract contract = LogicGlobal.getContract(mContractId);
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract == null) {
             return;
         }
@@ -468,7 +468,7 @@ public class ContractCalculateFragment extends BaseFragment {
         String vol = etValue.getText().toString();
         vol = vol.replace(",", ".");
 
-        Contract contract = LogicGlobal.getContract(mContractId);
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract == null) {
             return;
         }
@@ -543,7 +543,7 @@ public class ContractCalculateFragment extends BaseFragment {
 
     private void doLeverage() {
 
-        Contract contract = LogicGlobal.getContract(mContractId);
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract == null) {
             return;
         }
@@ -579,12 +579,7 @@ public class ContractCalculateFragment extends BaseFragment {
     }
 
     private void doCalculate() {
-        Contract contractBasic = LogicGlobal.getContractBasic(mContractId);
-        if (contractBasic == null) {
-            return;
-        }
-
-        Contract contract = LogicGlobal.getContract(mContractId);
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract == null) {
             return;
         }
@@ -596,16 +591,16 @@ public class ContractCalculateFragment extends BaseFragment {
             String openPrice = mOpenPriceEt.getText().toString();
             String closePrice = mClosePriceEt.getText().toString();
             if (TextUtils.isEmpty(vol) || TextUtils.isEmpty(openPrice) || TextUtils.isEmpty(closePrice)) {
-                ToastUtil.shortToast(LogicGlobal.sContext, getString(R.string.sl_str_miss_param));
+                ToastUtil.shortToast(getContext(), getString(R.string.sl_str_miss_param));
                 return;
             }
 
-            double value = ContractCalculate.CalculateContractValue(
+            double value = ContractCalculate.INSTANCE.CalculateContractValue(
                     vol,
                     openPrice,
                     contract);
 
-            double margin = ContractCalculate.CalculateIM(dfNormal.format(value), mLeverage, contractBasic);
+            double margin = ContractCalculate.INSTANCE.CalculateIM(dfNormal.format(value), mLeverage, contract);
 
             ContractOrder contractOrder = new ContractOrder();
             contractOrder.setLeverage(mLeverage);
@@ -649,11 +644,11 @@ public class ContractCalculateFragment extends BaseFragment {
             String vol = mPositionEt.getText().toString();
             String openPrice = mOpenPriceEt.getText().toString();
             if (TextUtils.isEmpty(vol) || TextUtils.isEmpty(openPrice)) {
-                ToastUtil.shortToast(LogicGlobal.sContext, getString(R.string.sl_str_miss_param));
+                ToastUtil.shortToast(getContext(), getString(R.string.sl_str_miss_param));
                 return;
             }
 
-            double value = ContractCalculate.CalculateContractValue(
+            double value = ContractCalculate.INSTANCE.CalculateContractValue(
                     vol,
                     openPrice,
                     contract);
@@ -671,9 +666,9 @@ public class ContractCalculateFragment extends BaseFragment {
                 contractOrder.setSide(ContractOrder.CONTRACT_ORDER_WAY_SELL_OPEN_SHORT);
             }
 
-            double liquidationPrice = ContractCalculate.CalculateOrderLiquidatePrice(contractOrder, null, contractBasic);
-            double IMR = ContractCalculate.CalculateIMR(dfNormal.format(value), contractBasic);
-            double MMR = ContractCalculate.CalculateMMR(dfNormal.format(value), contractBasic);
+            double liquidationPrice = ContractCalculate.INSTANCE.CalculateOrderLiquidatePrice(contractOrder, null, contract);
+            double IMR = ContractCalculate.INSTANCE.CalculateIMR(dfNormal.format(value), contract);
+            double MMR = ContractCalculate.INSTANCE.CalculateMMR(dfNormal.format(value), contract);
 
             mLiquidationPriceTv.setText(dfNormal.format(MathHelper.round(liquidationPrice, contract.getPrice_index())) + contract.getQuote_coin());
             mPositionValueTv.setText(dfNormal.format(MathHelper.round(value, contract.getValue_index())) + contract.getMargin_coin());
@@ -685,16 +680,16 @@ public class ContractCalculateFragment extends BaseFragment {
                 String openPrice = mOpenPriceEt.getText().toString();
                 String profitValue = mProfitValueEt.getText().toString();
                 if (TextUtils.isEmpty(vol) || TextUtils.isEmpty(openPrice) || TextUtils.isEmpty(profitValue)) {
-                    ToastUtil.shortToast(LogicGlobal.sContext, getString(R.string.sl_str_miss_param));
+                    ToastUtil.shortToast(getContext(), getString(R.string.sl_str_miss_param));
                     return;
                 }
 
-                double value = ContractCalculate.CalculateContractValue(
+                double value = ContractCalculate.INSTANCE.CalculateContractValue(
                         vol,
                         openPrice,
                         contract);
 
-                double margin = ContractCalculate.CalculateIM(dfNormal.format(value), mLeverage, contractBasic);
+                double margin = ContractCalculate.INSTANCE.CalculateIM(dfNormal.format(value), mLeverage, contract);
 
                 ContractOrder contractOrder = new ContractOrder();
                 contractOrder.setInstrument_id(mContractId);
@@ -709,7 +704,7 @@ public class ContractCalculateFragment extends BaseFragment {
                     contractOrder.setSide(ContractOrder.CONTRACT_ORDER_WAY_SELL_OPEN_SHORT);
                 }
 
-                double targetPrice = ContractCalculate.CalculateOrderTargetPriceValue(contractOrder, profitValue, mProfitType, contractBasic);
+                double targetPrice = ContractCalculate.INSTANCE.CalculateOrderTargetPriceValue(contractOrder, profitValue, mProfitType, contract);
 
                 mMarginTv.setText(dfNormal.format(margin) + contract.getMargin_coin());
                 mTargetClosePriceTv.setText(dfNormal.format(MathHelper.round(targetPrice, contract.getPrice_index())) + contract.getQuote_coin());
@@ -719,16 +714,16 @@ public class ContractCalculateFragment extends BaseFragment {
                 String openPrice = mOpenPriceEt.getText().toString();
                 String profitRate = mProfitRateEt.getText().toString();
                 if (TextUtils.isEmpty(vol) || TextUtils.isEmpty(openPrice) || TextUtils.isEmpty(profitRate)) {
-                    ToastUtil.shortToast(LogicGlobal.sContext, getString(R.string.sl_str_miss_param));
+                    ToastUtil.shortToast(getContext(), getString(R.string.sl_str_miss_param));
                     return;
                 }
 
-                double value = ContractCalculate.CalculateContractValue(
+                double value = ContractCalculate.INSTANCE.CalculateContractValue(
                         vol,
                         openPrice,
                         contract);
 
-                double margin = ContractCalculate.CalculateIM(dfNormal.format(value), mLeverage, contractBasic);
+                double margin = ContractCalculate.INSTANCE.CalculateIM(dfNormal.format(value), mLeverage, contract);
 
                 ContractOrder contractOrder = new ContractOrder();
                 contractOrder.setInstrument_id(mContractId);
@@ -744,7 +739,7 @@ public class ContractCalculateFragment extends BaseFragment {
                     contractOrder.setSide(ContractOrder.CONTRACT_ORDER_WAY_SELL_OPEN_SHORT);
                 }
 
-                double targetPrice = ContractCalculate.CalculateOrderTargetPriceValue(contractOrder, profitRate, mProfitType, contractBasic);
+                double targetPrice = ContractCalculate.INSTANCE.CalculateOrderTargetPriceValue(contractOrder, profitRate, mProfitType, contract);
 
                 mMarginTv.setText(dfNormal.format(margin) + contract.getMargin_coin());
                 mTargetClosePriceTv.setText(dfNormal.format(MathHelper.round(targetPrice, contract.getPrice_index())) + contract.getQuote_coin());

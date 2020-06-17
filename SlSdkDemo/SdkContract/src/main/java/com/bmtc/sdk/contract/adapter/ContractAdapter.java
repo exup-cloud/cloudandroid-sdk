@@ -5,7 +5,8 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +14,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bmtc.sdk.contract.ContractTickerOneActivity;
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractTicker;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.ContractSDKAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractTicker;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -100,13 +101,13 @@ public class ContractAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final SpotViewHolder itemViewHolder = (SpotViewHolder) holder;
 
-        Contract contract = LogicGlobal.getContract(mNews.get(position).getInstrument_id());
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mNews.get(position).getInstrument_id());
         if (contract == null) {
             return;
         }
 
         if (mContext == null) {
-            mContext = LogicGlobal.sContext;
+            mContext = ContractSDKAgent.INSTANCE.getContext();
         }
 
         if (mPos == position) {
@@ -136,7 +137,7 @@ public class ContractAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 //        Collect collect = LogicCollects.getInstance().get(mNews.get(position).getName());
 //        itemViewHolder.ivCollect.setVisibility(collect == null ? View.GONE : View.VISIBLE);
 
-        String name = mNews.get(position).getName();
+        String name = mNews.get(position).getSymbol();
         if (name.contains(" [")) {
             name = name.substring(0, name.indexOf(" ["));
         }
@@ -154,16 +155,16 @@ public class ContractAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 //        double backUsd = MathHelper.round(LogicGlobal.sGlobalData.getCoin_price_usd(contract.getQuote_coin()), 6);
 //        double backCny = backUsd * LogicGlobal.sUsdRateCNY;
 
-//        double current_usd = MathHelper.round(mNews.get(position).getLast_px(), contract.getPrice_index());
-//        double current_cny = MathHelper.round(MathHelper.mul(current_usd, backCny), 2);
+        double current_usd = MathHelper.round(mNews.get(position).getLast_px(), contract.getPrice_index());
+        //double current_cny = MathHelper.round(MathHelper.mul(current_usd, backCny), 2);
 
-//        String sUsd = (TextUtils.equals(contract.getQuote_coin(), "USDT") ? "$" : "") + dfPrice.format(current_usd);
+        String sUsd = (TextUtils.equals(contract.getQuote_coin(), "USDT") ? "$" : "") + dfPrice.format(current_usd);
 //        String sCNY = "￥"+ dfRate.format(current_cny);
 
-      //  itemViewHolder.tvContractCurrent.setText(sUsd);
+        itemViewHolder.tvContractCurrent.setText(sUsd);
         itemViewHolder.tvContractCurrent.setTextColor((chg >= 0) ? mContext.getResources().getColor(R.color.sl_colorGreen): mContext.getResources().getColor(R.color.sl_colorRed));
-       // itemViewHolder.tvContractCurrentUsd.setText(sCNY);
-
+        //itemViewHolder.tvContractCurrentUsd.setText(sCNY);
+        itemViewHolder.tvContractCurrentUsd.setText("0.00");
 
         itemViewHolder.tvContractChg.setBackgroundResource((chg >= 0) ? R.drawable.sl_bg_corner_green : R.drawable.sl_bg_corner_red);
         itemViewHolder.tvContractChg.setText((chg >= 0) ? ("+" + dfRate.format(chg) + "%") : (dfRate.format(chg) + "%"));

@@ -11,6 +11,17 @@
         android:gravity="center"
         android:orientation="vertical">
 
+
+        <TextView
+            android:text="未登录"
+            android:layout_marginBottom="40dp"
+            android:id="@+id/tv_login_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/sl_grayText" />
+
+
         <TextView
             android:id="@+id/tv_usdt_contract"
             android:layout_width="wrap_content"
@@ -47,14 +58,14 @@
             android:text="合约账户"
             android:textColor="@color/sl_whiteText" />
 
-        <TextView
-            android:id="@+id/tv_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:text="登录"
-            android:textColor="@color/sl_whiteText" />
+<!--        <TextView-->
+<!--            android:id="@+id/tv_login"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="5dp"-->
+<!--            android:padding="10dp"-->
+<!--            android:text="登录"-->
+<!--            android:textColor="@color/sl_whiteText" />-->
 
         <TextView
             android:id="@+id/tv_share"
@@ -72,6 +83,17 @@
             android:layout_margin="5dp"
             android:padding="10dp"
             android:text="分享2"
+            android:textColor="@color/sl_whiteText" />
+
+
+
+        <TextView
+            android:id="@+id/tv_simulation_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:text="模拟登录逻辑"
             android:textColor="@color/sl_whiteText" />
     </LinearLayout>
 

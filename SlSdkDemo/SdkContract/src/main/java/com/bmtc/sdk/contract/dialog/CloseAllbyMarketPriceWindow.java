@@ -9,29 +9,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.common.pswkeyboard.OnPasswordInputFinish;
-import com.bmtc.sdk.library.common.pswkeyboard.widget.PopEnterPassword;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.contract.ContractCalculate;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractOrder;
-import com.bmtc.sdk.library.trans.data.ContractOrders;
-import com.bmtc.sdk.library.trans.data.ContractPosition;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.ToastUtil;
-import com.bmtc.sdk.library.utils.UtilSystem;
+import com.bmtc.sdk.contract.utils.ContractUtils;
+import com.bmtc.sdk.contract.utils.ToastUtil;
+import com.bmtc.sdk.contract.utils.UtilSystem;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.ContractUserDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractOrder;
+import com.contract.sdk.data.ContractOrders;
+import com.contract.sdk.data.ContractPosition;
+import com.contract.sdk.extra.Contract.ContractCalculate;
+import com.contract.sdk.impl.IResponse;
+import com.contract.sdk.utils.MathHelper;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +68,7 @@ public class CloseAllbyMarketPriceWindow extends PopupWindow implements View.OnC
         }
 
         mContractPosition = position;
-        final Contract contract = LogicGlobal.getContract(mContractPosition.getInstrument_id());
+        final Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractPosition.getInstrument_id());
         if (contract == null) {
             return;
         }
@@ -105,7 +105,7 @@ public class CloseAllbyMarketPriceWindow extends PopupWindow implements View.OnC
 
         double price = MathHelper.div(amount, vol);
 
-        tvVolume.setText(ContractCalculate.getVolUnit(contract, vol, price));
+        tvVolume.setText(ContractUtils.INSTANCE.getVolUnit(context,contract, vol, price));
     }
 
     public CloseAllbyMarketPriceWindow(Context context) {
@@ -237,37 +237,12 @@ public class CloseAllbyMarketPriceWindow extends PopupWindow implements View.OnC
         btnCancelOrders.setEnabled(false);
         btnCloseAll.setVisibility(View.GONE);
 
-        IResponse<List<Long>> response = new IResponse<List<Long>>() {
+
+        ContractUserDataAgent.INSTANCE.doCancelOrders(orders, new IResponse<List<Long>>() {
             @Override
-            public void onResponse(String errno, String message, List<Long> data) {
-                if (TextUtils.equals(errno, BTConstants.ERRNO_PERMISSION_DENIED)) {
-                    mCancelTipsRl.setVisibility(View.VISIBLE);
-                    mCancellingRl.setVisibility(View.GONE);
-                    mCancelledRl.setVisibility(View.GONE);
-                    btnCancelOrders.setVisibility(View.VISIBLE);
-                    btnCancelOrders.setEnabled(true);
-                    btnCloseAll.setVisibility(View.GONE);
-
-                    final PopEnterPassword popEnterPassword = new PopEnterPassword(context);
-                    popEnterPassword.showAtLocation(btnCancelOrders, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
-                    popEnterPassword.setOnFinishInput(new OnPasswordInputFinish() {
-                        @Override
-                        public void inputFinish(String password) {
-                            doCancelAll(UtilSystem.toMD5(password));
-                            popEnterPassword.dismiss();
-                        }
-                    });
-                    return;
-                }
-
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    ToastUtil.shortToast(LogicGlobal.sContext, message);
-                    dismiss();
-                    return;
-                }
-
+            public void onSuccess(@NotNull List<Long> data) {
                 if (data != null && data.size() > 0) {
-                    ToastUtil.shortToast(LogicGlobal.sContext, LogicGlobal.sContext.getString(R.string.sl_str_some_orders_cancel_failed));
+                    ToastUtil.shortToast(context, context.getString(R.string.sl_str_some_orders_cancel_failed));
                     dismiss();
                 } else {
 
@@ -279,19 +254,13 @@ public class CloseAllbyMarketPriceWindow extends PopupWindow implements View.OnC
                     btnCloseAll.setVisibility(View.VISIBLE);
                 }
 
-                BTContract.getInstance().userPositions(mContractPosition.getInstrument_id(), 1, 0, 0, new IResponse<List<ContractPosition>>() {
-                    @Override
-                    public void onResponse(String errno, String message, List<ContractPosition> data) {
-
-                    }
-                });
             }
-        };
 
-        if (TextUtils.isEmpty(pwd)) {
-            BTContract.getInstance().cancelOrders(orders, response);
-        } else {
-            BTContract.getInstance().cancelOrders(orders, pwd, response);
-        }
+            @Override
+            public void onFail(@NotNull String code, @NotNull String msg) {
+                ToastUtil.shortToast(context, msg);
+                dismiss();
+            }
+        });
     }
 }

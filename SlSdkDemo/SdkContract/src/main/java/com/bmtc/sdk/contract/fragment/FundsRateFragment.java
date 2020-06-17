@@ -1,10 +1,10 @@
 package com.bmtc.sdk.contract.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +13,14 @@ import android.view.ViewGroup;
 
 import com.bmtc.sdk.contract.R;
 import com.bmtc.sdk.contract.adapter.FundsRateAdapter;
-import com.bmtc.sdk.library.base.BaseFragment;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.ContractFundingRate;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.ToastUtil;
+import com.bmtc.sdk.contract.base.BaseFragment;
+import com.bmtc.sdk.contract.utils.ToastUtil;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.ContractFundingRate;
+import com.contract.sdk.data.ContractOrder;
+import com.contract.sdk.impl.IResponse;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,14 +83,9 @@ public class FundsRateFragment extends BaseFragment {
             return;
         }
 
-        BTContract.getInstance().fundingrate(mContractId, new IResponse<List<ContractFundingRate>>() {
+        ContractPublicDataAgent.INSTANCE.loadFundingRate(mContractId, new IResponse<List<ContractFundingRate>>() {
             @Override
-            public void onResponse(String errno, String message, List<ContractFundingRate> data) {
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    ToastUtil.shortToast(LogicGlobal.sContext, message);
-                    return;
-                }
-
+            public void onSuccess(@NotNull List<ContractFundingRate> data) {
                 if (data != null) {
                     mTradeList.clear();
                     mTradeList.addAll(data);
@@ -102,6 +98,12 @@ public class FundsRateFragment extends BaseFragment {
                     mFundsRateAdapter.notifyDataSetChanged();
                 }
             }
+
+            @Override
+            public void onFail(@NotNull String code, @NotNull String msg) {
+                ToastUtil.shortToast(getContext(), msg);
+            }
         });
+
     }
 }

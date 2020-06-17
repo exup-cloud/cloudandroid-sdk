@@ -1,7 +1,7 @@
 package com.bmtc.sdk.contract.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +9,12 @@ import android.widget.TextView;
 
 
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractPosition;
-import com.bmtc.sdk.library.trans.data.ContractTicker;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractPosition;
+import com.contract.sdk.data.ContractTicker;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -92,7 +92,7 @@ public class HoldContractHistoryAdapter extends RecyclerView.Adapter<RecyclerVie
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final HoldContractHistoryHolder itemViewHolder = (HoldContractHistoryHolder) holder;
 
-        final Contract contract = LogicGlobal.getContract(mNews.get(position).getInstrument_id());
+        final Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mNews.get(position).getInstrument_id());
         if (contract == null) {
             return;
         }
@@ -102,7 +102,7 @@ public class HoldContractHistoryAdapter extends RecyclerView.Adapter<RecyclerVie
         DecimalFormat dfValue = NumberUtil.getDecimal(contract.getValue_index());
         DecimalFormat dfVol = NumberUtil.getDecimal(contract.getVol_index());
 
-        ContractTicker contractTicker = LogicGlobal.getContractTicker(mNews.get(position).getInstrument_id());
+        ContractTicker contractTicker = ContractPublicDataAgent.INSTANCE.getContractTicker(mNews.get(position).getInstrument_id());
 
         int position_type = mNews.get(position).getSide();
         if (position_type == 1) { //多仓

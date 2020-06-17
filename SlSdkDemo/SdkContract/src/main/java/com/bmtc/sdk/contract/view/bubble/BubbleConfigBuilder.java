@@ -1,7 +1,7 @@
 package com.bmtc.sdk.contract.view.bubble;
 
-import android.support.annotation.ColorInt;
-import android.support.annotation.IntRange;
+import androidx.annotation.ColorInt;
+import androidx.annotation.IntRange;
 
 import static com.bmtc.sdk.contract.view.bubble.BubbleUtils.dp2px;
 import static com.bmtc.sdk.contract.view.bubble.BubbleUtils.sp2px;

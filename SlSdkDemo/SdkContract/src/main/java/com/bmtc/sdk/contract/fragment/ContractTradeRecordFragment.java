@@ -2,10 +2,10 @@ package com.bmtc.sdk.contract.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,18 +16,15 @@ import android.widget.TextView;
 
 import com.bmtc.sdk.contract.R;
 import com.bmtc.sdk.contract.adapter.ContractTradeRecordAdapter;
-import com.bmtc.sdk.library.SLSDKAgent;
-import com.bmtc.sdk.library.base.BaseFragment;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.ContractTrade;
-import com.bmtc.sdk.library.trans.data.Order;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.uilogic.LogicLoadAnimation;
-import com.bmtc.sdk.library.uilogic.LogicOrder;
-import com.bmtc.sdk.library.uilogic.LogicUserState;
-import com.bmtc.sdk.library.utils.ToastUtil;
+import com.bmtc.sdk.contract.base.BaseFragment;
+import com.bmtc.sdk.contract.uiLogic.LogicLoadAnimation;
+import com.bmtc.sdk.contract.utils.ToastUtil;
+import com.contract.sdk.ContractSDKAgent;
+import com.contract.sdk.ContractUserDataAgent;
+import com.contract.sdk.data.ContractTrade;
+import com.contract.sdk.impl.IResponse;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +34,7 @@ import java.util.List;
  */
 
 @SuppressLint("ValidFragment")
-public class ContractTradeRecordFragment extends BaseFragment implements
-        LogicUserState.IUserStateListener,
-        LogicOrder.IOrderListener{
+public class ContractTradeRecordFragment extends BaseFragment {
 
     private View m_RootView;
     private ImageView mNoresultIv;
@@ -53,7 +48,7 @@ public class ContractTradeRecordFragment extends BaseFragment implements
     private LinearLayoutManager linearLayoutManager;
 
     private int mContractId = 1;
-    private int mLimit = 10;
+    private int mLimit = 20;
     private int mOffset = 0;
 
     private boolean mNomore = false;
@@ -76,14 +71,12 @@ public class ContractTradeRecordFragment extends BaseFragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         m_RootView = inflater.inflate(R.layout.sl_fragment_open_order, null);
 
-        LogicUserState.getInstance().registListener(this);
-        LogicOrder.getInstance().registListener(this);
 
         mNoresultIv = m_RootView.findViewById(R.id.iv_noresult);
         mNoresultTv = m_RootView.findViewById(R.id.tv_noresult);
 
         mRecyclerView = m_RootView.findViewById(R.id.rv_list);
-        linearLayoutManager = new LinearLayoutManager(LogicGlobal.sContext);
+        linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -102,7 +95,7 @@ public class ContractTradeRecordFragment extends BaseFragment implements
         });
 
         if (mContractTradeRecordAdapter == null) {
-            mContractTradeRecordAdapter = new ContractTradeRecordAdapter(LogicGlobal.sContext);
+            mContractTradeRecordAdapter = new ContractTradeRecordAdapter(getContext());
             mContractTradeRecordAdapter.setData(mOrderList);
             mRecyclerView.setAdapter(mContractTradeRecordAdapter);
         } else {
@@ -121,44 +114,20 @@ public class ContractTradeRecordFragment extends BaseFragment implements
         super.onResume();
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        LogicUserState.getInstance().unregistListener(this);
-        LogicOrder.getInstance().unregistListener(this);
-    }
 
     private void updateData() {
-        if (!SLSDKAgent.isLogin()) {
+        if (!ContractSDKAgent.INSTANCE.isLogin()) {
             if (mLoadingPage.IsLoadingShow()) {
                 mLoadingPage.ExitLoadAnimation();
             }
             return;
         }
 
-        BTContract.getInstance().userTrades(mContractId, new IResponse<List<ContractTrade>>() {
+        ContractUserDataAgent.INSTANCE.loadUserTrades(mContractId, mOffset, mLimit, new IResponse<List<ContractTrade>>() {
             @Override
-            public void onResponse(String errno, String message, List<ContractTrade> data) {
+            public void onSuccess(List<ContractTrade> data) {
                 if (mLoadingPage.IsLoadingShow()) {
                     mLoadingPage.ExitLoadAnimation();
-                }
-
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    if (TextUtils.equals(errno, BTConstants.ERRNO_NONETWORK)) {
-                        ToastUtil.shortToast(LogicGlobal.sContext, message);
-                    }
-
-                    if (mOffset == 0) {
-                        mNoresultIv.setVisibility(View.VISIBLE);
-                        mNoresultTv.setVisibility(View.VISIBLE);
-                        clearData();
-                    } else {
-                        if (!mNomore) {
-                            mNomore = true;
-                            ToastUtil.shortToast(LogicGlobal.sContext, LogicGlobal.sContext.getResources().getString(R.string.sl_str_no_more_data));
-                        }
-                    }
-                    return;
                 }
 
                 if (data != null && data.size() > 0) {
@@ -177,12 +146,12 @@ public class ContractTradeRecordFragment extends BaseFragment implements
                     }
 
                     if (mContractTradeRecordAdapter == null) {
-                        mContractTradeRecordAdapter = new ContractTradeRecordAdapter(LogicGlobal.sContext);
+                        mContractTradeRecordAdapter = new ContractTradeRecordAdapter(getContext());
                     }
 
                     mContractTradeRecordAdapter.setData(mOrderList);
                     mContractTradeRecordAdapter.notifyDataSetChanged();
-                    //mOffset += data.size();
+                    mOffset += data.size();
 
                 } else {
                     clearData();
@@ -190,7 +159,24 @@ public class ContractTradeRecordFragment extends BaseFragment implements
                     mNoresultTv.setVisibility(View.VISIBLE);
                     if (!mNomore) {
                         mNomore = true;
-                        if (mOffset != 0) { ToastUtil.shortToast(LogicGlobal.sContext, LogicGlobal.sContext.getResources().getString(R.string.sl_str_no_more_data)); }
+                        if (mOffset != 0) { ToastUtil.shortToast(getContext(), getContext().getResources().getString(R.string.sl_str_no_more_data)); }
+                    }
+                }
+            }
+            @Override
+            public void onFail(@NotNull String code, @NotNull String msg) {
+                if (mLoadingPage.IsLoadingShow()) {
+                    mLoadingPage.ExitLoadAnimation();
+                }
+                ToastUtil.shortToast(getContext(), msg);
+                if (mOffset == 0) {
+                    mNoresultIv.setVisibility(View.VISIBLE);
+                    mNoresultTv.setVisibility(View.VISIBLE);
+                    clearData();
+                } else {
+                    if (!mNomore) {
+                        mNomore = true;
+                        ToastUtil.shortToast(getContext(), getContext().getResources().getString(R.string.sl_str_no_more_data));
                     }
                 }
             }
@@ -205,31 +191,10 @@ public class ContractTradeRecordFragment extends BaseFragment implements
         mOrderList.clear();
 
         if (mContractTradeRecordAdapter == null) {
-            mContractTradeRecordAdapter = new ContractTradeRecordAdapter(LogicGlobal.sContext);
+            mContractTradeRecordAdapter = new ContractTradeRecordAdapter(getContext());
         }
 
         mContractTradeRecordAdapter.setData(mOrderList);
         mContractTradeRecordAdapter.notifyDataSetChanged();
-    }
-
-
-    @Override
-    public void onCancel(Order order) {
-        updateData();
-    }
-
-    @Override
-    public void onLogin() {
-
-    }
-
-    @Override
-    public void onLogout() {
-
-    }
-
-    @Override
-    public void onSubmit(Order order) {
-
     }
 }

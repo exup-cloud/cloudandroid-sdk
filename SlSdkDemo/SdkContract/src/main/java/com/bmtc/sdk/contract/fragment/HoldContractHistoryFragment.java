@@ -2,10 +2,10 @@ package com.bmtc.sdk.contract.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,15 +16,16 @@ import android.widget.TextView;
 
 import com.bmtc.sdk.contract.R;
 import com.bmtc.sdk.contract.adapter.HoldContractHistoryAdapter;
-import com.bmtc.sdk.library.base.BaseFragment;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.ContractPosition;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.uilogic.LogicLoadAnimation;
-import com.bmtc.sdk.library.uilogic.LogicUserState;
-import com.bmtc.sdk.library.utils.ToastUtil;
+import com.bmtc.sdk.contract.base.BaseFragment;
+import com.bmtc.sdk.contract.uiLogic.LogicLoadAnimation;
+import com.bmtc.sdk.contract.utils.ToastUtil;
+import com.contract.sdk.ContractSDKAgent;
+import com.contract.sdk.ContractUserDataAgent;
+import com.contract.sdk.data.ContractPosition;
+import com.contract.sdk.impl.ContractUserStatusListener;
+import com.contract.sdk.impl.IResponse;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +35,7 @@ import java.util.List;
  */
 
 @SuppressLint("ValidFragment")
-public class HoldContractHistoryFragment extends BaseFragment implements
-        LogicUserState.IUserStateListener{
+public class HoldContractHistoryFragment extends BaseFragment {
 
     private View m_RootView;
     private ImageView mNoresultIv;
@@ -75,13 +75,12 @@ public class HoldContractHistoryFragment extends BaseFragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         m_RootView = inflater.inflate(R.layout.sl_fragment_open_order, null);
 
-        LogicUserState.getInstance().registListener(this);
 
         mNoresultIv = m_RootView.findViewById(R.id.iv_noresult);
         mNoresultTv = m_RootView.findViewById(R.id.tv_noresult);
 
         mRecyclerView = m_RootView.findViewById(R.id.rv_list);
-        linearLayoutManager = new LinearLayoutManager(LogicGlobal.sContext);
+        linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -117,7 +116,7 @@ public class HoldContractHistoryFragment extends BaseFragment implements
         });
 
         if (mHoldContractHistoryAdapter == null) {
-            mHoldContractHistoryAdapter = new HoldContractHistoryAdapter(LogicGlobal.sContext);
+            mHoldContractHistoryAdapter = new HoldContractHistoryAdapter(getContext());
             mHoldContractHistoryAdapter.setData(mPositionList);
             mRecyclerView.setAdapter(mHoldContractHistoryAdapter);
         } else {
@@ -136,11 +135,6 @@ public class HoldContractHistoryFragment extends BaseFragment implements
         super.onResume();
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        LogicUserState.getInstance().unregistListener(this);
-    }
 
     private void updateData() {
         if (mLoading) {
@@ -148,31 +142,13 @@ public class HoldContractHistoryFragment extends BaseFragment implements
         }
 
         mLoading = true;
-        BTContract.getInstance().userPositions(mContractId, 4, mOffset, mLimit, new IResponse<List<ContractPosition>>() {
-            @Override
-            public void onResponse(String errno, String message, List<ContractPosition> data) {
-                mLoading = false;
 
+        ContractUserDataAgent.INSTANCE.loadContractPosition(mContractId, 4, mOffset, mLimit, new IResponse<List<ContractPosition>>() {
+            @Override
+            public void onSuccess(List<ContractPosition> data) {
+                mLoading = false;
                 if (mLoadingPage.IsLoadingShow()) {
                     mLoadingPage.ExitLoadAnimation();
-                }
-
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    if (TextUtils.equals(errno, BTConstants.ERRNO_NONETWORK)) {
-                        ToastUtil.shortToast(LogicGlobal.sContext, message);
-                    }
-
-                    if (mOffset == 0) {
-                        //mNoresultIv.setVisibility(View.VISIBLE);
-                        //mNoresultTv.setVisibility(View.VISIBLE);
-                        //clearData();
-                    } else {
-                        if (!mNomore) {
-                            mNomore = true;
-                            ToastUtil.shortToast(LogicGlobal.sContext, LogicGlobal.sContext.getResources().getString(R.string.sl_str_no_more_data));
-                        }
-                    }
-                    return;
                 }
 
                 if (data != null && data.size() > 0) {
@@ -190,7 +166,7 @@ public class HoldContractHistoryFragment extends BaseFragment implements
                     }
 
                     if (mHoldContractHistoryAdapter == null) {
-                        mHoldContractHistoryAdapter = new HoldContractHistoryAdapter(LogicGlobal.sContext);
+                        mHoldContractHistoryAdapter = new HoldContractHistoryAdapter(getContext());
                     }
 
                     mHoldContractHistoryAdapter.setData(mPositionList);
@@ -202,11 +178,31 @@ public class HoldContractHistoryFragment extends BaseFragment implements
                     mNoresultTv.setVisibility(mPositionList.size() > 0 ? View.GONE : View.VISIBLE);
                     if (!mNomore) {
                         mNomore = true;
-                        if (mOffset != 0) { ToastUtil.shortToast(LogicGlobal.sContext, LogicGlobal.sContext.getResources().getString(R.string.sl_str_no_more_data)); }
+                        if (mOffset != 0) { ToastUtil.shortToast(getContext(), getContext().getResources().getString(R.string.sl_str_no_more_data)); }
+                    }
+                }
+            }
+
+            @Override
+            public void onFail(@NotNull String code, @NotNull String msg) {
+                mLoading = false;
+                if (mLoadingPage.IsLoadingShow()) {
+                    mLoadingPage.ExitLoadAnimation();
+                }
+                ToastUtil.shortToast(getContext(), msg);
+                if (mOffset == 0) {
+                    //mNoresultIv.setVisibility(View.VISIBLE);
+                    //mNoresultTv.setVisibility(View.VISIBLE);
+                    //clearData();
+                } else {
+                    if (!mNomore) {
+                        mNomore = true;
+                        ToastUtil.shortToast(getContext(), getContext().getResources().getString(R.string.sl_str_no_more_data));
                     }
                 }
             }
         });
+
     }
 
     private void clearData() {
@@ -217,21 +213,11 @@ public class HoldContractHistoryFragment extends BaseFragment implements
         mPositionList.clear();
 
         if (mHoldContractHistoryAdapter == null) {
-            mHoldContractHistoryAdapter = new HoldContractHistoryAdapter(LogicGlobal.sContext);
+            mHoldContractHistoryAdapter = new HoldContractHistoryAdapter(getContext());
         }
 
         mHoldContractHistoryAdapter.setData(mPositionList);
         mHoldContractHistoryAdapter.notifyDataSetChanged();
     }
 
-
-    @Override
-    public void onLogin() {
-
-    }
-
-    @Override
-    public void onLogout() {
-
-    }
 }

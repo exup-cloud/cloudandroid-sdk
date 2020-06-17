@@ -2,7 +2,7 @@ package com.bmtc.sdk.contract.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,19 +13,21 @@ import android.widget.TextView;
 
 import com.bmtc.sdk.contract.HtmlActivity;
 import com.bmtc.sdk.contract.R;
+import com.bmtc.sdk.contract.dialog.PromptWindow;
 import com.bmtc.sdk.contract.dialog.WipedOutIntroduceWindow;
-import com.bmtc.sdk.library.common.dialog.PromptWindow;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.contract.ContractCalculate;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractLiqRecord;
-import com.bmtc.sdk.library.trans.data.ContractOrder;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
-import com.bmtc.sdk.library.utils.ToastUtil;
+import com.bmtc.sdk.contract.utils.ToastUtil;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.ContractUserDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractLiqRecord;
+import com.contract.sdk.data.ContractOrder;
+import com.contract.sdk.extra.Contract.ContractCalculate;
+import com.contract.sdk.impl.IResponse;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -115,7 +117,7 @@ public class ContractEntrustHistoryAdapter extends RecyclerView.Adapter<Recycler
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final ContractEntrustHistoryHolder itemViewHolder = (ContractEntrustHistoryHolder) holder;
 
-        Contract contract = LogicGlobal.getContract(mNews.get(position).getInstrument_id());
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mNews.get(position).getInstrument_id());
         if (contract == null) {
             return;
         }
@@ -149,7 +151,7 @@ public class ContractEntrustHistoryAdapter extends RecyclerView.Adapter<Recycler
         itemViewHolder.tvEntrustPrice.setText(dfDefault.format(MathHelper.round(mNews.get(position).getPx(), contract.getPrice_index())) + contract.getQuote_coin());
         itemViewHolder.tvDealPrice.setText(dfDefault.format(MathHelper.round(mNews.get(position).getAvg_px(), contract.getPrice_index())) + contract.getQuote_coin());
 
-        double value = ContractCalculate.CalculateContractValue(
+        double value = ContractCalculate.INSTANCE.CalculateContractValue(
                 mNews.get(position).getQty(),
                 mNews.get(position).getPx(),
                 contract);
@@ -302,14 +304,9 @@ public class ContractEntrustHistoryAdapter extends RecyclerView.Adapter<Recycler
     }
 
     private void queryDetail(final View view, final ContractOrder order) {
-        BTContract.getInstance().liqRecord(order.getOid(), order.getInstrument_id(),new IResponse<List<ContractLiqRecord>>() {
+        ContractUserDataAgent.INSTANCE.loadLiqRecord(order.getOid(), order.getInstrument_id(), new IResponse<List<ContractLiqRecord>>() {
             @Override
-            public void onResponse(String errno, String message, List<ContractLiqRecord> data) {
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    ToastUtil.shortToast(LogicGlobal.sContext, message);
-                    return;
-                }
-
+            public void onSuccess(@NotNull List<ContractLiqRecord> data) {
                 if (data != null && data.size() > 0) {
                     ContractLiqRecord liqRecord = data.get(0);
                     for (ContractLiqRecord info : data){
@@ -332,7 +329,7 @@ public class ContractEntrustHistoryAdapter extends RecyclerView.Adapter<Recycler
                     } catch (ParseException ignored) {
                     }
 
-                    Contract contract = LogicGlobal.getContract(liqRecord.getInstrument_id());
+                    Contract contract = ContractPublicDataAgent.INSTANCE.getContract(liqRecord.getInstrument_id());
                     if (contract == null) {
                         return;
                     }
@@ -352,6 +349,8 @@ public class ContractEntrustHistoryAdapter extends RecyclerView.Adapter<Recycler
                     }
 
                     int type = liqRecord.getType();
+
+
                     if (type == 1 ) {    //部分强平
                         String intro1 = String.format(mContext.getString(R.string.sl_str_wiped_out_tips0),
                                 created_at,
@@ -371,7 +370,7 @@ public class ContractEntrustHistoryAdapter extends RecyclerView.Adapter<Recycler
                                 window.dismiss();
                                 Intent intent = new Intent(mContext, HtmlActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                intent.putExtra("url", BTConstants.BTURL_CONTRACT_FORCE_CLOSE);
+                                intent.putExtra("url", "http:www.baidu.com");//需自己定义
                                 intent.putExtra("title", mContext.getString(R.string.sl_str_force_close_mechanism));
                                 mContext.startActivity(intent);
                             }
@@ -395,7 +394,7 @@ public class ContractEntrustHistoryAdapter extends RecyclerView.Adapter<Recycler
                                 window.dismiss();
                                 Intent intent = new Intent(mContext, HtmlActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                intent.putExtra("url", BTConstants.BTURL_CONTRACT_FORCE_CLOSE);
+                                intent.putExtra("url","http:www.baidu.com");//需自己定义
                                 intent.putExtra("title", mContext.getString(R.string.sl_str_force_close_mechanism));
                                 mContext.startActivity(intent);
                             }
@@ -417,7 +416,7 @@ public class ContractEntrustHistoryAdapter extends RecyclerView.Adapter<Recycler
                                 window.dismiss();
                                 Intent intent = new Intent(mContext, HtmlActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                intent.putExtra("url", BTConstants.BTURL_CONTRACT_AUTO_REDUCE);
+                                intent.putExtra("url", "http:www.baidu.com");//需自己定义
                                 intent.putExtra("title", mContext.getString(R.string.sl_str_automatically_reduce));
                                 mContext.startActivity(intent);
                             }
@@ -429,10 +428,15 @@ public class ContractEntrustHistoryAdapter extends RecyclerView.Adapter<Recycler
                             }
                         });
                     }
-
                 }
             }
+
+            @Override
+            public void onFail(@NotNull String code, @NotNull String msg) {
+                ToastUtil.shortToast(mContext, msg);
+            }
         });
+
     }
 
 

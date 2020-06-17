@@ -8,11 +8,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bmtc.sdk.library.base.BaseActivity;
-import com.bmtc.sdk.library.common.dialog.PromptWindow;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.uilogic.LogicContractSetting;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
+
+import com.bmtc.sdk.contract.base.BaseActivity;
+import com.bmtc.sdk.contract.dialog.PromptWindow;
+import com.bmtc.sdk.contract.uiLogic.LogicContractSetting;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -186,7 +187,7 @@ public class SelectLeverageActivity extends BaseActivity {
         mGradully20Rl.setVisibility(View.GONE);
         mGradully10Rl.setVisibility(View.GONE);
 
-        Contract contract = LogicGlobal.getContract(mContractId);
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract == null) {
             return;
         }

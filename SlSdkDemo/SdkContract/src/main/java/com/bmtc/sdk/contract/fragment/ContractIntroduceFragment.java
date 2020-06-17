@@ -9,13 +9,15 @@ import android.widget.TextView;
 
 
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.base.BaseFragment;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractIndex;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
+import com.bmtc.sdk.contract.base.BaseFragment;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractIndex;
+import com.contract.sdk.data.ContractOrder;
+import com.contract.sdk.impl.IResponse;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -71,7 +73,7 @@ public class ContractIntroduceFragment extends BaseFragment {
             return;
         }
 
-        final Contract contract = LogicGlobal.getContract(mContractId);
+        final Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract == null) {
             return;
         }
@@ -82,13 +84,9 @@ public class ContractIntroduceFragment extends BaseFragment {
         mContractSizeTv.setText("1" + getString(R.string.sl_str_contracts_unit) + "=" + contract.getFace_value() + contract.getPrice_coin());
         mMaxLeverage.setText(contract.getMax_leverage() + getString(R.string.sl_str_bei));
 
-        BTContract.getInstance().indexes(new IResponse<List<ContractIndex>>() {
+        ContractPublicDataAgent.INSTANCE.loadIndexes(new IResponse<List<ContractIndex>>() {
             @Override
-            public void onResponse(String errno, String message, List<ContractIndex> data) {
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    return;
-                }
-
+            public void onSuccess(@NotNull List<ContractIndex> data) {
                 if (data != null) {
                     String index_source = "";
                     for (int i=0; i<data.size(); i++) {
@@ -110,5 +108,6 @@ public class ContractIntroduceFragment extends BaseFragment {
                 }
             }
         });
+
     }
 }

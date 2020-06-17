@@ -1,8 +1,8 @@
 package com.bmtc.sdk.contract.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +11,11 @@ import android.widget.TextView;
 
 
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractTicker;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractTicker;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -86,7 +86,7 @@ public class ContractDropAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final SpotViewHolder itemViewHolder = (SpotViewHolder) holder;
 
-        Contract contract = LogicGlobal.getContract(mNews.get(position).getInstrument_id());
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mNews.get(position).getInstrument_id());
         if (contract == null) {
             return;
         }
@@ -95,7 +95,7 @@ public class ContractDropAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         DecimalFormat dfPrice = NumberUtil.getDecimal(contract.getPrice_index());
         DecimalFormat dfRate = NumberUtil.getDecimal(2);
 
-        String name = mNews.get(position).getDisplayName(mContext);
+        String name = mNews.get(position).getSymbol();
         itemViewHolder.tvContractName.setText(name);
 
         double chg = MathHelper.round(Double.parseDouble(mNews.get(position).getChange_rate()) * 100, 2);

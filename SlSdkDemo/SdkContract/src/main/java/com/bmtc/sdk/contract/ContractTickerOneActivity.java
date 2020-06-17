@@ -1,16 +1,46 @@
 package com.bmtc.sdk.contract;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+
+import androidx.annotation.NonNull;
+
+import com.bmtc.sdk.contract.base.BaseActivity;
+import com.bmtc.sdk.contract.base.BaseFragmentPagerAdapter;
+import com.bmtc.sdk.contract.common.DataHelper;
+import com.bmtc.sdk.contract.common.chart.KLineEntity;
+import com.bmtc.sdk.contract.data.Collect;
+import com.bmtc.sdk.contract.uiLogic.LogicCollects;
+import com.bmtc.sdk.contract.utils.DeviceUtil;
+import com.bmtc.sdk.contract.utils.ToastUtil;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractTicker;
+import com.contract.sdk.data.ContractTrade;
+import com.contract.sdk.data.ContractWsKlineType;
+import com.contract.sdk.data.DepthData;
+import com.contract.sdk.data.KLineData;
+import com.contract.sdk.data.SDStockTrade;
+import com.contract.sdk.extra.dispense.DataKLineHelper;
+import com.contract.sdk.impl.ContractDepthListener;
+import com.contract.sdk.impl.ContractKlineListener;
+import com.contract.sdk.impl.ContractTickerListener;
+import com.contract.sdk.impl.ContractTradeListener;
+import com.contract.sdk.impl.IResponse;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
+import com.contract.sdk.ws.LogicWebSocketContract;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,33 +67,6 @@ import com.bmtc.sdk.contract.dialog.DropKlineWindow;
 import com.bmtc.sdk.contract.fragment.DepthChartFragment;
 import com.bmtc.sdk.contract.fragment.OrderBookFragment;
 import com.bmtc.sdk.contract.fragment.TradeHistoryFragment;
-import com.bmtc.sdk.library.base.BaseActivity;
-import com.bmtc.sdk.library.base.BaseFragmentPagerAdapter;
-import com.bmtc.sdk.library.common.DataHelper;
-import com.bmtc.sdk.library.constants.BTConstants;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.IResponse;
-import com.bmtc.sdk.library.trans.data.Collect;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractSpot;
-import com.bmtc.sdk.library.trans.data.ContractTicker;
-import com.bmtc.sdk.library.trans.data.ContractTrade;
-import com.bmtc.sdk.library.trans.data.Depth;
-import com.bmtc.sdk.library.trans.data.DepthData;
-import com.bmtc.sdk.library.trans.data.KLineEntity;
-import com.bmtc.sdk.library.trans.data.SDStockTrade;
-import com.bmtc.sdk.library.uilogic.LogicCollects;
-import com.bmtc.sdk.library.uilogic.LogicContractSpot;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.uilogic.LogicLanguage;
-import com.bmtc.sdk.library.uilogic.LogicTimer;
-import com.bmtc.sdk.library.uilogic.LogicWebSocketContract;
-import com.bmtc.sdk.library.utils.DeviceUtil;
-import com.bmtc.sdk.library.utils.LogUtil;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
-import com.bmtc.sdk.library.utils.ToastUtil;
-import com.bmtc.sdk.library.utils.WebSocketClient;
 import com.github.tifezh.kchartlib.chart.BaseKChartView;
 import com.github.tifezh.kchartlib.chart.EntityImpl.CandleImpl;
 import com.github.tifezh.kchartlib.chart.KChartView;
@@ -72,8 +75,10 @@ import com.github.tifezh.kchartlib.chart.formatter.BigDateFormatter;
 import com.github.tifezh.kchartlib.chart.formatter.DateFormatter;
 import com.github.tifezh.kchartlib.chart.formatter.TimeFormatter;
 import com.github.tifezh.kchartlib.chart.formatter.Value6Formatter;
-import android.support.design.widget.TabLayout;
+import com.google.android.material.tabs.TabLayout;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -93,9 +98,7 @@ import java.util.Locale;
  */
 
 public class ContractTickerOneActivity extends BaseActivity implements
-        View.OnClickListener,
-        LogicTimer.ITimerListener,
-        LogicWebSocketContract.IWebSocketListener {
+        View.OnClickListener {
 
     private int mContractId;
     private String mContractName;
@@ -164,16 +167,13 @@ public class ContractTickerOneActivity extends BaseActivity implements
 
     private Animation mRotate;
 
-    private Depth mDepth = new Depth();
-    private List<SDStockTrade> mStockList = new ArrayList<>();
+    private List<ContractTrade> mStockList = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sl_activity_contract_ticker_one);
 
-        LogicTimer.getInstance().registListener(this);
-        LogicWebSocketContract.getInstance().registListener(this);
         try {
             mContractId = getIntent().getIntExtra("contract_id", 1);
             mFullScreen = getIntent().getBooleanExtra("full_screen", false);
@@ -184,12 +184,6 @@ public class ContractTickerOneActivity extends BaseActivity implements
         sendData();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        LogicTimer.getInstance().unregistListener(this);
-        LogicWebSocketContract.getInstance().unregistListener(this);
-    }
 
     @Override
     protected void onStart() {
@@ -206,10 +200,11 @@ public class ContractTickerOneActivity extends BaseActivity implements
         super.onNewIntent(intent);
     }
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     public void setView() {
         super.setView();
-        Contract contract = LogicGlobal.getContract(mContractId);
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract == null) {
             return;
         }
@@ -238,26 +233,26 @@ public class ContractTickerOneActivity extends BaseActivity implements
         mCollectCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Contract contract = LogicGlobal.getContract(mContractId);
+                Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
                 if (contract == null) {
                     return;
                 }
 
                 if (isChecked) {
-                   // MobclickAgent.onEvent(LogicGlobal.sContext, "ss_ce");
+                    // MobclickAgent.onEvent(LogicGlobal.sContext, "ss_ce");
                     Collect collect = new Collect();
                     collect.setName(contract.getSymbol());
                     collect.setTime(System.currentTimeMillis());
                     LogicCollects.getInstance().add(collect);
                     mCollectTv.setText(R.string.sl_str_added);
                     mCollectTv.setTextColor(getResources().getColor(R.color.sl_colorYellowNormal));
-                    ToastUtil.shortToast(LogicGlobal.sContext, getString(R.string.sl_str_add_favorites_succeed));
+                    ToastUtil.shortToast(ContractTickerOneActivity.this, getString(R.string.sl_str_add_favorites_succeed));
 
                 } else {
                     LogicCollects.getInstance().remove(contract.getSymbol());
                     mCollectTv.setText(R.string.sl_str_optional);
                     mCollectTv.setTextColor(getResources().getColor(R.color.sl_whiteText));
-                    ToastUtil.shortToast(LogicGlobal.sContext, getString(R.string.sl_str_cancel_favorites_succeed));
+                    ToastUtil.shortToast(ContractTickerOneActivity.this, getString(R.string.sl_str_cancel_favorites_succeed));
                 }
             }
         });
@@ -334,6 +329,7 @@ public class ContractTickerOneActivity extends BaseActivity implements
 
         mFSCloseIv = findViewById(R.id.iv_fs_close);
         mFSCloseIv.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SourceLockedOrientationActivity")
             @Override
             public void onClick(View view) {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
@@ -348,7 +344,7 @@ public class ContractTickerOneActivity extends BaseActivity implements
         mFSLowTv = findViewById(R.id.tv_fs_low);
         mFSVolumTv = findViewById(R.id.tv_fs_volum);
 
-        mRotate = AnimationUtils.loadAnimation(this, R.anim.sl_array_rotate);
+        mRotate = AnimationUtils.loadAnimation(this, R.anim.array_rotate);
         mRotate.setInterpolator(new LinearInterpolator());
 
         mSelectLL = findViewById(R.id.ll_select);
@@ -394,6 +390,7 @@ public class ContractTickerOneActivity extends BaseActivity implements
 
         mFullScreenIv = findViewById(R.id.iv_full_screen);
         mFullScreenIv.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SourceLockedOrientationActivity")
             @Override
             public void onClick(View view) {
                 boolean isVertical = (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT);
@@ -585,85 +582,100 @@ public class ContractTickerOneActivity extends BaseActivity implements
         return (int) (dp * getResources().getDisplayMetrics().density);
     }
 
-    private void sendData() {
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
+    private void sendData() {
         if (mContractId <= 0) {
             return;
         }
-
-        LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_DEPTH, mContractId);
-        LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_TICKER, 0);
-
-        BTContract.getInstance().tickers(mContractId, new IResponse<List<ContractTicker>>() {
+        /**
+         * 订阅深度
+         */
+        ContractPublicDataAgent.INSTANCE.subscribeDepthWs(mContractId,true);
+        /**
+         * 订阅Ticker
+         */
+        ContractPublicDataAgent.INSTANCE.subscribeTickerWs(mContractId,true);
+        /**
+         * 订阅成交记录
+         */
+        ContractPublicDataAgent.INSTANCE.subscribeTradeWs(mContractId);
+        /**
+         * 注册深度监听
+         */
+        ContractPublicDataAgent.INSTANCE.registerDepthWsListener(this, 20, new ContractDepthListener() {
             @Override
-            public void onResponse(String errno, String message, List<ContractTicker> data) {
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    return;
-                }
+            public void onWsContractBuyDepth(int contractId, @NotNull ArrayList<DepthData> buyList) {
+                mOrderBookFragment.setBuyData(buyList, mContractId);
+                mDepthChartFragment.setBuyData(buyList, mContractId);
+            }
 
-                if (data != null && data.size() > 0) {
-                    updateTickerData(data.get(0));
+            @Override
+            public void onWsContractSellDepth(@Nullable Integer contractId, @NotNull ArrayList<DepthData> sellList) {
+                mOrderBookFragment.setSellData(sellList, mContractId);
+                mDepthChartFragment.setSellData(sellList, mContractId);
+            }
+        });
+        /**
+         * 注册Ticker
+         */
+        ContractPublicDataAgent.INSTANCE.registerTickerWsListener(this, new ContractTickerListener() {
+            @Override
+            public void onWsContractTicker(@NotNull ContractTicker ticker) {
+                if(mContractId == ticker.getInstrument_id()){
+                    updateTickerData(ticker);
                 }
             }
         });
-
-        BTContract.getInstance().queryDepth(mContractId, 20, new IResponse<Depth>() {
+        /**
+         * 注册成交记录监听
+         */
+        ContractPublicDataAgent.INSTANCE.registerTradeWsListener(this, new ContractTradeListener() {
             @Override
-            public void onResponse(String errno, String message, Depth data) {
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    return;
-                }
-
-                mDepth = data;
-
-                Depth datatemp = new Depth();
-                if (data != null) {
-                    if (data.getBids().size() > 0) {
-                        datatemp.setBids(data.getBids().subList(0, Math.min(10, data.getBids().size())));
-                    } else {
-                        datatemp.setBids(data.getBids());
-                    }
-
-                    if (data.getAsks().size() > 0) {
-                        datatemp.setAsks(data.getAsks().subList(0, Math.min(10, data.getAsks().size())));
-                    } else {
-                        datatemp.setAsks(data.getAsks());
-                    }
-                }
-
-                mOrderBookFragment.setData(datatemp, "", mContractId);
-                mDepthChartFragment.setData(data, "", mContractId);
-            }
-        });
-
-        BTContract.getInstance().trades(mContractId, new IResponse<List<ContractTrade>>() {
-            @Override
-            public void onResponse(String errno, String message, List<ContractTrade> data) {
-                if (!TextUtils.equals(errno, BTConstants.ERRNO_OK) || !TextUtils.equals(message, BTConstants.ERRNO_SUCCESS)) {
-                    return;
-                }
-
-                List<SDStockTrade> list = new ArrayList<>();
-                if (data != null && data.size() > 0) {
-                    for (int i = 0; i < Math.min(10, data.size()); i++) {
-                        ContractTrade trade = data.get(i);
-                        if (trade == null) {
-                            continue;
-                        }
-
-                        SDStockTrade stockTrade = new SDStockTrade();
-                        stockTrade.setCreated_at(trade.getCreated_at());
-                        stockTrade.setPx(trade.getPx());
-                        stockTrade.setQty(trade.getQty());
-                        stockTrade.setFee(trade.getTake_fee());
-                        stockTrade.setSide(trade.getSide() > 4 ? 2 : 1);
-                        stockTrade.setContractId(trade.getInstrument_id());
-                        list.add(stockTrade);
-                    }
-                }
+            public void onWsContractTrade(int contractId, @NotNull ArrayList<ContractTrade> allData) {
                 mStockList.clear();
-                mStockList.addAll(list);
-                mTradeHistoryFragment.setData(list);
+                mStockList.addAll(allData);
+                mTradeHistoryFragment.setData(allData);
+            }
+        }, 20);
+        /**
+         * 注册K线监听
+         */
+        ContractPublicDataAgent.INSTANCE.registerKlineWsListener(this, new ContractKlineListener() {
+            @Override
+            public void doKLineApiRequest() {
+                loadKlineDataFromNet(ContractWsKlineType.WEBSOCKET_BIN1W, true, true);
+            }
+
+            @Override
+            public void onWsContractKlineChange(@NotNull ContractWsKlineType type, int contractId, @NotNull KLineData data) {
+                //TODO 判断合约和时间区间是否相等 在决定是否更新
+                List<KLineEntity> originList = mKChartAdapter.getData();
+                KLineEntity item = buildKLineEntity(data);
+                if (originList.size() > 0) {
+                    KLineEntity targetItem = originList.get(originList.size() - 1);
+                    if (targetItem.date.getTime() == item.date.getTime()) {
+                        DataHelper.calculate( mKChartAdapter.getData());
+                        mKChartAdapter.changeItem(originList.size() - 1, item);
+                    }
+                }
+            }
+
+            @Override
+            public void onWsContractKlineAdd(@NotNull ContractWsKlineType type, int contractId, @NotNull ArrayList<KLineData> data) {
+                //TODO 判断合约和时间区间是否相等 在决定是否更新
+                List<KLineEntity> dataList = getKLineEntities(data);
+
+                mKChartView.setMainDrawLine(true);
+                mKChartView.setDateTimeFormatter(new TimeFormatter());
+                DataHelper.calculate( dataList);
+                mKChartAdapter.addFooterData(dataList);
+                mKChartView.refreshComplete();
+
+                mKChartView.setScrollX(mKChartView.getMinScrollX());
             }
         });
 
@@ -671,7 +683,7 @@ public class ContractTickerOneActivity extends BaseActivity implements
 
     private void updateTickerData(ContractTicker realtime_ticker) {
 
-        Contract contract = LogicGlobal.getContract(mContractId);
+        Contract contract = ContractPublicDataAgent.INSTANCE.getContract(mContractId);
         if (contract == null || realtime_ticker == null) {
             return;
         }
@@ -684,16 +696,16 @@ public class ContractTickerOneActivity extends BaseActivity implements
             return;
         }
 
-        String name = realtime_ticker.getName();
+        String name = realtime_ticker.getSymbol();
         if (name.contains("[")) {
             name = name.substring(0, name.indexOf("["));
         }
         mTitleTv.setText(name);
         if (contract.getArea() == Contract.CONTRACT_BLOCK_USDT) {
             mStockTypeTv.setText("USDT");
-        } else if (contract.getArea() == Contract.CONTRACT_BLOCK_SIMULATION){
+        } else if (contract.getArea() == Contract.CONTRACT_BLOCK_SIMULATION) {
             mStockTypeTv.setText(R.string.sl_str_simulation);
-        } else if (contract.getArea() == Contract.CONTRACT_BLOCK_INNOVATION || contract.getArea() == Contract.CONTRACT_BLOCK_MAIN){
+        } else if (contract.getArea() == Contract.CONTRACT_BLOCK_INNOVATION || contract.getArea() == Contract.CONTRACT_BLOCK_MAIN) {
             mStockTypeTv.setText(R.string.sl_str_inverse);
         }
 
@@ -708,12 +720,11 @@ public class ContractTickerOneActivity extends BaseActivity implements
         double rise_fall_value = MathHelper.round(realtime_ticker.getChange_value(), contract.getPrice_index());
         String sRate = (rise_fall_rate >= 0) ? (dfRate.format(rise_fall_rate) + "%") : (dfRate.format(rise_fall_rate) + "%");
         String sValue = (rise_fall_value >= 0) ? ("+" + dfPrice.format(rise_fall_value)) : (dfPrice.format(rise_fall_value));
-        int color = (rise_fall_rate >= 0) ? getResources().getColor(R.color.sl_colorGreen): getResources().getColor(R.color.sl_colorRed);
+        int color = (rise_fall_rate >= 0) ? getResources().getColor(R.color.sl_colorGreen) : getResources().getColor(R.color.sl_colorRed);
 
         double current = MathHelper.round(realtime_ticker.getLast_px(), contract.getPrice_index());
         double fairPrice = MathHelper.round(realtime_ticker.getFair_px(), contract.getPrice_index());
         double indexPrice = MathHelper.round(realtime_ticker.getIndex_px(), contract.getPrice_index());
-
 
 
         mAvgPriceTv.setText(NumberUtil.getDecimal(contract.getPrice_index() - 1).format(current));
@@ -728,7 +739,7 @@ public class ContractTickerOneActivity extends BaseActivity implements
 //        String sUsd = "≈$" + dfRate.format(current_usd);
 //        String sCNY = "≈￥" + dfRate.format(current_cny);
 
-      //  String coin_base = LogicLanguage.isZhEnv(LogicGlobal.sContext) ? sCNY : sUsd;
+        //  String coin_base = LogicLanguage.isZhEnv(LogicGlobal.sContext) ? sCNY : sUsd;
 
 //        mUsdPriceTv.setText(coin_base);
 //        mFSUsdPriceTv.setText(coin_base);
@@ -755,236 +766,77 @@ public class ContractTickerOneActivity extends BaseActivity implements
         mTotalValueTv.setText(dfVol.format(amount24));
     }
 
-    private void updateMChartData(final boolean forward) {
-        if (forward || LogicContractSpot.getInstance().getMinuteLine(mContractName).size() < 1000) {
+
+    /**
+     * @param wsKlineType
+     * @param forward
+     * @param cleanCache
+     */
+    private void loadKlineDataFromNet(ContractWsKlineType wsKlineType, final Boolean forward, Boolean cleanCache) {
+        if (!forward) {
             mKChartView.showLoading();
         }
-        LogicContractSpot.getInstance().updateSpotMinuteData(mContractId, forward, new IResponse<List<KLineEntity>>() {
+        DataKLineHelper.INSTANCE.loadKLineData(mContractId, wsKlineType, forward, cleanCache, new DataKLineHelper.KLineDataUpdateListener() {
             @Override
-            public void onResponse(String errno, String message, List<KLineEntity> data) {
-
-                mKChartView.setMainDrawLine(true);
+            public void onInitData(int contractId, @NotNull ContractWsKlineType time, @Nullable ArrayList<KLineData> originData) {
+                List<KLineEntity> dataList = getKLineEntities(originData);
+                DataHelper.calculate(dataList);
+                mKChartView.setMainDrawLine(TextUtils.equals(time.getType(),ContractWsKlineType.WEBSOCKET_BIN1M.getType()));
                 mKChartView.setDateTimeFormatter(new TimeFormatter());
-                mKChartAdapter.resetData(data);
-                mKChartView.refreshEnd();
+                mKChartAdapter.resetData(dataList);
+                mKChartView.refreshComplete();
 
                 if (forward) {
                     mKChartView.setScrollX(mKChartView.getMinScrollX());
                 }
             }
-        });
-    }
 
-    private void update1MinKChartData(final boolean forward) {
-
-        if (forward || LogicContractSpot.getInstance().getMinuteLine(mContractName).size() < 1000) {
-            mKChartView.showLoading();
-        }
-
-        LogicContractSpot.getInstance().updateSpotMinuteData(mContractId, forward, new IResponse<List<KLineEntity>>() {
+            /**
+             * 分屏加载
+             * @param contractId
+             * @param time
+             * @param moreData  增量数据
+             */
             @Override
-            public void onResponse(String errno, String message, List<KLineEntity> data) {
-
-                mKChartView.setMainDrawLine(false);
+            public void onLoadSplitData(int contractId, @NotNull ContractWsKlineType time, @Nullable ArrayList<KLineData> moreData) {
+                List<KLineEntity> dataList = getKLineEntities(moreData);
+                DataHelper.calculate( dataList);
+                mKChartView.setMainDrawLine(TextUtils.equals(time.getType(),ContractWsKlineType.WEBSOCKET_BIN1M.getType()));
                 mKChartView.setDateTimeFormatter(new TimeFormatter());
-                mKChartAdapter.resetData(data);
+                mKChartAdapter.addFooterData(dataList);
                 mKChartView.refreshComplete();
+
                 if (forward) {
                     mKChartView.setScrollX(mKChartView.getMinScrollX());
                 }
+            }
+
+            @Override
+            public void onLoadFail(@Nullable String errno, @Nullable String message) {
+
             }
         });
     }
 
-    private void update5MinKChartData(final boolean forward) {
-        if (forward || LogicContractSpot.getInstance().get5MinuteLine(mContractName).size() < 1000) {
-            mKChartView.showLoading();
+    @NotNull
+    private List<KLineEntity> getKLineEntities(@Nullable ArrayList<KLineData> originData) {
+        List<KLineEntity> dataList = new ArrayList<>();
+        for (int i = 0; i < originData.size(); i++) {
+            dataList.add(buildKLineEntity(originData.get(i)));
         }
-        LogicContractSpot.getInstance().updateSpot5MinuteData(mContractId, forward, new IResponse<List<KLineEntity>>() {
-            @Override
-            public void onResponse(String errno, String message, List<KLineEntity> data) {
-
-                mKChartView.setMainDrawLine(false);
-                mKChartView.setDateTimeFormatter(new TimeFormatter());
-                mKChartAdapter.resetData(data);
-                mKChartView.refreshComplete();
-                if (forward) {
-                    mKChartView.setScrollX(mKChartView.getMinScrollX());
-                }
-            }
-        });
+        return dataList;
     }
 
-    private void update15MinKChartData(final boolean forward) {
-        if (forward || LogicContractSpot.getInstance().get15MinuteLine(mContractName).size() < 1000) {
-            mKChartView.showLoading();
-        }
-        LogicContractSpot.getInstance().updateSpot15MinuteData(mContractId, forward, new IResponse<List<KLineEntity>>() {
-            @Override
-            public void onResponse(String errno, String message, List<KLineEntity> data) {
-
-                mKChartView.setMainDrawLine(false);
-                mKChartView.setDateTimeFormatter(new TimeFormatter());
-                mKChartAdapter.resetData(data);
-                mKChartView.refreshComplete();
-                if (forward) {
-                    mKChartView.setScrollX(mKChartView.getMinScrollX());
-                }
-            }
-        });
-    }
-
-    private void update30MinKChartData(final boolean forward) {
-        if (forward || LogicContractSpot.getInstance().get30MinuteLine(mContractName).size() < 1000) {
-            mKChartView.showLoading();
-        }
-        LogicContractSpot.getInstance().updateSpot30MinuteData(mContractId, forward, new IResponse<List<KLineEntity>>() {
-            @Override
-            public void onResponse(String errno, String message, List<KLineEntity> data) {
-
-                mKChartView.setMainDrawLine(false);
-                mKChartView.setDateTimeFormatter(new TimeFormatter());
-                mKChartAdapter.resetData(data);
-                mKChartView.refreshComplete();
-                if (forward) {
-                    mKChartView.setScrollX(mKChartView.getMinScrollX());
-                }
-            }
-        });
-    }
-
-    private void update60MinKChartData(final boolean forward) {
-        if (forward || LogicContractSpot.getInstance().get60MinuteLine(mContractName).size() < 1000) {
-            mKChartView.showLoading();
-        }
-        LogicContractSpot.getInstance().updateSpot60MinuteData(mContractId, forward, new IResponse<List<KLineEntity>>() {
-            @Override
-            public void onResponse(String errno, String message, List<KLineEntity> data) {
-
-                mKChartView.setMainDrawLine(false);
-                mKChartView.setDateTimeFormatter(new BigDateFormatter());
-                mKChartAdapter.resetData(data);
-                mKChartView.refreshComplete();
-                if (forward) {
-                    mKChartView.setScrollX(mKChartView.getMinScrollX());
-                }
-            }
-        });
-    }
-
-    private void update2HourKChartData(final boolean forward) {
-        if (forward || LogicContractSpot.getInstance().get2HourLine(mContractName).size() < 1000) {
-            mKChartView.showLoading();
-        }
-        LogicContractSpot.getInstance().updateSpot2HourData(mContractId, forward, new IResponse<List<KLineEntity>>() {
-            @Override
-            public void onResponse(String errno, String message, List<KLineEntity> data) {
-
-                mKChartView.setMainDrawLine(false);
-                mKChartView.setDateTimeFormatter(new BigDateFormatter());
-                mKChartAdapter.resetData(data);
-                mKChartView.refreshComplete();
-                if (forward) {
-                    mKChartView.setScrollX(mKChartView.getMinScrollX());
-                }
-            }
-        });
-    }
-
-    private void update4HourKChartData(final boolean forward) {
-        if (forward || LogicContractSpot.getInstance().get4HourLine(mContractName).size() < 1000) {
-            mKChartView.showLoading();
-        }
-
-        LogicContractSpot.getInstance().updateSpot4HourData(mContractId, forward, new IResponse<List<KLineEntity>>() {
-            @Override
-            public void onResponse(String errno, String message, List<KLineEntity> data) {
-
-                mKChartView.setMainDrawLine(false);
-                mKChartView.setDateTimeFormatter(new BigDateFormatter());
-                mKChartAdapter.resetData(data);
-                mKChartView.refreshComplete();
-                if (forward) {
-                    mKChartView.setScrollX(mKChartView.getMinScrollX());
-                }
-            }
-        });
-    }
-
-    private void update6HourKChartData(final boolean forward) {
-        if (forward || LogicContractSpot.getInstance().get6HourLine(mContractName).size() < 1000) {
-            mKChartView.showLoading();
-        }
-        LogicContractSpot.getInstance().updateSpot6HourData(mContractId, forward, new IResponse<List<KLineEntity>>() {
-            @Override
-            public void onResponse(String errno, String message, List<KLineEntity> data) {
-
-                mKChartView.setMainDrawLine(false);
-                mKChartView.setDateTimeFormatter(new BigDateFormatter());
-                mKChartAdapter.resetData(data);
-                mKChartView.refreshComplete();
-                if (forward) {
-                    mKChartView.setScrollX(mKChartView.getMinScrollX());
-                }
-            }
-        });
-    }
-
-    private void update12HourKChartData(final boolean forward) {
-        if (forward || LogicContractSpot.getInstance().get12HourLine(mContractName).size() < 1000) {
-            mKChartView.showLoading();
-        }
-        LogicContractSpot.getInstance().updateSpot12HourData(mContractId, forward, new IResponse<List<KLineEntity>>() {
-            @Override
-            public void onResponse(String errno, String message, List<KLineEntity> data) {
-
-                mKChartView.setMainDrawLine(false);
-                mKChartView.setDateTimeFormatter(new BigDateFormatter());
-                mKChartAdapter.resetData(data);
-                mKChartView.refreshComplete();
-                if (forward) {
-                    mKChartView.setScrollX(mKChartView.getMinScrollX());
-                }
-            }
-        });
-    }
-
-    private void updateDayKChartData(final boolean forward) {
-        if (forward || LogicContractSpot.getInstance().getDayLine(mContractName).size() < 1000) {
-            mKChartView.showLoading();
-        }
-        LogicContractSpot.getInstance().updateSpotDayData(mContractId, forward, new IResponse<List<KLineEntity>>() {
-            @Override
-            public void onResponse(String errno, String message, List<KLineEntity> data) {
-
-                mKChartView.setMainDrawLine(false);
-                mKChartView.setDateTimeFormatter(new DateFormatter());
-                mKChartAdapter.resetData(data);
-                mKChartView.refreshComplete();
-                if (forward) {
-                    mKChartView.setScrollX(mKChartView.getMinScrollX());
-                }
-            }
-        });
-    }
-
-    private void updateWeekKChartData(final boolean forward) {
-        if (forward || LogicContractSpot.getInstance().getWeekLine(mContractName).size() < 1000) {
-            mKChartView.showLoading();
-        }
-        LogicContractSpot.getInstance().updateSpotWeekData(mContractId, forward, new IResponse<List<KLineEntity>>() {
-            @Override
-            public void onResponse(String errno, String message, List<KLineEntity> data) {
-
-                mKChartView.setMainDrawLine(false);
-                mKChartView.setDateTimeFormatter(new DateFormatter());
-                mKChartAdapter.resetData(data);
-                mKChartView.refreshComplete();
-                if (forward) {
-                    mKChartView.setScrollX(mKChartView.getMinScrollX());
-                }
-            }
-        });
+    private KLineEntity buildKLineEntity(KLineData kLineData) {
+        KLineEntity item = new KLineEntity();
+        item.date = new Date(kLineData.getTimestamp() * 1000);
+        item.Open = (float) MathHelper.round(kLineData.getOpen(), 8);
+        item.Close = (float) MathHelper.round(kLineData.getClose(), 8);
+        item.High = (float) MathHelper.round(kLineData.getHigh(), 8);
+        item.Low = (float) MathHelper.round(kLineData.getLow(), 8);
+        item.Volume = (float) MathHelper.round(kLineData.getQty(), 2);
+        item.Chg = (float) MathHelper.round(kLineData.getChange_rate() * 100, 2);
+        return item;
     }
 
     @Override
@@ -994,103 +846,76 @@ public class ContractTickerOneActivity extends BaseActivity implements
 
 
     private void doClick(int id) {
-        if (mCurrentId != id) {
-            if (mCurrentId == R.id.ktab_time || mCurrentId == R.id.ktab_time_full_screen) {
-                LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_UNSUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN1M, mContractId);
-            } else if (mCurrentId == R.id.ktab_5min || mCurrentId == R.id.ktab_5min_full_screen) {
-                LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_UNSUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN5M, mContractId);
-            } else if (mCurrentId == R.id.ktab_15min || mCurrentId == R.id.ktab_15min_full_screen) {
-                LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_UNSUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN15M, mContractId);
-            } else if (mCurrentId == R.id.ktab_60min || mCurrentId == R.id.ktab_60min_full_screen) {
-                LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_UNSUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN1H, mContractId);
-            } else if (mCurrentId == R.id.ktab_1day || mCurrentId == R.id.ktab_1day_full_screen) {
-                LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_UNSUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN1D, mContractId);
-            } else if (mCurrentId == DropKlineWindow.KTAB_1MIN) {
-                LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_UNSUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN1M, mContractId);
-            } else if (mCurrentId == DropKlineWindow.KTAB_30MIN) {
-                LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_UNSUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN30M, mContractId);
-            } else if (mCurrentId == DropKlineWindow.KTAB_2HOUR) {
-                LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_UNSUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN2H, mContractId);
-            } else if (mCurrentId == DropKlineWindow.KTAB_4HOUR) {
-                LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_UNSUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN4H, mContractId);
-            } else if (mCurrentId == DropKlineWindow.KTAB_6HOUR) {
-                LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_UNSUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN6H, mContractId);
-            } else if (mCurrentId == DropKlineWindow.KTAB_12HOUR) {
-                LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_UNSUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN12H, mContractId);
-            } else if (mCurrentId == DropKlineWindow.KTAB_1WEEK) {
-                LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_UNSUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN1W, mContractId);
-            }
-        }
 
         mCurrentId = id;
         switchChart(id, true);
         if (id == R.id.ktab_time || id == R.id.ktab_time_full_screen) {
-            LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN1M, mContractId);
+            ContractPublicDataAgent.INSTANCE.subscribeKlineWs(mContractId, ContractWsKlineType.WEBSOCKET_BIN1M);
             if (mCurrentTab == R.id.ktab_time)
                 mCurrentTab = R.id.ktab_time;
             setMoreChecked(false, "");
             mTabTime.setChecked(true);
             mTabTimeFS.setChecked(true);
         } else if (id == R.id.ktab_5min || id == R.id.ktab_5min_full_screen) {
-            LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN5M, mContractId);
+            ContractPublicDataAgent.INSTANCE.subscribeKlineWs(mContractId, ContractWsKlineType.WEBSOCKET_BIN5M);
             if (mCurrentTab == R.id.ktab_5min)
                 mCurrentTab = R.id.ktab_5min;
             setMoreChecked(false, "");
             mTab5Min.setChecked(true);
             mTab5MinFS.setChecked(true);
         } else if (id == R.id.ktab_15min || id == R.id.ktab_15min_full_screen) {
-            LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN15M, mContractId);
+            ContractPublicDataAgent.INSTANCE.subscribeKlineWs(mContractId, ContractWsKlineType.WEBSOCKET_BIN15M);
             if (mCurrentTab == R.id.ktab_15min)
                 mCurrentTab = R.id.ktab_15min;
             setMoreChecked(false, "");
             mTab15Min.setChecked(true);
             mTab15MinFS.setChecked(true);
         } else if (id == R.id.ktab_60min || id == R.id.ktab_60min_full_screen) {
-            LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN1H, mContractId);
+            ContractPublicDataAgent.INSTANCE.subscribeKlineWs(mContractId, ContractWsKlineType.WEBSOCKET_BIN1H);
             if (mCurrentTab == R.id.ktab_60min)
                 mCurrentTab = R.id.ktab_60min;
             setMoreChecked(false, "");
             mTab60Min.setChecked(true);
             mTab60MinFS.setChecked(true);
         } else if (id == R.id.ktab_1day || id == R.id.ktab_1day_full_screen) {
-            LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN1D, mContractId);
+            ContractPublicDataAgent.INSTANCE.subscribeKlineWs(mContractId, ContractWsKlineType.WEBSOCKET_BIN1D);
             if (mCurrentTab == R.id.ktab_1day)
                 mCurrentTab = R.id.ktab_1day;
             setMoreChecked(false, "");
             mTab1Day.setChecked(true);
             mTab1DayFS.setChecked(true);
         } else if (id == DropKlineWindow.KTAB_1MIN) {
-            LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN1M, mContractId);
+            ContractPublicDataAgent.INSTANCE.subscribeKlineWs(mContractId, ContractWsKlineType.WEBSOCKET_BIN1H);
             if (mCurrentTab == DropKlineWindow.KTAB_1MIN)
                 mCurrentTab = DropKlineWindow.KTAB_1MIN;
             setMoreChecked(true, getString(R.string.sl_str_1min));
         } else if (id == DropKlineWindow.KTAB_30MIN) {
-            LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN30M, mContractId);
+            ContractPublicDataAgent.INSTANCE.subscribeKlineWs(mContractId, ContractWsKlineType.WEBSOCKET_BIN30M);
             if (mCurrentTab == DropKlineWindow.KTAB_30MIN)
                 mCurrentTab = DropKlineWindow.KTAB_30MIN;
             setMoreChecked(true, getString(R.string.sl_str_30min));
         } else if (id == DropKlineWindow.KTAB_2HOUR) {
-            LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN2H, mContractId);
+            ContractPublicDataAgent.INSTANCE.subscribeKlineWs(mContractId, ContractWsKlineType.WEBSOCKET_BIN2H);
             if (mCurrentTab == DropKlineWindow.KTAB_2HOUR)
                 mCurrentTab = DropKlineWindow.KTAB_2HOUR;
             setMoreChecked(true, getString(R.string.sl_str_2hour));
         } else if (id == DropKlineWindow.KTAB_4HOUR) {
-            LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN4H, mContractId);
+            ContractPublicDataAgent.INSTANCE.subscribeKlineWs(mContractId, ContractWsKlineType.WEBSOCKET_BIN4H);
             if (mCurrentTab == DropKlineWindow.KTAB_4HOUR)
                 mCurrentTab = DropKlineWindow.KTAB_4HOUR;
             setMoreChecked(true, getString(R.string.sl_str_4hour));
         } else if (id == DropKlineWindow.KTAB_6HOUR) {
-            LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN6H, mContractId);
+            ContractPublicDataAgent.INSTANCE.subscribeKlineWs(mContractId, ContractWsKlineType.WEBSOCKET_BIN6H);
             if (mCurrentTab == DropKlineWindow.KTAB_6HOUR)
                 mCurrentTab = DropKlineWindow.KTAB_6HOUR;
             setMoreChecked(true, getString(R.string.sl_str_6hour));
         } else if (id == DropKlineWindow.KTAB_12HOUR) {
-            LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN12H, mContractId);
+            ContractPublicDataAgent.INSTANCE.subscribeKlineWs(mContractId, ContractWsKlineType.WEBSOCKET_BIN12H);
             if (mCurrentTab == DropKlineWindow.KTAB_12HOUR)
                 mCurrentTab = DropKlineWindow.KTAB_12HOUR;
             setMoreChecked(true, getString(R.string.sl_str_12hour));
         } else if (id == DropKlineWindow.KTAB_1WEEK) {
-            LogicWebSocketContract.getInstance().send(LogicWebSocketContract.ACTION_SUBSCRIBE, LogicWebSocketContract.WEBSOCKET_BIN12H, mContractId);
+            ContractPublicDataAgent.INSTANCE.subscribeKlineWs(mContractId, ContractWsKlineType.WEBSOCKET_BIN1W);
             if (mCurrentTab == DropKlineWindow.KTAB_1WEEK)
                 mCurrentTab = DropKlineWindow.KTAB_1WEEK;
             setMoreChecked(true, getString(R.string.sl_str_1week));
@@ -1099,53 +924,53 @@ public class ContractTickerOneActivity extends BaseActivity implements
 
 
     private void switchChart(int id, boolean forward) {
-        if(id == R.id.ktab_time || id == R.id.ktab_time_full_screen){
-            updateMChartData(forward);
-        }else if(id == R.id.ktab_5min || id == R.id.ktab_5min_full_screen){
-            update5MinKChartData(forward);
-        }else if(id == R.id.ktab_15min || id == R.id.ktab_15min_full_screen){
-            update15MinKChartData(forward);
-        }else if(id == R.id.ktab_30min /**|| id == R.id.ktab_30min_full_screen**/){
-            update30MinKChartData(forward);
-        }else if(id == R.id.ktab_60min || id == R.id.ktab_60min_full_screen){
-            update60MinKChartData(forward);
-        }else if(id == R.id.ktab_1day || id == R.id.ktab_1day_full_screen){
-            updateDayKChartData(forward);
-        }else if(id == DropKlineWindow.KTAB_1MIN){
-            update1MinKChartData(forward);
-        }else if(id == DropKlineWindow.KTAB_30MIN){
-            update30MinKChartData(forward);
-        }else if(id == DropKlineWindow.KTAB_2HOUR){
-            update2HourKChartData(forward);
-        }else if(id == DropKlineWindow.KTAB_4HOUR){
-            update4HourKChartData(forward);
-        }else if(id == DropKlineWindow.KTAB_6HOUR){
-            update6HourKChartData(forward);
-        }else if(id == DropKlineWindow.KTAB_12HOUR){
-            update12HourKChartData(forward);
-        }else if(id == DropKlineWindow.KTAB_1WEEK){
-            updateWeekKChartData(forward);
-        }else if(id ==  R.id.mtab_ma){
+        if (id == R.id.ktab_time || id == R.id.ktab_time_full_screen) {
+            loadKlineDataFromNet(ContractWsKlineType.WEBSOCKET_BIN1M, forward, false);
+        } else if (id == R.id.ktab_5min || id == R.id.ktab_5min_full_screen) {
+            loadKlineDataFromNet(ContractWsKlineType.WEBSOCKET_BIN5M, forward, false);
+        } else if (id == R.id.ktab_15min || id == R.id.ktab_15min_full_screen) {
+            loadKlineDataFromNet(ContractWsKlineType.WEBSOCKET_BIN15M, forward, false);
+        } else if (id == R.id.ktab_30min /**|| id == R.id.ktab_30min_full_screen**/) {
+            loadKlineDataFromNet(ContractWsKlineType.WEBSOCKET_BIN30M, forward, false);
+        } else if (id == R.id.ktab_60min || id == R.id.ktab_60min_full_screen) {
+            loadKlineDataFromNet(ContractWsKlineType.WEBSOCKET_BIN1H, forward, false);
+        } else if (id == R.id.ktab_1day || id == R.id.ktab_1day_full_screen) {
+            loadKlineDataFromNet(ContractWsKlineType.WEBSOCKET_BIN1D, forward, false);
+        } else if (id == DropKlineWindow.KTAB_1MIN) {
+            loadKlineDataFromNet(ContractWsKlineType.WEBSOCKET_BIN1M, forward, false);
+        } else if (id == DropKlineWindow.KTAB_30MIN) {
+            loadKlineDataFromNet(ContractWsKlineType.WEBSOCKET_BIN30M, forward, false);
+        } else if (id == DropKlineWindow.KTAB_2HOUR) {
+            loadKlineDataFromNet(ContractWsKlineType.WEBSOCKET_BIN2H, forward, false);
+        } else if (id == DropKlineWindow.KTAB_4HOUR) {
+            loadKlineDataFromNet(ContractWsKlineType.WEBSOCKET_BIN4H, forward, false);
+        } else if (id == DropKlineWindow.KTAB_6HOUR) {
+            loadKlineDataFromNet(ContractWsKlineType.WEBSOCKET_BIN6H, forward, false);
+        } else if (id == DropKlineWindow.KTAB_12HOUR) {
+            loadKlineDataFromNet(ContractWsKlineType.WEBSOCKET_BIN12H, forward, false);
+        } else if (id == DropKlineWindow.KTAB_1WEEK) {
+            loadKlineDataFromNet(ContractWsKlineType.WEBSOCKET_BIN1W, forward, false);
+        } else if (id == R.id.mtab_ma) {
             mKChartView.changeMainDrawType(Status.MA);
-        }else if(id ==  R.id.mtab_ema){
+        } else if (id == R.id.mtab_ema) {
             mKChartView.changeMainDrawType(Status.EMA);
-        }else if(id ==  R.id.mtab_boll){
+        } else if (id == R.id.mtab_boll) {
             mKChartView.changeMainDrawType(Status.BOLL);
-        }else if(id ==  R.id.mtab_sar){
+        } else if (id == R.id.mtab_sar) {
             mKChartView.changeMainDrawType(Status.SAR);
-        }else if(id ==  R.id.mtab_vol){
+        } else if (id == R.id.mtab_vol) {
             mKChartView.setChildDraw(0);
-        }else if(id ==  R.id.mtab_macd){
+        } else if (id == R.id.mtab_macd) {
             mKChartView.setChildDraw(1);
-        }else if(id ==  R.id.mtab_kdj){
+        } else if (id == R.id.mtab_kdj) {
             mKChartView.setChildDraw(2);
-        }else if(id ==  R.id.mtab_rsi){
+        } else if (id == R.id.mtab_rsi) {
             mKChartView.setChildDraw(3);
-        }else if(id ==  R.id.mtab_mtm){
+        } else if (id == R.id.mtab_mtm) {
             mKChartView.setChildDraw(4);
-        }else if(id ==  R.id.mtab_wr){
+        } else if (id == R.id.mtab_wr) {
             mKChartView.setChildDraw(5);
-        }else if(id ==  R.id.mtab_cci){
+        } else if (id == R.id.mtab_cci) {
             mKChartView.setChildDraw(6);
         }
     }
@@ -1181,13 +1006,6 @@ public class ContractTickerOneActivity extends BaseActivity implements
         }
     }
 
-    @Override
-    public void onTimer(int times) {
-        if (!LogicWebSocketContract.getInstance().isConnected()) {
-            sendData();
-            switchChart(mCurrentId, true);
-        }
-    }
 
     public void onDrawSelectText(CandleImpl data) {
         KLineEntity entity = (KLineEntity) data;
@@ -1212,6 +1030,7 @@ public class ContractTickerOneActivity extends BaseActivity implements
         mSelectLL.setVisibility(View.GONE);
     }
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     public void onBackPressed() {
         boolean isVertical = (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT);
@@ -1222,246 +1041,6 @@ public class ContractTickerOneActivity extends BaseActivity implements
         }
     }
 
-    @Override
-    public void onContractMessage(String data) {
-        try {
-            JSONObject jsonObject = new JSONObject(data);
-
-            Contract contract = LogicGlobal.getContract(mContractId);
-            if (contract == null) {
-                return;
-            }
-
-            final String coinCode = contract.getSymbol();
-
-            String group = jsonObject.optString("group");
-            if (TextUtils.isEmpty(group)) {
-                return;
-            }
-
-            String[] argGroup = group.split(":");
-            if (argGroup.length == 2) {
-
-                if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_TICKER)) {
-                    JSONObject dataObj = jsonObject.optJSONObject("data");
-                    if (dataObj == null) {
-                        return;
-                    }
-
-                    int contractId = dataObj.optInt("contract_id");
-                    if (mContractId != contractId) {
-                        return;
-                    }
-
-
-                    ContractTicker originTicker = LogicGlobal.getContractTicker(mContractId);
-                    if (originTicker == null) {
-                        return;
-                    }
-                    originTicker.verifyFromJson(dataObj);
-                    updateTickerData(originTicker);
-
-                } else if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_DEPTH)) {
-
-                    if (mContractId != Integer.parseInt(argGroup[1])) {
-                        return;
-                    }
-
-                    JSONObject dataObj = jsonObject.optJSONObject("data");
-                    if (dataObj == null) {
-                        return;
-                    }
-                    int actionType = jsonObject.optInt("action");
-                    Depth depth = new Depth();
-                    depth.fromJson(dataObj);
-                    if(actionType == 1){
-                        mDepth.fromJson(dataObj);
-                    }
-
-
-                    if (mOrderBookFragment.isForeground()) { mOrderBookFragment.updateDateByType(depth,mDepth.clone(), actionType); }
-                    if (mDepthChartFragment.isForeground()) { mDepthChartFragment.updateDateByType(depth, actionType); }
-                } else if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_TRADE)) {
-                    if (mContractId != Integer.parseInt(argGroup[1])) {
-                        return;
-                    }
-
-                    List<SDStockTrade> stockList = new ArrayList<>();
-                    JSONArray tradeArray = jsonObject.optJSONArray("data");
-                    if (tradeArray != null) {
-                        for (int i = 0; i < tradeArray.length(); i++) {
-                            JSONObject obj = tradeArray.getJSONObject(i);
-                            if (obj == null) {
-                                continue;
-                            }
-
-                            ContractTrade trade = new ContractTrade();
-                            trade.fromJson(obj);
-
-                            SDStockTrade stockTrade = new SDStockTrade();
-                            stockTrade.setCreated_at(trade.getCreated_at());
-                            stockTrade.setPx(trade.getPx());
-                            stockTrade.setQty(trade.getQty());
-                            stockTrade.setFee(trade.getTake_fee());
-                            stockTrade.setSide(trade.getSide() > 4 ? 2 : 1);
-                            stockTrade.setContractId(trade.getInstrument_id());
-                            stockList.add(stockTrade);
-                        }
-                    }
-                    mStockList.addAll(0, stockList);
-                    if (mStockList.size() > 0) {
-                        mStockList = mStockList.subList(0, Math.min(10, mStockList.size()));
-                    }
-
-                    mTradeHistoryFragment.setData(mStockList);
-
-                } else if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_BIN1M)) {
-                    if (mCurrentTab != DropKlineWindow.KTAB_1MIN && mCurrentTab != R.id.ktab_time) {
-                        return;
-                    }
-                    updateKLine(
-                            jsonObject,
-                            Integer.parseInt(argGroup[1]),
-                            LogicContractSpot.getInstance().getMinuteLine(coinCode),
-                            mKChartAdapter,
-                            mKChartView);
-
-                } else if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_BIN5M)) {
-                    if (mCurrentTab != R.id.ktab_5min) {
-                        return;
-                    }
-                    updateKLine(
-                            jsonObject,
-                            Integer.parseInt(argGroup[1]),
-                            LogicContractSpot.getInstance().get5MinuteLine(coinCode),
-                            mKChartAdapter,
-                            mKChartView);
-
-                } else if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_BIN15M)) {
-                    if (mCurrentTab != R.id.ktab_15min) {
-                        return;
-                    }
-                    updateKLine(
-                            jsonObject,
-                            Integer.parseInt(argGroup[1]),
-                            LogicContractSpot.getInstance().get15MinuteLine(coinCode),
-                            mKChartAdapter,
-                            mKChartView);
-
-                } else if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_BIN30M)) {
-                    if (mCurrentTab != DropKlineWindow.KTAB_30MIN) {
-                        return;
-                    }
-                    updateKLine(
-                            jsonObject,
-                            Integer.parseInt(argGroup[1]),
-                            LogicContractSpot.getInstance().get30MinuteLine(coinCode),
-                            mKChartAdapter,
-                            mKChartView);
-
-                } else if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_BIN1H)) {
-                    if (mCurrentTab != R.id.ktab_60min) {
-                        return;
-                    }
-                    updateKLine(
-                            jsonObject,
-                            Integer.parseInt(argGroup[1]),
-                            LogicContractSpot.getInstance().get60MinuteLine(coinCode),
-                            mKChartAdapter,
-                            mKChartView);
-
-                } else if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_BIN2H)) {
-                    if (mCurrentTab != DropKlineWindow.KTAB_2HOUR) {
-                        return;
-                    }
-                    updateKLine(
-                            jsonObject,
-                            Integer.parseInt(argGroup[1]),
-                            LogicContractSpot.getInstance().get2HourLine(coinCode),
-                            mKChartAdapter,
-                            mKChartView);
-
-                } else if (TextUtils.equals(argGroup[0], LogicWebSocketContract.WEBSOCKET_BIN4H)) {
-                    if (mCurrentTab != DropKlineWindow.KTAB_4HOUR) {
-                        return;
-                    }
-                    updateKLine(
-                            jsonObject,
-                            Integer.parseInt(argGroup[1]),
-                            LogicContractSpot.getInstance().get4HourLine(coinCode),
-                            mKChartAdapter,
-                            mKChartView);
-
-                } else {
-                    return;
-                }
-
-            } else {
-                return;
-            }
-
-
-        } catch (JSONException ignored) {
-        }
-    }
-
-    @Override
-    public void connectFail(String url, int reCount) {
-
-    }
-
-    @Override
-    public void reConnectSuccess(String url, int reCount) {
-
-    }
-
-    private void updateKLine(JSONObject jsonObj, int contractId, List<KLineEntity> minuteLine, KChartAdapter adapter, KChartView view) {
-        if (mContractId != contractId || minuteLine == null) {
-            return;
-        }
-
-        try {
-            JSONArray dataArray = jsonObj.optJSONArray("data");
-            if (dataArray == null) {
-                return;
-            }
-
-            List<KLineEntity> line = new ArrayList<>();
-            for (int i = 0; i < dataArray.length(); i++) {
-                JSONObject obj = dataArray.getJSONObject(i);
-                if (obj == null) {
-                    continue;
-                }
-
-                ContractSpot item = new ContractSpot();
-                item.fromJson(obj);
-
-                KLineEntity entity = new KLineEntity();
-                Date dt = new Date(item.getTimestamp() * 1000);
-                entity.date = dt;
-                entity.Open = (float) MathHelper.round(item.getOpen(), 8);
-                entity.Close = (float)MathHelper.round(item.getClose(), 8);
-                entity.High = (float)MathHelper.round(item.getHigh(), 8);
-                entity.Low = (float)MathHelper.round(item.getLow(), 8);
-                entity.Volume = (float)MathHelper.round(item.getQty(), 2);
-                entity.Chg = (float)MathHelper.round(Double.parseDouble(item.getChange_rate()) * 100, 2);
-
-                line.add(entity);
-            }
-
-            if (line.size() > 0 && minuteLine.size() > 0) {
-                if (line.get(0).getDatetime().getTime() == minuteLine.get(minuteLine.size() - 1).getDatetime().getTime()) {
-                    minuteLine.remove(minuteLine.size() - 1);
-                }
-            }
-            minuteLine.addAll(line);
-            DataHelper.calculate(minuteLine);
-
-            adapter.resetData(minuteLine);
-            view.refreshComplete();
-        } catch (JSONException ignored) {
-        }
-    }
 
 
 

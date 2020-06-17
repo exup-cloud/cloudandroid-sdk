@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@color/sl_colorDefaultDark">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <android.support.design.widget.CollapsingToolbarLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapse_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,7 +21,7 @@ android:background="@color/sl_colorDefaultDark">
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <android.support.v7.widget.Toolbar
+            <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -29,7 +29,7 @@ android:background="@color/sl_colorDefaultDark">
                 android:minHeight="48dp"
                 app:layout_collapseMode="pin" >
 
-            </android.support.v7.widget.Toolbar>
+            </androidx.appcompat.widget.Toolbar>
 
             <LinearLayout
                 android:id="@+id/rl_trade_option"
@@ -255,7 +255,7 @@ android:background="@color/sl_colorDefaultDark">
                         android:layout_marginTop="9dp"
                         android:orientation="horizontal">
 
-                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                        <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                             android:id="@+id/tab_market_price"
                             android:layout_height="match_parent"
                             android:layout_width="match_parent"
@@ -269,7 +269,7 @@ android:background="@color/sl_colorDefaultDark">
                             android:textColor="@drawable/sl_maintab_text_selector"
                             android:textSize="13sp" />
 
-                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                        <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                             android:id="@+id/tab_buy1"
                             android:layout_height="match_parent"
                             android:layout_width="match_parent"
@@ -282,7 +282,7 @@ android:background="@color/sl_colorDefaultDark">
                             android:textColor="@drawable/sl_maintab_text_selector"
                             android:textSize="13sp" />
 
-                        <com.bmtc.sdk.library.common.material.MaterialRadioButton
+                        <com.bmtc.sdk.contract.view.material.MaterialRadioButton
                             android:id="@+id/tab_sell1"
                             android:layout_height="match_parent"
                             android:layout_width="match_parent"
@@ -555,7 +555,7 @@ android:background="@color/sl_colorDefaultDark">
                     </RelativeLayout>
 
 
-                    <com.bmtc.sdk.library.common.scrollview.ObservableRecyclerView
+                    <com.bmtc.sdk.contract.view.scrollview.ObservableRecyclerView
                         android:id="@+id/rv_list_sell"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
@@ -572,7 +572,7 @@ android:background="@color/sl_colorDefaultDark">
                         android:layerType="software"
                         />
 
-                    <com.bmtc.sdk.library.common.scrollview.ObservableRecyclerView
+                    <com.bmtc.sdk.contract.view.scrollview.ObservableRecyclerView
                         android:id="@+id/rv_list_buy"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
@@ -709,7 +709,7 @@ android:background="@color/sl_colorDefaultDark">
                 android:background="@color/sl_defaultLine"/>
             </RelativeLayout>
 
-            <android.support.design.widget.TabLayout
+            <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -726,14 +726,14 @@ android:background="@color/sl_colorDefaultDark">
                 app:tabTextColor="@color/sl_grayText"/>
 
 
-        </android.support.design.widget.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-    </android.support.design.widget.AppBarLayout>
-    <android.support.v4.view.ViewPager
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

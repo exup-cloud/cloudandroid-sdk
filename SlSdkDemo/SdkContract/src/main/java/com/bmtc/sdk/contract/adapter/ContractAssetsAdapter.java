@@ -1,8 +1,8 @@
 package com.bmtc.sdk.contract.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +10,15 @@ import android.widget.TextView;
 
 
 import com.bmtc.sdk.contract.R;
-import com.bmtc.sdk.library.contract.ContractCalculate;
-import com.bmtc.sdk.library.trans.BTContract;
-import com.bmtc.sdk.library.trans.data.Contract;
-import com.bmtc.sdk.library.trans.data.ContractAccount;
-import com.bmtc.sdk.library.trans.data.ContractPosition;
-import com.bmtc.sdk.library.trans.data.ContractTicker;
-import com.bmtc.sdk.library.uilogic.LogicGlobal;
-import com.bmtc.sdk.library.utils.LogUtil;
-import com.bmtc.sdk.library.utils.MathHelper;
-import com.bmtc.sdk.library.utils.NumberUtil;
+import com.contract.sdk.ContractPublicDataAgent;
+import com.contract.sdk.ContractUserDataAgent;
+import com.contract.sdk.data.Contract;
+import com.contract.sdk.data.ContractAccount;
+import com.contract.sdk.data.ContractPosition;
+import com.contract.sdk.data.ContractTicker;
+import com.contract.sdk.extra.Contract.ContractCalculate;
+import com.contract.sdk.utils.MathHelper;
+import com.contract.sdk.utils.NumberUtil;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -109,7 +108,7 @@ public class ContractAssetsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         DecimalFormat dfDefault = NumberUtil.getDecimal(6);
 
-        ContractAccount contractAccount = BTContract.getInstance().getContractAccount(mNews.get(position).getCoin_code());
+        ContractAccount contractAccount = ContractUserDataAgent.INSTANCE.getContractAccount(mNews.get(position).getCoin_code());
         if (contractAccount != null) {
             double freeze_vol = MathHelper.round(contractAccount.getFreeze_vol());
             double available_vol = MathHelper.round(contractAccount.getAvailable_vol());
@@ -119,7 +118,7 @@ public class ContractAssetsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
             double position_margin = 0.0;
 
-            List<ContractPosition> contractPositions = BTContract.getInstance().getCoinPositions(mNews.get(position).getCoin_code());
+            List<ContractPosition> contractPositions = ContractUserDataAgent.INSTANCE.getCoinPositions(mNews.get(position).getCoin_code(),false);
             if (contractPositions != null && contractPositions.size() > 0) {
                 for (int i = 0; i < contractPositions.size(); i++) {
                     ContractPosition contractPosition = contractPositions.get(i);
@@ -127,8 +126,8 @@ public class ContractAssetsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                         continue;
                     }
 
-                    Contract positionContract = LogicGlobal.getContract(contractPosition.getInstrument_id());
-                    ContractTicker contractTicker = LogicGlobal.getContractTicker(contractPosition.getInstrument_id());
+                    Contract positionContract = ContractPublicDataAgent.INSTANCE.getContract(contractPosition.getInstrument_id());
+                    ContractTicker contractTicker = ContractPublicDataAgent.INSTANCE.getContractTicker(contractPosition.getInstrument_id());
                     if (positionContract == null || contractTicker == null) {
                         continue;
                     }
