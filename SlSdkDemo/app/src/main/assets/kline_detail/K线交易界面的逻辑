@@ -1,0 +1,33 @@
+ ## 交易想起界面
+ 
+ [WebSocket链接文档说明](http://wiki.365os.com/pages/viewpage.action?pageId=2261050)
+ 
+ 
+ ### K线数据
+ 1. K线历史数据
+ 2. K线最新数据
+ > 两者的区别：**K线历史数据**是的链接WebSocket的方式是：**req**;
+  而**K线最新数据**的链接WebSocket的方式是：**sub**
+  
+同理，成交数据亦是如此
+
+### 成交数据
+1. 历史成交数据（req）
+2. 实时成交数据 (sub)
+
+----------------------------------------
+
+
+### 返回数据的特点
+1. **K线历史** 和 **成交历史**的数据的返回json数据里面都包含data字段的列表:
+
+    a. 需要注意的是:两者的**channel字段**不同以及**data里面的字段**也是不相同的
+    b. 详情参考：deal_history_data 和 kline_history_data文件
+
+
+2. 最新数据(K线,成交)的返回数据，可参考kline_new 和 deal_new,depth,24h_ticker。需要注意的是**深度**,**24H行情**返回的数据和最新数据都具有channel,tick字段:
+
+    1. K线最新-channel : market_XXXX_kline_XXX（keyword:**kline**）
+    2. 最新成交-channel : market_XXXX_trade_ticker (keyword:**trade**)
+    3. 深度-depth: market_XXXX_depth_XXX (keyword:**depth**),buys-->买盘;asks-->卖盘
+    4. 24H行情: market_XXXX_ticker (keyword:**ticker**)

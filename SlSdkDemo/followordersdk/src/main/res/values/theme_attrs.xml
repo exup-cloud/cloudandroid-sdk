@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="fo_text_1_color" format="color" />
+    <attr name="fo_text_2_color" format="color" />
+    <attr name="fo_text_3_color" format="color" />
+    <attr name="fo_status_bg_color" format="color" />
+    <attr name="fo_view_bg_color" format="color" />
+    <attr name="fo_menu_bg_color" format="color" />
+    <attr name="fo_tab_text_nor_color" format="color" />
+    <attr name="fo_tab_text_sel_color" format="color" />
+    <attr name="fo_tab_item_text_nor_color" format="color" />
+    <attr name="fo_tab_item_text_sel_color" format="color" />
+    <attr name="fo_tab_indicator_color" format="color" />
+    <attr name="fo_menu_title_color" format="color" />
+    <attr name="fo_menu_item_bg_nor_color" format="color" />
+    <attr name="fo_menu_item_bg_sel_color" format="color" />
+    <attr name="fo_menu_button_color" format="color" />
+    <attr name="fo_nickname_color" format="color" />
+    <attr name="fo_line_color" format="color" />
+    <attr name="fo_list_line_color" format="color" />
+    <attr name="fo_follow_desc_color" format="color" />
+    <attr name="fo_coin_follow_color" format="color" />
+    <attr name="fo_coin_limit_color" format="color" />
+    <attr name="fo_personal_desc_color" format="color" />
+    <attr name="fo_chart_tab_nor_color" format="color" />
+    <attr name="fo_chart_text_color" format="color" />
+    <attr name="fo_chart_point_text_color" format="color" />
+    <attr name="fo_chart_mask_bg_color" format="color" />
+    <attr name="fo_chart_line_color" format="color" />
+    <attr name="fo_personal_bg_color" format="color" />
+    <attr name="fo_personal_subtitle_color" format="color" />
+    <attr name="fo_follow_setup_item_bg_color" format="color" />
+    <attr name="fo_follow_setup_line_color" format="color" />
+    <attr name="fo_follow_setup_hint_color" format="color" />
+    <attr name="fo_follow_setup_balance_color" format="color" />
+    <attr name="fo_follow_setup_desc_color" format="color" />
+
+    <attr name="fo_loading_drawable" format="reference"/>
+    <attr name="fo_loading_progress" format="reference"/>
+    <attr name="fo_empty_drawable" format="reference"/>
+    <attr name="fo_avatar_drawable" format="reference"/>
+    <attr name="fo_menu_left_drawable" format="reference"/>
+    <attr name="fo_home_check_no_drawable" format="reference"/>
+    <attr name="fo_bg_list_card_drawable" format="reference"/>
+    <attr name="fo_bg_item_card_drawable" format="reference"/>
+    <attr name="fo_bg_order_card_drawable" format="reference"/>
+    <attr name="fo_personal_head_mask_drawable" format="reference"/>
+    <attr name="fo_back_drawable" format="reference"/>
+    <attr name="fo_exchange_nor_drawable" format="reference"/>
+    <attr name="fo_exchange_sel_drawable" format="reference"/>
+    <attr name="fo_chart_fade_drawable" format="reference" />
+    <attr name="fo_chart_point_drawable" format="reference" />
+
+
+</resources>

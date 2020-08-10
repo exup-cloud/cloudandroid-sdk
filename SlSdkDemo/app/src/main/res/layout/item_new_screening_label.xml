@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_layout"
+    android:layout_width="@dimen/dp_100"
+    android:layout_height="@dimen/dp_36"
+    android:background="@drawable/bg_new_select_style">
+
+
+    <TextView
+        android:id="@+id/tv_parent_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:layout_marginRight="@dimen/dp_5"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_14"
+        tools:text="inParent" />
+
+    <ImageView
+        android:id="@+id/cut_view"
+        android:layout_width="@dimen/dp_20"
+        android:layout_height="@dimen/dp_20"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/quotes_selected" />
+
+</RelativeLayout>

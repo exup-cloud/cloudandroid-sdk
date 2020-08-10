@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/fo_personal_bg_color">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="179dp"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7">
+
+                <ImageView
+                    android:id="@+id/iv_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="179dp"
+                    android:scaleType="centerCrop"
+                    android:src="?attr/fo_avatar_drawable"
+                    tools:src="@drawable/fo_def_avatar_light" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="179dp"
+                    android:background="?attr/fo_personal_head_mask_drawable"
+                    tools:background="@drawable/fo_personal_head_shape_light" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_user_info"
+                android:layout_width="match_parent"
+                android:layout_height="179dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+
+                <com.follow.order.widget.roundimg.RoundedImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="48dp"
+                    android:scaleType="centerCrop"
+                    android:src="?attr/fo_avatar_drawable"
+                    app:riv_border_color="@color/fo_white"
+                    app:riv_border_width="1.5dp"
+                    app:riv_oval="true"
+                    tools:src="@drawable/fo_def_avatar_light" />
+
+                <TextView
+                    android:id="@+id/tv_nick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:singleLine="true"
+                    android:textColor="@color/fo_white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="比特小叮当" />
+
+                <TextView
+                    android:id="@+id/tv_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="14dp"
+                    android:singleLine="true"
+                    android:textColor="?attr/fo_personal_desc_color"
+                    android:textSize="@dimen/text_size_2"
+                    tools:text="大暴涨，我无法想象。哈哈哈哈哈哈哈哈"
+                    tools:textColor="@color/fo_light_personal_desc_color" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin">
+
+                <LinearLayout
+                    android:id="@+id/ll_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:id="@+id/status_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fo_title_height">
+
+                        <ImageButton
+                            android:id="@+id/ib_back"
+                            android:layout_width="@dimen/fo_title_height"
+                            android:layout_height="@dimen/fo_title_height"
+                            android:layout_marginLeft="11dp"
+                            android:background="@color/fo_transparent"
+                            android:src="@drawable/fo_back_dark" />
+
+
+                        <TextView
+                            android:id="@+id/tv_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="48dp"
+                            android:layout_marginRight="48dp"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:textColor="?attr/fo_text_1_color"
+                            android:textSize="@dimen/fo_title_size"
+                            android:visibility="gone"
+                            tools:text="比特小叮当"
+                            tools:textColor="@color/fo_light_text_1_color" />
+
+                        <View
+                            android:id="@+id/line_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="?attr/fo_line_color"
+                            android:visibility="gone"
+                            tools:background="@color/fo_light_line_color" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_exchange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/fo_status_bg_color"
+                android:focusable="false"
+                android:nestedScrollingEnabled="false"
+                android:paddingLeft="9.5dp"
+                android:paddingTop="15dp"
+                android:paddingRight="9.5dp"
+                android:paddingBottom="15dp"
+                tools:background="@color/fo_white"
+                tools:itemCount="2"
+                android:visibility="gone"
+                tools:listitem="@layout/fo_personal_exchange" />
+
+            <include
+                android:id="@+id/assets_view"
+                layout="@layout/view_personal_assets" />
+
+            <include
+                android:id="@+id/profit_chart_view"
+                layout="@layout/view_personal_profit_chart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>

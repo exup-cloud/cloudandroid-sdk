@@ -1,0 +1,40 @@
+[{
+  "isOpen": 1,
+  "remittanceInformation": "",
+  "icon": "http://chaindown-oss.oss-cn-hongkong.aliyuncs.com/upload/20180626160522304.png",
+  "payment": "otc.payment.wxpay",
+  "bankName": "",
+  "id": 2,
+  "qrcodeImg": "http://chainup-oss.oss-cn-beijing.aliyuncs.com/common/image/1535111631988.jpg",
+  "title": "微信",
+  "userName": "123",
+  "ifscCode": "",
+  "account": "000012341324234",
+  "bankOfDeposit": ""
+}, {
+  "isOpen": 1,
+  "remittanceInformation": "",
+  "icon": "http://chaindown-oss.oss-cn-hongkong.aliyuncs.com/upload/20180626160505707.png",
+  "payment": "otc.payment.alipay",
+  "bankName": "",
+  "id": 3,
+  "qrcodeImg": "http://chainup-oss.oss-cn-beijing.aliyuncs.com/common/image/1535179579441.jpg",
+  "title": "支付宝",
+  "userName": "123",
+  "ifscCode": "",
+  "account": "textalipay",
+  "bankOfDeposit": ""
+}, {
+  "isOpen": 0,
+  "remittanceInformation": "",
+  "icon": "http://chaindown-oss.oss-cn-hongkong.aliyuncs.com/upload/20180825161938592.png",
+  "payment": "otc.payment.domestic.bank.transfer",
+  "bankName": "342342",
+  "id": 4,
+  "qrcodeImg": "",
+  "title": "银行卡",
+  "userName": "123",
+  "ifscCode": "",
+  "account": "36346465",
+  "bankOfDeposit": "5354363"
+}]

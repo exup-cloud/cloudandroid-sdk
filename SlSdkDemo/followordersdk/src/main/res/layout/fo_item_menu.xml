@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.follow.order.widget.shape.RoundTextView
+        android:id="@+id/tv_menu"
+        android:layout_width="64dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="4.5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="4.5dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@color/fo_desc_color"
+        android:textSize="@dimen/text_size_4"
+        app:rv_backgroundColor="@color/fo_light_menu_item_bg_nor_color"
+        app:rv_cornerRadius="1.5dp"
+        tools:text="全部" />
+
+</LinearLayout>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/fo_view_bg_color"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".ui.activity.FollowOrderActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fo_title_height"
+            android:background="?attr/fo_status_bg_color"
+            tools:background="@color/fo_light_status_color">
+
+            <ImageButton
+                android:id="@+id/ib_back"
+                android:layout_width="@dimen/fo_title_height"
+                android:layout_height="@dimen/fo_title_height"
+                android:layout_marginLeft="11dp"
+                android:background="@color/fo_transparent"
+                android:src="?attr/fo_back_drawable"
+                tools:src="@drawable/fo_back_light" />
+
+            <com.follow.order.widget.tab.SegmentTabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_centerInParent="true"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textAlignment="center"
+                app:tl_bar_color="@color/fo_transparent"
+                app:tl_bar_stroke_color="@color/fo_blue"
+                app:tl_bar_stroke_width="1dp"
+                app:tl_indicator_color="@color/fo_blue"
+                app:tl_indicator_corner_radius="1.5dp"
+                app:tl_tab_padding="8dp"
+                app:tl_tab_space_equal="true"
+                app:tl_tab_width="80dp"
+                app:tl_textBold="SELECT"
+                app:tl_textSelectColor="@color/fo_white"
+                app:tl_textSize="@dimen/text_size_4"
+                app:tl_textUnSelectColor="@color/fo_blue" />
+
+        </RelativeLayout>
+
+        <com.follow.order.widget.CustomViewPager
+            android:id="@+id/vp_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/menu_view"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/ll_menu"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:background="?attr/fo_menu_bg_color"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp"
+                android:text="@string/fo_follow_menu_1"
+                android:textColor="?attr/fo_menu_title_color"
+                android:textSize="@dimen/text_size_4"
+                android:textStyle="bold"
+                tools:textColor="@color/fo_light_menu_title_color" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_menu1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.5dp"
+                android:layout_marginRight="10.5dp"
+                android:nestedScrollingEnabled="false"
+                tools:itemCount="4"
+                tools:listitem="@layout/fo_item_menu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="35dp"
+                android:text="@string/fo_follow_menu_2"
+                android:textColor="?attr/fo_menu_title_color"
+                android:textSize="@dimen/text_size_4"
+                android:textStyle="bold"
+                tools:textColor="@color/fo_light_menu_title_color" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_menu2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.5dp"
+                android:layout_marginRight="10.5dp"
+                android:nestedScrollingEnabled="false"
+                tools:itemCount="4"
+                tools:listitem="@layout/fo_item_menu" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="25dp"
+                android:background="?attr/fo_list_line_color"
+                tools:background="@color/fo_light_line_color" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <com.follow.order.widget.shape.RoundTextView
+                    android:id="@+id/btn_reset"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/fo_action_reset"
+                    android:textColor="@color/fo_blue"
+                    android:textSize="@dimen/text_size_4"
+                    android:textStyle="bold"
+                    app:rv_cornerRadius="1.5dp"
+                    app:rv_strokeColor="@color/fo_blue"
+                    app:rv_strokeWidth="0.7dp" />
+
+                <com.follow.order.widget.shape.RoundTextView
+                    android:id="@+id/btn_confirm"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/fo_action_confirm"
+                    android:textColor="@color/fo_white"
+                    android:textSize="@dimen/text_size_4"
+                    android:textStyle="bold"
+                    app:rv_backgroundColor="@color/fo_blue"
+                    app:rv_cornerRadius="1.5dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.v4.widget.DrawerLayout>

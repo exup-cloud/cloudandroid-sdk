@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_card_color">
+
+    <com.yjkj.chainup.new_version.view.PersonalCenterView
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:personalTitle="@string/title_verify" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_layout"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_countries_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_15"
+            android:text="@string/personal_text_country"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+
+
+        <LinearLayout
+            android:id="@+id/pws_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_countries_title"
+            android:orientation="vertical">
+
+            <com.yjkj.chainup.new_version.view.CustomizeEditText
+                android:id="@+id/cet_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginRight="@dimen/dp_15"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:maxLength="50"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/sp_16" />
+
+            <View
+                android:id="@+id/cet_view_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_half"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginRight="@dimen/dp_15"
+                android:background="@color/line_color" />
+
+        </LinearLayout>
+
+        <com.yjkj.chainup.new_version.view.TextViewAddEditTextView
+            android:id="@+id/tet_firstname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pws_view"
+            android:layout_marginTop="@dimen/dp_20"
+            app:hint_content="@string/kyc_text_givenName"
+            app:title_content="@string/kyc_text_givenName" />
+
+
+        <com.yjkj.chainup.new_version.view.TextViewAddEditTextView
+            android:id="@+id/tet_surname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tet_firstname"
+            android:layout_marginTop="@dimen/dp_20"
+            app:hint_content="@string/kyc_text_familyName"
+            app:title_content="@string/kyc_text_familyName" />
+
+
+        <com.yjkj.chainup.new_version.view.TextViewAddEditTextView
+            android:id="@+id/tet_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tet_surname"
+            android:layout_marginTop="@dimen/dp_20"
+            app:hint_content="@string/common_tip_inputRealName"
+            app:title_content="@string/otc_user_name" />
+
+        <TextView
+            android:id="@+id/tv_certificate_type_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tet_name"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="@string/certificate_type"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+
+        <com.yjkj.chainup.new_version.view.PwdSettingView
+            android:id="@+id/pws_certificate_type_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_certificate_type_title"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_3"
+            android:layout_marginRight="@dimen/dp_15"
+            app:hint_text=""
+            app:icon_res2="@drawable/dropdown"
+            app:isEditable="false"
+            app:isPwdShow="false"
+            app:textContent="@string/idcard"
+            app:textContentSize="@dimen/sp_14" />
+
+
+        <com.yjkj.chainup.new_version.view.TextViewAddEditTextView
+            android:id="@+id/tet_id_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pws_certificate_type_view"
+            android:layout_marginTop="@dimen/dp_20"
+            app:hint_content="@string/personal_tip_inputIdnumber"
+            app:title_content="@string/kyc_text_certificateNumber" />
+
+
+    </LinearLayout>
+
+
+    <com.yjkj.chainup.new_version.view.CommonlyUsedButton
+        android:id="@+id/cub_next"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_30"
+        app:bottonTextContent="@string/common_action_next" />
+
+    <TextView
+        android:id="@+id/tv_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cub_next"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:lineSpacingExtra="6dp"
+        android:text="@string/common_tip_safetyIdentityAuth"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12" />
+
+    <TextView
+        android:id="@+id/tv_prompt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_prompt"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginBottom="5dp"
+        android:text="@string/common_text_tip"
+        android:textColor="@color/text_color_level_4"
+        android:textSize="@dimen/sp_12" />
+
+</RelativeLayout>

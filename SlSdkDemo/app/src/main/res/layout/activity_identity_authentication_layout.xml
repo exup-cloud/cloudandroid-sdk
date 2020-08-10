@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_card_color"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/ly_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_105"
+        android:background="@color/bg_card_color"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="0dp">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleGravity="end"
+            app:expandedTitleMarginBottom="@dimen/dp_15"
+            app:expandedTitleMarginStart="@dimen/dp_15"
+            app:expandedTitleTextAppearance="@dimen/sp_28"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:subtitleTextAppearance="@dimen/sp_14"
+            app:title="@string/common_text_identify"
+            app:titleEnabled="true"
+            app:titleTextColor="@color/text_color">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                app:layout_collapseMode="pin"
+                app:navigationIcon="@drawable/return_daytime"
+                app:titleTextColor="@color/text_color" />
+
+            <TextView
+                android:id="@+id/tv_recharge_record"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_48"
+                android:layout_gravity="right"
+                android:gravity="center_vertical"
+                android:paddingRight="@dimen/dp_15"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_14"
+                app:layout_collapseMode="pin" />
+            <!--app:popupTheme="@style/ToolbarTheme"-->
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_top_authentication_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginRight="@dimen/dp_15"
+                android:text="为了确保是否为本人操作，请完善以下信息："
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/sp_12" />
+
+            <com.yjkj.chainup.new_version.view.TextViewAddEditTextView
+                android:id="@+id/tet_name_authentication"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                app:hint_content=""
+                app:title_content="您实名认证的姓名？（提示：易**）" />
+
+
+            <com.yjkj.chainup.new_version.view.TextViewAddEditTextView
+                android:id="@+id/tet_id_number_authentication"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                app:hint_content=""
+                app:title_content="您实名的证件号码？（提示：4*********4）" />
+
+            <TextView
+                android:id="@+id/tv_prompt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginRight="@dimen/dp_15"
+                android:textColor="@color/normal_text_color"
+                android:layout_marginTop="@dimen/dp_15"
+                android:visibility="gone"
+                android:text="证件号码错误，还剩%s次机会！连续%s次输入错误将冻结提现%s小时！"
+                android:textSize="@dimen/sp_12" />
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+    <com.yjkj.chainup.new_version.view.CommonlyUsedButton
+        android:id="@+id/btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_30"
+        app:bottonTextContent="@string/kyc_action_submit" />
+
+</android.support.design.widget.CoordinatorLayout>

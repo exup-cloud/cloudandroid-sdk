@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/bg_card_color">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginLeft="@dimen/dp_15">
+
+        <TextView
+            android:id="@+id/tv_side"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/main_red"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            tools:text="空" />
+
+        <TextView
+            android:id="@+id/tv_coin_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_toRightOf="@id/tv_side"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            tools:text="BCHUSDT" />
+
+        <TextView
+            android:id="@+id/tv_contract_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tv_coin_name"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12"
+            tools:text="当周 0325 (50x)" />
+
+        <ImageView
+            android:id="@+id/btn_share"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:src="@drawable/contract_share"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_15"
+            />
+
+    </RelativeLayout>
+
+    <!--仓位ID-->
+    <com.yjkj.chainup.new_version.view.PositionITemView
+        android:id="@+id/tv_position_id"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        app:headTitle="@string/contract_position_id"
+        app:tailValue="4000" />
+
+    <!--强平价格-->
+    <com.yjkj.chainup.new_version.view.PositionITemView
+        android:id="@+id/tv_liquidation_price"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        app:headTitle="强平价格"
+        app:tailValue="4000" />
+    <!--已实现盈亏-->
+    <com.yjkj.chainup.new_version.view.PositionITemView
+        android:id="@+id/tv_realised_profit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        app:headTitle="已实现盈亏"
+        app:tailValue="+328.99" />
+
+    <!--保证金-->
+    <com.yjkj.chainup.new_version.view.PositionITemView
+        android:id="@+id/tv_deposit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        app:headTitle="保证金"
+        app:tailValue="99.99BTC"
+        app:tailValueColor="@color/main_blue"
+        />
+
+    <!--开仓均价-->
+    <com.yjkj.chainup.new_version.view.PositionITemView
+        android:id="@+id/tv_avg_price"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        app:headTitle="@string/contract_text_openAveragePrice"
+        app:tailValue="99.99" />
+
+    <!--仓位数量-->
+    <com.yjkj.chainup.new_version.view.PositionITemView
+        android:id="@+id/tv_volume"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        app:headTitle="仓位数量"
+        app:tailValue="99.99" />
+
+    <!--未实现盈亏-->
+    <com.yjkj.chainup.new_version.view.PositionITemView
+        android:id="@+id/tv_unrealised_profit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        app:headTitle="未实现盈亏"
+        app:tailValue="+43333" />
+
+    <!--价值-->
+    <com.yjkj.chainup.new_version.view.PositionITemView
+        android:id="@+id/tv_price_value"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        app:headTitle="价值"
+        app:tailValue="234" />
+    <!--标记价格-->
+    <com.yjkj.chainup.new_version.view.PositionITemView
+        android:id="@+id/tv_index_price"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        app:headTitle="@string/contract_price_tag"
+        app:tailValue="234" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_half"
+        android:background="@color/line_color" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_55"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_adjust_lever"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:text="@string/contract_action_editLever"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            />
+
+        <View
+            android:layout_width="@dimen/dp_half"
+            android:layout_height="@dimen/dp_36"
+            android:layout_gravity="center"
+            android:background="@color/line_color" />
+
+        <Button
+            android:id="@+id/btn_take_order"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:text="@string/contract_text_marketPriceFlat"
+            android:textStyle="bold"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/sp_16" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_10"
+        android:background="@color/bg_color"
+        />
+</LinearLayout>

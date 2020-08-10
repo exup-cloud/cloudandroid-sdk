@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/dp_15"
+    android:fitsSystemWindows="true"
+    android:background="@color/bg_card_color">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/leverage_asset"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_risk_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="风险率 34%"
+        android:textColor="@color/green"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        android:layout_marginTop="@dimen/dp_15"
+        />
+
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_30"
+        android:layout_gravity="center"
+        android:max="40"
+        tools:progress="8"
+        app:layout_constraintTop_toBottomOf="@id/tv_risk_rate"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:progressDrawable="@drawable/bg_progressbar_default"
+        android:layout_marginTop="@dimen/dp_10"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_risk_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/leverage_risk_prompt"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar"
+        android:layout_marginTop="@dimen/dp_10"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_explosion_price_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/leverage_text_blowingUp"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_risk_tip"
+        android:layout_marginTop="@dimen/dp_20"
+        />
+
+    <TextView
+        android:id="@+id/tv_explosion_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="133.34"
+        android:text="--"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_explosion_price_title"
+        />
+
+<!--可用-->
+    <TextView
+        android:id="@+id/tv_available_balance_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/assets_text_available"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_explosion_price_title"
+        android:layout_marginTop="@dimen/dp_10"
+        />
+
+    <TextView
+        android:id="@+id/tv_available_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="133.34"
+        android:text="--"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_available_balance_title"
+        />
+
+
+    <!--已借-->
+    <TextView
+        android:id="@+id/tv_borrowed_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/assets_text_available"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_available_balance_title"
+        android:layout_marginTop="@dimen/dp_10"
+        />
+
+    <TextView
+        android:id="@+id/tv_borrowed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="133.34"
+        android:text="--"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_borrowed_title"
+        />
+
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/btn_borrow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_weight="1"
+        android:text="@string/leverage_borrow"
+        android:textColor="@color/main_blue"
+        android:gravity="center"
+        android:textSize="@dimen/sp_14"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingBottom="@dimen/dp_8"
+        app:stv_corner="@dimen/dp_3"
+        app:stv_stroke_color="@color/main_blue"
+        app:stv_stroke_width="@dimen/dp_1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_borrowed_title"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintRight_toLeftOf="@id/btn_transfer"
+        android:layout_marginRight="@dimen/dp_5"
+        />
+
+    
+    <com.coorchice.library.SuperTextView
+        android:id="@+id/btn_transfer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_weight="1"
+        android:gravity="center"
+        android:text="@string/assets_action_transfer"
+        app:stv_corner="@dimen/dp_3"
+        android:layout_marginLeft="@dimen/dp_5"
+        app:stv_stroke_color="@color/main_blue"
+        app:stv_stroke_width="@dimen/dp_1"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingBottom="@dimen/dp_8"
+        android:textColor="@color/main_blue"
+        android:textSize="@dimen/sp_14"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/btn_borrow"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_borrow"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/margin_up"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_transfer"
+        android:layout_marginTop="@dimen/dp_25"
+        />
+
+
+</android.support.constraint.ConstraintLayout>

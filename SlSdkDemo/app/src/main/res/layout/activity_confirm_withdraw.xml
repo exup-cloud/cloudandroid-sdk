@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/v_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_card_color">
+
+    <com.yjkj.chainup.new_version.view.PersonalCenterView
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:personalTitle="@string/withdraw_action_confirm" />
+
+    <LinearLayout
+        android:id="@+id/ll_address_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_layout"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_adr_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_15"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            tools:text="label" />
+
+        <TextView
+            android:id="@+id/tv_adr_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_6"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            tools:text="tag" />
+
+        <TextView
+            android:id="@+id/tv_adr_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            tools:text="content" />
+
+
+        <View
+            android:id="@+id/v_adr_content_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_half"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/sp_15"
+            android:background="@color/line_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_below="@+id/ll_address_layout"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.7"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_symbol_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:text="@string/common_text_coinsymbol"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/sp_10" />
+
+            <TextView
+                android:id="@+id/tv_symbol_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_9"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/common_text_coinsymbol"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_14" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_amount_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="@dimen/dp_15"
+                android:text="@string/charge_text_volume"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/sp_10" />
+
+            <TextView
+                android:id="@+id/tv_amount_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="@dimen/dp_9"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_14"
+                tools:text="@string/charge_text_volume" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_fee_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:text="@string/withdraw_text_fee"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/sp_10" />
+
+            <TextView
+                android:id="@+id/tv_fee_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_9"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_14"
+                tools:text="@string/common_text_coinsymbol" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_info_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_half"
+        android:layout_below="@+id/ll_info_layout"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:background="@color/line_color" />
+
+    <RelativeLayout
+        android:id="@+id/rl_trust_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v_info_line"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_15">
+
+        <TextView
+            android:id="@+id/tv_trust_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/withdraw_action_trustAddress"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14" />
+
+        <Switch
+            android:id="@+id/switch_trust_adr"
+            android:layout_width="35dp"
+            android:layout_height="@dimen/dp_18"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shut_down"
+            android:thumb="@drawable/icon_switch_default"
+            android:track="@drawable/icon_switch_default"  />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_trust_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_trust_layout"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_9"
+        android:layout_marginRight="@dimen/dp_15"
+        android:text="@string/withdraw_tip_trustDesc"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12" />
+
+
+    <com.yjkj.chainup.new_version.view.CommonlyUsedButton
+        android:id="@+id/cbtn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_30"
+        app:bottonTextContent="@string/common_text_btnConfirm" />
+
+</RelativeLayout>

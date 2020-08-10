@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_card_color"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+
+    <ImageButton
+        android:id="@+id/ib_back"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:padding="@dimen/dp_10"
+        android:src="@drawable/ic_return" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_48"
+        android:text="@string/common_text_identify"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/sp_30" />
+
+
+    <com.yjkj.chainup.new_version.view.PwdSetView
+        android:id="@+id/psv_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        app:hint="@string/toast_no_idcard"
+        app:isShowLine="true"
+        app:isShowPwd="false"
+        app:pwdTitle="@string/idcard" />
+
+
+    <com.yjkj.chainup.new_version.view.PwdSetView
+        android:id="@+id/psv_google"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_30"
+        android:inputType="number"
+        app:hint="@string/toast_no_google_code"
+        app:isShowLine="true"
+        app:isShowPwd="false"
+        app:pwdTitle="@string/title_google_verified" />
+
+
+    <com.yjkj.chainup.new_version.view.CommonlyUsedButton
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_30"
+        app:bottonTextContent="@string/common_action_next" />
+
+
+</LinearLayout>

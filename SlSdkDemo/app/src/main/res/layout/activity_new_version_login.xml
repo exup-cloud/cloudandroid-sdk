@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/v_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_card_color"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            style="@style/NewVersionCancel" />
+
+
+        <ImageView
+            android:id="@+id/app_logo"
+            android:layout_width="160dp"
+            android:layout_height="32dp"
+            android:layout_below="@+id/tv_cancel"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="49dp" />
+
+        <com.yjkj.chainup.new_version.view.CustomizeEditText
+            android:id="@+id/ce_account"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_below="@+id/app_logo"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_45"
+            android:layout_marginRight="@dimen/dp_30"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/login_text_phoneOrMail"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_color"
+            android:textCursorDrawable="@drawable/et_cursor_color"
+            android:textSize="@dimen/sp_16"
+            android:maxLines="1"/>
+
+        <View
+            android:id="@+id/v_line"
+            style="@style/common_horizon_line_style"
+            android:background="@color/new_edit_line_color"
+            android:layout_below="@+id/ce_account"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginRight="@dimen/dp_30"/>
+
+        <com.yjkj.chainup.new_version.view.PwdSettingView
+            android:id="@+id/pws_view"
+            style="@style/NewVersionPwdStyle"
+            android:layout_below="@+id/ce_account"
+            app:hint_text="@string/login_text_pwd"
+            app:icon_res="@drawable/hide"
+            app:isEditable="true"
+            />
+
+        <!--验证方式-->
+        <com.yjkj.chainup.new_version.view.PwdSettingView
+            android:id="@+id/security_view"
+            style="@style/NewVersionPwdStyle"
+            android:layout_below="@+id/pws_view"
+            android:gravity="bottom"
+            android:inputType="text"
+            app:icon_res2="@drawable/dropdown"
+            app:isEditable="false"
+            app:isPwdShow="false"
+            android:visibility="gone"
+            app:textContent="@string/safety_text_phoneAuth" />
+
+
+        <com.yjkj.chainup.new_version.view.CommonlyUsedButton
+            android:id="@+id/cbtn_view"
+            style="@style/NewVersionCommonlyUsedButtonStyle"
+            android:layout_below="@+id/security_view"
+            android:layout_marginTop="@dimen/dp_40"
+            apps:bgColor="@color/main_blue"
+            app:bottonTextContent="@string/login_action_login" />
+
+        <TextView
+            android:id="@+id/tv_forget_pwd"
+            style="@style/NewVersionContentStyle"
+            android:layout_below="@+id/cbtn_view"
+            android:text="@string/login_action_fogotPassword"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_account_info"
+            style="@style/NewVersionInfo"
+            android:text="@string/login_action_noAccount"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_to_register"
+            style="@style/NewVersionRegisterOrLogin"
+            android:layout_toRightOf="@+id/tv_account_info"
+            android:text="@string/login_action_register"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>

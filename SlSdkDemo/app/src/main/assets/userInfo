@@ -1,0 +1,25 @@
+{
+  "code": "0",
+  "msg": "成功",
+  "data": {
+    "googleStatus": 1,
+    "nickName": "186****6503",
+    "mobileNumber": "186****6503",
+    "myMarket": [],
+    "feeCoinRate": "80.00",
+    "useFeeCoinOpen": 0,
+    "lastLoginIp": "124.204.37.117",
+    "accountStatus": 0,
+    "isOpenMobileCheck": 1,
+    "lastLoginTime": "1534412064000",
+    "feeCoin": "NOB",
+    "countryCode": "+86",
+    "inviteUrl": "http://m.chaindown.com/register?inviteCode=EAEZT",
+    "userAccount": "186****6503",
+    "inviteCode": "EAEZT",
+    "id": 10145,
+    "notPassReason": "",
+    "authLevel": 1,
+    "email": ""
+  }
+}

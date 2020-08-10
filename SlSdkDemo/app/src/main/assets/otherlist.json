@@ -1,0 +1,73 @@
+{
+  "code": "0",
+  "msg": "成功",
+  "data": {
+    "financeList": [
+      {
+        "amount": 10000.00000000,
+        "coinSymbol": "ADA",
+        "createTime": "2018-06-21 20:53:40",
+        "transactionScene": "present_coin",
+        "status_text": "已完成",
+        "createTimeTime": 1529585620000,
+        "status": 1
+      },
+      {
+        "amount": 10000.00000000,
+        "coinSymbol": "LTC",
+        "createTime": "2018-06-21 20:53:33",
+        "transactionScene": "present_coin",
+        "status_text": "已完成",
+        "createTimeTime": 1529585613000,
+        "status": 1
+      },
+      {
+        "amount": 10000.00000000,
+        "coinSymbol": "ETC",
+        "createTime": "2018-06-21 20:53:26",
+        "transactionScene": "present_coin",
+        "status_text": "已完成",
+        "createTimeTime": 1529585606000,
+        "status": 1
+      },
+      {
+        "amount": 10000.00,
+        "coinSymbol": "USDT",
+        "createTime": "2018-06-21 20:53:17",
+        "transactionScene": "present_coin",
+        "status_text": "已完成",
+        "createTimeTime": 1529585597000,
+        "status": 1
+      },
+      {
+        "amount": 10000.00000000,
+        "coinSymbol": "ETH",
+        "createTime": "2018-06-21 20:52:52",
+        "transactionScene": "present_coin",
+        "status_text": "已完成",
+        "createTimeTime": 1529585572000,
+        "status": 1
+      },
+      {
+        "amount": 10000.00,
+        "coinSymbol": "USDT",
+        "createTime": "2018-06-14 17:15:56",
+        "transactionScene": "present_coin",
+        "status_text": "已完成",
+        "createTimeTime": 1528967756000,
+        "status": 1
+      },
+      {
+        "amount": 100.00000000,
+        "coinSymbol": "BTC",
+        "createTime": "2018-06-14 17:15:40",
+        "transactionScene": "present_coin",
+        "status_text": "已完成",
+        "createTimeTime": 1528967740000,
+        "status": 1
+      }
+    ],
+    "count": 7,
+    "pageSize": 10
+  }
+}

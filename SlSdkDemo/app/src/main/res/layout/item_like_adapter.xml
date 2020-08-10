@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yjkj.chainup.new_version.view.CustomCheckBoxView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cbtn_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:isOnlyShowCenter="false"
+    app:isShowClick="false"
+    app:firstContent="11"
+    app:middleContent=""
+    app:secondContent="11"
+    app:thirdContent="11" />
+

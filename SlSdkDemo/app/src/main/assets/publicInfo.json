@@ -1,0 +1,327 @@
+{
+  "code": "0",
+  "msg": "成功",
+  "data": {
+    "coinList": {
+      "USDT": {
+        "otcOpen": 1,
+        "name": "USDT",
+        "icon": "http://chainup-oss.oss-cn-beijing.aliyuncs.com/upload/20180630102608010.png",
+        "sort": 1,
+        "tokenBase": "USDT",
+        "showPrecision": 2
+      },
+      "BTC": {
+        "otcOpen": 1,
+        "name": "BTC",
+        "icon": "http://chainup-oss.oss-cn-beijing.aliyuncs.com/upload/20180630102643731.png",
+        "sort": 1,
+        "tokenBase": "BTC",
+        "showPrecision": 8
+      },
+      "YY": {
+        "otcOpen": 0,
+        "name": "YY",
+        "icon": "",
+        "sort": 1,
+        "tokenBase": "ETH",
+        "showPrecision": 8
+      },
+      "ABAA": {
+        "otcOpen": 0,
+        "name": "ABAA",
+        "icon": "",
+        "sort": 1,
+        "tokenBase": "XEM",
+        "showPrecision": 8
+      },
+      "XEM": {
+        "otcOpen": 0,
+        "name": "XEM",
+        "icon": "",
+        "sort": 1,
+        "tokenBase": "XEM",
+        "showPrecision": 8
+      },
+      "XEM2": {
+        "otcOpen": 0,
+        "name": "XEM2",
+        "icon": "",
+        "sort": 1,
+        "tokenBase": "XEM",
+        "showPrecision": 8
+      },
+      "ETH": {
+        "otcOpen": 1,
+        "name": "ETH",
+        "icon": "http://chainup-oss.oss-cn-beijing.aliyuncs.com/upload/20180630102717018.png",
+        "sort": 3,
+        "tokenBase": "ETH",
+        "showPrecision": 8
+      },
+      "LTC": {
+        "otcOpen": 0,
+        "name": "LTC",
+        "icon": "http://chainup-oss.oss-cn-beijing.aliyuncs.com/upload/20180630102751563.png",
+        "sort": 5,
+        "tokenBase": "LTC",
+        "showPrecision": 8
+      },
+      "BCH": {
+        "otcOpen": 0,
+        "name": "BCH",
+        "icon": "http://chainup-oss.oss-cn-beijing.aliyuncs.com/upload/20180816170103100.png",
+        "sort": 6,
+        "tokenBase": "BCH",
+        "showPrecision": 8
+      },
+      "ETC": {
+        "otcOpen": 0,
+        "name": "ETC",
+        "icon": "http://chainup-oss.oss-cn-beijing.aliyuncs.com/upload/20180630102853577.png",
+        "sort": 7,
+        "tokenBase": "ETC",
+        "showPrecision": 8
+      }
+    },
+    "otcUrl": "https://test.365os.com/exchange-otc-api",
+    "emailOptCode": {
+      "16": "登录提醒",
+      "1": "邮箱注册",
+      "2": "绑定邮箱",
+      "3": "找回密码",
+      "4": "邮箱登录",
+      "9": "二次登录",
+      "15": "修改邮箱"
+    },
+    "market": {
+      "USDT": {
+        "BTC/USDT": {
+          "volume": 3,
+          "limitVolumeMin": 0.0010000000000000,
+          "symbol": "btcusdt",
+          "depth": "0.0001,0.01,1",
+          "marketBuyMin": 0.0001000000000000,
+          "price": 4,
+          "name": "BTC/USDT",
+          "marketSellMin": 0.0010000000000000,
+          "limitPriceMin": 0.0001000000000000
+        },
+        "ETH/USDT": {
+          "volume": 3,
+          "limitVolumeMin": 0.0010000000000000,
+          "symbol": "ethusdt",
+          "depth": "0.01,0.1,1",
+          "marketBuyMin": 0.0100000000000000,
+          "price": 2,
+          "name": "ETH/USDT",
+          "marketSellMin": 0.0010000000000000,
+          "limitPriceMin": 0.0100000000000000
+        },
+        "LTC/USDT": {
+          "volume": 3,
+          "limitVolumeMin": 0.0010000000000000,
+          "symbol": "ltcusdt",
+          "depth": "0.01,0.1,1",
+          "marketBuyMin": 0.0100000000000000,
+          "price": 2,
+          "name": "LTC/USDT",
+          "marketSellMin": 0.0010000000000000,
+          "limitPriceMin": 0.0100000000000000
+        }
+      },
+      "NOB": {
+        "ETH/NOB": {
+          "volume": 8,
+          "limitVolumeMin": 1.0000000000000000,
+          "symbol": "ethnob",
+          "depth": "0.00000001,0.000001,0.0001",
+          "marketBuyMin": 0.0010000000000000,
+          "price": 8,
+          "name": "ETH/NOB",
+          "marketSellMin": 1.0000000000000000,
+          "limitPriceMin": 0.0010000000000000
+        }
+      },
+      "BTC": {
+        "ADA/BTC": {
+          "volume": 4,
+          "limitVolumeMin": 1.0000000000000000,
+          "symbol": "adabtc",
+          "depth": "0.00001,0.0001,0.001",
+          "marketBuyMin": 1.0000000000000000,
+          "price": 5,
+          "name": "ADA/BTC",
+          "marketSellMin": 1.0000000000000000,
+          "limitPriceMin": 0.0010000000000000
+        },
+        "LTC/BTC": {
+          "volume": 2,
+          "limitVolumeMin": 0.0100000000000000,
+          "symbol": "ltcbtc",
+          "depth": "0.00000001,0.000001,0.0001",
+          "marketBuyMin": 0.0000010000000000,
+          "price": 8,
+          "name": "LTC/BTC",
+          "marketSellMin": 0.0100000000000000,
+          "limitPriceMin": 0.0000010000000000
+        },
+        "ETH/BTC": {
+          "volume": 3,
+          "limitVolumeMin": 0.0010000000000000,
+          "symbol": "ethbtc",
+          "depth": "0.00000001,0.000001,0.0001",
+          "marketBuyMin": 0E-16,
+          "price": 8,
+          "name": "ETH/BTC",
+          "marketSellMin": 0E-16,
+          "limitPriceMin": 0E-16
+        },
+        "ETC/BTC": {
+          "volume": 2,
+          "limitVolumeMin": 0.0100000000000000,
+          "symbol": "etcbtc",
+          "depth": "0.00000001,0.000001,0.0001",
+          "marketBuyMin": 0.0000010000000000,
+          "price": 8,
+          "name": "ETC/BTC",
+          "marketSellMin": 0.0100000000000000,
+          "limitPriceMin": 0.0000010000000000
+        },
+        "SMT/BTC": {
+          "volume": 0,
+          "limitVolumeMin": 1.0000000000000000,
+          "symbol": "smtbtc",
+          "depth": "0.00000001,0.000001,0.0001",
+          "marketBuyMin": 1.00000000E-8,
+          "price": 8,
+          "name": "SMT/BTC",
+          "marketSellMin": 1.0000000000000000,
+          "limitPriceMin": 1.00000000E-8
+        },
+        "NOB/BTC": {
+          "volume": 2,
+          "limitVolumeMin": 0.0100000000000000,
+          "symbol": "nobbtc",
+          "depth": "0.00000001,0.000001,0.0001",
+          "marketBuyMin": 0.0000010000000000,
+          "price": 8,
+          "name": "NOB/BTC",
+          "marketSellMin": 0.0100000000000000,
+          "limitPriceMin": 0.0000010000000000
+        }
+      }
+    },
+    "app_logo_list": {
+      "login_logo": "http: //chaindown-oss.oss-cn-hongkong.aliyuncs.com/upload/20180630110250711.png",
+      "startup_logo": "http://chaindown-oss.oss-cn-hongkong.aliyuncs.com/upload/20180630110424597.png",
+      "user_center_logo": "http://chaindown-oss.oss-cn-hongkong.aliyuncs.com/upload/20180630110443869.png",
+      "market_logo": "http://chaindown-oss.oss-cn-hongkong.aliyuncs.com/upload/20180630110405343.png"
+    },
+    "rate": {
+      "ko_KR": {
+        "NOB": 52784.8107201078893400,
+        "coin_precision": 0,
+        "NEUC": 905.8473804926540000,
+        "BCH": 849079.1546122490637000,
+        "USD": 1294.0676864100000000,
+        "INK": 22546.4800724390198400,
+        "XCT": 46.7502217650000000,
+        "USDT": 1111.9625670000000000,
+        "XAS": 80900400.2388845000000000,
+        "SWFTC": 117.7587450000000000,
+        "YLB": 647673.0975000000000000,
+        "BTC": 7114814.7621118600000000,
+        "KRW": "1",
+        "lang_logo": "₩",
+        "ETC": 1120.2659020000000000,
+        "ETH": 505122.1015300900000000,
+        "ITC": 2943.9686250000000000,
+        "LTC": 711481.4762111860000000,
+        "WICC": 824.3112150000000000,
+        "SMT": 24.1467784180338690,
+        "ASCS": 588.7937250000000000,
+        "QTUM": 22546.4800724390198400,
+        "ADA": 7114814.7621118600000000
+      },
+      "en_US": {
+        "NOB": 47.3606300572666800,
+        "coin_precision": 2,
+        "NEUC": 1.0000000000000000,
+        "BBC": 1.0000000000000000,
+        "BCH": 759.0083583097702500,
+        "USD": "1",
+        "INK": 20.9090416460827200,
+        "XCT": 0.0916303480340000,
+        "USDT": 0.9987000000000000,
+        "XAS": 75737.3828500000000000,
+        "SWFTC": 0.2308069220000000,
+        "YLB": 1269.4380710000000000,
+        "BTC": 6383.6945757200000000,
+        "lang_logo": "$",
+        "ETC": 0.9998000000000000,
+        "ETH": 452.9339619800000000,
+        "ITC": 5.7701730500000000,
+        "LTC": 638.3694575720000000,
+        "WICC": 1.6156484540000000,
+        "SMT": 0.0215852745247425,
+        "ASCS": 1.1540346100000000,
+        "QTUM": 20.9090416460827200,
+        "ADA": 6383.6945757200000000
+      },
+      "zh_CN": {
+        "NOB": 313.7003372836123800,
+        "coin_precision": 2,
+        "NEUC": 5.2681248640500000,
+        "BCH": 5015.2689350108147400,
+        "USD": 6.6170000000000000,
+        "INK": 131.9140332044974400,
+        "XCT": 0.2782886034500000,
+        "USDT": 6.6083979000000000,
+        "XAS": 476501.7442007750000000,
+        "SWFTC": 0.7009788500000000,
+        "YLB": 3855.3836750000000000,
+        "CNY": "1",
+        "BTC": 42283.3720560200000000,
+        "lang_logo": "￥",
+        "ETC": 6.6155766200000000,
+        "ETH": 3001.9426319300000000,
+        "ITC": 17.5244712500000000,
+        "LTC": 4228.3372056020000000,
+        "WICC": 4.9068519500000000,
+        "SMT": 0.1426281484155138,
+        "ASCS": 3.5048942500000000,
+        "QTUM": 131.9140332044974400,
+        "ADA": 42283.3720560200000000
+      }
+    },
+    "otcOpen": "1",
+    "maket_index": "BTC",
+    "nc_appkey": "FFFF0000000001781693",
+    "lan": {
+      "defLan": "zh_CN",
+      "lanList": [
+        {
+          "name": "简体中文",
+          "id": "zh_CN"
+        },
+        {
+          "name": "English",
+          "id": "en_US"
+        },
+        {
+          "name": "조선말",
+          "id": "ko_KR"
+        },
+        {
+          "name": "繁体中文",
+          "id": "el_GR"
+        }
+      ]
+    },
+    "default_country_code": "+86",
+    "contractOpen": "0",
+    "footer_style": "0",
+    "mobileOpen": "1"
+  }
+}

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_card_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_13">
+
+        <TextView
+            android:id="@+id/tv_order_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14"
+            tools:text="@string/otc_text_orderId" />
+
+        <ImageView
+            android:id="@+id/tv_order_number_copy"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:padding="@dimen/dp_5"
+            android:layout_gravity="center"
+            android:layout_marginLeft="7dp"
+            android:src="@drawable/fiat_copy_daytime" />
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_half"
+        android:background="@color/line_color" />
+    <!--昵称-->
+    <LinearLayout
+        android:id="@+id/ll_nick_name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_13">
+
+        <TextView
+            android:id="@+id/tv_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/otcSafeAlert_action_nickname"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_user_nick_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dp_12"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14"
+            tools:text="招商银行北京分行" />
+    </LinearLayout>
+    <!--真实姓名-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_13"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_otc_real_name"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_user_real_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dp_12"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14"
+            tools:text="招商银行北京分行" />
+    </LinearLayout>
+    <!--实名制信息-->
+    <LinearLayout
+        android:id="@+id/ll_real_name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_13"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_real_name_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/common_text_realNameTitle"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_real_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dp_12"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14"
+            tools:text="张滚滚" />
+
+        <ImageView
+            android:id="@+id/tv_real_name_copy"
+            android:layout_width="11dp"
+            android:layout_height="@dimen/dp_12"
+            android:layout_gravity="center"
+            android:layout_marginLeft="7dp"
+            android:src="@drawable/fiat_contactnumber"
+            android:visibility="gone" />
+
+    </LinearLayout>
+    <!--金额-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_13">
+
+        <TextView
+            android:id="@+id/tv_money_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/journalAccount_text_amount"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dp_12"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/certification_color"
+            android:textSize="@dimen/sp_14"
+            tools:text="招商银行北京分行" />
+
+        <ImageView
+            android:id="@+id/tv_money_copy"
+            android:layout_width="11dp"
+            android:layout_height="@dimen/dp_12"
+            android:layout_gravity="center"
+            android:layout_marginLeft="7dp"
+            android:src="@drawable/fiat_copy_daytime" />
+
+    </LinearLayout>
+    <!--数量-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_13">
+
+        <TextView
+            android:id="@+id/tv_quantity_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/charge_text_volume"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_quantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dp_12"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14"
+            tools:text="招商银行北京分行" />
+    </LinearLayout>
+    <!--单价-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_13">
+
+        <TextView
+            android:id="@+id/tv_otc_price_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/otc_text_price"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_otc_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dp_12"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14"
+            tools:text="招商银行北京分行" />
+    </LinearLayout>
+    <!--下单时间-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_13">
+
+        <TextView
+            android:id="@+id/tv_orderCTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/otc_text_orderCTime"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_otc_place_order_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dp_12"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14"
+            tools:text="招商银行北京分行" />
+    </LinearLayout>
+
+    <!--备注-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_13">
+
+        <TextView
+            android:id="@+id/tv_text_remark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address_text_remark"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_otc_note"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dp_12"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14"
+            tools:text="招商银行北京分行" />
+    </LinearLayout>
+
+    <!--订单取消类型-->
+    <LinearLayout
+        android:id="@+id/order_cancellation_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_orderCancelReason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/otc_text_orderCancelReason"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_order_cancellation_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dp_12"
+            android:gravity="right|center_vertical"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14"
+            tools:text="招商银行北京分行" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/waiting_attention_to"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:text="请耐心等待对方付款，若付款倒计时结束前对方未确认付款，订单将自动取消"
+        android:textColor="@color/certification_color"
+        android:textSize="@dimen/sp_12"
+        android:visibility="gone" />
+
+
+</LinearLayout>

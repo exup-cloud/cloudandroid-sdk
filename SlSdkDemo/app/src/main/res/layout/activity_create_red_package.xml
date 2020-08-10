@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_card_color"
+    android:fitsSystemWindows="true"
+    tools:context=".new_version.redpackage.CreateRedPackageActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cly_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_color"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/dp_15"
+            android:src="@drawable/return_daytime"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_menu"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/dp_15"
+            android:src="@drawable/menu"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <RadioGroup
+            android:id="@+id/rg_red_package_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_close">
+
+            <RadioButton
+                android:id="@+id/rb_lucky"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="true"
+                android:drawableBottom="@drawable/bg_red_package_type"
+                android:drawablePadding="@dimen/dp_8"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_20"
+                android:text="@string/redpacket_send_random"
+                android:textColor="@drawable/kline_index_text_selector"
+                android:textSize="@dimen/sp_16"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/rb_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="false"
+                android:drawableBottom="@drawable/bg_red_package_type"
+                android:drawablePadding="@dimen/dp_8"
+                android:paddingLeft="@dimen/dp_20"
+                android:paddingTop="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_20"
+                android:text="@string/redpacket_send_identical"
+                android:textColor="@drawable/kline_index_text_selector"
+                android:textSize="@dimen/sp_16"
+                android:textStyle="bold" />
+        </RadioGroup>
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_card_color"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cly_header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_15"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_redpacket_send_currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_15"
+                android:paddingBottom="@dimen/dp_15"
+                android:text="@string/redpacket_send_currency"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_12" />
+
+            <TextView
+                android:id="@+id/tv_select_coin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/dropdown"
+                tools:text="BIKI"
+                android:hint="@string/redpacket_send_inputCoin"
+                android:gravity="center_vertical|left"
+                android:paddingBottom="@dimen/dp_8"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_half"
+                android:background="@color/line_color"
+                />
+
+            <TextView
+                android:id="@+id/tv_money_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_15"
+                android:paddingBottom="@dimen/dp_15"
+                android:text="@string/redpacket_send_each"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_12" />
+            <!--金额-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/dp_8">
+
+                <EditText
+                    android:id="@+id/et_money"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/redpacket_send_inputAmount"
+                    android:inputType="numberDecimal"
+                    android:textSize="@dimen/sp_14"
+                    android:textCursorDrawable="@drawable/et_cursor_color"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/hint_color" />
+
+                <TextView
+                    android:id="@+id/tv_coin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/normal_text_color"
+                    android:textSize="@dimen/sp_14"
+                    tools:text="BIKI" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_half"
+                android:background="@color/line_color" />
+            <!--可用余额-->
+            <TextView
+                android:id="@+id/tv_available_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_12"
+                tools:text="@string/withdraw_text_available" />
+
+
+            <TextView
+                android:id="@+id/tv_redpacket_send_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_15"
+                android:paddingBottom="@dimen/dp_15"
+                android:text="@string/redpacket_send_num"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_12" />
+
+
+            <com.yjkj.chainup.new_version.view.CustomizeEditText
+                android:id="@+id/et_mount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:hint="@string/redpacket_send_enterNumber"
+                android:inputType="number"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textCursorDrawable="@drawable/et_cursor_color"
+                android:textSize="@dimen/sp_14" />
+
+            <!--总余额-->
+            <TextView
+                android:id="@+id/tv_total_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_12"
+                android:visibility="gone"
+                tools:text="@string/redpacket_send_total" />
+
+            <TextView
+                android:id="@+id/tv_redpacket_send_wishes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_15"
+                android:paddingBottom="@dimen/dp_15"
+                android:text="@string/redpacket_send_wishes"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_12" />
+
+            <com.yjkj.chainup.new_version.view.CustomizeEditText
+                android:id="@+id/et_greetings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                tools:hint="恭喜发财，大吉大利"
+                android:maxLength="25"
+                android:paddingBottom="@dimen/dp_8"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textCursorDrawable="@drawable/et_cursor_color"
+                android:textSize="@dimen/sp_14" />
+
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/dp_30"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp_15"
+        android:paddingRight="@dimen/dp_15"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <CheckBox
+            android:id="@+id/cb_new_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/new_hide_small_symbol"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_6"
+            android:text="@string/redpacket_send_new"
+            android:textColor="@color/normal_text_color" />
+
+        <com.yjkj.chainup.new_version.view.CommonlyUsedButton
+            android:id="@+id/create_red_package"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_44"
+            app:bgColor="@color/red_package_red"
+            app:bottonTextContent="@string/redpacket_send_prepare" />
+
+        <TextView
+            android:id="@+id/tv_overtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="@string/redpacket_send_prompt"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

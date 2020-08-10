@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_card_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/page_head_height"
+        android:background="@color/bg_color">
+
+        <TextView
+            android:id="@+id/tv_market_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:drawablePadding="@dimen/dp_8"
+            android:ellipsize="end"
+            android:gravity="center_vertical|right"
+            android:maxLines="1"
+            android:text="@string/mainTab_text_market"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="@dimen/page_head_height"
+            android:layout_height="@dimen/page_head_height"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/dp_15"
+            android:src="@drawable/search" />
+
+    </RelativeLayout>
+
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/stl_market"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44"
+        android:background="@color/bg_color"
+        app:tl_indicator_color="@color/main_blue"
+        app:tl_indicator_corner_radius="@dimen/dp_2"
+        app:tl_indicator_height="@dimen/dp_3"
+        app:tl_indicator_width="@dimen/dp_20"
+        app:tl_indicator_width_equal_title="false"
+        app:tl_textBold="SELECT"
+        android:visibility="gone"
+        app:tl_textSelectColor="@color/text_color"
+        app:tl_textUnselectColor="@color/normal_text_color"
+        app:tl_textsize="@dimen/sp_16" />
+
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/stl_market_loop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44"
+        android:background="@color/bg_color"
+        app:tl_indicator_color="@color/main_blue"
+        app:tl_indicator_corner_radius="@dimen/dp_2"
+        app:tl_indicator_height="@dimen/dp_3"
+        app:tl_indicator_width="@dimen/dp_20"
+        app:tl_indicator_width_equal_title="false"
+        app:tl_tab_space_equal="false"
+        app:tl_textBold="SELECT"
+        android:visibility="gone"
+        app:tl_textSelectColor="@color/text_color"
+        app:tl_textUnselectColor="@color/normal_text_color"
+        app:tl_textsize="@dimen/sp_16" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_market"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_card_color"
+        android:overScrollMode="never" />
+
+
+</LinearLayout>

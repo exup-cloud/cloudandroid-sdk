@@ -1,0 +1,37 @@
+{
+  "code": "0",
+  "msg": "suc",
+  "data": {
+    "pricePrecision": 8,
+    "price": "0.06631462",
+    "countCoinBalance": "100.00009284",
+    "minVolume": "0.0010000000000000",
+    "minPrice": "0.0000000000000000",
+    "count": 1,
+    "orderList": [
+      {
+        "side": "SELL",
+        "total_price": "0.00006631",
+        "time_long": 1529585678000,
+        "created_at": "2018-06-21 20:54:38",
+        "avg_price": "0.00000000",
+        "countCoin": "BTC",
+        "source": "APP",
+        "type": 1,
+        "volume": "0.00100000",
+        "price": "0.06631463",
+        "deal_volume": "0.00000000",
+        "id": 2231471,
+        "status_text": "未成交",
+        "remain_volume": "0.00100000",
+        "baseCoin": "ETH",
+        "status": 1
+      }
+    ],
+    "baseCoinBalance": "10000.00173000",
+    "volumePrecision": 3
+  }
+}
+
+
+

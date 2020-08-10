@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/v_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_card_color"
+    android:fitsSystemWindows="true"
+    tools:context=".new_version.activity.asset.DepositActivity">
+
+
+    <com.yjkj.chainup.new_version.view.PersonalCenterView
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_color"
+        android:orientation="horizontal"
+        app:personalTitle="@string/assets_action_chargeCoin"
+        app:rightTitle="@string/charge_action_chargeHistory"
+        app:showRightTv="true" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@+id/title_layout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bg_card_color"
+                android:gravity="center"
+                android:orientation="vertical">
+                <!--选择币种-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_44">
+
+                    <TextView
+                        android:id="@+id/tv_coin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="sans-serif-medium"
+                        android:paddingLeft="@dimen/dp_15"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/sp_14"
+                        tools:text="USDT" />
+
+                    <TextView
+                        android:id="@+id/tv_select_coin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableRight="@drawable/enter"
+                        android:drawablePadding="@dimen/dp_2"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:paddingRight="@dimen/dp_15"
+                        android:singleLine="true"
+                        android:text="@string/b2c_text_changecoin"
+                        android:textColor="@color/normal_text_color"
+                        android:textSize="@dimen/sp_12" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_half"
+                    android:background="@color/line_color" />
+
+                <com.yjkj.chainup.wedegit.ManyChainView
+                    android:id="@+id/mcv_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+                <!--地址二维码图片-->
+                <ImageView
+                    android:id="@+id/iv_address_qr_code"
+                    android:layout_width="@dimen/dp_140"
+                    android:layout_height="@dimen/dp_140"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginBottom="@dimen/dp_20"
+                    android:scaleType="centerCrop" />
+                <!--保存二维码-->
+                <com.coorchice.library.SuperTextView
+                    android:id="@+id/stv_save_qrcode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingTop="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_20"
+                    android:paddingBottom="@dimen/dp_10"
+                    android:singleLine="true"
+                    android:text="@string/charge_action_saveQR"
+                    android:textColor="@color/main_blue"
+                    android:textSize="@dimen/sp_12"
+                    app:stv_solid="@color/outline_color" />
+
+                <TextView
+                    android:id="@+id/tv_charge_text_chargeAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@string/charge_text_chargeAddress"
+                    android:textColor="@color/hint_color"
+                    android:textSize="@dimen/sp_12" />
+
+                <TextView
+                    android:id="@+id/tv_recharge_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:gravity="center"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/sp_14"
+                    tools:text="15huhfdw83yffefsrewhfw35gsssssssrghv254dsv" />
+
+                <!--复制地址-->
+                <com.coorchice.library.SuperTextView
+                    android:id="@+id/stv_copy_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingTop="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_20"
+                    android:paddingBottom="@dimen/dp_10"
+                    android:singleLine="true"
+                    android:text="@string/charge_action_copyAddress"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/sp_12"
+                    app:stv_solid="@color/outline_color" />
+
+
+                <!--TAG部分-->
+                <LinearLayout
+                    android:id="@+id/ll_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tv_charge_text_tagAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:drawableRight="@drawable/assets_prompt"
+                        android:drawablePadding="@dimen/dp_2"
+                        android:text="@string/charge_text_tagAddress"
+                        android:textColor="@color/hint_color"
+                        android:textSize="@dimen/sp_12" />
+
+                    <TextView
+                        android:id="@+id/tv_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginBottom="@dimen/dp_10"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/sp_14"
+                        tools:text="5743526" />
+
+
+                    <!--复制标签-->
+                    <com.coorchice.library.SuperTextView
+                        android:id="@+id/stv_copy_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:paddingLeft="@dimen/dp_20"
+                        android:paddingTop="@dimen/dp_10"
+                        android:paddingRight="@dimen/dp_20"
+                        android:paddingBottom="@dimen/dp_10"
+                        android:singleLine="true"
+                        android:text="@string/charge_action_copyTag"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/sp_12"
+                        app:stv_solid="@color/outline_color" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_half"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:background="@color/line_color" />
+
+
+                <TextView
+                    android:id="@+id/tv_charge_chargeAlert_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@string/charge_chargeAlert_title"
+                    android:textColor="@color/hint_color"
+                    android:textSize="@dimen/sp_12" />
+
+                <TextView
+                    android:id="@+id/tv_charge_tip_addressWarning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:layout_marginBottom="@dimen/dp_100"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@string/charge_tip_addressWarning"
+                    android:textColor="@color/normal_text_color"
+                    android:textSize="@dimen/sp_12" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

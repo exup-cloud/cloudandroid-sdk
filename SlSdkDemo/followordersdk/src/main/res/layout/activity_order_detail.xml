@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activity.FollowSetupActivity">
+
+    <include layout="@layout/fo_view_share" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/fo_status_bg_color"
+        android:orientation="vertical"
+        tools:background="@color/fo_light_status_color">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fo_title_height">
+
+            <ImageButton
+                android:id="@+id/ib_back"
+                android:layout_width="@dimen/fo_title_height"
+                android:layout_height="@dimen/fo_title_height"
+                android:layout_marginLeft="11dp"
+                android:background="@color/fo_transparent"
+                android:src="?attr/fo_back_drawable"
+                tools:src="@drawable/fo_back_light" />
+
+            <ImageButton
+                android:id="@+id/ib_share"
+                android:layout_width="@dimen/fo_title_height"
+                android:layout_height="@dimen/fo_title_height"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:background="@color/fo_transparent"
+                android:src="@drawable/fo_share" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/fo_order_detail_title"
+                android:textColor="?attr/fo_text_1_color"
+                android:textSize="@dimen/fo_title_size"
+                tools:textColor="@color/fo_light_text_1_color" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="?attr/fo_line_color"
+                tools:background="@color/fo_light_line_color" />
+
+        </RelativeLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="30dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp">
+
+                    <com.follow.order.widget.roundimg.RoundedImageView
+                        android:id="@+id/iv_order_avatar"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:src="?attr/fo_avatar_drawable"
+                        app:riv_oval="true"
+                        tools:src="@drawable/fo_def_avatar_light" />
+
+                    <TextView
+                        android:id="@+id/tv_order_nick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/iv_order_avatar"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toRightOf="@id/iv_order_avatar"
+                        android:includeFontPadding="false"
+                        android:textColor="?attr/fo_nickname_color"
+                        android:textSize="@dimen/text_size_5"
+                        android:textStyle="bold"
+                        tools:text="肥宅比特币"
+                        tools:textColor="@color/fo_light_menu_button_color" />
+
+                    <TextView
+                        android:id="@+id/tv_order_exchange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/iv_order_avatar"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toRightOf="@id/iv_order_avatar"
+                        android:textColor="?attr/fo_follow_desc_color"
+                        android:textSize="@dimen/text_size_2"
+                        tools:text="Binance"
+                        tools:textColor="@color/fo_desc_color" />
+
+                    <TextView
+                        android:id="@+id/tv_order_price_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/iv_order_avatar"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toRightOf="@id/tv_order_exchange"
+                        android:textColor="?attr/fo_follow_desc_color"
+                        android:textSize="@dimen/text_size_2"
+                        tools:text="金本位"
+                        tools:textColor="@color/fo_desc_color" />
+
+                    <TextView
+                        android:id="@+id/tv_live"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:drawableRight="@drawable/fo_arrow_right_blue"
+                        android:text="@string/fo_order_detail_live"
+                        android:textColor="@color/fo_blue"
+                        android:textSize="@dimen/text_size_4" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:background="?attr/fo_personal_bg_color"
+                    tools:background="@color/fo_light_personal_bg_color" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <com.follow.order.widget.shape.RoundTextView
+                        android:id="@+id/point_view"
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        android:layout_centerVertical="true"
+                        app:rv_backgroundColor="@color/fo_blue"
+                        app:rv_cornerRadius="3.5dp"
+                        app:rv_isRadiusHalfHeight="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="6dp"
+                        android:layout_toRightOf="@id/point_view"
+                        android:text="@string/fo_order_detail_text_1"
+                        android:textColor="?attr/fo_nickname_color"
+                        android:textSize="@dimen/text_size_5"
+                        android:textStyle="bold"
+                        tools:textColor="@color/fo_light_text_1_color" />
+
+                    <TextView
+                        android:id="@+id/tv_order_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="?attr/fo_follow_desc_color"
+                        android:textSize="@dimen/text_size_2"
+                        tools:text="开始于2020-02-22 12:22:21"
+                        tools:textColor="@color/fo_desc_color" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="93dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_marginBottom="14dp"
+                    android:background="?attr/fo_bg_item_card_drawable"
+                    android:orientation="horizontal"
+                    tools:background="@drawable/fo_bg_item_card_light">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="13.5dp"
+                        android:layout_weight="1.1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fo_order_text_4"
+                            android:textColor="?attr/fo_text_2_color"
+                            android:textSize="@dimen/text_size_1"
+                            tools:textColor="@color/fo_desc_color" />
+
+                        <TextView
+                            android:id="@+id/tv_order_asset"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:singleLine="true"
+                            android:textColor="?attr/fo_text_1_color"
+                            android:textSize="@dimen/text_size_5"
+                            android:textStyle="bold"
+                            tools:text="0.031BTC"
+                            tools:textColor="@color/fo_light_text_1_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1.1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:singleLine="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fo_order_text_5"
+                            android:textColor="?attr/fo_text_2_color"
+                            android:textSize="@dimen/text_size_1"
+                            tools:textColor="@color/fo_desc_color" />
+
+                        <TextView
+                            android:id="@+id/tv_order_profit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:textColor="?attr/fo_text_1_color"
+                            android:textSize="@dimen/text_size_5"
+                            android:textStyle="bold"
+                            tools:text="$932350"
+                            tools:textColor="@color/fo_light_text_1_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0.9"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fo_order_text_6"
+                            android:textColor="?attr/fo_text_2_color"
+                            android:textSize="@dimen/text_size_1"
+                            tools:textColor="@color/fo_desc_color" />
+
+                        <TextView
+                            android:id="@+id/tv_order_rate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:singleLine="true"
+                            android:textColor="?attr/fo_text_1_color"
+                            android:textSize="@dimen/text_size_5"
+                            android:textStyle="bold"
+                            tools:text="10000.38%"
+                            tools:textColor="@color/fo_light_text_1_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0.9"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fo_order_text_8"
+                            android:textColor="?attr/fo_text_2_color"
+                            android:textSize="@dimen/text_size_1"
+                            tools:textColor="@color/fo_desc_color" />
+
+                        <TextView
+                            android:id="@+id/tv_order_state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:singleLine="true"
+                            android:textColor="?attr/fo_text_1_color"
+                            android:textSize="@dimen/text_size_5"
+                            android:textStyle="bold"
+                            tools:text="跟单中"
+                            tools:textColor="@color/fo_light_text_1_color" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/profit_chart_view"
+                    layout="@layout/view_order_profit_chart"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.follow.order.widget.shape.RoundTextView
+                        android:layout_width="7dp"
+                        android:layout_height="7dp"
+                        app:rv_backgroundColor="@color/fo_blue"
+                        app:rv_cornerRadius="3.5dp"
+                        app:rv_isRadiusHalfHeight="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:text="@string/fo_order_detail_text_10"
+                        android:textColor="?attr/fo_nickname_color"
+                        android:textSize="@dimen/text_size_5"
+                        android:textStyle="bold"
+                        tools:textColor="@color/fo_light_text_1_color" />
+                </LinearLayout>
+
+                <com.follow.order.widget.shape.RoundLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical"
+                    app:rv_strokeColor="?attr/fo_follow_setup_line_color"
+                    app:rv_strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/fo_order_detail_text_3"
+                            android:textColor="?attr/fo_follow_desc_color"
+                            android:textSize="@dimen/text_size_3"
+                            tools:textColor="@color/fo_desc_color" />
+
+                        <TextView
+                            android:id="@+id/tv_order_divide"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:singleLine="true"
+                            android:textColor="?attr/fo_nickname_color"
+                            android:textSize="@dimen/text_size_3"
+                            tools:text="用户分90%，KOL分10%"
+                            tools:textColor="@color/fo_light_nickname_color" />
+
+                    </LinearLayout>
+
+                    <View
+                        style="@style/fo_line_chart_style"
+                        tools:background="@color/fo_light_follow_setup_line_color" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="@string/fo_order_detail_text_4"
+                                android:textColor="?attr/fo_follow_desc_color"
+                                android:textSize="@dimen/text_size_3"
+                                tools:textColor="@color/fo_desc_color" />
+
+                            <TextView
+                                android:id="@+id/tv_order_platform"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:singleLine="true"
+                                android:textColor="?attr/fo_nickname_color"
+                                android:textSize="@dimen/text_size_3"
+                                tools:text="Binance"
+                                tools:textColor="@color/fo_light_nickname_color" />
+
+                        </LinearLayout>
+
+                        <View
+                            style="@style/fo_line_chart_style"
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            tools:background="@color/fo_light_follow_setup_line_color" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="@string/fo_order_detail_text_5"
+                                android:textColor="?attr/fo_follow_desc_color"
+                                android:textSize="@dimen/text_size_3"
+                                tools:textColor="@color/fo_desc_color" />
+
+                            <TextView
+                                android:id="@+id/tv_order_coin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:singleLine="true"
+                                android:textColor="?attr/fo_nickname_color"
+                                android:textSize="@dimen/text_size_3"
+                                tools:text="BTC"
+                                tools:textColor="@color/fo_light_nickname_color" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                    <View
+                        style="@style/fo_line_chart_style"
+                        tools:background="@color/fo_light_follow_setup_line_color" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="@string/fo_order_detail_text_6"
+                                android:textColor="?attr/fo_follow_desc_color"
+                                android:textSize="@dimen/text_size_3"
+                                tools:textColor="@color/fo_desc_color" />
+
+                            <TextView
+                                android:id="@+id/tv_order_amount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:singleLine="true"
+                                android:textColor="?attr/fo_nickname_color"
+                                android:textSize="@dimen/text_size_3"
+                                tools:text="0.3BTC"
+                                tools:textColor="@color/fo_light_nickname_color" />
+
+                        </LinearLayout>
+
+                        <View
+                            style="@style/fo_line_chart_style"
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            tools:background="@color/fo_light_follow_setup_line_color" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="@string/fo_order_detail_text_7"
+                                android:textColor="?attr/fo_follow_desc_color"
+                                android:textSize="@dimen/text_size_3"
+                                tools:textColor="@color/fo_desc_color" />
+
+                            <TextView
+                                android:id="@+id/tv_order_duration"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:singleLine="true"
+                                android:textColor="?attr/fo_nickname_color"
+                                android:textSize="@dimen/text_size_3"
+                                tools:text="3天"
+                                tools:textColor="@color/fo_light_nickname_color" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        style="@style/fo_line_chart_style"
+                        tools:background="@color/fo_light_follow_setup_line_color" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="@string/fo_order_detail_text_8"
+                                android:textColor="?attr/fo_follow_desc_color"
+                                android:textSize="@dimen/text_size_3"
+                                tools:textColor="@color/fo_desc_color" />
+
+                            <TextView
+                                android:id="@+id/tv_order_stop_loss"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:singleLine="true"
+                                android:textColor="?attr/fo_nickname_color"
+                                android:textSize="@dimen/text_size_3"
+                                tools:text="50%"
+                                tools:textColor="@color/fo_light_nickname_color" />
+
+                        </LinearLayout>
+
+                        <View
+                            style="@style/fo_line_chart_style"
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            tools:background="@color/fo_light_follow_setup_line_color" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_stop_profit"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="@string/fo_order_detail_text_9"
+                                android:textColor="?attr/fo_follow_desc_color"
+                                android:textSize="@dimen/text_size_3"
+                                tools:textColor="@color/fo_desc_color" />
+
+                            <TextView
+                                android:id="@+id/tv_order_stop_profit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:singleLine="true"
+                                android:textColor="?attr/fo_nickname_color"
+                                android:textSize="@dimen/text_size_3"
+                                tools:text="50%"
+                                tools:textColor="@color/fo_light_nickname_color" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.follow.order.widget.shape.RoundLinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_follow_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.follow.order.widget.shape.RoundTextView
+                            android:layout_width="7dp"
+                            android:layout_height="7dp"
+                            app:rv_backgroundColor="@color/fo_blue"
+                            app:rv_cornerRadius="3.5dp"
+                            app:rv_isRadiusHalfHeight="true" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="6dp"
+                            android:text="@string/fo_order_detail_text_11"
+                            android:textColor="?attr/fo_nickname_color"
+                            android:textSize="@dimen/text_size_5"
+                            android:textStyle="bold"
+                            tools:textColor="@color/fo_light_text_1_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_order_weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="33dp"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fo_order_detail_text_12"
+                            android:textColor="?attr/fo_follow_desc_color"
+                            android:textSize="@dimen/text_size_3"
+                            tools:textColor="@color/fo_desc_color" />
+
+                        <TextView
+                            android:id="@+id/tv_order_weight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/fo_info_tip"
+                            android:drawablePadding="6dp"
+                            android:singleLine="true"
+                            android:textColor="?attr/fo_follow_desc_color"
+                            android:textSize="@dimen/text_size_3"
+                            tools:text="0.3"
+                            tools:textColor="@color/fo_desc_color" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="33dp"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/fo_order_detail_text_13"
+                        android:textColor="?attr/fo_follow_desc_color"
+                        android:textSize="@dimen/text_size_3"
+                        tools:textColor="@color/fo_desc_color" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_position_teacher"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="33dp"
+                        android:nestedScrollingEnabled="false"
+                        android:visibility="gone"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/fo_item_position_teacher" />
+
+                    <TextView
+                        android:id="@+id/tv_teacher_empty_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="33dp"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/fo_order_detail_empty_position"
+                        android:textColor="@color/fo_follow_setup_blue_color" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="33dp"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/fo_order_detail_text_14"
+                        android:textColor="?attr/fo_follow_desc_color"
+                        android:textSize="@dimen/text_size_3"
+                        tools:textColor="@color/fo_desc_color" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_position_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="33dp"
+                        android:nestedScrollingEnabled="false"
+                        android:visibility="gone"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/fo_item_position_user" />
+
+                    <TextView
+                        android:id="@+id/tv_user_empty_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="33dp"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/fo_order_detail_empty_position"
+                        android:textColor="@color/fo_follow_setup_blue_color" />
+
+                    <com.follow.order.widget.shape.RoundTextView
+                        android:id="@+id/btn_order_stop"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="@string/fo_follow_order_stop"
+                        android:textColor="@color/fo_white"
+                        android:textSize="@dimen/text_size_6"
+                        android:textStyle="bold"
+                        app:rv_backgroundColor="@color/fo_blue"
+                        app:rv_cornerRadius="1.5dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
+</RelativeLayout>

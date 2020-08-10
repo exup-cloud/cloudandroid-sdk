@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title_transfer_type"
+        style="@style/ScreeningPopup"
+        android:layout_marginTop="@dimen/dp_15"
+        android:text="@string/contract_text_type"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/ll_transfer_type_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_otc_transfer_all"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="-5dp"
+            android:singleLine="true"
+            android:text="@string/common_action_sendall"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="true" />
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_bibi_to_otc"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:layout_marginLeft="@dimen/dp_23"
+            android:layout_marginRight="@dimen/dp_23"
+            android:layout_weight="1"
+            android:background="@color/tabbar_color"
+            android:button="@null"
+            android:checked="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingBottom="-5dp"
+            android:singleLine="true"
+            android:text="@string/bibi_to_otc"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+        <!--TODO WTC,just add singleLine = "true" not working-->
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_otc_to_bibi"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:layout_weight="1"
+            android:background="@color/tabbar_color"
+            android:button="@null"
+            android:checked="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingBottom="-5dp"
+            android:singleLine="true"
+            android:text="@string/otc_to_coin"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_title_transfer_data"
+        style="@style/ScreeningPopup"
+        android:layout_marginTop="@dimen/dp_30"
+        android:text="@string/charge_text_date"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12" />
+
+    <!--日期-->
+    <com.yjkj.chainup.new_version.view.SelectDateView
+        android:id="@+id/sdv_transfer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

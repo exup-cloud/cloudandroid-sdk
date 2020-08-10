@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/v_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_card_color"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_cancel"
+            style="@style/NewVersionCancelImage" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/NewVersionTitle"
+            android:layout_below="@+id/iv_cancel"
+            android:text="@string/login_action_fogotPassword" />
+
+        <com.yjkj.chainup.new_version.view.CustomizeEditText
+            android:id="@+id/cet_view"
+            style="@style/NewVersionEditTextStyle"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginTop="@dimen/dp_50"
+            android:hint="@string/common_tip_inputPhoneOrMail"
+            android:textCursorDrawable="@drawable/et_cursor_color" />
+
+        <View
+            android:id="@+id/view_line"
+            style="@style/NewVersionLineStyle"
+            android:layout_below="@+id/cet_view" />
+
+        <com.yjkj.chainup.new_version.view.CommonlyUsedButton
+            android:id="@+id/cubtn_view"
+            style="@style/NewVersionCommonlyUsedButtonStyle"
+            android:layout_below="@+id/view_line"
+            app:bgColor="@color/main_blue"
+            app:bottonTextContent="@string/common_action_next" />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,46 @@
+{
+  "code": 0,
+  "msg": "成功",
+  "data": {
+    "currentUserBanlance": 0,
+    "side": "SELL",
+    "otcNickName": "151****2663",
+    "creditGrade": 1.0000,
+    "payments": [
+      {
+        "key": "otc.payment.alipay",
+        "title": "支付宝",
+        "icon": "http://chaindown-oss.oss-cn-hongkong.aliyuncs.com/upload/20180626160505707.png",
+        "account": "alipay123",
+        "used": true,
+        "numberCode": null,
+        "open": false
+      },
+      {
+        "key": "otc.payment.wxpay",
+        "title": "微信",
+        "icon": "http://chaindown-oss.oss-cn-hongkong.aliyuncs.com/upload/20180626160522304.png",
+        "account": "wxpay123",
+        "used": true,
+        "numberCode": null,
+        "open": false
+      }
+    ],
+    "description": "",
+    "minTrade": 5.0000000000000000,
+    "loginStatus": 0,
+    "payCoin": "CNY",
+    "volumeBalance": 99.5000000000000000,
+    "limitTime": 10,
+    "dealVolume": 0,
+    "price": 100.0000000000000000,
+    "imageUrl": "http://chainup-oss.oss-cn-beijing.aliyuncs.com/test",
+    "maxTrade": 1000.0000000000000000,
+    "tip": "",
+    "status_text": "发布中",
+    "completeOrders": 5,
+    "turnover": 302.0000000000000000,
+    "coin": "BTC",
+    "status": 1
+  }
+}

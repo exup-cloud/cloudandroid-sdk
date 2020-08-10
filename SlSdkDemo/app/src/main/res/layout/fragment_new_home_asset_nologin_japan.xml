@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="234dp"
+    android:background="@drawable/assets_account">
+
+
+    <TextView
+        android:id="@+id/tv_my_asset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginTop="97dp"
+        android:text="@string/home_text_assets"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_after_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_my_asset"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginTop="2dp"
+        android:text="@string/home_action_notLogin"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp_12" />
+
+    <TextView
+        android:id="@+id/btn_login"
+        android:layout_width="@dimen/dp_110"
+        android:layout_height="@dimen/dp_30"
+        android:layout_below="@+id/tv_after_login"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/bg_new_homepage_login_japan"
+        android:gravity="center"
+        android:text="@string/login_action_login"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+</RelativeLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_card_color"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_cancel"
+            style="@style/NewVersionCancelImage" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/NewVersionTitle"
+            android:layout_below="@+id/iv_cancel"
+            android:text="@string/register_action_setPassword" />
+
+        <com.yjkj.chainup.new_version.view.PwdSettingView
+            android:id="@+id/cet_pwd_view"
+            style="@style/NewVersionEditTextStyle"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginTop="@dimen/dp_40"
+            app:hint_text="@string/register_tip_inputPassword"
+            app:textContent="" />
+
+
+        <com.yjkj.chainup.new_version.view.PwdSettingView
+            android:id="@+id/cet_pwd_again_view"
+            style="@style/NewVersionEditTextStyle"
+            android:layout_below="@+id/cet_pwd_view"
+            android:layout_marginTop="@dimen/dp_30"
+            app:hint_text="@string/register_tip_repeatPassword"
+            app:textContent="" />
+
+        <com.yjkj.chainup.new_version.view.PwdSettingView
+            android:id="@+id/cet_pwd_invite_code_view"
+            style="@style/NewVersionEditTextStyle"
+            android:layout_below="@+id/cet_pwd_again_view"
+            android:layout_marginTop="@dimen/dp_30"
+            app:hint_text="@string/invite_code_hint"
+            app:textContent=""
+            app:textContentSize="@dimen/sp_16"
+            />
+
+
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cet_pwd_invite_code_view"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_50"
+            android:text="@string/register_tip_agreement"
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_terms_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cet_pwd_invite_code_view"
+            android:layout_marginTop="@dimen/dp_50"
+            android:layout_toRightOf="@+id/tv_info"
+            android:text="@string/register_action_agreement"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/sp_14" />
+
+        <com.yjkj.chainup.new_version.view.CommonlyUsedButton
+            android:id="@+id/cubtn_view"
+            style="@style/NewVersionCommonlyUsedButtonStyle"
+            android:layout_below="@+id/tv_info"
+            android:layout_marginTop="@dimen/dp_10"
+            app:bottonTextContent="" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

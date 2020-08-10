@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:background="@color/bg_card_color"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_push_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:text="@string/login_text_fingerprint"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_16" />
+
+        <Switch
+            android:id="@+id/switch_push_item"
+            android:layout_width="@dimen/dp_35"
+            android:layout_height="@dimen/dp_18"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_15"
+            android:background="@drawable/shut_down"
+            android:thumb="@drawable/icon_switch_default"
+            android:track="@drawable/icon_switch_default" />
+
+        <View
+            style="@style/common_horizon_line_style"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <com.yjkj.chainup.new_version.view.AccountItemView
+        android:id="@+id/rl_all"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:background="@color/bg_card_color"
+        android:visibility="gone"
+        app:StatusText="@string/filter_action_reset"
+        app:isShowLeftIcon="false"
+        app:itemTitle="@string/otc_text_pwd_forotc"
+        app:showIcon="false"
+        app:showLine="true" />
+
+
+</LinearLayout>

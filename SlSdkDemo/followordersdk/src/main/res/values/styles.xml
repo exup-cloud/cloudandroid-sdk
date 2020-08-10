@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/fo_light_status_color</item>
+        <item name="colorPrimaryDark">@color/fo_light_status_color</item>
+        <item name="colorAccent">@color/fo_light_status_color</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="ThemeLight" parent="AppTheme">
+        <item name="colorPrimary">@color/fo_light_status_color</item>
+        <item name="colorPrimaryDark">@color/fo_light_status_color</item>
+        <item name="colorAccent">@color/fo_light_status_color</item>
+        <item name="fo_text_1_color">@color/fo_light_text_1_color</item>
+        <item name="fo_text_2_color">@color/fo_light_text_2_color</item>
+        <item name="fo_text_3_color">@color/fo_light_text_3_color</item>
+        <item name="fo_loading_drawable">@drawable/fo_loading_light</item>
+        <item name="fo_loading_progress">@drawable/fo_loading_progress_light</item>
+        <item name="fo_status_bg_color">@color/fo_light_status_color</item>
+        <item name="fo_view_bg_color">@color/fo_light_view_bg_color</item>
+        <item name="fo_menu_bg_color">@color/fo_light_menu_bg_color</item>
+        <item name="fo_menu_title_color">@color/fo_light_menu_title_color</item>
+        <item name="fo_menu_item_bg_nor_color">@color/fo_light_menu_item_bg_nor_color</item>
+        <item name="fo_menu_item_bg_sel_color">@color/fo_light_menu_item_bg_sel_color</item>
+        <item name="fo_menu_left_drawable">@drawable/fo_menu_light</item>
+        <item name="fo_menu_button_color">@color/fo_light_menu_button_color</item>
+        <item name="fo_tab_text_nor_color">@color/fo_light_tab_text_nor_color</item>
+        <item name="fo_tab_text_sel_color">@color/fo_light_tab_text_sel_color</item>
+        <item name="fo_tab_item_text_nor_color">@color/fo_light_tab_item_text_nor_color</item>
+        <item name="fo_tab_item_text_sel_color">@color/fo_light_tab_item_text_sel_color</item>
+        <item name="fo_nickname_color">@color/fo_light_nickname_color</item>
+        <item name="fo_home_check_no_drawable">@drawable/fo_home_check_no_light</item>
+        <item name="fo_bg_list_card_drawable">@drawable/fo_bg_list_card_light</item>
+        <item name="fo_bg_item_card_drawable">@drawable/fo_bg_item_card_light</item>
+        <item name="fo_bg_order_card_drawable">@drawable/fo_bg_item_card_light</item>
+        <item name="fo_empty_drawable">@drawable/fo_def_empty_light</item>
+        <item name="fo_avatar_drawable">@drawable/fo_def_avatar_light</item>
+        <item name="fo_line_color">@color/fo_light_line_color</item>
+        <item name="fo_list_line_color">@color/fo_light_list_line_color</item>
+        <item name="fo_coin_follow_color">@color/fo_light_coin_follow_color</item>
+        <item name="fo_coin_limit_color">@color/fo_light_coin_limit_color</item>
+        <item name="fo_follow_desc_color">@color/fo_desc_color</item>
+        <item name="fo_personal_head_mask_drawable">@drawable/fo_personal_head_shape_light</item>
+        <item name="fo_back_drawable">@drawable/fo_back_light</item>
+        <item name="fo_exchange_nor_drawable">@drawable/fo_bg_exchange_item_nor_light</item>
+        <item name="fo_exchange_sel_drawable">@drawable/fo_bg_exchange_item_sel_light</item>
+        <item name="fo_personal_desc_color">@color/fo_light_personal_desc_color</item>
+        <item name="fo_personal_subtitle_color">@color/fo_light_personal_subtitle_color</item>
+        <item name="fo_chart_tab_nor_color">@color/fo_light_chart_tab_nor_color</item>
+        <item name="fo_chart_text_color">@color/fo_light_chart_text_color</item>
+        <item name="fo_chart_point_text_color">@color/fo_light_chart_point_text_color</item>
+        <item name="fo_chart_mask_bg_color">@color/fo_white</item>
+        <item name="fo_chart_line_color">@color/fo_light_chart_line_color</item>
+        <item name="fo_chart_fade_drawable">@drawable/fo_chart_fade_light</item>
+        <item name="fo_personal_bg_color">@color/fo_light_personal_bg_color</item>
+        <item name="fo_follow_setup_item_bg_color">@color/fo_light_follow_setup_item_bg_color</item>
+        <item name="fo_follow_setup_line_color">@color/fo_light_follow_setup_line_color</item>
+        <item name="fo_follow_setup_hint_color">@color/fo_light_text_3_color</item>
+        <item name="fo_follow_setup_balance_color">@color/fo_light_text_3_color</item>
+        <item name="fo_follow_setup_desc_color">@color/fo_desc_color</item>
+        <item name="fo_chart_point_drawable">@drawable/fo_chart_circle_point_light</item>
+
+    </style>
+
+    <style name="ThemeDark">
+        <item name="colorPrimary">@color/fo_dark_status_color</item>
+        <item name="colorPrimaryDark">@color/fo_dark_status_color</item>
+        <item name="colorAccent">@color/fo_dark_status_color</item>
+        <item name="fo_text_1_color">@color/fo_dark_text_1_color</item>
+        <item name="fo_text_2_color">@color/fo_dark_text_2_color</item>
+        <item name="fo_text_3_color">@color/fo_dark_text_3_color</item>
+        <item name="fo_loading_drawable">@drawable/fo_loading_dark</item>
+        <item name="fo_loading_progress">@drawable/fo_loading_progress_dark</item>
+        <item name="fo_status_bg_color">@color/fo_dark_status_color</item>
+        <item name="fo_view_bg_color">@color/fo_dark_view_bg_color</item>
+        <item name="fo_menu_bg_color">@color/fo_dark_menu_bg_color</item>
+        <item name="fo_menu_title_color">@color/fo_dark_menu_title_color</item>
+        <item name="fo_menu_item_bg_nor_color">@color/fo_dark_menu_item_bg_nor_color</item>
+        <item name="fo_menu_item_bg_sel_color">@color/fo_dark_menu_item_bg_sel_color</item>
+        <item name="fo_menu_left_drawable">@drawable/fo_menu_dark</item>
+        <item name="fo_menu_button_color">@color/fo_dark_menu_button_color</item>
+        <item name="fo_tab_text_nor_color">@color/fo_dark_tab_text_nor_color</item>
+        <item name="fo_tab_text_sel_color">@color/fo_dark_tab_text_sel_color</item>
+        <item name="fo_tab_item_text_nor_color">@color/fo_dark_tab_item_text_nor_color</item>
+        <item name="fo_tab_item_text_sel_color">@color/fo_dark_tab_item_text_sel_color</item>
+        <item name="fo_nickname_color">@color/fo_dark_nickname_color</item>
+        <item name="fo_home_check_no_drawable">@drawable/fo_home_check_no_dark</item>
+        <item name="fo_bg_list_card_drawable">@drawable/fo_bg_list_card_dark</item>
+        <item name="fo_bg_item_card_drawable">@drawable/fo_bg_item_card_dark</item>
+        <item name="fo_bg_order_card_drawable">@drawable/fo_bg_item_card_dark2</item>
+        <item name="fo_empty_drawable">@drawable/fo_def_empty_dark</item>
+        <item name="fo_avatar_drawable">@drawable/fo_def_avatar_dark</item>
+        <item name="fo_line_color">@color/fo_dark_line_color</item>
+        <item name="fo_list_line_color">@color/fo_dark_list_line_color</item>
+        <item name="fo_coin_follow_color">@color/fo_dark_coin_follow_color</item>
+        <item name="fo_coin_limit_color">@color/fo_dark_coin_limit_color</item>
+        <item name="fo_follow_desc_color">@color/fo_dark_text_3_color</item>
+        <item name="fo_personal_head_mask_drawable">@drawable/fo_personal_head_shape_dark</item>
+        <item name="fo_back_drawable">@drawable/fo_back_dark</item>
+        <item name="fo_exchange_nor_drawable">@drawable/fo_bg_exchange_item_nor_dark</item>
+        <item name="fo_exchange_sel_drawable">@drawable/fo_bg_exchange_item_sel_dark</item>
+        <item name="fo_personal_desc_color">@color/fo_dark_personal_desc_color</item>
+        <item name="fo_personal_subtitle_color">@color/fo_dark_text_3_color</item>
+        <item name="fo_chart_tab_nor_color">@color/fo_dark_chart_tab_nor_color</item>
+        <item name="fo_chart_text_color">@color/fo_dark_chart_text_color</item>
+        <item name="fo_chart_point_text_color">@color/fo_dark_chart_point_text_color</item>
+        <item name="fo_chart_mask_bg_color">@color/fo_dark_text_1_color</item>
+        <item name="fo_chart_line_color">@color/fo_dark_chart_line_color</item>
+        <item name="fo_chart_fade_drawable">@drawable/fo_chart_fade_dark</item>
+        <item name="fo_personal_bg_color">@color/fo_dark_personal_bg_color</item>
+        <item name="fo_follow_setup_item_bg_color">@color/fo_dark_follow_setup_item_bg_color</item>
+        <item name="fo_follow_setup_line_color">@color/fo_dark_follow_setup_line_color</item>
+        <item name="fo_follow_setup_hint_color">@color/fo_dark_follow_setup_hint_color</item>
+        <item name="fo_follow_setup_balance_color">@color/fo_dark_nickname_color</item>
+        <item name="fo_follow_setup_desc_color">@color/fo_dark_nickname_color</item>
+        <item name="fo_chart_point_drawable">@drawable/fo_chart_circle_point_dark</item>
+    </style>
+
+    <style name="fo_loading_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@color/fo_transparent</item><!--背景透明-->
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
+    <style name="CommonDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@null</item>
+        <item name="android:windowBackground">@color/fo_transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustResize</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+
+    <style name="fo_line_chart_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?attr/fo_follow_setup_line_color</item>
+    </style>
+</resources>

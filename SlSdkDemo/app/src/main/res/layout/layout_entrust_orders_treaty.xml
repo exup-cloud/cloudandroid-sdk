@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <!--当前委托的title-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activities_entrust"
+            android:textColor="@color/main_font_color"
+            android:textSize="@dimen/sp_16"
+            />
+
+        <ImageView
+            android:id="@+id/iv_entrust_record"
+            android:layout_width="@dimen/dp_18"
+            android:layout_height="@dimen/dp_20"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_transaction_record" />
+    </RelativeLayout>
+
+    <!--当前委托单的列表-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_active_orders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:nestedScrollingEnabled="false"
+        android:layout_marginBottom="@dimen/dp_20"
+        />
+</LinearLayout>

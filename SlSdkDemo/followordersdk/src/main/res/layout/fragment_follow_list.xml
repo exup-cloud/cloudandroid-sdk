@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/fo_light_view_bg_color">
+
+    <TextView
+        android:id="@+id/tv_only_follow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
+        android:drawableLeft="?attr/fo_home_check_no_drawable"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:text="@string/fo_follow_text_1"
+        android:textColor="?attr/fo_tab_text_nor_color"
+        android:textSize="14sp"
+        tools:textColor="@color/fo_light_menu_button_color" />
+
+    <include
+        layout="@layout/fo_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_only_follow"
+        android:layout_marginTop="4dp" />
+
+</RelativeLayout>

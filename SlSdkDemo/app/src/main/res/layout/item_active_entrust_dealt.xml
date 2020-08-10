@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:layout_marginTop="@dimen/dp_15"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_25"
+        >
+        <TextView
+            android:id="@+id/tv_coin_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_font_color"
+            android:textSize="@dimen/sp_12"
+            tools:text="BTCBCH"
+            android:gravity="center_vertical"
+            />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:textColor="@color/gray"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/sp_12"
+            android:layout_toRightOf="@id/tv_coin_map"
+            tools:text="2019-12-15 22:00:02" />
+
+        <TextView
+            android:id="@+id/tv_order_status"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/main_font_color"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:textSize="@dimen/sp_14"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            tools:text="ID:172" />
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/ll_first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintTop_toBottomOf="@id/tv_coin_map"
+        android:layout_marginRight="@dimen/dp_10"
+        >
+
+        <com.yjkj.chainup.treaty.ComTitleValueView
+            android:id="@+id/cvv_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:bottomValue="100.00000000000"
+            app:isShowTips="false"
+            app:topGravity="4"
+            app:bottomGravity="4"
+            app:topTitle="@string/contract_text_price" />
+
+
+
+        <com.yjkj.chainup.treaty.ComTitleValueView
+            android:id="@+id/cvv_volume"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            app:bottomValue="100.00000000000"
+            app:bottomValueColor="@color/main_font_color"
+            app:topGravity="17"
+            app:bottomGravity="17"
+            app:isShowTips="false"
+            app:topTitle="@string/charge_text_volume" />
+
+        <com.yjkj.chainup.treaty.ComTitleValueView
+            android:id="@+id/cvv_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            app:bottomValue="100.00000000000"
+            app:isShowTips="false"
+            app:topGravity="5"
+            app:bottomGravity="5"
+            app:topTitle="@string/contract_text_entrustValue" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintTop_toBottomOf="@id/ll_first"
+        android:layout_marginRight="@dimen/dp_10"
+        >
+
+        <com.yjkj.chainup.treaty.ComTitleValueView
+            android:id="@+id/cvv_avg_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:bottomValue="100.00000000000"
+            app:isShowTips="false"
+            app:topGravity="4"
+            app:bottomGravity="4"
+            app:topTitle="@string/contract_text_dealAverage" />
+
+        <com.yjkj.chainup.treaty.ComTitleValueView
+            android:id="@+id/cvv_deal_volume"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            app:bottomValue="100.00000000000"
+            app:topGravity="17"
+            app:bottomGravity="17"
+            app:isShowTips="false"
+            app:topTitle="@string/contract_text_dealDone" />
+
+        <com.yjkj.chainup.treaty.ComTitleValueView
+            android:id="@+id/tv_remain_volume"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            app:bottomValue="100.00000000000"
+            app:isShowTips="false"
+            app:topGravity="5"
+            app:bottomGravity="5"
+            app:topTitle="@string/contract_text_remaining" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_half"
+        android:background="@color/market_bottom_color"
+        app:layout_constraintTop_toBottomOf="@id/ll_second"
+        android:layout_marginTop="@dimen/dp_18"
+        />
+
+</LinearLayout>

@@ -1,0 +1,318 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+// Apply the Performance Monitoring plugin
+apply plugin: 'com.google.firebase.firebase-perf'
+
+//TODO 上线开启
+//apply plugin: 'com.google.gms.google-services'
+//apply from: '../change.gradle'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+def config = rootProject.ext
+
+android {
+    compileSdkVersion config.android.compileSdkVersion
+    buildToolsVersion config.android.buildToolsVersion
+
+
+    defaultConfig {
+        applicationId "$change.applicationId"
+        minSdkVersion config.android.minSdkVersion
+        maxSdkVersion config.android.maxSdkVersion
+        targetSdkVersion config.android.targetSdkVersion
+
+        versionCode change.versionCode
+        versionName "$change.versionName"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    dexOptions {
+        //最大堆内存
+        javaMaxHeapSize "8g"
+        //是否支持大工程模式
+        jumboMode = true
+        //预编译
+        preDexLibraries = true
+        //线程数
+        threadCount = 8
+    }
+
+
+    signingConfigs {
+        debug {//调试版本的签名配置
+            storeFile file("chainup_debug_keystore")
+            keyAlias "chainup"
+            storePassword "chainup2018"
+            keyPassword "chainup2018"
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    /**
+     * buildTypes必须放在signingConfigs后面
+     */
+    buildTypes {
+
+        debug {
+            minifyEnabled false
+            shrinkResources false
+
+            signingConfig signingConfigs.debug
+            resValue "string", "buglyId", "$change.buglyId"
+            resValue "string", "applicationId", "$change.applicationId"
+            resValue "string", "baseUrl", "$change.baseUrl"
+            resValue "string", "otcBaseUrl", "$change.otcBaseUrl"
+            resValue "string", "socketAddress", "$change.socketAddress"
+            resValue "string", "otcSocketAddress", "$change.otcSocketAddress"
+            resValue "string", "contractSocketAddress", "$change.contractSocketAddress"
+            resValue "string", "redPackageUrl", "$change.redPackageUrl"
+            resValue "string", "homeViewStatus", "$change.homeViewStatus"
+            resValue "string", "homePageStyle", "$change.homePageStyle"
+            resValue "string", "appswitchsaas", "$change.appswitchsaas"
+            resValue "string", "exChainupBundleVersion", "$change.exChainupBundleVersion"
+            resValue "string", "homepageService", "$change.homepageService"
+            resValue "string", "contractUrl", "$change.contractUrl"
+            resValue "string", "sobotAppKey", "$change.sobotAppKey"
+            resValue "string", "pathForKyc", "Android/data/$change.applicationId/files/Pictures/"
+            manifestPlaceholders = [
+                    GETUI_APP_ID : "$change.pushAppId",
+                    GETUI_APP_KEY : "$change.pushAppKey",
+                    GETUI_APP_SECRET : "$change.pushAppSecret"
+            ]
+        }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
+
+}
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    implementation(name: 'geetest_sensebot_android_v4.0.7_20190311', ext: 'aar')
+    implementation(name: 'MGFaceppSDK-0.5.2', ext: 'aar')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$config.android.supportVersion"
+
+    implementation "com.android.support:appcompat-v7:$config.android.supportVersion"
+    implementation "com.android.support:recyclerview-v7:$config.android.supportVersion"
+    implementation "com.android.support:design:$config.android.supportVersion"
+    implementation "com.android.support:support-v4:$config.android.supportVersion"
+    implementation "com.android.support:design:$config.android.supportVersion"
+    implementation 'com.android.support:multidex:1.0.1'
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.1'
+
+    implementation 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-kotlin:2.2.1'
+
+    api "com.squareup.retrofit2:retrofit:$config.dependencies.retrofitVersion"
+    api "com.squareup.retrofit2:adapter-rxjava:$config.dependencies.retrofitVersion"
+    api "com.squareup.okhttp3:okhttp:$config.dependencies.okhttp3Version"
+    api "com.squareup.okio:okio:$config.dependencies.okioVersion"
+
+    api "com.squareup.retrofit2:retrofit-converters:$config.dependencies.retrofitVersion"
+    api "com.squareup.retrofit2:converter-jaxb:$config.dependencies.retrofitVersion"
+    api "com.squareup.retrofit2:converter-protobuf:$config.dependencies.retrofitVersion"
+    api "com.squareup.retrofit2:converter-gson:$config.dependencies.retrofitVersion"
+    api "com.squareup.retrofit2:adapter-rxjava2:$config.dependencies.retrofitVersion"
+
+    api "com.squareup.okhttp3:logging-interceptor:$config.dependencies.okhttp3loggingVersion"
+
+    api "io.reactivex.rxjava2:rxandroid:$config.dependencies.rxandroidVersion"
+    api "io.reactivex.rxjava2:rxjava:$config.dependencies.rxjavaVersion"
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    kapt 'com.jakewharton:butterknife-compiler:8.8.1'
+    api project(path: ':dsbridge')
+    api project(path: ':followordersdk')
+    api project(path: ':logcollector')
+    api project(path: ':push_library')
+    api project(path: ':ws_library')
+    api project(path: ':http_library')
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+
+    implementation 'com.journeyapps:zxing-android-embedded:3.3.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    implementation 'com.github.promeg:tinypinyin:2.0.3'
+    // TinyPinyin核心包，约80KB
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+    implementation 'xyz.sahildave:searchviewlayout:0.6'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    /**
+     *  仿IOS的底部弹窗
+     */
+    implementation 'com.github.zhaolei9527:BottomMenu:v1.0.1'
+    implementation 'com.github.fccaikai:BottomMenuTutorial:1.1.0'
+    implementation 'com.shizhefei:ViewPagerIndicator:1.1.6'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    implementation 'com.github.zyyoona7:EasyPopup:1.1.1'
+    // TDialog
+    implementation 'com.timmy.tdialog:tdialog:2.1.1'
+    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
+    implementation 'me.majiajie:pager-bottom-tab-strip:2.2.2'
+    implementation 'com.squareup.okhttp3:mockwebserver:3.5.0'
+    implementation 'com.rabtman.wsmanager:wsmanager:1.0.2'
+    implementation 'com.ycl.tabview.library:tabviewlibrary:1.0'
+    // SnackBar
+    implementation 'com.androidadvance:topsnackbar:1.1.1'
+    implementation 'com.abby.app:tsnackbar:1.0.7'
+    // 底部导航
+    implementation 'com.aurelhubert:ahbottomnavigation:2.2.0'
+    //    implementation 'cn.yipianfengye.android:zxing-library:2.2'
+    // 解决分包问题
+
+    implementation 'com.baoyz.treasure:treasure:0.7.4'
+    annotationProcessor 'com.baoyz.treasure:treasure-compiler:0.7.4'
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    //    Tecent Bugly
+    implementation 'com.tencent.bugly:crashreport:3.1.0'
+    // firebase
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.google.firebase:firebase-perf:16.2.5'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:2.1.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:2.1.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-design-kotlin:2.1.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:2.1.1'
+    /**
+     *  圆形图片
+     *  com.makeramen.roundedimageview.RoundedImageView
+     */
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+    /**
+     *  支持图片缩放
+     */
+    implementation 'com.github.chrisbanes:PhotoView:2.1.3'
+    /**
+     *  SmartRefreshLayout
+     */
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
+    //没有使用特殊Header，可以不加这行
+
+    /**
+     * 自定义 广告text
+     */
+    implementation 'com.github.paradoxie:AutoVerticalTextview:0.1'
+    /**
+     * MMKV:https://github.com/Tencent/MMKV/wiki/android_setup_cn
+     * 腾讯MMKV,替代SP
+     */
+    implementation "com.tencent:mmkv:$config.dependencies.mmkvVersion"
+
+    /**
+     * SuperTextView
+     * https://github.com/chenBingX/SuperTextView
+     */
+    implementation 'com.github.chenBingX:SuperTextView:v3.1.1'
+
+
+    //implementation 'com.sobot.chat:sobotsdk:2.7.0'
+
+    /**
+     *   功能强大的FlycoTabLayout
+     */
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    implementation "org.jetbrains.anko:anko:$anko_version"
+
+    /**
+     * 滑动翻页
+     */
+    implementation 'com.gcssloop.recyclerview:pagerlayoutmanager:2.3.7'
+
+    /**
+     * 手势密码功能
+     */
+    implementation 'com.wangnan:gesturelockview:1.0.2'
+
+    /**
+     * oss
+     */
+    implementation 'com.aliyun.dpa:oss-android-sdk:2.4.5'
+
+    implementation "com.youth.banner:banner:$config.dependencies.youthBannerVersion"  //最新版本
+
+    implementation 'com.wx.wheelview:wheelview:1.3.3'
+
+    //fresco
+    implementation "com.facebook.fresco:fresco:$config.dependencies.frescoVersion"
+    implementation "com.facebook.fresco:animated-gif:$config.dependencies.frescoVersion"
+//加载gif动图需添加此库
+    implementation "com.facebook.fresco:animated-webp:$config.dependencies.frescoVersion"
+//加载webp动图需添加此库
+    implementation "com.facebook.fresco:webpsupport:$config.dependencies.frescoVersion"//支持webp需添加此库
+    implementation "com.facebook.fresco:imagepipeline-okhttp3:$config.dependencies.imagepipeline_okhttp3Version"
+//网络实现层使用okhttp3需添加此库
+    implementation 'jp.wasabeef:fresco-processors:2.1.0@aar'//用于提供fresco的各种图片变换
+    implementation 'com.android.support:support-core-utils:24.2.1'
+
+    // arouter
+    //implementation "com.alibaba:arouter-api:$config.dependencies.arouterApiVersion"
+    //kapt "com.alibaba:arouter-compiler:$config.dependencies.arouterCompilerVersion"
+    implementation 'com.alibaba:arouter-api:1.5.0'
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
+
+
+    api "org.java-websocket:Java-WebSocket:$config.dependencies.webSockVersion"
+    implementation 'android.arch.lifecycle:viewmodel:1.1.1'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+
+    debugImplementation 'com.didichuxing.doraemonkit:doraemonkit:3.0.0', {
+        exclude group: 'com.github.CymChad'
+    }
+    debugImplementation 'com.didichuxing.doraemonkit:doraemonkit-leakcanary:3.0.0',{
+        exclude group: 'com.github.CymChad'
+    }
+
+    releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-no-op:3.0.0', {
+        exclude group: 'com.github.CymChad'
+    }
+
+    // 合约SDK
+    implementation files('libs/contract_sdk_2.0_release.aar')
+    implementation 'com.getui:sdk-for-google-play:4.3.8.0'
+    implementation 'com.github.jakebonk:NotifyMe:1.0.1'
+
+}

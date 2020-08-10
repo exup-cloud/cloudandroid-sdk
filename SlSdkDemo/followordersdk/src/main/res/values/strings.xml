@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 网络异常 -->
+    <string name="fo_error_net">没有网络</string>
+    <string name="fo_error_unknow">未知错误</string>
+    <string name="fo_error_api">服务异常</string>
+    <string name="fo_error_timeout">网络有点慢</string>
+    <string name="fo_data_loading">加载中&#8230;</string>
+    <string name="fo_empty_data_text">暂无数据</string>
+    <string name="fo_net_error_text">网络不给力，请点击屏幕重试</string>
+    <string name="fo_empty_button_retry">重试</string>
+    <string name="fo_space">&#160;&#160;</string>
+
+    <!-- 通用 -->
+    <string name="fo_action_tip">提示</string>
+    <string name="fo_action_confirm">确定</string>
+    <string name="fo_action_cancel">取消</string>
+    <string name="fo_action_filter">筛选</string>
+    <string name="fo_action_reset">重置</string>
+    <string name="fo_action_read">我知道了</string>
+    <string name="fo_action_all">全部</string>
+
+    <!-- 跟单 -->
+    <string name="fo_tab_1">KOL列表</string>
+    <string name="fo_tab_2">我的跟单</string>
+    <string name="fo_tab_item_1">综合推荐</string>
+    <string name="fo_tab_item_2">收益率</string>
+    <string name="fo_follow_text_1">仅显示当前可跟</string>
+    <string name="fo_follow_text_2">实盘收益率</string>
+    <string name="fo_follow_text_3">实盘收益</string>
+    <string name="fo_follow_text_4">跟单人数</string>
+    <string name="fo_follow_text_5">币种</string>
+    <string name="fo_follow_text_6">额度限制</string>
+    <string name="fo_follow_text_7">状态</string>
+    <string name="fo_follow_text_8">人</string>
+    <string name="fo_follow_text_9">人以内</string>
+    <string name="fo_follow_text_10">+人</string>
+    <string name="fo_follow_price_type_1">金本位</string>
+    <string name="fo_follow_price_type_2">币本位</string>
+    <string name="fo_follow_coin_1">跟单</string>
+    <string name="fo_follow_coin_2">已跟</string>
+    <string name="fo_follow_coin_3">额度已满</string>
+    <string name="fo_follow_menu_1">风格</string>
+    <string name="fo_follow_menu_2">币种</string>
+
+    <!-- 跟单设置 -->
+    <string name="fo_follow_setup_title">跟单设置</string>
+    <string name="fo_follow_order_start">开始跟单</string>
+    <string name="fo_follow_order_stop">结束跟单</string>
+    <string name="fo_follow_setup_text_1">盈利分成</string>
+    <string name="fo_follow_setup_text_2">跟单币种</string>
+    <string name="fo_follow_setup_text_3">跟单平台</string>
+    <string name="fo_follow_setup_text_4">跟随比例</string>
+    <string name="fo_follow_setup_text_5">跟单模式</string>
+    <string name="fo_follow_setup_text_6">设置跟单金额</string>
+    <string name="fo_follow_setup_text_7">设置止损</string>
+    <string name="fo_follow_setup_text_8">设置止盈(选填)</string>
+    <string name="fo_follow_setup_text_28">设置止盈</string>
+    <string name="fo_follow_setup_text_9">注意事项</string>
+    <string name="fo_follow_setup_text_10">币币账户可用：</string>
+    <string name="fo_follow_setup_text_11">亏损超过</string>
+    <string name="fo_follow_setup_text_12">盈利超过</string>
+    <string name="fo_follow_setup_text_13">自动止损</string>
+    <string name="fo_follow_setup_text_14">用户分</string>
+    <string name="fo_follow_setup_text_15">，KOL分</string>
+    <string name="fo_follow_setup_text_16">USDT</string>
+    <string name="fo_follow_setup_text_17">≈</string>
+    <string name="fo_follow_setup_text_18">注意事项</string>
+    <string name="fo_follow_setup_text_19">1.平台会设置一个默认的止损比例，用户也可以自行设置，当亏损达到您设置的止损比例时，跟单仓位将会自动平仓；\n2.跟单开始后，我们会将你需要的保证金币种从资金账户自动划转到你的跟单账户，你可在资金页对应交易所账户查看。</string>
+    <string name="fo_follow_setup_text_20">止损最大值为%s</string>
+    <string name="fo_follow_setup_text_21">止损最小值为%s</string>
+    <string name="fo_follow_setup_text_22">止盈最大值为%s</string>
+    <string name="fo_follow_setup_text_23">止盈最小值为%s</string>
+    <string name="fo_follow_setup_text_24">限额%1$s-%2$s</string>
+    <string name="fo_follow_setup_text_25">开始跟单时若带单账户已有仓位</string>
+    <string name="fo_follow_setup_text_26">以市价进行开仓，之后跟随跟单策略</string>
+    <string name="fo_follow_setup_text_27">不跟此单，等待KOL下次开仓</string>
+    <string name="fo_follow_setup_text_29">请填写跟单金额</string>
+    <string name="fo_follow_setup_text_30">自动止盈</string>
+
+    <!-- 跟单详情 -->
+    <string name="fo_order_detail_title">我的%s跟单</string>
+    <string name="fo_order_detail_live">实盘</string>
+    <string name="fo_order_detail_empty_position">暂无仓位</string>
+    <string name="fo_order_detail_text_1">我的跟单概述</string>
+    <string name="fo_order_detail_text_2">收益走势</string>
+    <string name="fo_order_detail_text_3">盈利分成：</string>
+    <string name="fo_order_detail_text_4">跟单平台：</string>
+    <string name="fo_order_detail_text_5">跟单币种：</string>
+    <string name="fo_order_detail_text_6">跟单本金：</string>
+    <string name="fo_order_detail_text_7">跟单天数：</string>
+    <string name="fo_order_detail_text_8">强制止损线：</string>
+    <string name="fo_order_detail_text_9">强制止盈线：</string>
+    <string name="fo_order_detail_text_10">跟单详情</string>
+    <string name="fo_order_detail_text_11">仓位状态</string>
+    <string name="fo_order_detail_text_12">跟随比例：</string>
+    <string name="fo_order_detail_text_13">带单KOL持仓：</string>
+    <string name="fo_order_detail_text_14">我的持仓：</string>
+    <string name="fo_order_weight_tip">仓位管理是合约交易中最重要的一环。假设跟随比例是0.3时，交易员下单保证金为本金的10%，您跟单的保证金占用你本金的3%(10%*0.3)。这样比较于交易员,会同比例放大或缩小您的盈亏。</string>
+    <string name="fo_order_dialog_stop_content">确定结束跟单后，您当前持有仓位将被平仓。跟单收益会在结算后统一划转至您的币币账户。</string>
+
+    <!-- 我的跟投 -->
+    <string name="fo_tab_order_item_1">进行中</string>
+    <string name="fo_tab_order_item_2">已结束</string>
+    <string name="fo_order_text_1">累计跟单本金</string>
+    <string name="fo_order_text_2">跟单收益</string>
+    <string name="fo_order_text_3">跟单收益率</string>
+    <string name="fo_order_text_4">跟单本金</string>
+    <string name="fo_order_text_5">收益</string>
+    <string name="fo_order_text_6">收益率</string>
+    <string name="fo_order_text_7">持有天数</string>
+    <string name="fo_order_text_8">跟单状态</string>
+
+    <!-- 跟单分享 -->
+    <string name="fo_order_share_day">跟单天数</string>
+    <string name="fo_order_share_text_1">跟随的交易员</string>
+    <string name="fo_order_share_text_2">累计收益率</string>
+    <string name="fo_order_share_text_3">累计收益</string>
+    <string name="fo_order_share_text_4">扫描二维码查看我的跟单详情</string>
+    <string name="fo_order_share_text_5">数字货币交易平台</string>
+
+    <!-- 个人主页 -->
+    <string name="fo_personal_account_summary">账户概述</string>
+    <string name="personal_label_1">账户资产</string>
+    <string name="personal_label_2">总收益率</string>
+    <string name="personal_label_3">总收益</string>
+    <string name="personal_label_4">交易胜率</string>
+    <string name="personal_label_5">交易时长</string>
+    <string name="personal_label_6">周收益</string>
+    <string name="personal_label_7">周收益率</string>
+    <string name="personal_label_8">交易频次</string>
+    <string name="personal_label_9">时间：</string>
+
+    <!-- 跟单提示 -->
+    <string name="follow_warn_title">跟单风险需知</string>
+    <string name="follow_warn_content">1.实盘跟随带单KOL下单，可能存在亏损风险，在风险控制不当的情况下，可能会造成账户亏损。亏损风险由您独自承担。\n2.确认跟随后，您可随时停止跟随。跟单后，你可以随时查看自己的跟单详情，包括仓位、止损止盈等。\n3.结束跟单时，若跟单计划盈利，将抽取部分利润作为带单KOL奖励。注意，无论跟单计划是由您主动结束或是由带单KOL结束，都会盈利分成。</string>
+    <string name="follow_warn_confirm">我已知晓风险，继续开通跟单</string>
+</resources>

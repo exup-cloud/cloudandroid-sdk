@@ -1,0 +1,2227 @@
+<resources>
+    <string name="app_name">HIEX</string>
+
+    <!--Parte inferiorTab-->
+
+    <string name="loading">cargando…</string>
+    <string name="logging">iniciando sesión…</string>
+
+
+    <string name="show">mostrar</string>
+    <string name="not_show">no se muestra</string>
+    <string name="market">mercado</string>
+    <string name="symbol">moneda</string>
+    <string name="update">actualizar</string>
+    <string name="ignore">ignorar</string>
+    <string name="exit_remind">haga clic nuevamente para salir</string>
+    <string name="more">más</string>
+
+    <!--titles-->
+    <string name="title_information">informacion</string>
+    <string name="title_change_phone">modificar número de teléfono</string>
+    <string name="title_change_email">modificar dirección de e-mail</string>
+    <string name="title_bind_phone">atar teléfono</string>
+    <string name="title_verification_phone">verificar número de teléfono</string>
+    <string name="title_bind_email">atar e-mail</string>
+    <string name="title_verification_email">verificar e-mail </string>
+    <string name="title_change_nickname">modificar apodo</string>
+    <string name="title_notification">notificación</string>
+    <string name="title_personal_center">centro personal</string>
+    <string name="title_recharge">recargar</string>
+    <string name="title_recharge_address">dirección de recarga</string>
+    <string name="title_recharge_record">registro de recarga</string>
+    <string name="title_reset_login_pass">restablecer contraseña de inicio de sesión</string>
+    <string name="title_set_asset_pass">establecer la contraseña del fondo</string>
+    <string name="title_reset_asset_pass">restablecer contraseña de fondos</string>
+    <string name="title_rebind_phone">volver a conectar el teléfono</string>
+    <string name="title_rebind_email">volver a conectar el e-mail </string>
+    <string name="title_asset_pass_setting">cambiar la frecuencia</string>
+    <string name="title_user_agreement">acuerdo de usuario</string>
+    <string name="title_feedback">retroalimentación</string>
+    <string name="title_choose_area">elegir área</string>
+    <string name="title_choose_symbol">eligir moneda</string>
+    <string name="title_transaction_details">detalles de la transacción</string>
+    <string name="title_asset_details">detalles de activos</string>
+    <string name="title_industry_information">información de la industria</string>
+    <string name="title_gesture_password">contraseña de gestos</string>
+    <string name="title_asset_setting">configuración de activos</string>
+
+    <!--página de configuración-->
+    <string name="safe_setting">configuración de seguridad</string>
+    <string name="binding_phone">atando teléfono</string>
+    <string name="binding_email">atando e-mail</string>
+    <string name="login_pass">contraseña de acceso</string>
+    <string name="funds_pass">contraseña del fondo</string>
+    <string name="safe_tactics">tácticas de seguridad</string>
+    <string name="login_validity">validez de inicio de sesión</string>
+    <string name="version_update">versión</string>
+    <string name="user_agreement">acuerdo de usuario</string>
+    <string name="hotline">teléfono para servicio al cliente</string>
+
+    <!--página de recarga-->
+    <string name="french_recharge">recarga de moneda legal</string>
+    <string name="USDT">usdt</string>
+    <string name="EUR">euroeur</string>
+    <string name="token_recharge">recarga de tokens</string>
+    <string name="BTC">btc</string>
+    <string name="LTC">litecoin ltc</string>
+    <string name="BCC">bitcoin cash bcc</string>
+    <string name="ETH">eth</string>
+    <string name="recharge_remind">asegúrese de verificar la moneda de recarga con cuidado. está prohibido recargar la dirección de btc con activos que no sean btc. no se recuperarán los activos que no sean btc cargados a la dirección de btc.</string>
+    <string name="important_hint">nota importante:</string>
+
+
+    <!--página de cuenta-->
+    <string name="asset_details">detalles del activos</string>
+    <string name="recharge">recargar</string>
+    <string name="withdraw">retirar</string>
+    <string name="other">otro</string>
+    <string name="cashFlow">flujo de caja</string>
+    <string name="address_management">gestión de direcciones</string>
+
+    <!--new acerca de-->
+    <string name="title_about">acerca de</string>
+    <string name="contactCall">número de contacto</string>
+    <!--new centro de ayuda-->
+    <string name="title_help_center">centro de ayuda</string>
+
+    <!--página de registro-->
+
+
+    <string name="limit_transaction">transacción límite</string>
+
+
+    <!-- new detalles del pedido -->
+
+
+    <!--configuración-->
+    <string name="setting">configuración</string>
+
+
+    <!--detalles de cotización-->
+    <string name="trust">confiar</string>
+
+    <string name="deal">acuerdo</string>
+    <string name="orientation">orientación</string>
+    <string name="recent_deal">último trato</string>
+    <string name="volume">volumen</string>
+    <string name="determine">confirmar</string>
+    <string name="feedback">retroalimentación</string>
+
+
+    <!--centro personal-->
+    <string name="account_info">información de la cuenta</string>
+    <string name="personal_info">información personal</string>
+    <string name="name">nombre</string>
+    <string name="nickname">apodo</string>
+    <string name="certificate_type">tipo de documento</string>
+    <string name="identity_certificate">certificado de identidad</string>
+    <string name="certificate_num">número de identificación</string>
+    <string name="certification_level">nivel de certificación</string>
+    <string name="funding_password">contraseña del fondo</string>
+    <string name="verification">verificación</string>
+    <string name="sign_out">cerrar sesión</string>
+    <string name="confirm">confirmar</string>
+    <string name="hint_personal_info_name">ingrese su nombre real para ser coherente con su ID</string>
+    <string name="hint_personal_info_certificate_type">pasaporte</string>
+    <string name="hint_personal_info_certificate_num"> introduzca el número de identificación</string>
+    <string name="passport_cover">cubierta del pasaporte</string>
+    <string name="image_example">ejemplo de imagen</string>
+    <string name="passport_personal_info_page">página de información personal del pasaporte</string>
+    <string name="phone_passport_person">fotos de tomar de la página de pasaporte con información personal y firma personal</string>
+    <string name="personal_info_prompt">Para que su revisión de documentos sea aprobada, asegúrese de que el contenido de la foto esté completo y sea claramente visible. Solo se admite el formato de imagen JPG. /nRequisitos para fotos: cara clara, identificación clara, firma clara, incluida la fecha actual</string>
+    <string name="assets_pass_warning">¡para la seguridad de su cuenta, no se permite retirar ni retirar monedas dentro de las 24 horas posteriores a la configuración o restablecimiento de la contraseña!</string>
+    <string name="original_pass">contraseña original</string>
+    <string name="original_email">E-mail original</string>
+    <string name="new_email">nuevo e-mail</string>
+    <string name="new_mobile">nuevo número de teléfono</string>
+    <string name="original_mobile">número de teléfono original</string>
+    <string name="save">guardar</string>
+    <string name="hint_nickname">ingrese un apodo</string>
+    <string name="dialog_remind">vaya al sitio web oficial para completar las operaciones relevantes.</string>
+
+    <string name="take_a_photo">tomar una foto</string>
+    <string name="select_from_album">seleccionar del álbum</string>
+    <string name="submit">presentar</string>
+    <string name="submiting">presentando</string>
+    <string name="determine_bind">determinar la unión</string>
+    <string name="asset_pass_not_verification">no verifique la contraseña del fondo</string>
+    <string name="asset_pass_verification_2hour">verifique la contraseña de fondos cada dos horas</string>
+    <string name="asset_pass_verification_every_time">verifique la contraseña de fondos cada vez</string>
+    <string name="reset">restablecer</string>
+    <string name="my_invitation_code">mi código de invitacion</string>
+    <string name="login_setting">configuración de inicio de sesión</string>
+    <string name="gesture_pass">contraseña de gestos</string>
+    <string name="pass_input_times">frecuencia de entrada de contraseña</string>
+
+    <string name="total_assets_valuation">activos totales</string>
+    <string name="verified">certificado</string>
+    <string name="not_certified">no certificado</string>
+    <string name="confirm_changes">confirmar modificación</string>
+
+
+
+    <string name="assets_pass">contraseña del fondo</string>
+    <string name="original_assets_pass"> original contraseña del fondo</string>
+    <string name="reset_assets_pass">restablecer contraseña de fondos</string>
+    <string name="set_assets_pass">establecer contraseña de fondos</string>
+    <string name="input_no">no se requiere entrada</string>
+    <string name="input_everytime">cada vez que entras</string>
+    <string name="input_2hour">ingresar cada dos horas</string>
+
+    <!--código de verificación de google-->
+    <string name="google_code_remind">puede vincular su cuenta escaneando el código de verificación de google</string>
+    <string name="copy_key">copiar la clave</string>
+    <string name="finish">acabar</string>
+
+
+    <!--NEW ADD-->
+
+    <string name="toast_feedback_success">comentarios exitosos</string>
+    <string name="toast_trade_success">enviado con éxito</string>
+    <string name="toast_login_password_change_success">modificado exitosamente</string>
+    <string name="toast_no_mobile_verification_code">ingrese el código de verificación de su teléfono</string>
+    <string name="toast_no_email_verification_code">ingrese el código de verificación de e-mail</string>
+    <string name="toast_no_nickname">ingrese un apodo</string>
+
+    <string name="toast_no_feedback">ingrese su pregunta o sugerencia</string>
+    <string name="toast_wrong_pass">ingrese la contraseña correcta</string>
+    <string name="toast_wrong_asset_pass">por favor, introduzca la correcta contraseña de fond</string>
+    <string name="toast_funding_pass">habilite al menos la verificación telefónica o la certificación de google</string>
+    <string name="toast_close_phone_verification">no ha activado la verificación de google para proteger la seguridad de su cuenta, no podemos apagar la verificación por teléfono!</string>
+    <string name="toast_close_google_verification">no ha activado la verificación telefónica. para proteger su cuenta, ¡no puede desactivar la verificación de google!</string>
+    <string name="toast_reg_terms">lea y acepte los términos</string>
+
+
+    <string name="toast_not_set_asset_pass">primero configure la contraseña del fondo.</string>
+    <string name="toast_asset_pass_format_error">el formato de la contraseña es incorrecto, la longitud es de 8 ~ 16 dígitos, incluido al menos el número + letra</string>
+
+
+    <!--estado del pedido-->
+    <!--<string name="order_status_unfinished">no acabado</string>-->
+    <string name="order_status_init">pedido inicial</string>
+    <string name="order_status_new">nuevo pedido</string>
+
+
+    <!--recordatorio de precio-->
+    <string name="hint_price_high">precio máximo</string>
+    <string name="hint_price_low">precio mínimo</string>
+
+
+    <!-- gesture code starting -->
+    <string name="setup_gesture_code">establecer contraseña de gestos</string>
+    <string name="setup_gesture_pattern">dibujar un patrón de desbloqueo</string>
+    <string name="setup_gesture_pattern_again">dibuja un patrón de desbloqueo nuevamente</string>
+    <string name="forget_gesture_code">¿olvidaste tu contraseña de gestos?</string>
+    <string name="use_other_account_login">inicie sesión con otra cuenta</string>
+    <string name="set_gesture_pattern">dibujar un patrón de desbloqueo</string>
+    <string name="set_gesture_pattern_reason">establecer una contraseña de gestos para evitar la visita no autorizada</string>
+    <string name="reset_gesture_code">restablecer contraseña de gestos</string>
+    <string name="gesture_error_remind">enlace al menos 5 puntos, vuelva a ingresar</string>
+    <string name="create_suc">creado con éxito</string>
+    <string name="gesture_pass_error">contraseña incorrecta</string>
+
+
+    <!--aviso de cuadro de entrada -->
+    <string name="hint_change_name">ingrese el apodo</string>
+    <string name="hint_bind_mobile">ingrese su teléfono</string>
+    <string name="hint_certification_code">ingrese el código de verificación</string>
+    <string name="hint_bind_email">ingrese su dirección de e-mail</string>
+    <string name="hint_certification_code_email">ingrese el código de verificación en el e-mail</string>
+    <string name="hint_certification_code_mobile">ingrese el código de verificación de su teléfono</string>
+    <string name="hint_change_login_pass">Por favor, introduzca la contraseña de inicio de sesión original</string>
+    <string name="hint_google_certification_code">ingrese el código de verificación de Google</string>
+    <string name="hint_input_new_pwd">ingrese una nueva contraseña</string>
+    <string name="hint_pass_again">ingrese su nueva contraseña nuevamente</string>
+
+
+    <string name="hint_assets_pass_again">ingrese la contraseña de fondos nuevamente.</string>
+    <string name="hint_assets_pass">ingrese la contraseña del fondo, que está limitada a 8 ~ 16 dígitos, incluyendo al menos el número + letra</string>
+    <string name="hint_assets_pass_old">ingrese la contraseña original del fondo</string>
+    <string name="hint_assets_pass_new">ingrese la contraseña del fondo, que está limitada a 8 ~ 16 dígitos, incluyendo al menos el número + letra</string>
+    <string name="hint_assets_pass_dialog">ingrese la contraseña del fondo</string>
+    <string name="hint_input_login_pass">ingrese su contraseña de inicio de sesión</string>
+    <string name="hint_feedback">describa su pregunta u opinión</string>
+
+
+    <!--new página de inicio de sesión-->
+    <string name="select_area">seleccione un código de país o región</string>
+
+    <string name="toast_no_mobile">ingrese su número de celular</string>
+
+
+    <string name="toast_no_account">ingrese su número de teléfono móvil o dirección de e-mail</string>
+
+    <string name="toast_no_email">ingrese su dirección de e-mail</string>
+
+
+    <string name="email_login">iniciar sesión por e-mail</string>
+    <string name="phone_login">iniciar sesión por teléfono móvil</string>
+
+    <string name="now_register">registrarse ahora</string>
+
+    <string name="toast_no_verify_code">ingrese el código de verificación</string>
+
+
+    <!--página de inicio de sesión-->
+    <string name="register">registrarse</string>
+
+
+    <!--new recuperar contraseña-->
+    <string name="find_by_phone">recuperar por teléfono móvil</string>
+    <string name="find_by_email">recuperar por e-mail</string>
+    <string name="find_pwd">recuperar contraseña</string>
+    <string name="toast_no_idcard">ingrese su número de identificación</string>
+
+
+    <string name="google_code">código de verificación de google</string>
+    <string name="mobile_code">código de verificación de sms</string>
+    <string name="email_code">código de verificación de e-mail</string>
+    <string name="toast_no_google_code">ingrese el código de verificación de google</string>
+    <string name="toast_no_mobile_code">ingrese el código de verificación de sms</string>
+    <string name="toast_no_email_code">ingrese el código de verificación de e-mail</string>
+
+
+    <string name="resend">reenviar</string>
+
+
+    <string name="choose_area">seleccionar región</string>
+
+
+    <string name="toast_pass_format_error">la contraseña está en el formato incorrecto, vuelva a ingresar</string>
+    <string name="toast_old_pass_format_error">la contraseña original está en el formato incorrecto, vuelva a ingresar</string>
+    <string name="toast_new_pass_format_error">el formato de la contraseña es incorrecto, el límite es de 8 ~ 20 dígitos, incluido al menos el número + letra</string>
+
+
+    <string name="location">ubicación</string>
+    <string name="phone_num">número de teléfono móvil</string>
+    <string name="verification_code">código de verificación</string>
+    <string name="confirm_pass">confirmar contraseña</string>
+    <string name="find_pass">recuperar contraseña</string>
+    <string name="click_here">haga clic para obtener</string>
+
+
+    <!-- NEW Interfaz de anuncio-->
+    <string name="title_notice">Anuncio</string>
+
+
+    <string name="area_hint">País / Región</string>
+
+    <string name="verification_code_hint">ingrese el código de verificación</string>
+
+
+    <!--recargar-->
+
+
+    <string name="recharge_ware_second">la etiqueta de arriba es el identificador único de su cuenta. asegúrese de completar la cantidad correcta cuando transfiera el dinero, de lo contrario no podrá recargar la cuenta y los activos no podrán recuperarse.</string>
+
+
+    <!--new certificación de nombre real-->
+    <string name="title_verify">certificación de nombre real</string>
+    <string name="id_card_right_title">foto frontal de tarjeta de identificación</string>
+    <string name="id_card_reverse_title">foto trasera de tarjeta de identificación</string>
+    <string name="id_card_title">foto de tomar tarjeta de identificación</string>
+    <string name="passport_cover_title">cubierta del pasaporte</string>
+    <string name="passport_info_title">página de información personal del pasaporte</string>
+    <string name="passport_title"> tomar documento y firma personal</string>
+    <string name="credentials_type">tipo de documento</string>
+    <string name="passport">pasaporte</string>
+    <string name="idcard">tarjeta de identificación</string>
+    <string name="verify_pic_warn">asegúrese de que el contenido de la foto esté completo y sea claramente visible, solo es compatible con el formato de imagen jpg / png.</string>
+    <string name="verify_pic_passport_warn_one">asegúrese de que el contenido de la foto esté completo, sea claramente visible y que el documento debe estar dentro del período de validez.</string>
+    <string name="verify_pic_idcard_warn_one">asegúrese de que el contenido de la foto esté completo, sea claramente visible y que el documento debe estar dentro del período de validez.</string>
+    <string name="verify_pic_passport_warn_two">cargue una foto de tomar el anverso de la identificación y firma personal, incluyendo el nombre real, la fecha actual y el nombre de la plataforma. asegúrese de que la cara, el número de identificación, la firma personal, etc. estén claramente visibles.</string>
+    <string name="verify_pic_idcard_warn_two">cargue una foto de tomar el anverso de la identificación y firma personal, incluyendo el nombre real, la fecha actual y el nombre de la plataforma. asegúrese de que la cara, el número de identificación, la firma personal, etc. estén claramente visibles.</string>
+    <string name="verify_warn_text">para asegurar sus fondos, debe verificar su identidad antes de poder realizar otras operaciones; una vez que se verifique la información de autenticación, no podrá modificarla. asegúrese de completarla.</string>
+    <string name="warn_lastname_empty">el apellido no puede estar vacío</string>
+    <string name="warn_firstname_empty">el nombre no puede estar vacío</string>
+    <string name="warn_certid_empty">el número de documento no puede estar vacío</string>
+    <string name="warn_first_pic_empty">sube la primera imagen</string>
+    <string name="warn_second_pic_empty">sube la segunda imagen</string>
+    <string name="warn_third_pic_empty">sube la tercera imagen</string>
+    <string name="toast_cert_summit_suc">certificación de nombre real enviada con éxito</string>
+    <string name="toast_upload_pic_suc">sube la imagen con éxito</string>
+    <string name="toast_upload_pic_failed">error al subir la imagen</string>
+    <string name="title">título</string>
+    <string name="subtitle_from_gallery">elige del álbum</string>
+    <string name="subtitle_take_photo">tomar una foto</string>
+    <string name="warn_storage_permission">sin permisos de almacenamiento.</string>
+    <string name="warn_camera_permission">sin permisos de cámara</string>
+
+
+    <!--new configuraciones de seguridad-->
+    <string name="title_safety_setting">configuraciones de seguridad</string>
+    <string name="mobile">teléfono móvil</string>
+    <string name="title_google_verified">verificación de google</string>
+    <string name="title_change_pwd">cambiar contraseña</string>
+    <string name="close_verify">cerrar verificación</string>
+
+    <!--new dos ventanas emergentes de cierre de verificación-->
+    <string name="title_dialog_close_google_verify">¿estás seguro de desactivar la verificación de google?</string>
+    <string name="title_dialog_close_mobile_verify">¿estás seguro de desactivar la verificación telefónica? </string>
+    <string name="dialog_verify_warn_text">el cierre reducirá la seguridad de su cuenta</string>
+    <string name="unbind_verify_warn">enlace primero la verificación móvil o la verificación de google.</string>
+    <string name="not_bound">no unido</string>
+    <string name="change">modificar</string>
+    <string name="toast_copy_addr_suc">dirección copiado con éxito</string>
+    <string name="toast_copy_addr_failed">la replicación de direcciones falló</string>
+    <string name="title_invite_link">enlace de invitación</string>
+    <string name="scan_qr_reg">escanee el código y regístrese</string>
+    <string name="invite_addr">dirección de invitación:</string>
+    <string name="toast_chang_nick_suc">apodo modificado éxito</string>
+    <string name="title_change_nick">modificar apodo</string>
+    <string name="state_normal">normal</string>
+    <string name="freeze_trade_withdraw">congelar transacción&amp;retirarse</string>
+    <string name="freeze_trade">congelar transacción</string>
+    <string name="freeze_withdraw">congelar retiro</string>
+    <string name="certify_not_pass">verificación fallida</string>
+    <string name="certify_passed">aprobado</string>
+    <string name="title_person_info">mi informacion</string>
+    <string name="account_state">estado de la cuenta</string>
+    <string name="subtitle_certifation_type">tipo de documento:</string>
+    <string name="subtitle_account">cuenta:</string>
+    <string name="subtitle_identity_info">información de identidad:</string>
+    <string name="lastname">apellido</string>
+    <string name="firstname">nombre</string>
+    <string name="example">ejemplo</string>
+    <string name="warn_net_disconnect"> red desconectada</string>
+    <string name="warn_net_exception">anomalía de red</string>
+    <string name="warn_request_timeout">tiempo de espera agotado</string>
+    <string name="warn_data_parse_failed">análisis de datos fallido</string>
+    <string name="recharge_time">tiempo de recarga</string>
+    <string name="recharge_amount">cantidad de recarga</string>
+    <string name="recharge_state">estado de recarga</string>
+    <string name="withdraw_time">tiempo de retiro</string>
+    <string name="withdraw_amount">numero de llegadas</string>
+    <string name="withdraw_state">estado de retirada</string>
+    <string name="other_time">tiempo</string>
+    <string name="other_state">estado</string>
+    <string name="subtitle_select_pic">componente de selección de imagen simple:</string>
+    <string name="default_area_verify">china</string>
+    <string name="toast_add_fav_suc">agregado exitosamente a la colección</string>
+    <string name="toast_del_fav_suc">cancelar exitosamente la colección</string>
+    <string name="subtitle_no_favorite">no hay elección por el momento haga clic para agregar</string>
+    <string name="name_and_volume">nombre / volumen</string>
+    <string name="price_limit_24h">altibajos</string>
+    <string name="toast_bind_email_suc"> el buzón enlazado con éxito</string>
+    <string name="toast_bind_mobile_suc">el teléfono atado con éxito</string>
+    <string name="title_cur_selected">seleccionado actual:</string>
+    <string name="toast_close_verify_suc">el cierre de verificación se realizó correctamente</string>
+    <string name="title_close_verify"> acabar verificación</string>
+    <string name="title_select_coinmap">cambiar moneda</string>
+
+    <string name="cancel_order_suc">cancelar pedido con éxito</string>
+
+
+    <string name="add">agregar</string>
+    <string name="cancel_add">cancelar agregar</string>
+    <string name="other_amount">numero de transferencias</string>
+    <string name="search_coinmap">buscar moneda</string>
+    <string name="recent_login_time">último tiempo de inicio de sesión:</string>
+    <string name="temp_none">no</string>
+    <string name="ip">ip:</string>
+    <string name="title_mail">carta de la estación</string>
+    <string name="toast_withdraw_suc">retiro exitoso</string>
+    <string name="toast_no_withdraw_address">la dirección de retiro está vacía</string>
+    <string name="toast_withdraw_too_max">el límite de retiro excede los activos disponibles</string>
+    <string name="subtitle_withdraw_min">el monto mínimo de retiro es</string>
+    <string name="title_withdraw">retirada</string>
+    <string name="confirm_withdraw">confirmar retiro</string>
+    <string name="subtitle_real_get_amount">cantidad real de llegada:</string>
+    <string name="fee">comisión</string>
+    <string name="subtitle_fee">comisión：</string>
+    <string name="subtitle_amount">cantidad：</string>
+    <string name="select_address">seleccionar dirección</string>
+    <string name="hint_add_withdraw_address">agregue una dirección de retiro</string>
+    <string name="subtitle_available_balance">saldo disponible：</string>
+    <string name="choose_other_coin">elige otra moneda</string>
+    <string name="subtitle_withdraw_address">dirección de retiro de moneda</string>
+    <string name="temp_no_data">sin contenido</string>
+    <string name="title_withdraw_address">dirección de retiro</string>
+    <string name="add_address">agregar dirección</string>
+    <string name="bind_google_suc">enlazar la verificación de google con éxito</string>
+    <string name="subtitle_google_verify">escanear códigos qr con google authenticator para enlazar</string>
+    <string name="open_google_verify">activa la verificación de google</string>
+    <string name="title_fund">fondo</string>
+    <string name="order_manager">gestión de pedidos</string>
+    <string name="search_fund">buscar activos</string>
+    <string name="hide_little_fund">ocultar activos pequeños</string>
+    <string name="total_asset_btc">activos totales(btc)</string>
+    <string name="select_all_coin">seleccionar todas las monedas</string>
+    <string name="pic_uploading">subiendo imagen...</string>
+    <string name="stay_old_verison">mantente en la versión antigua</string>
+    <string name="update_now">actualizar ahora</string>
+    <string name="add_address_suc">agregar dirección con éxito</string>
+    <string name="toast_no_address_label">ingrese la nota de dirección</string>
+    <string name="toast_scan_content_empty">contenido activo no escaneado</string>
+    <string name="aim_at_qrcode">apunte al código qr</string>
+    <string name="subtitle_name">dirección：</string>
+    <string name="subtitle_address">nota de dirección：</string>
+    <string name="input_or_add_address">ingrese o agregue una dirección</string>
+    <string name="warn_no_support_recharge">la moneda no admite recarga por el momento.</string>
+    <string name="warn_no_support_withdraw">la moneda no admite retiro</string>
+    <string name="warn_no_support_trade">la moneda no admite actualmente el comercio</string>
+    <string name="freeze">congelar</string>
+    <string name="recharge_coin">recargar moneda</string>
+    <string name="withdraw_coin">retirar moneda</string>
+    <string name="go_trade">ir al comercio</string>
+    <string name="subtitle_last_version">actualmente es la última versión</string>
+    <string name="title_software_update">actualización de software</string>
+    <string name="title_notice_detail">detalles del anuncio</string>
+    <string name="trust_order">pedido comisionado</string>
+    <string name="save_success">guardado exitosamente</string>
+    <string name="save_fail">guardar fallido</string>
+    <string name="trend">tendencia</string>
+    <string name="asset_withdraw_too_low">los activos que pueden retirarse son demasiado bajos.</string>
+    <string name="deal_price">precio de la transacción</string>
+    <string name="deal_vol">volumen de negocios</string>
+    <string name="open_cert">activa la verificación</string>
+    <string name="close_cert">cerrar verificación</string>
+    <string name="title_verify_result">revisión de certificación de nombre real</string>
+    <string name="resubmit_verify">reenviar certificación de nombre real</string>
+    <string name="reason">descripción del motivo:</string>
+    <string name="current_verify_state">estado actual de revisión:</string>
+    <string name="copy_failed">replicación fallida</string>
+    <string name="subtitle_tag">etiqueta</string>
+    <string name="toast_no_tag">ingrese la información de la etiqueta</string>
+    <string name="fee_section">intervalo de tarifa:</string>
+    <string name="tag_info">información de etiqueta</string>
+    <string name="toast_no_fee">comisión está vacía</string>
+    <string name="toast_fee_unreasonable">comisión está irrazonable</string>
+    <string name="fee_min">la comisión mínima es：</string>
+    <string name="warn_gesture_pwd_error">errónea contraseña de gestos, oportunidad restante：</string>
+    <string name="gesture_error_to_login">la contraseña del gesto no es válida. inicie sesión con la contraseña de su cuenta.</string>
+    <string name="accept_server_pro">acepte los términos del servicio</string>
+
+
+    <!--kline  -->
+    <string name="delete">eliminar</string>
+
+
+    <!--otc  -->
+    <string name="otc_title_us">acerca de nosotros</string>
+
+
+    <string name="otc_change_other">aún no hay datos, prueba con otros filtros</string>
+    //contraseña de fondos
+    <string name="otc_reset_pwd_title">restablecer contraseña de fondos</string>
+    <string name="otc_set_pwd_title">establecer contraseña de fondos</string>
+
+    <string name="otc_pwd_alert">*para su protección comercial, configure su apodo y contraseña de fondo antes de operar.</string>
+    <string name="otc_set_nickname">establecer su apodo</string>
+
+    <string name="otc_nickname_alert">el apodo no debe ser igual al nombre real</string>
+    <string name="otc_set_pwd">establecer contraseña de fondos</string>
+    <string name="otc_input_pwd">ingrese la contraseña del fondo</string>
+    <string name="otc_make_pwd">confirme la contraseña del fondo</string>
+    <string name="otc_finish">completado</string>
+    <string name="otc_not_input_emoj">no se puede ingresar emoj</string>
+    <string name="otc_nickname_had">apodo ya existe</string>
+
+    //mis bienes
+    <string name="otc_recharge">recargar</string>
+    <string name="otc_transfer">transferir</string>
+    <string name="otc_trade">ir al comercio</string>
+    <string name="otc_withdraw">retirarse</string>
+
+    <string name="otc_fabi_account">cuenta de moneda legal</string>
+    <string name="otc_bibi_account">cuenta de moneda</string>
+    <string name="otc_all_num">cantidad total que se puede transferir：</string>
+    <string name="otc_transfer_fee">número de transferencias (0 comisión)</string>
+    <string name="otc_input_transfer_num">ingrese el número de transferencias</string>
+    <string name="otc_transfer_all">transferir todo</string>
+
+    <string name="otc_not_open_transfer">la moneda aún no se puede transferir en el otc</string>
+    <string name="otc_not_open_recharge">la moneda no se puede recargar en el otc</string>
+    <string name="otc_not_open_withdraw">la moneda no se puede retirar en el otc</string>
+    <string name="otc_canuse">disponible</string>
+    <string name="otc_notuse">congelar</string>
+    <string name="otc_all_money_num">activos totales(btc)</string>
+    <string name="otc_mine_money">mis bienes</string>
+
+    //
+    <string name="otc_get_rid">quitar</string>
+    <string name="otc_rid_people">las personas bloqueadas</string>
+    <string name="otc_remove_rid_confirm">¿está seguro de la eliminación del bloqueo de esta persona?</string>
+    <string name="otc_black_list">después de bloquear, no verá el anuncio de esta persona.</string>
+
+    //order
+    <string name="otc_mine_order">mis pedidos</string>
+    <string name="otc_order_all">todos</string>
+    <string name="otc_order_nopay"> no pagado</string>
+    <string name="otc_order_hadpay">pagado</string>
+    <string name="otc_order_ss">apelando</string>
+    <string name="otc_order_cancel_1">cancelado</string>
+    <string name="otc_order_finish">completado</string>
+
+
+    //
+    <string name="otc_person_info">información personal</string>
+    <string name="otc_reg_time">tiempo de registro</string>
+
+    <string name="otc_min">minuto</string>
+    <string name="otc_phone_cert">verificación de teléfono móvil</string>
+    <string name="otc_name_cert">verificación de nombre real</string>
+    <string name="otc_order_total_num">número total de pedido</string>
+    <string name="otc_30d_num">número de pedido en 30 días</string>
+    <string name="otc_xinyong">crédito</string>
+    <string name="otc_shensu">apelar</string>
+    <string name="otc_shengsu">gana el caso</string>
+    <string name="otc_fangxing">lanzamiento promedio</string>
+
+    //
+    <string name="otc_edit_payway">editar forma de pago</string>
+    <string name="otc_user_name">nombre</string>
+    <string name="otc_input_user_name">ingrese su propio nombre</string>
+    <string name="otc_wx_a">cuenta de wechat</string>
+    <string name="otc_wx_a_input">ingrese la cuenta de wechat</string>
+    <string name="otc_upload_wx_qr">cargue el código qr del recibo de wechat</string>
+    <string name="otc_alipay">cuenta de alipay</string>
+    <string name="otc_alipay_a">or favor ingrese la cuenta de alipay</string>
+    <string name="otc_alipay_qr">cargue el código qr del recibo de alipay</string>
+    <string name="otc_bank_name">banco de apertura de cuenta</string>
+    <string name="otc_bank_name_input">ingrese el banco de apertura de cuenta</string>
+    <string name="otc_bank_name_lit">banco filial de apertura de cuenta</string>
+    <string name="otc_bank_name_lit_input">ingrese el banco filial de apertura de cuenta</string>
+    <string name="otc_bank_num">número de tarjeta bancaria</string>
+    <string name="otc_bank_num_input">ingrese el número de la tarjeta bancaria</string>
+    <string name="otc_get_photo_error">la adquisición de la foto falló, intente nuevamente</string>
+
+    //
+
+    <string name="otc_not_pay_way">aún no tiene ningún método de cobro. haga clic en la esquina superior derecha para agregar métodos de cobro.</string>
+    <string name="otc_edit">editar</string>
+    <string name="otc_not_use">prohibido</string>
+    <string name="otc_can_use">usar</string>
+    <string name="otc_delete">eliminar</string>
+    <string name="otc_delete_confirm">¿estás seguro de eliminar el método de cobro?</string>
+    <string name="otc_shensu_success">presentación exitosa de la apelación</string>
+    <string name="otc_shensu_result">la solicitud de apelación se ha enviado al servicio de atención al cliente y se le devolverá lo antes posible.</string>
+    <string name="otc_shensu_reason">ingrese su razón para la apelación</string>
+
+    <string name="otc_not_open_coin">el vendedor no liberó la moneda.</string>
+    <string name="otc_not_open_pay">el comprador no ha pagado</string>
+    <string name="otc_shensu_reason_choose">seleccione el motivo de la apelación.</string>
+    <string name="otc_shensu_reason_input">ingrese el motivo de la apelación.</string>
+    <string name="otc_more_500">el valor es de 500 palabras.</string>
+    <string name="otc_uplaod_error">envío fallido</string>
+
+
+    //
+    <string name="otc_choose_pay">elegir forma de pago</string>
+    <string name="otc_choose_contry">seleccionar país / región</string>
+    <string name="otc_all">todos</string>
+    <string name="otc_target_money">cantidad objetivo</string>
+    <string name="otc_input_target_money">complete la cantidad objetivo</string>
+    <string name="otc_pay_way">forma de pago</string>
+    <string name="otc_choose_pay_way">seleccione un método de pago</string>
+    <string name="otc_choose_shou_way">seleccione la forma de cobro</string>
+    <string name="otc_add_pay_way">agregar forma de pago</string>
+    <string name="otc_add_shou_way">agregar forma de cobro</string>
+    <string name="otc_choose_fabi">seleccione la moneda legal</string>
+    <string name="otc_all_reset">restablecer todo</string>
+    <string name="otc_CNY">cny</string>
+
+    //home
+    <string name="otc_deal">transacción</string>
+
+    <string name="otc_credit">crédito</string>
+
+
+    <string name="otc_limit">límite</string>
+    <string name="otc_buy">compra</string>
+    <string name="otc_sell">venta</string>
+
+    <string name="otc_goto_cert">ir a certificacion</string>
+    <string name="otc_please_real_name">primero configure el apodo y la contraseña del fondo.</string>！
+    <string name="otc_goto_set">ir al establecer</string>
+
+    <string name="oct_mine_black_list">lista de bloqueo</string>
+    <string name="otc_identity_certificate">autenticación de identidad</string>
+    <string name="otc_collect_money">método de cobro</string>
+    <string name="otc_safe_setting">configuraciones de seguridad</string>
+    <string name="otc_about_us">acerca de nosotros</string>
+    <string name="otc_choose_language">seleccionar idioma</string>
+    <string name="otc_please_set_pwd">primero configure la contraseña del fondo.</string>！
+
+    <string name="otc_not_set">no establecido</string>
+
+
+    //comprar, chatear
+
+    <string name="otc_transaction_amount">monto de la transacción</string>
+    <string name="otc_trading_currencies">moneda de la transacción</string>
+    <string name="otc_state">estado</string>
+    <string name="otc_wait_payment">pago pendiente</string>
+    <string name="otc_payed">pagado</string>
+    <string name="otc_transaction_successful">transacción exitosa</string>
+    <string name="otc_transaction_cancelled">transacción cancelada</string>
+    <string name="otc_complainting">apelando</string>
+    <string name="otc_sell_coin">vendiendo moneda</string>
+    <string name="otc_abnormal_orders">pedido anormal</string>
+    <string name="otc_complaint_processed">fin del proceso de apelación</string>
+    <string name="otc_complaint_cancel">apelación cancelado</string>
+    <string name="otc_enter_text">ingrese el texto</string>
+    <string name="otc_send">enviar</string>
+    <string name="otc_order_closed">pedido ha terminado</string>
+    <string name="otc_put_coin">poner dinero</string>
+    <string name="otc_complaint">apelar</string>
+    <string name="otc_contact_service">contactar servicio al cliente</string>
+    <string name="otc_cancel_complaint">cancelar apelación</string>
+    <string name="otc_place_order_time">tiempo de pedido</string>
+    <string name="otc_order_code">número de pedido</string>
+    <string name="otc_reference_code">número de referencia</string>
+    <string name="otc_enter_fund_pw">ingrese la contraseña del fondo</string>
+    <string name="otc_confirm_release">confirmar liberación</string>
+
+    <string name="otc_ad_prompt">asegúrese de iniciar sesión en su banco en línea o cuenta de pago de terceros para confirmar la recepción \n de este pago. ¿has confirmado que recibiste este pago?</string>
+
+    <string name="otc_confirm_put_money">confirmar la colocación de la moneda</string>
+    <string name="otc_confirm_receipt">¡he confirmado que inicie sesión en la cuenta de cobro y verifique que el pago sea correcto!</string>
+    <string name="otc_confirm_receipt_payment">confirme que el pago ha sido recibido</string>
+    <string name="otc_sell_order">orden de venta</string>
+
+    <string name="otc_receipt_qr_code">código qr de recibo</string>
+
+
+    <string name="otc_single_min">no puede ser inferior al monto mínimo de una transacción</string>
+    <string name="otc_single_max">no puede exceder el monto máximo de una transacción </string>
+
+
+    //---
+    <string name="otc_buy_order">pedido de compra</string>
+    <string name="otc_please_payment">pague</string>
+    <string name="otc_waiting_payment">esperando el pago del comprador</string>
+    <string name="otc_waiting_put_coin">esperando a que el vendedor ponga dinero</string>
+    <string name="otc_wait_coin">dinero pendiente</string>
+
+    <string name="otc_complaint_password">contraseña para la apelación:</string>
+    <string name="otc_complaint_processing">procesamiento de apelaciones</string>
+    <string name="otc_seller">vendedor:</string>
+    <string name="otc_buyer">comprador: </string>
+    <string name="otc_minutes">minuto</string>
+    <string name="otc_second">segundo</string>
+    <string name="otc_cancel">cancelar</string>
+    <string name="otc_have_payment">he pagado</string>
+    <string name="otc_pay_following_account">pague a la siguiente cuenta:</string>
+    <string name="otc_order_price">precio unitario de la transacción: </string>
+    <string name="otc_order_num">número de transacciones:</string>
+    <string name="otc_order_account">información de cuenta y pedido</string>
+    <string name="otc_people">cobrador</string>
+
+    ///------
+    <string name="otc_trading_remind">recordatorio de transacción</string>
+    <string name="otc_deal_prompt">。No remarque el contenido relacionado con la moneda digital cuando realice el envío\n\n su envío ingresará directamente a la cuenta del vendedor y los activos digitales vendidos por el vendedor durante la transacción\n estarán protegidos por la plataforma.\n\n Si el comprador cancela el pedido 3 veces el mismo día, se limitará a la función de compra del día.</string>
+    <string name="otc_deal_cancel">Cancelar transacción</string>
+    <string name="otc_paid_seller_prompt">Si ya ha pagado al vendedor, no cancele la transacción. \ n Regla de cancelación: el comprador ha acumulado 3 cancelaciones el mismo día, lo que limitará la función de compra del día.</string>
+    <string name="otc_confirm_cancellation">Confirmar cancelación de transacción</string>
+    <string name="otc_no_pay">Confirmo que aún no he pagado a la otra parte.</string>
+    <string name="otc_payment_prompt">confirme que no hay pago a la otra parte</string>
+    <string name="otc_order_complete">el pedido ha sido completada</string>
+    <string name="otc_order_cancel">Pedido cancelado</string>
+    <string name="otc_see_assets">Ver activos</string>
+
+    <string name="otc_transfer_coin">Transferir dinero a la cuenta de moneda</string>
+
+    <string name="otc_price">Precio unitario</string>
+    <string name="otc_num">Cantidad</string>
+    <string name="otc_order_reference_code">Número de referencia del pedido</string>
+    <string name="otc_order_time">Tiempo de pedido</string>
+
+    <string name="otc_supported_payment_methods">Métodos de pago admitidos</string>
+    <string name="otc_limit1">Límite</string>
+
+    <string name="otc_current_payment"> actual Método de pago</string>
+    <string name="otc_current_collection">actual Método de cobro</string>
+    <string name="otc_switching_payment_method">Cambiar método de pago</string>
+    <string name="otc_switching_collection_method">Cambiar método de cobro</string>
+    <string name="otc_all_buy">Comprar todo</string>
+    <string name="otc_all_sell">vender todo</string>
+    <string name="otc_place_order"> hacer pedido</string>
+    <string name="otc_can_buy">Puede comprar hasta</string>
+
+    <string name="otc_can_sell">Puede vender hasta</string>
+    <string name="otc_order">pedido</string>
+    <string name="otc_mine">mío</string>
+    <string name="otc_pay_find_account">verifique el pago: </string>
+    <string name="otc_fund_pwd_alert_sample">* La contraseña de fondo que establezca no puede ser la misma que la contraseña de inicio de sesión.</string>
+    <string name="otc_choose_symbol">seleccionar</string>
+
+
+    <string name="otc_ad_prompt_one">El pedido debe pagarse en [chainup] minutos</string>
+    <string name="otc_pay_prompt">Si ya ha pagado, asegúrese de hacer clic en "He pagado", de lo contrario habrá una pérdida.</string>
+    <string name="otc_exchange_prompt">Recordatorio de la transacción</string>
+    <string name="otc_exchange_prompt_value">No remarque el contenido relacionado con la moneda digital cuando realice el envío\n su envío ingresará directamente a la cuenta del vendedor y los activos digitales vendidos por el vendedor durante la transacción estarán protegidos por la plataforma.\n Si el comprador cancela el pedido 3 veces el mismo día, se limitará a la función de compra del día.</string>
+
+
+    <string name="otc_shensu_reason_4">causas de apelación</string>
+    <string name="otc_shensu_com">Motivo de apelación</string>
+    <string name="otc_shensu_img">Subir imagen</string>
+    <string name="otc_deal_alert">Recordatorio de la transacción</string>
+    <string name="otc_deal_alert_all">Los activos se congelarán después de que se presente la queja y el Defensor del Pueblo intervendrá en la transacción hasta que se cierre la apelación. La queja ha sido un acto que interrumpe el orden de operación normal de la plataforma. Si las circunstancias son graves, la cuenta se congelará.</string>
+
+
+    <string name="otc_more_300">Hasta 300 palabras</string>
+    <string name="otc_input_image_error">El envío de una imagen falló</string>
+    <string name="otc_loading_image_error">No se pudo obtener la imagen, intente nuevamente</string>
+    <string name="otc_im_send">envíe un mensaje de texto</string>
+    <string name="otc_im_chat_title">Chatear</string>
+    <string name="otc_im_online_customer_service">Servicio al cliente en línea</string>
+    <string name="transfer_type">Tipo</string>
+    <string name="otc_no_nickname">Sin apodo</string>
+    <string name="otc_transfer_title">Transferencia de moneda legal</string>
+    <string name="account_transfer">Transferencia de cuenta</string>
+    <string name="order_records">Registro del pedido</string>
+    <string name="tab_coin2coin_trade">Transacción de monedas</string>
+    <string name="tab_otc_trade">Comercio extrabursátil</string>
+    <string name="toast_no_sliding_block">proceda primero la Certificación de control deslizante</string>
+    <string name="credit_prompt1">En Comercio extrabursátil, su crédito se mostrará para que otros usuarios lo vean.</string>
+    <string name="credit_prompt2">Crédito = (1- pedidos perdidos / número de pedidos)*100%</string>
+    <string name="hide_small_symbol">Ocultar moneda pequeña</string>
+
+
+    <item name="otc_chat_item_tag_type_other" type="id" />
+    <item name="otc_chat_item_tag_holder_oter" type="id" />
+    <item name="otc_chat_type_system" type="id" />
+
+    <item name="otc_chat_holder_system" type="id" />
+
+    <item name="otc_chat_item_tag_type_mine" type="id" />
+    <item name="otc_chat_item_tag_holder_mine" type="id" />
+    <string name="eos_tips">Al mismo tiempo, necesita una dirección de recarga y una etiqueta (también llamada Etiqueta, etc.). La etiqueta es una cadena numérica que garantiza la dirección única de su moneda y aparece en pares con la dirección de la moneda. Asegúrese de seguir los pasos de recarga correctos, ingrese la información completa al retirar monedas, de lo contrario puede causar la pérdida de monedas.</string>
+    <!--Página de inicio Servicio funcional -->
+    <string name="new_homepage_functional_service">Servicio funcional</string>
+
+    <!--Nueva contraseña de fondo -->
+    <string name="new_cash_flow_begin_time">Hora de inicio</string>
+    <string name="new_cash_flow_end_time">Hora de finalización</string>
+    <string name="new_cash_flow_show_more">Expandir</string>
+    <string name="new_cash_flow_pack_up">recoger</string>
+
+
+    <!--TODO New_ADD-->
+    <string name="input_touchId">ingrese su huella digital</string>
+    <string name="account_login">Inicio de sesión de cuenta</string>
+    <string name="fingerprint_recognition">Reconocimiento de huellas digitales</string>
+    <string name="tap_to_fingerprint">Haga clic en reconocimiento de huellas digitales para comenzar la verificación</string>
+    <string name="face_recongnition">Reconocimiento facial</string>
+    <string name="tap_to_face">Haga clic en reconocimiento facial para comenzar la verificación</string>
+    <string name="input_pwd_again">Ingrese su contraseña nuevamente</string>
+    <string name="pwd_setting">Configuración de contraseña</string>
+    <string name="fingerprint_login">Inicio de sesión con huella digital</string>
+    <string name="pwd_rule_new">Ingrese una contraseña de 8 ~ 20 dígitos que incluya números y letras</string>
+    <string name="bibao_account">Cuenta de bibao</string>
+    <string name="asset_check_the_details">Ver detalles</string>
+    <string name="asset_into">Transferencia</string>
+    <string name="deposit_detail_amount">Monto del depósito</string>
+    <string name="deposit_detail_release">liberación</string>
+    <string name="deposit_detail_end_time">Tiempo de expiración</string>
+    <string name="deposit_bibao_account">Cuenta de bibao</string>
+    <string name="resend_code">Reenviar código de verificación</string>
+    <string name="get_code">Obtener un código de verificación</string>
+    <string name="choose_mobile_verify">Cambiar la verificación del teléfono</string>
+    <string name="choose_google_verify">Cambiar la verificación de Google</string>
+    <string name="choose_email_verify">Cambiar verificación de e-mail</string>
+    <string name="faceID_login">Inicio de sesión de reconocimiento facial</string>
+    <string name="face_login">Inicio de sesión de reconocimiento facial</string>
+    <string name="guide_gesture_login">Establecer contraseñas gestuales es rápido y seguro.</string>
+
+
+    <string name="next_warn">Siguiente recordatorio</string>
+    <string name="immediately_set">establecer inmediatamente</string>
+    <string name="guide_tips">También puede configurarlo en la configuración de seguridad del módulo de cuenta.</string>
+    <string name="set_gesture_pwd_title">Establecer contraseña de gestos</string>
+    <string name="change_pwd_success">La contraseña fue modificada con éxito.</string>
+    <string name="open_touchid_suc">Abra el reconocimiento de huellas digitales con éxito</string>
+    <string name="also_click">También puede hacer clic</string>
+    <string name="cannot_handle_the_current_fingerprint">El sensor no puede procesar la huella digital actual</string>
+    <string name="fingerprint_identification_timeout">El reconocimiento de huellas digitales ha expirado</string>
+    <string name="fingerprint_incomplete">La huella digital ingresada está incompleta</string>
+    <string name="error_more_5">El número de errores excedió 5 veces y fue bloqueado</string>
+    <string name="hardware_error">El error de hardware causa indisponibilidad</string>
+    <string name="defingerprinting">Cancelar el reconocimiento de huellas digitales</string>
+    <string name="fingerprint_complete">Integridad de la huella digital</string>
+    <string name="fingerprints_too_fuzzy">La huella digital es muy borrosa y el sensor no se reconoce.</string>
+    <string name="fingerprint_blur_or_sensor_blur">Huella digital borrosa o sensor borroso</string>
+    <string name="Incomplete_fingerprint">Huella digital incompleta</string>
+    <string name="moving_too_fast">Moviéndose demasiado rápido, haciendo que el sensor no lea la huella digital</string>
+    <string name="cannot_read_fingerprint">El sensor no puede leer la huella digital actual</string>
+    <string name="open_suc">Reconocimiento exitoso de huellas digitales</string>
+    <string name="open_failure">El reconocimiento de huellas digitales falló</string>
+    <string name="authorization_suc">Fallo de autorización</string>
+    <string name="authorization_help">ayuda de autorización</string>
+    <string name="hardware_not_recognition">El hardware no admite el reconocimiento de huellas digitales...</string>
+    <string name="no_fingerprints_were_entered">No se ingresaron huellas digitales</string>
+    <string name="authorization_error">autorización exitoso</string>
+    <string name="fingerprint_initialization_failed">La inicialización de la huella digital falló, intente nuevamente</string>
+    <string name="only_set_one_login_way">Solo se puede abrir un método rápido de inicio de sesión</string>
+    <string name="new_register_time_out">Su operación ha expirado, vuelva a verificar su información de registro</string>
+
+    <string name="staff_service">Servicio al cliente</string>
+    <string name="name_dif_realname">El nombre y el nombre real de la información de autenticación de son inconsistentes</string>
+    <string name="trade_bb_titile">Moneda a moneda</string>
+    <string name="trade_otc_title">Comercio extrabursátil</string>
+    <string name="trade_contract_title">Contrato</string>
+    <string name="title_entrust_deal_treaty">confiar el trato</string>
+    <string name="contract_text_position">Posición</string>
+    <string name="title_lever">Apalancamiento</string>
+    <string name="nsf_choose_coin">Cambiar moneda</string>
+    <string name="balance_contract_account">Cuenta de contrato</string>
+    <string name="contract_dialog_content">Precio de índice: el precio del activo subyacente
+Precio de marca: Este es el precio de marca actual. Este indicador muestra dónde se encuentra en la cola de desapalancamiento automático.Si todos los indicadores están encendidos, su posición puede reducirse después de una Liquidación Forzada.</string>
+    <string name="contract_title_recent_deal">Transacciones recientes</string>
+    <string name="title_rate_of_return">Tasa de rendimiento</string>
+    <string name="contract_open_position_price">Precio de apertura</string>
+    <string name="liquidation_price">Precio de Liquidación Forzada</string>
+    <string name="position_amount">Número de posiciones (pieza)</string>
+    <string name="volume_dose">Cantidad total</string>
+    <string name="cost">Costo</string>
+    <string name="contract_buy">comprar por contrato</string>
+    <string name="contract_sell">vender por contrato</string>
+    <string name="contract_price_tag">Precio de etiqueta</string>
+    <string name="contract_margin">Margen</string>
+    <string name="contract_flat_price_content">Si el precio del contrato es menor que el precio (varias posiciones) o mayor que el precio (posición vacía), se verá obligado a cerrar la posición.</string>
+    <string name="contract_cost_content">El margen requerido para el acuerdo se basa en el apalancamiento que elija y la posición existente. No hay necesidad de un depósito para aligerar.</string>
+    <string name="contract_price_tag_content">Este es el último precio de marca para el contrato, que se utiliza para calcular las ganancias y pérdidas y el margen, y puede estar desviado del último precio de transacción del contrato para evitar la manipulación del mercado, lo que no afectará la liquidación.</string>
+    <string name="contract_margin_content">El margen utilizado y bloqueado por la posición. Si ha habilitado una posición Por almacén en una posición, este valor disminuirá a medida que caiga el margen, lo que también significa que su apalancamiento real aumenta. Mueva el control deslizante para ajustar el margen asignado a cada posición.</string>
+    <string name="contract_market_content">Haga clic aquí para cerrar la posición al precio de mercado.</string>
+    <string name="contract_price_title">precio</string>
+    <string name="contract_price_content">Precio de índice: el precio del activo subyacente\n
+Precio de marca: este es el precio de marca actual\n
+Este indicador muestra dónde se encuentra en la cola de desapalancamiento automático.Si todos los indicadores están encendidos, su posición puede reducirse después de una Liquidación Forzada.</string>
+    <string name="contract_wallet_balance_title">Saldo de cuenta</string>
+    <string name="contract_wallet_balance_content">Saldo de cuenta = (Depósito - Retiro + Ganancias y pérdidas realizadas)</string>
+    <string name="contract_order_margin_title">margen confiado</string>
+    <string name="contract_order_margin_content">Margen confiado: El monto mínimo garantizado requerido para su encomienda. Este valor es la suma de cada uno de sus valores comisionados multiplicado por la relación de margen inicial requerida.</string>
+    <string name="contract_position_margin_title">margen de posición</string>
+    <string name="contract_position_margin_content">Margen de posición: el margen mínimo requerido para mantener su posición. Este valor es la suma del valor de apertura de cada contrato que tiene multiplicado por el índice de mantenimiento de margen requerido, más cualquier ganancia y pérdida no realizada.</string>
+    <string name="contract_unrealised_pnl_title">Ganancias y pérdidas no realizadas</string>
+    <string name="contract_unrealised_pnl_content">Pérdidas y ganancias no realizadas: ganancias y pérdidas actuales de todas las posiciones abiertas.</string>
+    <string name="contract_available_balance_content">Puede usar el margen para abrir una posición. Saldo disponible = (saldo de margen - depósito comisionado - margen de posición)</string>
+    <string name="contract_assets_account_equity">capital de la cuenta</string>
+    <string name="contracnt_margin_balance_content">capital de la cuenta: su interés total en el intercambio. capital de la cuenta= (saldo de la cuenta + pérdidas y ganancias no realizadas)</string>
+    <string name="value">Valor</string>
+    <string name="realized_gain_less">Ganancias y pérdidas realizadas</string>
+    <string name="index_mark_price">Precio de índice: el precio del activo subyacente \ n precio de marca: este es el actual precio de marca </string>
+    <string name="risk_show_tips">Este indicador muestra dónde se encuentra en la cola de desapalancamiento automático.Si todos los indicadores están encendidos, su posición puede reducirse después de una Liquidación Forzada.</string>
+    <string name="new_money_pass">Nueva contraseña de fondo</string>
+
+
+    <string name="dealt_amount">Numero de transacciones</string>
+    <string name="title_history_trade">Transacción histórica</string>
+    <string name="contract_tag"> piece of Contrato</string>
+    <string name="please_enter_margin">ingrese un margen</string>
+    <string name="contract_please_enter_margin">ingrese un margen</string>
+    <string name="contract_modify_the_success">Ajuste el margen con éxito</string>
+    <string name="contract_account">Cuenta de contrato</string>
+    <string name="contract_sustainable">sostenible</string>
+    <string name="week_of_contract">semana de contrato </string>
+    <string name="In_the_contract">meses de contrato </string>
+    <string name="contract_new_orders">Nuevo pedido</string>
+    <string name="contract_completely_clinch_deal">Transacción completa</string>
+    <string name="contract_some_clinch_deal">Trato parcial</string>
+    <string name="contract_been_cancelled">Cancelado</string>
+    <string name="contract_to_undo">deshacer</string>
+    <string name="contract_have_been_abandoned">abandonado</string>
+    <string name="part_deal_has_been_cancelled">parte de las transacciones han sido canceladas</string>
+    <string name="contract_number_open_positions">El número de contratos de posiciones abiertas</string>
+    <string name="contract_been_realized">Ganancias y pérdidas realizadas</string>
+    <string name="contract_loss_was_realized">Ganancias y pérdidas no realizadas</string>
+    <string name="contract_time_buy">Tiempo /compras y ventas</string>
+    <string name="contract_security_deposit_been_used">Se ha utilizado el margen</string>
+    <string name="contract_clinch_deal_price">Precio de transacción promedio(BTC)</string>
+    <string name="contract_switch_contract">Cambiar contrato</string>
+    <string name="activities_entrust">encargar actividades</string>
+    <string name="contract_position_margin">Ajustar margen de posición</string>
+    <string name="contract_current_contract_position">Posición actual del contrato：</string>
+    <string name="contract_allocated_margin">Margen asignado</string>
+    <string name="contract_distributable_security">margen asignable：</string>
+    <string name="contract_adjust_amount_margin">Ajuste la cantidad de margen de posición：</string>
+    <string name="margin_amount">Cantidad de margen</string>
+    <string name="contract_add">Aumentar</string>
+    <string name="contract_reduce">Reducir</string>
+    <string name="title_contract_number_open_positions">Contrato de posición abierta</string>
+    <string name="contract_amount">Cantidad</string>
+
+
+    <string name="new_version_deputy_district">Subzona</string>
+    <string name="noun_account_avatar">Avatar</string>
+    <string name="new_input_nickname">ingrese un apodo dentro de 6 caracteres chinos</string>
+
+    <string name="all_msgs">Todas las noticias</string>
+    <string name="sys_msgs">Mensaje del sistema</string>
+    <string name="recharge_withdraw_msgs">Recarga y retiro</string>
+    <string name="safety_msgs">Mensaje de seguridad</string>
+    <string name="verify_msgs">Mensaje de verificación</string>
+    <string name="otc_msgs">Mensaje de OTC</string>
+    <string name="enable_mobile_authentication">Habilitar verificación telefónica</string>
+    <string name="enable_email_authentication">Habilitar verificación de e-mail</string>
+    <string name="new_google_authentication">verificación de Google</string>
+    <string name="otc_pwd_change_succes">La contraseña del fondo de moneda legal se modificó con éxito.</string>
+    <string name="login_pwd_change_success">La contraseña de inicio de sesión se modificó con éxito.</string>
+
+
+    <string name="new_otc_auto_cancel">Cancelación automática</string>
+    <string name="new_otc_real_name">Nombre real</string>
+    <string name="new_otc_bank">Tarjeta bancaria</string>
+    <string name="bank">Banco</string>
+    <string name="new_otc_account">Número de cuenta</string>
+    <string name="account_name">Nombre de cuenta</string>
+
+    <string name="position_avg_price">Precio de apertura</string>
+    <string name="green_up_red_down">verde arriba rojo abajo</string>
+    <string name="red_up_green_down">rojo arriba verde abajo</string>
+    <string name="logout">No ha iniciado sesión</string>
+
+
+    <string name="new_confrim_likes">¿Seguro que quieres eliminar tu elección?</string>
+    <string name="business_details">Detalles del negocio</string>
+    <string name="smscode_opend">La verificación de SMS está activada</string>
+
+    <!---->
+    <!--NEW Carta de la estación-->
+
+
+    <!--"save_qr_code" = "</string>-->
+    <!--"withdraw_order" = "Cancelar</string>-->
+    <!--"withdraw_order_success" = "Cancelación exitosa</string>-->
+    <!--"no_coin_data" = "Aún no hay datos, intente ingresar otras monedas</string>-->
+    <!--"choose_coin_symbol" = "seleccionar moneda</string>-->
+    <!--"trust_order" = "pedido de confianza</string>-->
+    <!--"no_symbol_data_change_other" = "Aún no hay datos, intente ingresar otras monedas</string>-->
+    <!--"history_order" = "Comisión histórica</string>-->
+    <!--"go_to_cert" = "Ir a certificacion</string>-->
+    <!--"not_open" = "No abierto</string>-->
+    <!--"bid_bid" = "Comprar</string>-->
+    <!--"sell_sell" = "vender</string>-->
+    <!--"title_notice_detail" = "Detalles del anuncio</string>-->
+    <!--"save_fail" = "Guardar fallido</string>-->
+    <!--"system_news" = "Mensaje del sistema</string>-->
+
+
+    <!--"not_data_change_other" = "Aún no hay datos, cambie a otros mensajes.</string>-->
+
+    <!--"not_applay" = "El acceso no está autorizado</string>-->
+    <!--"net_refuse" = "Acceso denegado</string>-->
+    <!--"not_find_ip" = "Dirección de interfaz no encontrada</string>-->
+    <!--"long_time" = "La solicitud agotó el tiempo de espera, verifique la configuración de red</string>-->
+    <!--"network_error" = "Falló la conexión de red, verifique el estado de su red</string>-->
+    <!--"server_error" = "Error en interno del servidor/string>-->
+    <!--"not_error" = "Error desconocido</string>-->
+    <!--"network_error_wait" = "Falla de red, intente nuevamente más tarde.</string>-->
+
+    <!--"accept_server_pro" = "acepte los términos del servicio</string>-->
+    <!--"open_seting" = "Vaya a Configuración para abrir los permisos de la cámara.</string>-->
+    <!--"success_pass" = "Ha sido aprobado y no puede ser modificado.</string>-->
+    <!--"please_choose" = "elija</string>-->
+    <!--"small_num" = "ingrese la cantidad a retirar</string>-->
+    <!--"not_xiao_yu" = "El monto mínimo de retiro no puede ser inferior a</string>-->
+    <!--"not_da_yu" = "El monto mínimo de retiro no puede ser mayor que el saldo disponible</string>-->
+    <!--"delete" = "Eliminar</string>-->
+    <!--"not_more_money" = "No tienes fondos suficientes-->
+    <!--"pan_kou" = "Tendencia</string>-->
+
+    <!--Interfaz de recarga-->
+
+
+    <!--TODO Reemplazo posterior-->
+    <!--"common_tip_saveImgFail"="Guardar fallido";-->
+    <!--"common_tip_saveImgSuccess"="Guardado exitosamente";-->
+
+    <!--Configuraciones de seguridad e interfaces relacionadas-->
+
+
+    <string name="format_error">Formato incorrecto</string>
+
+
+    <string name="toast_email_error">Error de formato de e-mail</string>
+    <string name="default_area">China +86</string>
+
+
+    <string name="toast_pass_inconsistent">Las contraseñas ingresadas son inconsistentes, vuelva a ingresar</string>
+
+
+    <string name="otc_please_cert">Pase primero la certificación del nombre real</string>
+
+
+    <!--Fragmento Fragment-->
+
+    <!--NEW Página de registro-->
+    <string name="toast_no_confirm_pass">ingrese y confirme su contraseña</string>
+    <string name="invite_code_hint">Código de invitación (opcional)</string>
+    <string name="reg_term">Lee y acepta</string>
+    <string name="privacy_protection">Protección de la privacidad</string>
+    <string name="disclaimer">Declaración de descargo de responsabilidad</string>
+    <string name="hint_new_pass">Límite de 8 ~ 20 dígitos, número + letra</string>
+
+
+    <!--MarketDetail-->
+
+
+    <string name="select_pricing_unit">Seleccionar unidad de precios</string>
+
+    <!--K línea-->
+
+
+    <string name="contract_text_depth">Profundidad</string>
+
+
+    <!--CoinMapIntroFragment-->
+
+    <!--DepthFragment-->
+    <!--DealtRecordFragment-->
+
+
+    <string name="vol">Volumen de negociación</string>
+    <string name="quote_change">Altibajos</string>
+    <string name="timeshare">Minuto y hora</string>
+    <string name="minute">Minuto</string>
+    <string name="hour">hora</string>
+    <string name="day">1 día</string>
+    <string name="week">1 semana</string>
+    <string name="month">1 mes</string>
+    <string name="no_data_available">Aún no hay datos</string>
+
+    <!--Página de transacciones-->
+
+
+    <!--pedido-->
+    <string name="order_status_part_transaction">Parte de la transacción está acabada </string>
+
+
+    <!--NEW Relacionados con los pedidos-->
+    <string name="title_history_order">pedido histórico</string>
+    <string name="title_deal_detail">Detalles de la transacción</string>
+
+    <string name="gmv">Volumen total de negocios</string>
+    <!--<string name="remain_volume">no transacción</string>-->
+
+
+    <string name="hint_buy_amount">Cantidad de compra</string>
+    <string name="hint_sell_amount">Cantidad de venta</string>
+
+
+    <string name="deep_merger">unión profunda</string>
+    <string name="available_balance">Saldo disponible</string>
+    <string name="remind_transaction_price">Basado en el precio real de la transacción</string>
+    <!--NEW Página de activos-->
+    <string name="cancel">Cancelar</string>
+    <string name="otcsafealert_action_bindphoneorgoogle">Enlazar teléfono o google</string>
+
+
+    <!--Parte del contrato-->
+    <string name="otc_text_waitSendCoin">Dinero pendiente</string>
+    <string name="withdraw_text_trustaddressNoMoreAuth">La verificación por SMS / e-mail o google ya no es necesaria para el próximo retiro de efectivo</string>
+
+
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="otc_action_confirmSendCoin_confirm">Confirmación de lanzamiento</string>
+    <string name="phone">Número de teléfono móvil</string>
+    <string name="phone_verification">Verificación de móvil</string>
+    <string name="contract_short">Abierto</string>
+    <string name="copy_address">Copiar dirección</string>
+    <string name="copy_success">Copia exitosa</string>
+    <string name="copy_tag">Copiar etiqueta</string>
+    <string name="create_order_suc">Crear pedido con éxito</string>
+    <string name="email">E-mail</string>
+    <string name="trust_quantity">Número de pedidos de confianza</string>
+    <string name="bibi_to_otc">la moneda a moneda hasta la moneda legal</string>
+    <string name="otc_to_coin">la moneda legal hasta la moneda a moneda</string>
+    <string name="scanning_qr_code_registration">Escanee el código QR para registrarse</string>
+
+
+    <!--Lo siguiente es nuevo-->
+
+
+    <string name="address_action_addnew">agregar nuevo</string>
+    <string name="address_action_addnewaddress">Agregar dirección</string>
+    <string name="address_action_delete">Eliminar</string>
+    <string name="address_text_remark">observación</string>
+    <string name="address_tip_deleteSuccess"> La dirección se eliminó correctamente. </string>
+    <string name="address_tip_inputorcopy"> Ingrese o mantenga presionada la dirección para pegar </string>
+    <string name="alert_action_toDealWith">ir a gestionar </string>
+    <string name="alert_action_toTransfer"> ir a transferir </string>
+    <string name="alert_common_iknow"> yo sé </string>
+    <string name="alert_content_otcRPdesc"> El precio se calcula por referencia a los pares de divisas principales de las bolsas principales en el mercado. No es el precio de transacción final y es solo de referencia. </string>
+    <string name="alipay_text_account"> Cuenta de Alipay </string>
+    <string name="alipay_text_bind"> unir con Alipay</string>
+    <string name="alipay_text_qrcode"> Código de cobro de Alipay </string>
+    <string name="appeal_action_reasonLessPaid"> La cantidad que recibí es menor que la cantidad del pedido </string>
+    <string name="appeal_action_reasonNotPaid"> No recibí el pago de la otra parte. </string>
+    <string name="appeal_action_reasonNotReceiveCoin"> La otra parte todavía no ha puesto dinero </string>
+    <string name="appeal_action_reasonOther">otros</string>
+    <string name="appeal_action_reasonOverPaid"> El monto que pagué es mayor que el monto del pedido </string>
+    <string name="appeal_action_uploadImg"> Subir imagen (máximo uno)</string>
+    <string name="appeal_explain_warning">1. Después de presentar una queja, los activos serán congelados. El servicio al cliente se procesará dentro de 1-2 días hábiles. \n2.Quienes interrumpan el funcionamiento normal de la plataforma se congelarán la cuenta si las circunstancias son graves. </string>
+    <string name="appeal_text_amount"> Cantidad de apelación </string>
+    <string name="appeal_text_orderInfo"> Información del pedido </string>
+    <string name="appeal_text_reason"> Motivo de apelación </string>
+    <string name="appeal_tip_reasonOtherPlaceholder"> Ingrese otra razón </string>
+    <string name="assets_action_chargeCoin"> recargar </string>
+    <string name="assets_action_contractNote"> Factura del contrato </string>
+    <string name="assets_action_journalaccount"> Flujo de capital </string>
+    <string name="assets_action_privacy"> Ocultar activos pequeños </string>
+    <string name="assets_action_search"> Buscar </string>
+    <string name="assets_action_transaction"> Transacción </string>
+    <string name="assets_action_transfer"> Transferir </string>
+    <string name="assets_action_withdraw"> retirarse </string>
+    <string name="assets_text_available"> Disponible </string>
+    <string name="assets_text_contract"> Cuenta de contrato </string>
+    <string name="assets_text_equivalence"> Equivalente </string>
+    <string name="assets_text_exchange"> Cuenta de intercambio </string>
+    <string name="assets_text_freeze"> Congelar </string>
+    <string name="assets_text_otc"> Cuenta de moneda legal </string>
+    <string name="assets_text_total"> Valoración de activos de Cuenta de intercambio </string>
+    <string name="charge_action_chargeHistory"> Registro de recarga </string>
+    <string name="charge_action_copyAddress"> Copiar dirección </string>
+    <string name="charge_action_copyTag"> Copiar etiqueta (Memo)</string>
+    <string name="charge_action_saveQR"> Guardar código QR </string>
+    <string name="charge_action_searchcoin"> Buscar moneda </string>
+    <string name="charge_chargeAlert_contentA"> Retirada mínima de una vez</string>
+    <string name="charge_chargeAlert_contentB"> Retiro máximo de un día </string>
+    <string name="charge_chargeAlert_contentC"> Rango de tarifas </string>
+    <string name="charge_chargeAlert_title"> Recordatorio de recarga </string>
+    <string name="charge_text_chargeAddress"> Dirección de recarga </string>
+    <string name="charge_text_date">fecha</string>
+    <string name="charge_text_state">estado</string>
+    <string name="charge_text_tagAddress">etiqueta(Memo)</string>
+    <string name="charge_text_volume">cantidad</string>
+    <string name="charge_tip_addressWarning"> No cargue ningún activo en moneda no local a esta dirección, de lo contrario, los activos no podrán recuperarse. </string>
+    <string name="charge_tip_notavailable"> Actualmente no hay monedas que puedan recargarse. </string>
+    <string name="charge_tip_tagWarning"> Debe recargar la dirección de la moneda y la etiqueta (Memo) al recargar. Este es el identificador único de su cuenta. Si no completa o completa el error, se perderán sus activos.</string>
+    <string name="common_action_activeGoogle"> Habilitar la verificación de Google </string>
+    <string name="common_action_cancelUpgrade"> Aún no actualizar</string>
+    <string name="common_action_copy">copiar</string>
+    <string name="common_action_edit">modificar</string>
+    <string name="common_action_getCode"> Obtener un código de verificación </string>
+    <string name="common_action_history"> Visto recientemente </string>
+    <string name="common_action_logout"> Cerrar sesión </string>
+    <string name="common_action_next"> Paso siguiente </string>
+    <string name="common_action_orderCancel"> Cancelar </string>
+    <string name="common_action_paste"> Pegar </string>
+    <string name="common_action_removeBlackList"> Eliminar de la lista negra </string>
+    <string name="common_action_searchCoinPair"> Buscar par de divisas </string>
+    <string name="common_action_select"> elija </string>
+    <string name="common_action_sendall">todo</string>
+    <string name="common_action_thinkAgain"> Lo pienso de nuevo. </string>
+    <string name="common_action_update">actualizar Versión </string>
+    <string name="common_action_upgrade"> Actualizar ahora </string>
+    <string name="common_action_uploadBackView"> Subir el reverso del documento. </string>
+    <string name="common_action_uploadFrontView"> Subir el frente del documento </string>
+    <string name="common_action_uplodadIdInHand"> Foto de tomar el documento </string>
+    <string name="common_text_btnCancel">cancelar</string>
+    <string name="common_text_btnConfirm">confirmar</string>
+    <string name="common_text_btnSetting">ir a establecer</string>
+    <string name="common_text_buyPrice">precio de compra</string>
+    <string name="common_text_close">cerrar</string>
+    <string name="common_text_coinsymbol">tipo de moneda</string>
+    <string name="common_text_dayVolume">24Hvolumen </string>
+    <string name="common_text_downToRefresh"> Tire hacia abajo para actualizar </string>
+    <string name="common_text_googleAuthNotOpen"> La verificación de Google no está activada </string>
+    <string name="common_text_googleAuthOff"> La verificación de Google está cerrada </string>
+    <string name="common_text_identify"> Autenticación de identidad </string>
+    <string name="common_text_idMaxLenthError"> El número de identificación no puede exceder los 35 caracteres </string>
+    <string name="common_text_limitMin">mínimo </string>
+    <string name="common_text_logout"> Salir </string>
+    <string name="common_text_nameMaxLenthError"> El nombre no puede superar los 50 caracteres. </string>
+    <string name="common_text_noMoreData"> No hay más datos</string>
+    <string name="common_text_optionalinput">(opcional)</string>
+    <string name="common_text_paymentInfoBuyer"> Información de pago </string>
+    <string name="common_text_paymentInfoSeller"> Información de cobro</string>
+    <string name="common_text_paymentTypeBuyer"> Forma de pago </string>
+    <string name="common_text_phoneAuthNotOpen"> La verificación del teléfono no está activada </string>
+    <string name="common_text_phoneAuthOff"> La verificación del teléfono está desactivada </string>
+    <string name="common_text_phoneOrMail"> Teléfono móvil o e-mail </string>
+    <string name="common_text_priceLimit"> Altibajos </string>
+    <string name="common_text_refreshing"> Cargando...</string>
+    <string name="common_text_safetyAuth"> Certificación de seguridad </string>
+    <string name="common_text_searchCountry"> Buscar código de país o región</string>
+    <string name="common_text_sellPrice">precio de venta</string>
+    <string name="common_text_sellVolume">cantidad de venta</string>
+    <string name="common_text_service"> Servicio al cliente </string>
+    <string name="common_text_tip"> Consejos </string>
+    <string name="common_text_triggerRefresh"> Suelta para actualizar </string>
+    <string name="common_tip_activeGoogleFirst"> Primero active la verificación de Google</string>
+    <string name="common_tip_activeLimit"> Solo se puede abrir un método rápido de inicio de sesión</string>
+    <string name="common_tip_activePhoneOrGoogle"> Activa la verificación de teléfono o la verificación de Google </string>
+    <string name="common_tip_addSuccess"> Agregado exitosamente </string>
+    <string name="common_tip_addToBlackList"> Una vez que esté en la lista negra, ya no verán los anuncios de los demás. ¿Estás seguro de que deseas agregar a la otra parte a la lista negra?</string>
+    <string name="common_tip_balanceNotEnough">insuficiente Saldo disponible</string>
+    <string name="common_tip_bindSuccess">éxito de unión</string>
+    <string name="common_tip_cameraPermission"> No hay acceso a la cámara </string>
+    <string name="common_tip_cancelSuccess"> Retiro de pedido exitoso </string>
+    <string name="common_tip_cerSubmitDesc"> Se ha enviado su información de nombre real. Se espera que sea revisada en un día de trabajo. Tenga paciencia. </string>
+    <string name="common_tip_cerSubmitSuccess"> Presentación exitosa del certificado </string>
+    <string name="common_tip_coinTradeNotOpen"> La moneda aún no está abierta para operar </string>
+    <string name="common_tip_copySuccess"> copiado con éxito </string>
+    <string name="common_tip_didinBlacklist"> En la lista negra </string>
+    <string name="common_tip_editpwdSuccess"> Cambiar contraseña exitosamente </string>
+    <string name="common_tip_editSuccess"> Modificado exitosamente </string>
+    <string name="common_tip_gestureLimitPoint"> Enlace al menos 5 puntos, vuelva a ingresar </string>
+    <string name="common_tip_gestureLose"> La contraseña del gesto no es válida. Inicie sesión con la contraseña de su cuenta. </string>
+    <string name="common_tip_gestureTime"> Error de contraseña de gestos, oportunidad restante %s</string>
+    <string name="common_tip_googleAuth"> ingrese el código de verificación de Google </string>
+    <string name="common_tip_hasNoCoinPair"> No hay tal par de divisas por el momento. </string>
+    <string name="common_tip_imgUploadFail"> La carga de la imagen falló</string>
+    <string name="common_tip_imgUploadSuccess"> Imagen cargada exitosamente </string>
+    <string name="common_tip_inputInviteCode"> ingrese el código de invitación </string>
+    <string name="common_tip_inputLoginPwd"> ingrese su contraseña de inicio de sesión </string>
+    <string name="common_tip_inputOtcPwdAgain">ingrese la contraseña de fondos nuevamente. </string>
+    <string name="common_tip_inputPhoneOrMail"> ingrese su número de teléfono móvil o dirección de e-mail </string>
+    <string name="common_tip_inputRealName"> ingrese su nombre real </string>
+    <string name="common_tip_inputsNotMatch"> Las dos contraseñas no coinciden </string>
+    <string name="common_tip_inviteCodeRequired"> Código de invitación (requerido)</string>
+    <string name="common_tip_isNewVersion"> La versión actual es la última </string>
+    <string name="common_tip_limitMaxTransactionVolume"> El volumen mínimo de negociación es </string>
+    <string name="common_tip_limitMinTransactionPrice"> El monto mínimo de la transacción es </string>
+    <string name="common_tip_logoutDesc"> ¿Está seguro de cerrar sesión en su cuenta actual?</string>
+    <string name="common_tip_networkDisconnect"> Parece estar desconectado de la red </string>
+    <string name="common_tip_networkTimeout"> Tiempo de espera agotado </string>
+    <string name="common_tip_nodata"> Aún no hay datos </string>
+    <string name="common_tip_notSupportContract">no soportar Contrato </string>
+    <string name="common_tip_notSupportOTC"> No es compatible con OTC</string>
+    <string name="common_tip_pleaseInputWord"> ingrese el texto </string>
+    <string name="common_tip_pleaseUpload"> sube una imagen </string>
+    <string name="common_tip_pwdNotice"> Ingrese una nueva contraseña de 8-20 dígitos, incluyendo al menos la letra + número </string>
+    <string name="common_tip_registerSuccess"> Registro exitoso </string>
+    <string name="common_tip_removeBlackList"> ¿Estás seguro de que quieres sacar a la otra parte de la lista negra?</string>
+    <string name="common_tip_safetyIdentityAuth"> Para garantizar la seguridad de sus fondos, debe verificar su identidad antes de poder realizar otras operaciones. Una vez que se verifique la información de certificación y no se pueda modificar, complete la verdad. </string>
+    <string name="common_tip_saveImgFail"> Guardar fallido </string>
+    <string name="common_tip_saveImgSuccess"> Guardado exitosamente </string>
+    <string name="common_tip_selectMailAuth"> seleccione verificación de e-mail </string>
+    <string name="common_tip_selectPhoneAuth"> seleccione verificación del teléfono </string>
+    <string name="common_tip_uploadImgRequire"> Requisitos para la subida </string>
+    <string name="contract_action_buy">comprar</string>
+    <string name="contract_action_buyLimitOrder"> Comprar pedido de límite </string>
+    <string name="contract_action_cancle">cancelar pedido</string>
+    <string name="contract_action_closeContract"> Cerrar la posición </string>
+    <string name="contract_action_decreaseMargin"> Reducir margen </string>
+    <string name="contract_action_editLever"> Apalancamiento ajustado </string>
+    <string name="contract_action_holdMargin"> mantener Posición </string>
+    <string name="contract_action_increaseMargin"> Aumentar el margen </string>
+    <string name="contract_action_lever"> Apalancamiento </string>
+    <string name="contract_action_limitPrice"> límite de precio</string>
+    <string name="contract_action_long"> Hacer más </string>
+    <string name="contract_action_marketClosing"> Cierre del mercado </string>
+    <string name="contract_action_marketPrice"> Precio de mercado </string>
+    <string name="contract_action_sell">vender</string>
+    <string name="contract_action_sellLimitOrder"> vender pedido de límite </string>
+    <string name="contract_action_short"> Corto </string>
+    <string name="contract_text_assignedMargin"> Margen asignado </string>
+    <string name="contract_text_autoReduceDesc"> Este indicador muestra dónde se encuentra en la cola de desapalancamiento automático.Si todos los indicadores están encendidos, su posición puede reducirse después de una Liquidación Forzada.</string>
+    <string name="contract_text_availableMargin"> Margen disponible </string>
+    <string name="contract_text_buyMarket"> Comprar mercado</string>
+    <string name="contract_text_cost"> Costo </string>
+    <string name="contract_text_currentEntrust"> Comisión actual </string>
+    <string name="contract_text_currentWeek"> esta Semana </string>
+    <string name="contract_text_dealAverage"> promedio Precio de transacción </string>
+    <string name="contract_text_dealDone"> Completado </string>
+    <string name="contract_text_decreaseMarginVolume"> Reduce la cantidad de margen </string>
+    <string name="contract_text_defaultMarket"> Por defecto </string>
+    <string name="kline_action_depth"> Profundidad </string>
+    <string name="contract_text_entrustValue"> Valor de la comisión </string>
+    <string name="contract_text_hideCancelOrder"> Ocultar pedido de retiro </string>
+    <string name="contract_text_historyCommision"> Comisión histórica </string>
+    <string name="contract_text_increaseMarginVolume"> Aumentar la cantidad de margen </string>
+    <string name="contract_text_indexPrice"> Precio del índice </string>
+    <string name="contract_text_lever"> Múltiples de apalancamiento </string>
+    <string name="contract_text_limitPriceBuy"> pedido de límite comprado</string>
+    <string name="contract_text_limitPriceSell"> pedido de límite vendido</string>
+    <string name="contract_text_liqPrice">Precio de Liquidación Forzada </string>
+    <string name="contract_text_long"> Más </string>
+    <string name="contract_text_margin">margen</string>
+    <string name="contract_text_marketPriceBuy"> Comprar precio de mercado </string>
+    <string name="contract_text_marketPriceSell"> vender precio de mercado </string>
+    <string name="contract_text_markPrice"> Precio marcado</string>
+    <string name="contract_text_nextWeek"> La semana que viene </string>
+    <string name="contract_text_orderCancel"> pedido Retirado </string>
+    <string name="contract_text_orderComplete"> Transacción completa </string>
+    <string name="contract_text_orderError"> Orden anormal </string>
+    <string name="contract_text_orderMargin"> Depósito comisionado </string>
+    <string name="contract_text_orderNewOrder"> Nuevo pedido </string>
+    <string name="contract_text_orderPartCancel"> parte de transacciones han sido canceladas </string>
+    <string name="contract_text_orderWaitCancel"> A la espera de la cancelación </string>
+    <string name="contract_text_orderWaitInHandicap"> pedido inicial </string>
+    <string name="contract_text_perpetual"> perpetuo </string>
+    <string name="contract_text_positionMargin"> Depósito de posición </string>
+    <string name="contract_text_positionNumber"> Número de posiciones </string>
+    <string name="contract_text_price"> Precio </string>
+    <string name="contract_text_realisedPNL"> Ganancias y pérdidas realizadas </string>
+    <string name="contract_text_remaining"> Restante </string>
+    <string name="contract_text_returnRate"> Tasa de rendimiento </string>
+    <string name="contract_text_returnRateUnit"> Tasa de rendimiento %</string>
+    <string name="contract_text_sellMarket">vender mercado</string>
+    <string name="contract_text_short">corto</string>
+    <string name="contract_text_trustPrice"> Precio de comisión </string>
+    <string name="contract_text_type">tipo</string>
+    <string name="contract_text_typeMarket"> pedido de precio de mercado </string>
+    <string name="contract_text_unrealisedPNL"> Ganancias y pérdidas no realizadas </string>
+    <string name="contract_text_upsdowns"> Altibajos </string>
+    <string name="contract_text_value">valor</string>
+    <string name="contract_text_volumeUnit">pieza</string>
+    <string name="contract_text_wipedout"> Explosión de posición</string>
+    <string name="contract_tip_autoReduce"> Instrucciones de aligeramiento automático </string>
+    <string name="contract_tip_closeOrderSuccess">Éxito de cierre </string>
+    <string name="contract_tip_marginAdjustmentSuccess"> Ajuste de margen exitoso </string>
+    <string name="contract_tip_nomoreMargin"> Margen insuficiente </string>
+    <string name="contract_tip_seiresInput"> Por favor, introduzca la serie del contrato </string>
+    <string name="contract_tip_submitSuccess"> pedido exitoso </string>
+    <string name="customSetting_action_china">rojo arriba verde abajo</string>
+    <string name="customSetting_action_global">verde arriba rojo abajo</string>
+    <string name="customSetting_action_kline"> color de Altibajos </string>
+    <string name="customSetting_action_language">idioma</string>
+    <string name="customSetting_action_theme"> Ajustes de la piel </string>
+    <string name="customSetting_action_themeDay"> Edición del día </string>
+    <string name="customSetting_action_themeNight"> Edición de la noche</string>
+    <string name="filter_action_reset"> Restablecer </string>
+    <string name="filter_date_end"> Fin </string>
+    <string name="filter_date_start"> Inicio </string>
+    <string name="filter_fold_blockTrade"> Bloqueo de comercio </string>
+    <string name="filter_fold_contractLimit"> Plazo del contrato </string>
+    <string name="filter_fold_contractOrderPriceType"> Tipo de comisión </string>
+    <string name="filter_fold_contractOrderType"> Dirección de la comisión </string>
+    <string name="filter_fold_contractType"> Serie de contrato </string>
+    <string name="filter_fold_country"> Elige país </string>
+    <string name="filter_fold_currencyType"> Tipo de moneda legal </string>
+    <string name="filter_fold_journalType"> Tipo de flujo </string>
+    <string name="filter_fold_messageType"> Tipo de carta </string>
+    <string name="filter_fold_normalTrade"> Transacción ordinaria </string>
+    <string name="filter_fold_orderState"> Estado del pedido </string>
+    <string name="filter_fold_payMethod"> Forma de pago </string>
+    <string name="filter_fold_tradeUnit"> Unidad comercial </string>
+    <string name="filter_fold_transactionType"> Tipo de transacción </string>
+    <string name="filter_input_coinsymbol"> Introduzca la moneda </string>
+    <string name="filter_Input_placeholder"> ingrese </string>
+    <string name="filter_input_targetPrice"> Cantidad objetivo </string>
+    <string name="filter_mix_tradeCoinPair"> par de monedas comerciales </string>
+    <string name="filter_otc_appealDone"> apelaciones completadas </string>
+    <string name="filter_otc_didPay"> Pagado </string>
+    <string name="filter_otc_payCoin"> Pagando monedas </string>
+    <string name="filter_otc_waitPay"> Pago pendiente </string>
+    <string name="filter_text_currencytype"> Tipo de precio </string>
+    <string name="filter_text_to">hasta</string>
+    <string name="home_action_coinNameTitle"> Nombre </string>
+    <string name="home_action_fastAdd"> Un clic para agregar </string>
+    <string name="home_action_notLogin"> Inicia sesión para ver </string>
+    <string name="home_text_assets"> Mis bienes </string>
+    <string name="home_text_contractTotal"> Valoración del activo de la cuenta de contrato </string>
+    <string name="home_text_deal24hour">24H Volumen de negocios</string>
+    <string name="home_text_dealLatestPrice">Último precio </string>
+    <string name="home_text_dealRanking"> Lista de transacciones </string>
+    <string name="home_text_downRanking"> Lista de disminución </string>
+    <string name="home_text_otcTotal"> Valoración de activos de cuentas en moneda legal </string>
+    <string name="home_text_upRanking"> Lista de aumento</string>
+    <string name="journalAccount_text_amount">cantidad</string>
+    <string name="journalAccount_text_contract">contrato</string>
+    <string name="journalAccount_text_contractBalance"> Saldo de la cuenta del contrato </string>
+    <string name="journalAccount_text_detail"> Detalles de flujo de fondos </string>
+    <string name="journalAccount_text_fee"> Costo de capital </string>
+    <string name="kline_action_assistant"> imagen secundario </string>
+    <string name="kline_action_dealHistory"> Registro de la transacción </string>
+    <string name="kline_action_main"> Imagen principal </string>
+    <string name="kline_text_close">recoger</string>
+    <string name="kline_text_dealTime">tiempo</string>
+    <string name="kline_text_high">alto</string>
+    <string name="kline_text_low">bajo</string>
+    <string name="kline_text_open">abrir</string>
+    <string name="kline_text_scale">índice</string>
+    <string name="kline_text_time">30 mimutos</string>
+    <string name="kline_text_volume"> Volumen </string>
+    <string name="kline_tip_addCollectionSuccess"> Agregó con éxito su elección </string>
+    <string name="kline_tip_removeCollectionSuccess"> Eliminó exitosamente su elección </string>
+    <string name="kyc_action_submit"> Enviar </string>
+    <string name="kyc_explain_certificate">1. Una vez que se verifica la información de certificación, no se puede modificar. Complete la verdad\ n2. La información del nombre real autenticado no se puede autenticar por duplicado </string>
+    <string name="kyc_explain_photoTip">11. Admite imágenes en formato JPG, JPEG o PNG más pequeñas que 8M.\ n2, la foto del certificado es clara, no se permite ninguna modificación ni oclusión, y el retrato, el número de identificación y el nombre deben estar visibles.\ n3, las fotos deben estar libres de coronas, se recomienda no usar maquillaje, la cara de la persona que sostiene el documento es clara y el brazo está completamente expuesto.</string>
+    <string name="kyc_text_backView"> La foto del reverso de la tarjeta de identificación </string>
+    <string name="kyc_text_certificateNumber"> Número de identificación </string>
+    <string name="kyc_text_certificateType"> Tipo de documento de certificación </string>
+    <string name="kyc_text_country"> País y región </string>
+    <string name="kyc_text_drivingLicense"> carnet de conducir </string>
+    <string name="kyc_text_familyName"> Apellido </string>
+    <string name="kyc_text_frontView"> foto delante de la tarjeta de identificación </string>
+    <string name="kyc_text_givenName"> Nombre </string>
+    <string name="kyc_text_globalIdFront"> frente de Documento nacional de identidad </string>
+    <string name="kyc_text_idbackView"> La foto del reverso de mi identificación </string>
+    <string name="kyc_text_idfrontView"> La foto del fente de mi identificación </string>
+    <string name="kyc_text_idnumber"> Número de identificación </string>
+    <string name="kyc_text_idsignView">foto de Sostener su ID + firma </string>
+    <string name="kyc_text_name">nombre</string>
+    <string name="kyc_text_passport">pasaporte</string>
+    <string name="kyc_text_signView"> foto de Sostener su ID + firma </string>
+    <string name="kyc_tip_completeMessage"> Su información de certificación de nombre real se ha enviado y se espera que sea revisada dentro de un día de trabajo. Tenga paciencia. </string>
+    <string name="login_action_fogetpwdSafety"> Verificación de seguridad </string>
+    <string name="login_action_fogotPassword"> Olvidar contraseña </string>
+    <string name="login_action_login"> Iniciar sesión </string>
+    <string name="login_action_noAccount"> ¿Aún no tienes una cuenta?</string>
+    <string name="login_action_oneClick"> rápido Inicio de sesión </string>
+    <string name="login_action_otherAccount"> Otra cuenta </string>
+    <string name="login_action_register"> Ir a registrarse </string>
+    <string name="login_action_resendCode"> Reenviar </string>
+    <string name="login_action_resetPassword"> Restablecer contraseña </string>
+    <string name="login_action_sendCode"> Enviar código de verificación </string>
+    <string name="login_text_face"> Inicio de sesión facial </string>
+    <string name="login_text_fingerprint"> Inicio de sesión con huella digital </string>
+    <string name="login_text_gesture"> Inicio de sesión por gestos </string>
+    <string name="login_text_phoneOrMail"> Número de teléfono o e-mail </string>
+    <string name="login_text_pwd"> Contraseña </string>
+    <string name="login_tip_authAppCancel"> Autenticación cancelada </string>
+    <string name="login_tip_authAppStillending"> La aplicación no se inició completamente, falló</string>
+    <string name="login_tip_authCompleteFail"> Autenticación fallida, uso múltiple fallido </string>
+    <string name="login_tip_authFail"> Fallo de autorización </string>
+    <string name="login_tip_authRepeatePwd"> La contraseña es diferente dos veces, vuelva a ingresar </string>
+    <string name="login_tip_authSuccess"> Verificación exitosa </string>
+    <string name="login_tip_authUserLoseEfficacy"> Objeto de autorización no válido </string>
+    <string name="login_tip_bindPhoneFirst"> Por favor, ate su número de teléfono móvil primero. </string>
+    <string name="login_tip_deviceNotAvailable"> aparato no disponible </string>
+    <string name="login_tip_didSendCode"> Código de verificación enviado </string>
+    <string name="login_tip_faceIDClosed">El inicio de sesión facial está cerrado </string>
+    <string name="login_tip_fingerprint"> Abrir inicio de sesión con huella digital, los fondos son más seguros </string>
+    <string name="login_tip_fingerprintClosed"> El inicio de sesión con huella digital está cerrado </string>
+    <string name="login_tip_gestureClosed"> El inicio de sesión de gestos está desactivado </string>
+    <string name="login_tip_gestureLoginSuccess"> La configuración de la contraseña de gestos es exitosa </string>
+    <string name="login_tip_gestureNotMatch"> Inconsistente con el último dibujo, vuelva a dibujar </string>
+    <string name="login_tip_inputCode"> ingrese el código de verificación </string>
+    <string name="login_tip_locked"> La cuenta está congelada </string>
+    <string name="login_tip_loginsuccess"> Inicio de sesión exitoso </string>
+    <string name="login_tip_mailBindSuccess"> El enlace de e-mail fue exitoso </string>
+    <string name="login_tip_mailEditSucess"> Reemplazo exitoso de e-mail </string>
+    <string name="login_tip_otherFastLoginIsActive"> Has activado otro método de inicio de sesión rápido </string>
+    <string name="login_tip_passwordError"> Nombre de usuario o contraseña es incorrecta, tiene %s oportunidades</string>
+    <string name="login_tip_passwordNotMatch"> Contraseña inconsistente </string>
+    <string name="login_tip_passwordRequire"> Ingrese una contraseña que contenga números y letras y tenga entre 8 y 20 caracteres. Admite caracteres especiales comunes </string>
+    <string name="login_tip_passwordWrong"> Contraseña incorrecta </string>
+    <string name="login_tip_pleaseInputNewPwd"> ingrese una nueva contraseña </string>
+    <string name="login_tip_realNameFail">La auditoría falló </string>
+    <string name="login_tip_safeSettingChange"> No se pueden retirar monedas dentro de %s horas después de cambiar la configuración de seguridad </string>
+    <string name="login_tip_systemCancelAuth"> El sistema cancela la verificación</string>
+    <string name="login_tip_systemNoPassword"> El sistema no establece una contraseña </string>
+    <string name="login_tip_templocked"> Bloqueo de inicio de sesión del usuario durante dos horas </string>
+    <string name="login_tip_userCancelAuth"> El usuario cancela la verificación </string>
+    <string name="login_tip_userNotExist"> El usuario no existe </string>
+    <string name="mainTab_text_assets"> Activo </string>
+    <string name="mainTab_text_home">página de Inicio </string>
+    <string name="mainTab_text_market"> Cotizaciones </string>
+    <string name="mainTab_text_otc"> Moneda legal </string>
+    <string name="mainTab_text_transaction"> monedas a la moneda </string>
+    <string name="market_text_blockSearch"> búsqueda de bloque </string>
+    <string name="market_text_coinHomepage"> Sitio web oficial </string>
+    <string name="market_text_coinInfo"> Introducción </string>
+    <string name="market_text_currentTotal"> Circulación total </string>
+    <string name="market_text_customZone"> su elección </string>
+    <string name="market_text_innovationZone"> Zona de innovación </string>
+    <string name="market_text_observeZone">Área de observación </string>
+    <string name="market_text_publishtime"> Tiempo de publicación </string>
+    <string name="market_text_publishTotal">cantidad de publicación</string>
+    <string name="market_tip_confirmDeleteCollection">determinar eliminar su elección </string>
+    <string name="noun_account_accountName"> Número de cuenta </string>
+    <string name="noun_account_freezeAll"> El comercio y la retirada de monedas están congelados </string>
+    <string name="noun_account_freezeTransaction"> La transacción está congelada. </string>
+    <string name="noun_account_freezeWithdraw"> El retiro de efectivo está congelado </string>
+    <string name="noun_account_normal"> Normal </string>
+    <string name="noun_camera_takeAlbum"> Elige del álbum </string>
+    <string name="noun_camera_takephoto"> Tomar una foto </string>
+    <string name="noun_date_day">día</string>
+    <string name="noun_date_hour">hora</string>
+    <string name="noun_date_minute">minuto</string>
+    <string name="noun_date_month">mes</string>
+    <string name="noun_date_quarter"> cuarto</string>
+    <string name="noun_date_week">semana</string>
+    <string name="noun_login_notLogin"> No ha iniciado sesión </string>
+    <string name="noun_login_pending"> en revisión </string>
+    <string name="noun_order_GMV"> Volumen total de negocios </string>
+    <string name="noun_order_paymentTerm"> Método de cobro</string>
+    <string name="noun_otc_merchant"> Comerciante </string>
+    <string name="noun_user_identitycard"> Tarjeta de identificación </string>
+    <string name="oct_action_autoCancelDesc"> Cancelación automática después de</string>
+    <string name="oct_tip_buyerCancel"> No se otorgará ningún reembolso después de cancelar el pedido. Si ya ha pagado, no cancele el pedido, cancele el pedido más de 3 veces y no podrá realizar una compra dentro de las 24 horas. </string>
+    <string name="otc_action_addBlackList">añadir a la lista negra </string>
+    <string name="otc_action_appeal"> Ir a apelar </string>
+    <string name="otc_action_bindpayment"> unir</string>
+    <string name="otc_action_buy">comprar</string>
+    <string name="otc_action_buyByPrice"> Comprar por precio </string>
+    <string name="otc_action_buyByVolume"> Comprar por cantidad </string>
+    <string name="otc_action_buyerDidPay"> He pagado </string>
+    <string name="otc_action_cancel"> Cancelar pedido </string>
+    <string name="otc_action_cancelAppeal"> Cancelar apelación </string>
+    <string name="otc_action_changePayment"> Cambiar método de pago </string>
+    <string name="otc_action_confirmSendCoin"> Confirmar recibo y liberar moneda </string>
+    <string name="otc_action_confirmSendCoinTitle"> Confirmar liberación </string>
+    <string name="otc_action_merchantBuy"> Comprar publicidad </string>
+    <string name="otc_action_merchantSell"> Vender publicidad </string>
+    <string name="otc_action_placeOrder"> colocar pedido</string>
+    <string name="otc_action_sell">vender</string>
+    <string name="otc_action_sellByPrice"> Vendido por precio </string>
+    <string name="otc_action_sellByVolume"> Vendido por cantidad </string>
+    <string name="otc_action_sendmsg">enviar</string>
+    <string name="otc_text_appeal">apelar</string>
+    <string name="otc_text_bankBranchName"> banco filial de Apertura de cuenta </string>
+    <string name="otc_text_bankCardNumber"> Número de tarjeta bancaria </string>
+    <string name="otc_text_bankName">banco de Apertura de cuenta </string>
+    <string name="otc_text_bindBankCard"> Atar una tarjeta bancaria </string>
+    <string name="otc_text_cancelByAppeal"> en La apelación determina que el comprador no ha pagado </string>
+    <string name="otc_text_cancelByBuyer"> El comprador cancela el pedido. </string>
+    <string name="otc_text_cancelReasonNotPay"> Tiempo de espera agotado, Falta de pago </string>
+    <string name="otc_text_desc"> Transacción de moneda legal </string>
+    <string name="otc_text_didPayConfirm"> Confirmación de pago </string>
+    <string name="otc_text_merchantAppealNumber"> La cantidad total de la queja </string>
+    <string name="otc_text_merchantAppealWin"> Cantidad de victoria </string>
+    <string name="otc_text_merchantCredit"> Crédito </string>
+    <string name="otc_text_merchantHomePage"> Detalles del comerciante</string>
+    <string name="otc_text_merchantMailAuth"> Autenticación de e-mail </string>
+    <string name="otc_text_merchantPhoneAuth"> Autenticación de teléfono móvil </string>
+    <string name="otc_text_merchantTradeNumber"> Numero de transacciones </string>
+    <string name="otc_text_myOrder"> Mis pedidos </string>
+    <string name="otc_text_orderAppeal">en apelación</string>
+    <string name="otc_text_orderCancel"> Cancelado </string>
+    <string name="otc_text_orderCancelReason"> Tipo de cancelación de pedido </string>
+    <string name="otc_text_orderComplete"> Completado </string>
+    <string name="otc_text_orderCTime"> Tiempo de pedido </string>
+    <string name="otc_text_orderId"> Número de pedido </string>
+    <string name="otc_text_orderPendingAppeal"> en apelación </string>
+    <string name="otc_text_orderTotal"> Total </string>
+    <string name="otc_text_orderWaitMoney"> cobro pendiente </string>
+    <string name="otc_text_orderWaitPay"> Pago pendiente </string>
+    <string name="otc_text_orderWaitSendCoin"> Esperar enviar moneda</string>
+    <string name="otc_text_payee">cobrador</string>
+    <string name="otc_text_paymentAmount"> Cantidad de pago </string>
+    <string name="otc_text_paymentCardNumber"> Número de tarjeta </string>
+    <string name="otc_text_paymentQRcode"> Código de cobro </string>
+    <string name="otc_text_payTime"> Tiempo de pago </string>
+    <string name="otc_text_price"> Precio unitario </string>
+    <string name="otc_text_priceLimit"> Límite </string>
+    <string name="otc_text_pwd"> Contraseña del fondo de moneda legal </string>
+    <string name="otc_text_rp"> Precio de referencia </string>
+    <string name="otc_text_sendCoinTime"> Tiempo de enviar moneda </string>
+    <string name="otc_text_totalBargainAmount"> Transacción histórica (equivalente a BTC)</string>
+    <string name="otc_text_tradeObjectBuy">comprar</string>
+    <string name="otc_text_tradeObjectSell">vender</string>
+    <string name="otc_text_tradingPrice"> Monto de la transacción </string>
+    <string name="otc_text_waitPay"> Esperando el pago </string>
+    <string name="otc_text_waitReceiveCoin">esperar recibir moneda</string>
+    <string name="otc_text_westUnion"> Western Union </string>
+    <string name="otc_text_wxID">WeChat ID</string>
+    <string name="otc_tip_appealCharged"> La otra parte ha presentado una queja. </string>
+    <string name="otc_tip_appealconfirm"> ¿Estás seguro de apelar esta transacción?</string>
+    <string name="otc_tip_appealDefense"> La otra parte ha presentado una apelación, asegúrese de que su información de contacto sea correcta para que el personal de servicio al cliente pueda contactarlo lo antes posible.</string>
+    <string name="otc_tip_appealOffence"> La apelación se envía con éxito y la contraseña es %s. Asegúrese de que su información de contacto sea clara para que el personal de servicio al cliente pueda contactarlo lo antes posible.</string>
+    <string name="otc_tip_appealSuccess"> apelación exitosa, esperando que el servicio al cliente intervenga </string>
+    <string name="otc_tip_appealTimeLimit"> No puede apelar dentro de los 5 minutos posteriores a la confirmación del pago </string>
+    <string name="otc_tip_bankcardBelong"> Debe ser la tarjeta bancaria a su nombre </string>
+    <string name="otc_tip_buyerCancelConfirm"> Estoy seguro de que no he pagado a la otra parte. </string>
+    <string name="otc_tip_buyerConfirmPaid"> Si ya ha transferido el pago al vendedor, asegúrese de hacer clic en el botón "He pagado" en la esquina inferior derecha antes del final de tiempo de pago; de lo contrario, el pedido se cancelará automáticamente y la propiedad podría perderse. </string>
+    <string name="otc_tip_buyerOrderComplete"> La transacción se ha completado y el importe del pedido se ha depositado en su cuenta de moneda legal </string>
+    <string name="otc_tip_cancleAppealConfirm"> cancelar el representante de la apelación significa que no tiene disputas sobre este pedido, ¿está seguro de cancelar la apelación?</string>
+    <string name="otc_tip_changePwdSuccess"> Modificó exitosamente la contraseña del fondo </string>
+    <string name="otc_tip_confirmAddBlackList"> ¿Estás seguro de agregar a la otra parte a la lista negra?</string>
+    <string name="otc_tip_didRemoveBlackList"> Se ha eliminado de la lista negra. </string>
+    <string name="otc_tip_inputWishPrice"> Ingrese la cantidad total que desea comprar </string>
+    <string name="otc_tip_inputWishSellPrice"> Ingrese la cantidad total que desea vender</string>
+    <string name="otc_tip_inputWishSellVolume"> Ingrese la cantidad que desea vender </string>
+    <string name="otc_tip_inputWishVolume"> Ingrese la cantidad que desea comprar</string>
+    <string name="otc_tip_lessCoin"> La venta requiere la transferencia de la moneda de la cuenta de moneda a la cuenta de moneda legal. </string>
+    <string name="otc_tip_overCancelled"> No puede realizar una operación de compra en %s porque canceló el pedido demasiadas veces </string>
+    <string name="otc_tip_paymentDeactiveSuccess"> Desatado con éxito </string>
+    <string name="otc_tip_paymentDidExist"> Activar al menos un método de cobro </string>
+    <string name="otc_tip_paymentLimitActiveError"> Mantenga al menos un método de cobro activado </string>
+    <string name="otc_tip_paymentLimitDeactiveError"> El método de cobro ya existe </string>
+    <string name="otc_tip_paymentLimitError"> Mantenga al menos un método de cobro </string>
+    <string name="otc_tip_pleaseInputAlipayAccount"> ingrese una cuenta de Alipay </string>
+    <string name="otc_tip_pleaseInputAppealReason"> Ingrese el motivo de la apelación. </string>
+    <string name="otc_tip_pleaseInputBankbranchName"> ingrese el banco filial de la cuenta </string>
+    <string name="otc_tip_pleaseInputBankName"> ingrese el banco de apertura</string>
+    <string name="otc_tip_pleaseInputWxID">Su WeChat ID</string>
+    <string name="otc_tip_remindBuyerClickDidPay"> Si confirma el método de pago a la otra parte, puede hacer clic en el pagado. </string>
+    <string name="otc_tip_remindBuyerWaitConfirm"> Después de que la otra parte confirme el pago y libere la moneda, recibirá la cantidad de moneda correspondiente en la cuenta de moneda legal. </string>
+    <string name="otc_tip_remindSellerDidReceive"> La otra parte ya ha pagado el monto del pedido a su cuenta de cobro. Después de confirmar el recibo, haga clic en el botón "Confirmar cobro y iberar la moneda" a continuación. </string>
+    <string name="otc_tip_remindSellerSendCoin"> Si confirma que recibió la remesa de la otra parte de la siguiente manera, puede liberar la moneda. </string>
+    <string name="otc_tip_remindSellerWaitPay"> Tenga paciencia y espere el pago. Si el pago no se confirma antes del final de la cuenta regresiva, el pedido se cancelará automáticamente. </string>
+    <string name="otc_tip_sellerOrderComplete"> La transacción se ha completado y el monto del pedido se ha deducido de su cuenta de moneda legal </string>
+    <string name="otc_tip_sellerPendingCoin"> La otra parte está lanzando monedas. </string>
+    <string name="otc_tip_sendCoinSuccess"> Lanzamiento exitoso de monedas </string>
+    <string name="otc_tip_tradeHintContent"> No remarque el contenido relacionado con la moneda digital cuando realice el envío\n su envío ingresará directamente a la cuenta del vendedor y los activos digitales vendidos por el vendedor durante la transacción estarán protegidos por la plataforma. Si el comprador cancela el pedido 3 veces el mismo día, se limitará a la función de compra del día."</string>
+    <string name="otc_tip_tradeHintTitle"> Recordatorio de la transacción </string>
+    <string name="otcSafeAlert_action_bindGoogle"> unir con Google </string>
+    <string name="otcSafeAlert_action_bindphone"> unir con Teléfono </string>
+    <string name="otcSafeAlert_action_bindphoneOrGoogle"> Enlazar teléfono o google </string>
+    <string name="otcSafeAlert_action_identify"> Certificación de nombre real </string>
+    <string name="otcSafeAlert_action_nickname"> Apodo </string>
+    <string name="otcSafeAlert_text_otcBuyDesc"> Para compras la moneda legal, debe completar la siguiente configuración </string>
+    <string name="otcSafeAlert_text_otcPwd"> Contraseña del fondo </string>
+    <string name="otcSafeAlert_text_settingDesc"> Para garantizar la seguridad de sus fondos, complete la siguiente configuración de transacción de moneda legal </string>
+    <string name="otcSafeAlert_text_title"> Antes de poder realizar una configuración de transacción en moneda legal, debe completar la siguiente configuración. </string>
+    <string name="payMethod_action_addnew"> Agregar </string>
+    <string name="payMethod_text_active"> Activado </string>
+    <string name="payMethod_text_alipay"> Alipay </string>
+    <string name="payMethod_text_inactive"> No activado </string>
+    <string name="payMethod_text_unbinding"> Desatado </string>
+    <string name="payMethod_tip_reconfirmUnbinding"> ¿Es posible desatar este método de cobro?</string>
+    <string name="personal_action_checkUpdate"> Comprobar actualizaciones </string>
+    <string name="personal_text_aboutus"> Acerca de nosotros </string>
+    <string name="personal_text_blacklist"> Lista negra </string>
+    <string name="personal_text_confirmPwd"> Confirmar nueva contraseña </string>
+    <string name="personal_text_country"> País y región </string>
+    <string name="personal_text_googleCode"> Código de verificación de Google </string>
+    <string name="personal_text_helpcenter"> Centro de ayuda </string>
+    <string name="personal_text_isAuth"> Certificado </string>
+    <string name="personal_text_mailCode"> Código de verificación de e-mail </string>
+    <string name="personal_text_message"> Carta de la estación </string>
+    <string name="personal_text_newPwd"> Nueva contraseña </string>
+    <string name="personal_text_notice"> Anuncio </string>
+    <string name="personal_text_phoneCode"> Código de verificación del teléfono móvil </string>
+    <string name="personal_text_phoneNumber"> Número de móvil </string>
+    <string name="personal_text_safeSettingOff"> No abierto </string>
+    <string name="personal_text_safeSettingOpen"> Abierto </string>
+    <string name="personal_text_safetycenter"> Centro de seguridad </string>
+    <string name="personal_text_setNickname"> Establecer apodo </string>
+    <string name="personal_text_setting"> Establecer </string>
+    <string name="personal_text_smsCode"> Código de verificación de SMS </string>
+    <string name="personal_text_unverified"> No certificado </string>
+    <string name="personal_text_verified"> Certificado </string>
+    <string name="common_text_versionCode"> Número de versión </string>
+    <string name="personal_tip_inputIdnumber"> Ingrese el número de identificación del certificado de nombre real. </string>
+    <string name="personal_tip_inputMailCode"> ingrese el código de verificación de e-mail </string>
+    <string name="personal_tip_inputNewPwd"> Ingrese nueva contraseña </string>
+    <string name="personal_tip_inputNickname"> ingrese un apodo </string>
+    <string name="personal_tip_inputOldPwd"> ingrese la contraseña antigua</string>
+    <string name="personal_tip_inputOldPwdAgain"> ingrese su nueva contraseña nuevamente </string>
+    <string name="personal_tip_inputPhoneCode"> ingrese el código de verificación de su teléfono </string>
+    <string name="personal_tip_pleaseInputBindMailCode"> Ingrese el código de verificación de e-mail vinculante </string>
+    <string name="personal_tip_pleaseInputOldMailCode"> Ingrese el código de verificación de e-mail antiguo</string>
+    <string name="personal_tip_pleaseOpenGoogleFirst"> Abra primero la certificación de Google. </string>
+    <string name="pyaMethod_text_wxpay"> WeChat </string>
+    <string name="register_action_agreement">《Acuerdo de usuario》</string>
+    <string name="register_action_mail"> Registrarse por e-mail </string>
+    <string name="register_action_phone"> Registrarse por Teléfono móvil </string>
+    <string name="register_action_register"> Confirmar y registrarse </string>
+    <string name="register_action_setPassword"> Establecer contraseña </string>
+    <string name="register_action_toLogin"> Ir al inicio de sesión </string>
+    <string name="register_text_googleAuth"> Autenticador de Google </string>
+    <string name="register_text_inviteCode"> Código de invitación </string>
+    <string name="register_text_loginPwd"> Contraseña de acceso </string>
+    <string name="register_text_mail"> E-mail </string>
+    <string name="register_text_phone"> Teléfono móvil </string>
+    <string name="register_tip_agreement"> El registro significa consentimiento </string>
+    <string name="register_tip_exsitUser"> ¿Ya tienes una cuenta?</string>
+    <string name="register_tip_inputPassword"> ingrese su contraseña </string>
+    <string name="register_tip_repeatPassword"> ingrese su contraseña nuevamente </string>
+    <string name="regitser_tip_inputOptional">( Opcional)</string>
+    <string name="safety_action_activeFaceId"> Abrir ahora </string>
+    <string name="safety_action_activePhone"> Habilitar verificación telefónica </string>
+    <string name="safety_action_changeLoginPassword"> Modificar la contraseña de inicio de sesión </string>
+    <string name="safety_action_confrimGesturePassword"> Configura la contraseña del gesto nuevamente </string>
+    <string name="safety_action_downloadgoogle"> Descargar </string>
+    <string name="safety_action_editMail"> Modificar E-mail </string>
+    <string name="safety_action_editPhone"> Modificar teléfono </string>
+    <string name="safety_action_faceIdNextTime"> Recordar la próxima vez </string>
+    <string name="safety_action_googleBind"> Vincula la verificación de Google </string>
+    <string name="safety_action_otcPassword"> Establecer la contraseña del fondo </string>
+    <string name="safety_action_setGesturePassword"> Por favor, configure la contraseña del gesto </string>
+    <string name="safety_explain_googleauthStepOne"> Abra GoogleAuthentication, haga clic en "+", seleccione "Ingresar la clave manualmente", complete la clave en la página </string>
+    <string name="safety_explain_googleauthStepTwo"> Después del éxito de la adición, obtendrá un código de verificación de 6 dígitos con un plazo de limitación. Complete el número a continuación antes de que caduque. </string>
+    <string name="safety_text_bindMail"> Enlazar e-mail </string>
+    <string name="safety_text_confrimPasswod"> Confirme la contraseña del fondo </string>
+    <string name="safety_text_editOtcPassword"> Modificar la contraseña del fondo de moneda legal </string>
+    <string name="safety_text_faceId"> Reconocimiento facial </string>
+    <string name="safety_text_gesturePassword"> Contraseña de gestos </string>
+    <string name="safety_text_googleAuth"> Verificación de Google </string>
+    <string name="safety_text_mailAuth"> Verificación de e-mail </string>
+    <string name="safety_text_oldPassword"> Contraseña anterior </string>
+    <string name="safety_text_phoneAuth"> Verificación de móvil </string>
+    <string name="safety_text_userIdentifier"> Número de identificación certificada de nombre real </string>
+    <string name="safety_tip_faceIdAdvantage"> Reconocimiento facial abierto, fondos más seguros </string>
+    <string name="safety_tip_inputMail"> ingrese su cuenta de e-mail </string>
+    <string name="safety_tip_inputOtcPassword"> Ingrese la contraseña del fondo </string>
+    <string name="scan_action_scan"> Escanear </string>
+    <string name="scan_text_album">Álbum </string>
+    <string name="scan_tip_aimToScan"> Ponga el código QR en el cuadro y puede escanearlo automáticamente. </string>
+    <string name="transaction_text_mainZone">Área principal </string>
+    <string name="transaction_text_orderUnsettled"> No vendido </string>
+    <string name="transaction_text_tradeSum"> Monto de la transacción </string>
+    <string name="transaction_text_tradeValue"> Transacción real </string>
+    <string name="transaction_tip_buyVolume"> Volumen de compra </string>
+    <string name="transfer_action_exToOtc"> La moneda a moneda hasta la moneda legal </string>
+    <string name="transfer_action_goTransaction"> Ir al comercio </string>
+    <string name="transfer_action_otcToEx"> La moneda legal hasta la moneda a moneda </string>
+    <string name="transfer_text_from">desde</string>
+    <string name="transfer_text_guideTransaction"> La transferencia ha sido exitosa, ya sea para comerciar inmediatamente </string>
+    <string name="transfer_text_otc"> Transferencia de fondos de OTC</string>
+    <string name="transfer_text_record"> Registro de transferencia </string>
+    <string name="transfer_text_to">hasta</string>
+    <string name="transfer_tip_emptyVolume"> ingrese la cantidad </string>
+    <string name="transfer_tip_maxTransfer"> El máximo monto de transferencia es</string>
+    <string name="userinfo_text_account"> Cuenta </string>
+    <string name="userinfo_text_accountState"> Estado de la cuenta </string>
+    <string name="userinfo_text_data"> Mi informacion </string>
+    <string name="userinfo_text_mailUnbind">No vinculado</string>
+    <string name="userinfo_text_nickname"> Nuevo apodo </string>
+    <string name="userinfo_tip_inputNickname"> Por favor, introduzca un apodo dentro de los 10 caracteres </string>
+    <string name="userinfo_tip_inputPhone"> ingrese su número de celular </string>
+    <string name="withdraw_action_confirm"> Confirmar retiro </string>
+    <string name="withdraw_action_newAddress"> Usar nueva dirección </string>
+    <string name="withdraw_action_trustAddress"> Confiar en esta dirección </string>
+    <string name="withdraw_action_withdrawHistory"> Registro de extracto de dinero </string>
+    <string name="withdraw_text_address"> Dirección de retiro de la moneda</string>
+    <string name="withdraw_text_available"> Saldo disponible </string>
+    <string name="withdraw_text_fee">Comisión</string>
+    <string name="withdraw_text_minimumVolume"> Cantidad mínima </string>
+    <string name="withdraw_text_moneyWithoutFee"> Cantidad de llegada real </string>
+    <string name="withdraw_text_remark"> Nota de dirección </string>
+    <string name="withdraw_text_trustAddress"> Esta dirección ya se ha confiado </string>
+    <string name="withdraw_text_txConfirmCount"> Confirmar número de veces </string>
+    <string name="withdraw_tip_addressEmpty"> ingrese la dirección de retiro </string>
+    <string name="withdraw_tip_bindGoogleFirst"> Para proteger sus fondos, retire las monedas después de vincular la verificación de Google. </string>
+    <string name="withdraw_tip_confirmCancelWithdraw"> ¿Estás seguro de cancelar esta moneda?</string>
+    <string name="withdraw_tip_didCancelWithdraw"> Retiro de efectivo ha sido revocado </string>
+    <string name="withdraw_tip_feeRangeError"> El rango de tarifas es </string>
+    <string name="withdraw_tip_limitAmountFee"> El monto del retiro de efectivo debe ser mayor que la comisión</string>
+    <string name="withdraw_tip_notavailable"> Actualmente no hay monedas que se puedan retirar. </string>
+    <string name="withdraw_tip_notice"> Notas sobre la retirada de monedas </string>
+    <string name="withdraw_tip_pleaseInputRemark"> ingrese una nota </string>
+    <string name="withdraw_tip_successWithSaveAddress"> Retirar la moneda con éxito y guardar la dirección de retiro </string>
+    <string name="withdraw_tip_tagEmpty"> Por favor, introduzca una etiqueta (Memo)</string>
+    <string name="withdraw_tip_trustDesc"> La próxima vez que retire monedas, ya no necesitará SMS / e-mail o verificación de Google. </string>
+    <string name="withdraw_tip_withdrawMaxValueError"> El número máximo de retiro de monedas en un solo pedido es %s</string>
+    <string name="withdraw_tip_withdrawMinArrivalError"> El número de llegadas debe ser mayor que 0</string>
+    <string name="withdraw_tip_withdrawMinValueError"> El número máximo de retiro de monedas en un solo pedido es %s</string>
+    <string name="withdraw_tip_withdrawSuccess"> Retiro exitoso de monedas </string>
+    <string name="wxpay_text_bind"> Vincular WeChat </string>
+    <string name="wxpay_text_qrcode"> Código de cobro de WeChat </string>
+    <string name="filter_otc_appeal">En apelación</string>
+    <string name="filter_otc_appealCancel"> apelación cancelada </string>
+    <string name="mainTab_text_contract"> Contrato </string>
+    <string name="noun_language"> Chino simplificado </string>
+    <string name="otc_text_IFSC">IFSC Código </string>
+    <string name="otc_text_Interact">Interact cuenta</string>
+    <string name="otc_text_payNow">PayNow cuenta </string>
+    <string name="otc_text_paypal">Paypal cuenta </string>
+    <string name="otc_tip_pleaseInputMoneyAddress"> Introduzca la dirección de remesa </string>
+    <string name="otc_tip_pleaseInputSWIFT">SWIFT Informacion</string>
+    <string name="otc_tip_pleaseInputWestUnio"> Información de remesas de Western Union </string>
+    <string name="otc_tip_pleaseInputAcount"> ingrese un número de cuenta </string>
+    <string name="otc_tip_plieaseInputIFSC"> ingrese el código IFSC </string>
+    <string name="otc_text_paytm">Paytm cuenta </string>
+    <string name="otc_text_QIWI">QIWI cuenta </string>
+    <string name="otc_text_SWIFT">SWIFT cuenta </string>
+    <string name="filter_otc_cancel"> Cancelado </string>
+    <string name="filter_otc_complete"> Transacción completada </string>
+    <string name="otc_text_UPI">UPI cuenta </string>
+    <string name="common_tip_bestPriceTransaction"> Precio del oponente </string>
+    <string name="contract_text_openAveragePrice"> Precio promedio de apertura </string>
+    <string name="assets_text_lockup"> Bloquear la posición</string>
+    <string name="common_text_detailInfo"> Detalles </string>
+    <string name="common_action_inviteFriend"> Invitar a amigos </string>
+    <string name="common_action_copyLink"> Copiar enlace </string>
+    <string name="common_action_savePoster"> Guardar cartel </string>
+    <string name="common_text_walletProcessTime"> Tiempo de procesamiento de la billetera </string>
+    <string name="contract_tip_volumeError"> El aumento no debe exceder el margen disponible </string>
+    <string name="contract_tip_pleaseInputPosition"> Por favor, introduzca una posición </string>
+    <string name="contract_tip_pleaseInputPrice"> ingrese el precio </string>
+    <string name="contract_text_limitPriceOrder"> Pedido de precio limitado</string>
+    <string name="pyamethod_text_wxpay"> WeChat </string>
+
+
+    <!--Sobre rojo START-->
+    <string name="redpacket_send_each"> Cantidad unitaria </string>
+    <string name="redpacket_send_total"> Cantidad total </string>
+    <string name="redpacket_send_num"> Número de paquetes rojos </string>
+
+    <string name="redpacket_send_random"> Paquetes rojos al azar</string>
+    <string name="redpacket_send_identical"> Paquetes rojos ordinarios </string>
+
+    <string name="redpacket_send_new"> Solo para usuarios nuevos </string>
+
+    <string name="redpacket_received_received"> Sobre rojo recibido </string>
+    <string name="redpacket_sendout_sendPackets"> Sobre rojo enviado</string>
+
+    <string name="redpacket_send_prepare"> Rellenar en un sobre rojo </string>
+    <string name="redpacket_send_prompt"> Los paquetes rojos no recibidos serán reembolsados después de%s horas.</string>
+    <string name="redpacket_send_wishes"> Saludos </string>
+
+    <string name="redpacket_sendout_gone"> Han terminado </string>
+    <string name="redpacket_sendout_expired"> Caducado </string>
+
+    <string name="redpacket_received_withdraw"> Depositado en una cuenta de divisas, puede retirar efectivo directamente </string>
+    <string name="redpacket_received_num"> Un total de paquetes rojos recibidos%s </string>
+    <string name="redpacket_sendout_total"> Un total de paquetes rojos enviados%s </string>
+    <string name="redpacket_sendout_totalPeople"> Un total de %s personas reciben </string>
+
+
+    <string name="red_package_rules"> Regla de sobre rojo </string>
+    <string name="unit_red_package"> sobre rojo </string>
+
+
+    <string name="redpacket_sendout_people">personas</string>
+    <string name="redpacket_sendout_copyRedPacket"> Copiar enlace de sobre rojo </string>
+    <string name="redpacket_send_longPress"> Mantenga presionado para identificar el sobre rojo </string>
+    <string name="redpacket_send_from">sobre rojo de %s </string>
+    <string name="common_text_pleaseBindGoogleFirst"> Ate primero su teléfono o la verificación de Google. </string>
+    <string name="redpacket_click_prompt"> Para garantizar la seguridad de sus fondos, complete las siguientes certificaciones de seguridad </string>
+    <string name="redpacket_send_inputAmount"> ingrese la cantidad </string>
+    <string name="redpacket_send_enterNumber"> ingrese el número </string>
+    <string name="redpacket_received_detail"> Detalles del sobre rojo </string>
+    <string name="redpacket_payment_payment"> Confirmar pago </string>
+    <string name="redpacket_payment_amount"> Cantidad de pago </string>
+    <string name="redpacket_payment_type"> Tipo de pago </string>
+    <string name="redpacket_redpacket"> Sobre rojo </string>
+    <string name="redpacket_payment_account"> Cuenta de pago </string>
+    <string name="redpacket_payment_cancel">cancelar</string>
+    <string name="redpacket_payment_confirm">confirmar</string>
+    <string name="redpacket_received_opened">recibido%1$s/%2$s</string>
+    <string name="redpacket_received_gone"> %s sobre rojo han sido agarrados </string>
+    <string name="redpacket_sendout_overdue"> El sobre rojo ha expirado. Se han recibido %1$s / %2$s, total de %3$s / %4$s %5$s </string>
+    <string name="redpacket_sendout_receive">  %1$s/%2$s recibido, total de  %3$s/%4$s %5$s </string>
+    <string name="redpacket_sendout_goneDetail"> %1$s total de sobres rojos %2$s %3$s, han sido agarrados </string>
+    <string name="redpacket_sendout_invited"> Invitado exitosamente </string>
+    <string name="redpacket_sendout_regist"> Registro </string>
+    <string name="redpacket_send_currency"> Moneda </string>
+    <string name="redpacket_send_inputCoin"> seleccione una moneda </string>
+    <string name="redpacket_send_availableBalance"> Saldo disponible </string>
+    <string name="redpacket_send_exchangeAccount"> cuentas de intercambio </string>
+    <string name="redpacket_sendout_cannotReplicated"> El enlace ha expirado y no se puede copiar </string>
+    <string name="redpacket_send_noMoney"> Insuficiente saldo disponible </string>
+    <string name="redpacket_send_notExceed"> El monto total de un pago único no puede exceder %s </string>
+    <string name="redpacket_send_notLess"> Un solo sobre rojo no puede ser inferior a %s </string>
+    <string name="redpacket_send_singleNotExceed"> La cantidad de un sobre rojo no puede exceder %s </string>
+    <string name="redpacket_send_numNotExceed"> El número de paquetes rojos individuales no puede ser mayor que %s </string>
+    <string name="contract_flat_long"> equilibrio más </string>
+    <string name="contract_flat_short"> equilibrio vacío</string>
+    <string name="contract_text_marketPriceFlat"> Precio de mercado todo equilibrado </string>
+    <string name="contract_text_limitPositions">Precio limitado de cierre de posición </string>
+    <string name="more_way"> Direcciones múltiples </string>
+    <string name="empty_way"> Dirección vacía </string>
+    <string name="contract_text_openAverage"> Abrir una posición </string>
+    <string name="contract_max_volume"> El número máximo de posiciones se puede ingresar en %s </string>
+    <!--Sobre rojo END-->
+    <string name="common_text_contactTitle"> Contactar </string>
+    <string name="common_text_realNameTitle"> Información del nombre real </string>
+    <string name="common_tip_showContactOTC"> Los compradores pueden ver después de 2 minutos de pago </string>
+    <string name="common_action_hideMore">ocultar</string>
+    <string name="common_action_showMore">más</string>
+    <string name="personal_text_onlineservice"> Servicio al cliente en línea </string>
+    <string name="contract_position_id"> ID de Posición</string>
+    <string name="kyc_explain_lastTip">4, se necesita una foto de la persona que sostiene la copia manuscrita y el frente de documento personal al mismo tiempo. La copia incluye: "Nombre + fecha de solicitud + nombre de dominio del sitio + todas las acciones que tengo en este sitio son mis propias operaciones, y conozco los riesgos relevantes y estoy dispuesto a asumir todas las consecuencias legales de la operación".</string>
+    <string name="kyc_text_otherLegal"> Otros documentos legales </string>
+    <string name="tradeLimit_text_instructions"> Instrucciones comerciales </string>
+    <string name="tradeLimit_text_everyDayCount"> El número de restricciones en la transacción diaria de la moneda. </string>
+    <string name="tradeLimit_text_everyDayBuy"> El monto máximo de compra por día es: %s </string>
+    <string name="tradeLimit_text_everyDaySell"> La cantidad máxima de venta por día es: %s </string>
+    <string name="tradeLimit_text_noLimitBuy"> Transacción de compra sin restricciones </string>
+    <string name="tradeLimit_text_noLimitSell"> Transacción de venta sin restricciones </string>
+    <string name="refresh_try"> Actualizar e intentar nuevamente </string>
+
+    <string name="otc_text_adManager"> Gestión de publicidad </string>
+    <string name="otc_release_advertising"> Publicar un anuncio </string>
+    <string name="otc_text_ad"> Publicidad </string>
+    <string name="otc_text_adHidden"> Ocultar o cerrar anuncios </string>
+    <string name="otc_market_ReferencPriceDetail"> El sitio web combina citas de los principales intercambios y sitios web de citas y actualizaciones de cada minuto. </string>
+    <string name="otc_custom_price"> Personalizado </string>
+    <string name="otc_text_marketPrice"> Precio de mercado </string>
+    <string name="otc_aboveReference_price"> Superior al precio de referencia </string>
+    <string name="otc_belowReference_price"> Por debajo del precio de referencia </string>
+    <string name="otc_payMoney_timeMinute">minuto</string>
+    <string name="otc_advertiseValid_day">día</string>
+    <string name="otc_close_advertise"> Cerrar anuncio </string>
+    <string name="otc_text_expired"> Caducado </string>
+    <string name="otc_have_closed"> Cerrado </string>
+    <string name="otc_confirm_closeAdvertise"> ¿Seguro que quieres cerrar el anuncio?</string>
+    <string name="otc_have_closedAdvertise"> El anuncio está cerrado. </string>
+    <string name="otc_advertise_detail"> Detalles de publicidad </string>
+    <string name="otc_create_time"> Tiempo de creación </string>
+    <string name="otc_text_advertiseID"> ID de Publicidad </string>
+    <string name="otc_advertise_type"> Tipo de anuncio </string>
+    <string name="otc_coin_type"> Tipo de moneda </string>
+    <string name="otc_leaveAndTotal"> Cantidad restante / cantidad total </string>
+    <string name="otc_market_ReferencPrice"> Precio de referencia del mercado </string>
+    <string name="otc_setPrice_method"> Método de fijación de precios </string>
+    <string name="otc_outPrice_direction"> Dirección de premium </string>
+    <string name="otc_outPrice_percent"> Porcentaje de premium </string>
+    <string name="otc_userSet_singlePrice"> Precio unitario personalizado </string>
+    <string name="otc_min_amount"> Cantidad mínima </string>
+    <string name="otc_max_amount"> Cantidad máxima </string>
+    <string name="otc_payMoney_time"> Plazo de pago </string>
+    <string name="otc_other_times">veces</string>
+    <string name="otc_other_minTransactionTimes"> Cantidad mínima de transacciones de otra parte</string>
+    <string name="otc_text_validTime"> Tiempo de falla </string>
+    <string name="otc_text_bankCard"> Tarjeta bancaria </string>
+    <string name="otc_text_autoBack"> De respuesta automática (opcional)</string>
+    <string name="otc_text_advertiseLeaveWords"> comentario de anuncio (no requerido)</string>
+    <string name="otc_confirm_giveupEdit"> ¿Estás seguro de abandonar esta edición?</string>
+    <string name="otc_market_price"> Precio de mercado (premium)</string>
+    <string name="otc_outPrice_percentMax"> El porcentaje del premium no debe exceder el 50.00%</string>
+    <string name="otc_payMoney_timeLimit"> El plazo de pago debe ser de 5 a 60 minutos. </string>
+    <string name="otc_mustWrite_tex"> Por favor, introduzca los campos requeridos </string>
+    <string name="otc_MustWrite"> Requerido </string>
+    <string name="otc_advertisePublish_success"> publicado con éxito </string>
+    <string name="otc_min_smallTotal"> El límite mínimo no puede ser mayor que la cantidad total </string>
+    <string name="otc_min_smallMaxLimit"> El límite mínimo no puede ser mayor o igual que el límite máximo </string>
+    <string name="otc_maxLimit_smallTotal"> El límite máximo no puede ser mayor que la cantidad total </string>
+    <string name="otc_MaxLimit_bigMinLimit"> El límite máximo no puede ser menor o igual que el límite mínimo </string>
+    <string name="otc_publish_advertise"> Publicar un anuncio </string>
+    <string name="otc_out_assetsAvalaible"> Saldo disponible de la cuenta de OTC </string>
+    <string name="otc_writeMin_amount"> ingrese la cantidad mínima </string>
+    <string name="otc_writeMax_amount"> ingrese la cantidad máxima </string>
+    <string name="otc_writeOther_minTransactionTimes"> Ingrese el número mínimo de transacciones de la otra parte. </string>
+    <string name="otc_getMoney_Method"> Método de cobro (se pueden seleccionar hasta 3 métodos de pago)</string>
+    <string name="otc_payMoney_Method"> Método de pago (se pueden seleccionar hasta 3 métodos de pago)</string>
+    <string name="otc_noSetGetMoney_Method"> El método de pago no está configurado. Complete la configuración y continúe. </string>
+    <string name="otc_text_remainingNum"> Cantidad restante </string>
+    <string name="otc_text_tradingLimits"> Límite de transacción </string>
+    <string name="otc_text_releaseing"> liberando </string>
+    <string name="otc_text_trading"> En la transacción </string>
+    <string name="otc_text_adLook"> Ver </string>
+    <string name="otc_choose_getMoneyMethod"> seleccione la forma de cobro </string>
+    <string name="otc_choose_payMoneyMethod"> seleccione un método de pago </string>
+    <string name="common_text_unlockSell"> Desbloquear venta </string>
+    <string name="common_text_limitAvailable"> Límite disponible </string>
+    <string name="market_text_unlockZone">Área de desbloqueo </string>
+    <string name="transaction_text_rechargeNoUnlocked"> La recarga no está desbloqueada </string>
+    <string name="transaction_text_saleableQuantity"> Cantidad que se puede vender </string>
+    <string name="transaction_text_modelSpecification"> Descripción del modo </string>
+    <string name="transaction_text_unlockSell"> Desbloqueo con un botón para vender </string>
+    <string name="transaction_text_unlockDeal"> Desbloquear con un botón para vender </string>
+    <string name="otc_asset_availableBalance"> Saldo disponible en la cuenta de moneda legal </string>
+    <string name="contract_share_label">Share</string>
+
+    <string name="leverage_asset">Leverage Asset</string>
+    <string name="leverage_total_balance">Leverage Account  Estimate Value</string>
+    <string name="leverage_borrow">Loan</string>
+    <string name="leverage_history_borrow">History Loan</string>
+    <string name="leverage_current_borrow">Current Loan</string>
+    <string name="leverage_borrowRecord">Loan Record</string>
+    <string name="leverage_text_blowingUp">Liquidation Price</string>
+    <string name="leverage_risk">Risk Rate</string>
+    <string name="asset_give_back">Return</string>
+    <string name="leverage_coinMap">Pair</string>
+    <string name="asset_lever_current_application">Current Application</string>
+    <string name="leverage_borrowRecord_detail">Loan Detail</string>
+    <string name="leverage_interest">Interest</string>
+    <string name="leverage_principal">Principal</string>
+    <string name="otc_tip_withdrawLimitTime">For security purposes, the assets will be locked and only available for withdrawal, Fiat sale and related functions after 24 hours but trading shall not be affected.</string>
+
+    <string name="asset_lever_history">History</string>
+    <string name="leverage_have_borrowed">Already Loaned</string>
+    <string name="trade_title">交易</string>
+    <string name="leverage_rate">Interest Rate</string>
+    <string name="leverage_noreturn_amount">Unpaid Quantity</string>
+    <string name="leverage_noreturn_interest">Unpaid Interest</string>
+    <string name="return_the_number">Return</string>
+    <string name="asste_part_return">部分归还</string>
+    <string name="leverage_all_return">All returned</string>
+    <string name="asset_wear_storehouse">Already over loss</string>
+    <string name="leverage_to_coin">Leverage to Exchange</string>
+    <string name="coin_to_leverage">Exchange to Leverage</string>
+    <string name="leverage_roll_out">Transfer Out</string>
+    <string name="asset_return_the_borrowing">归还借贷</string>
+    <string name="asset_return_the_interest">归还利息</string>
+    <string name="apply_for_loan">申请借贷</string>
+    <string name="coin_text_horizontalDish">Horizontal Version</string>
+    <string name="coin_text_verticalDish">Vertical Version</string>
+    <string name="leverage_risk_prompt">When the risk rate reaches 110%, the system will force recycle all your loan asset</string>
+    <string name="coin_text_coin">Exchange</string>
+    <string name="leverage_text_leverage">Leverage</string>
+    <string name="coin_text_recharge">Deposit</string>
+    <string name="leverage_return">Return</string>
+
+    <string name="leverage_text_canborrow">Can loan</string>
+    <string name="common_text_allDay">All (last 180days)</string>
+    <string name="leverage_text_noLess">Loan amount can not be lower than%1$s%2$s</string>
+    <string name="leverage_blowUp_end">Liquidation finished</string>
+    <string name="leverage_wearStore_end">Over Loss finished</string>
+    <string name="leverage_text_lessThanCanuse">Loan amount can not be larger than Maximum amount</string>
+    <string name="leverage_notEnught_prompt">Your%sleverage account balance was insufficient, you need transfer in funds to loan</string>
+    <string name="leverage_short">%s used for short</string>
+    <string name="leverage_more">%s used for long</string>
+    <string name="leverage_totalBorrow_amount">Total Loan Quantity</string>
+    <string name="leverage_returnCoin">Return Currency</string>
+    <string name="leverage_shouldReturn_amount">Should Return Quantity</string>
+    <string name="leverage_text_biggestLimit">Maximum amount</string>
+    <string name="b2c_text_editWithdrawAccount">编辑提现账户</string>
+    <string name="real_amount_title">到账金额</string>
+
+
+    <!--  B2C  -->
+    <string name="assets_text_otc_forotc">场外账户</string>
+    <string name="filter_fold_currencyType_forotc">场外类型</string>
+    <string name="home_text_otcTotal_forotc">场外账户资产估值</string>
+    <string name="mainTab_text_otc_forotc">场外</string>
+    <string name="otc_text_desc_forotc">场外交易</string>
+    <string name="otc_text_pwd_forotc">场外资金密码</string>
+    <string name="otc_tip_buyerOrderComplete_forotc">交易已完成，订单金额币种已存入您的场外账户</string>
+    <string name="otc_tip_lessCoin_forotc">出售需将币从币币账户划转至场外账户</string>
+    <string name="otc_tip_remindBuyerWaitConfirm_forotc">待对方确认收款并放币后，您将在场外账户收到对应金额的币种</string>
+    <string name="otc_tip_sellerOrderComplete_forotc">交易已完成，订单金额币种已从您的场外账户扣除</string>
+    <string name="otcSafeAlert_text_otcBuyDesc_forotc">进行场外购买，您需要完成以下设置</string>
+    <string name="otcSafeAlert_text_settingDesc_forotc">为保证您的资金安全，请完成以下场外交易配置</string>
+    <string name="otcSafeAlert_text_title_forotc">在进行场外交易配置之前，您需要完成以下设置</string>
+    <string name="safety_text_editOtcPassword_forotc">修改场外资金密码</string>
+    <string name="transfer_action_exToOtc_forotc">币币至场外</string>
+    <string name="transfer_action_otcToEx_forotc">场外至币币</string>
+    <string name="otc_asset_availableBalance_forotc">场外账户可用余额</string>
+    <string name="b2c_text_announcements">注意事项</string>
+    <string name="b2c_text_transferRemark">转账备注</string>
+    <string name="b2c_text_rechargeAmount">充值金额</string>
+    <string name="b2c_text_inputRechargeAmount">请输入充值金额</string>
+    <string name="b2c_Arrive_Time">到账金额</string>
+    <string name="b2c_Application_Amount">申请数量</string>
+    <string name="b2c_Recharge_Time">充值时间</string>
+    <string name="b2c_Withdrawal_Time">提现时间</string>
+    <string name="b2c_Deal_Time">处理时间</string>
+    <string name="b2c_text_bankNo">银行账号</string>
+    <string name="b2c_text_singleNoLessthan">单笔充值不得小于%s</string>
+    <string name="b2c_Transfer_Vouchers">转账凭证</string>
+    <string name="b2c_text_rechargeSuccess">充值成功，等待审核</string>
+    <string name="b2c_text_addTransferCredentials">请添加转账凭证</string>
+    <string name="b2c_text_rechargeNum">充币数量</string>
+    <string name="b2c_text_withdraw">提现</string>
+    <string name="b2c_text_choosWithdrawAccount">请选择提现账户</string>
+    <string name="b2c_text_withdrawAmount">提现金额</string>
+    <string name="b2c_text_inputWithdrawAmount">请输入提现金额</string>
+    <string name="b2c_text_transferPrompt">通过线下完成转账后，支付渠道会返回转账凭证给您，请在这里填写，方便工作人员更快确认您的充值。</string>
+    <string name="b2c_text_withdrawSuccess">提现成功，等待审核</string>
+    <string name="b2c_text_transferNote">线下转账时填入该文案作为备注，可以方便工作人员更快确认您的充值。</string>
+    <string name="b2c_text_editSuccess">编辑成功</string>
+    <string name="b2c_text_fiatCoin">法币币种</string>
+    <string name="b2c_text_edit">编辑</string>
+    <string name="b2c_text_inputBankNo">请输入银行账号</string>
+    <string name="b2c_text_deleteSuccess">删除成功</string>
+    <string name="common_text_allBlance">总账户资产折合</string>
+    <string name="b2c_text_rechargeNote">确定您已通过您本人实名的账户向平台充值账户完成如下金额的转账？</string>
+    <string name="b2c_text_rechargeConfirm">充值确认</string>
+    <string name="b2c_text_confirmRecharge">确认已转账</string>
+    <string name="b2c_text_withdrawNum">提币数量</string>
+
+    <string name="otc_string_goActivate">Setting</string>
+    <string name="otc_string_buyerOnlyCan">Buyers only accept payment via&#160;</string>
+    <string name="otc_string_youNeedDo">.Please choose and add payment method and activate it.</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="noun_date_year">year</string>
+    <string name="transfer_text_deduction">Deduction</string>
+    <string name="transfer_text_gradeRate">Class/Rate</string>
+    <string name="transfer_text_entrustDetails">Commission Details</string>
+    <string name="withdraw_b2c">提现</string>
+    <string name="b2c_text_singleWithdrawMin">单笔最小提现金额: %s</string>
+    <string name="b2c_text_singleWithdrawMax">单笔最大提现限额：%s</string>
+    <string name="b2c_text_todaywithdraw">今日可提现金额: %s</string>
+    <string name="b2c_recharge_min">单笔充值不得小于%s</string>
+    <string name="b2c_text_withdrawAccountList">提现账户列表</string>
+    <string name="b2c_text_withdrawRecord">提现记录</string>
+    <string name="b2c_text_bank">开户行</string>
+    <string name="b2c_text_addWithdrawAccount">添加提现账户</string>
+    <string name="edit_title">修改</string>
+    <string name="b2c_text_rechargeAccount">充值帐户</string>
+    <string name="link_name">Chain name</string>
+    <string name="etf_text_networth">Net Value</string>
+    <string name="etf_text_seeAnnouncement">See more details</string>
+    <string name="etf_text_etfPrompt">1. \'3L\' means that the price of the underlying transaction pair has increased by 1%, and the net value of the product has increased by 3% \n 2.\'3S\' means that the price of the underlying transaction pair fell by 1%, and the net value of the product rose by 3% \n 3. The net value is normally adjusted at 0 o\'clock every day, and the extreme market will be adjusted in the intraday. \n 4. Every leverage will charge the corresponding management fee on a daily basis \n 5. Users shall pay attention to the net value of the product before trading. There is a risk that the price will approach zero in extreme conditions.Please watch out the risk in investment.</string>
+    <string name="etf_text_networthPrompt">Net Value For Long = Net value at the last adjustment point * [1+ 3 * (Latest spot transaction price-spot last adjustment point price) / spot last adjustment point price * 100%]；\n\n Net Value For Short = Net value at the last adjustment point * [1- 3 * (Latest spot transaction price-spot last adjustment point price) / spot last adjustment point price * 100%]；</string>
+    <string name="etf_text_knowRisk">It is necessary to agree with</string>
+    <string name="etf_text_disclaimer">Disclaimer</string>
+    <string name="etf_text_disclaimerDetail1">Dear users：\n Thanks for login and use the leverage ETF products and relevant services (hereinafter “Leveraged ETF”) provided by %@ Exchange. Please read the instruction of Leveraged ETF and the following risk tips carefully. If you continue to use the leveraged ETF after reading the content aforesaid, it will be deemed that you agree all the content of the disclaimer, and you are fully aware of the risks of leveraged ETF and are able to bear the losses caused by it.\n</string>
+    <string name="etf_text_disclaimerDetail2">Please click to read the instruction of leveraged ETF:</string>
+    <string name="etf_text_disclaimerDetail3">Risk tips:\n 1.Your purchase/selling price shall not derivate too much from the net value, otherwise you will encounter relevant losses.\n 2.If you put the order in the opposite direction, there is a risk that the price will approach zero in extreme conditions.\n Exchange hereby remind you that any losses incurred by the risks mentioned above shall be borne by yourself. This disclaimer, together with other agreements, statements, rules, etc. on Exchange, constitutes the entire agreement that users shall be agreed before using the services and products of Exchange.</string>
+    <string name="etf_text_faq">《FAQ for Leveraged ETF》</string>
+    <string name="common_text_halveZone">Halving</string>
+    <string name="ws_close">ws is disconnected, please reselect the coin pair</string>
+    <string name="contract_deposit_rate">return rate</string>
+    <string name="common_share_losePrompt">Sorry</string>
+    <string name="common_share_winPrompt">Make a profit！</string>
+    <string name="common_share_scanCode">Download</string>
+    <string name="common_share_confirm">Confirm sharing</string>
+    <string name="common_share_detail">Crypto currency</string>
+    <string name="common_share_losePrompt5"> I don\' t care!</string>
+    <string name="common_share_losePrompt10"> It’s just a game!</string>
+    <string name="common_share_losePrompt20">I\'ll be back!</string>
+    <string name="common_share_losePrompt50">Oh God !</string>
+    <string name="common_share_losePrompt100">Money will come and go!</string>
+    <string name="common_share_winPrompt5">You win!</string>
+    <string name="common_share_winPrompt10">Good luck!</string>
+    <string name="common_share_winPrompt20"> It’s easy!</string>
+    <string name="common_share_winPrompt50">God can\'t stop me</string>
+    <string name="common_share_winPrompt100">winner winner chicken dinner</string>
+
+    <string name="common_text_cancelkyc">Rejected empower</string>
+    <string name="upload_image_limit">支持小于8M的JPG、JPEG或PNG格式图片。</string>
+    <string name="transaction_text_dealTime">Date</string>
+    <string name="transaction_text_dealPrice">Price</string>
+    <string name="transaction_text_dealNum">Executed</string>
+    <string name="common_has_known">I have read and understand the above terms</string>
+    <string name="common_start_trade">Start trading</string>
+    <string name="lever_need_read">杠杆交易开始前需要阅读并同意</string>
+    <string name="lever_trade_agreement">Leveraged Trading Agreement</string>
+    <string name="the_latest_version">It is the latest version</string>
+    <string name="network_is_exception">Network is error, please check the network</string>
+    <string name="Server_error_please_try_again_later">Server error, please try again later</string>
+    <string name="network_connection_is_out_of_time">Network connection is out of time. Please try again later</string>
+    <string name="Unauthorized_permissions_some_functions_can_not_be_used">Unauthorized permissions, some functions can not be used</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="red_package_getting">领取中</string>
+    <string name="b2c_text_changecoin">Select currency</string>
+    <string name="submit_review">Submit</string>
+    <string name="b2c_text_rechargeRecord">Recharge Record</string>
+    <string name="kline_text_changeValue">Change</string>
+    <string name="kline_text_changeRate">Change</string>
+    <string name="common_text_verifyInfoTitle">Please complete the following information to ensure that it is operated by yourself:</string>
+    <string name="common_text_realidVerifyTitle">ID number (hint: %s)</string>
+    <string name="common_text_realnameVerifyTitle">Real-name(hint: %s)</string>
+    <string name="common_text_realnameVerifyPlaceholder">Enter your name, up to 50 characters.</string>
+    <string name="common_text_realidVerifyPlaceholder">Enter your ID number, up to 35 characters</string>
+    <string name="common_text_verifySuccessTitle">Authentication passed!</string>
+    <string name="common_text_verifyAuthFailTitle">Authentication failed!</string>
+    <string name="common_text_verifyAuthFailMsg">The system will freeze the withdrawal transaction for 24 hours!</string>
+    <string name="common_text_verifyAuthTimerMsg">Exit automatically in %s second(s)</string>
+    <string name="common_text_verifyAuthTryTimeDesc">%s chance left! If you make 3 consecutive input errors, cash withdrawal will be frozen for 24 hours!</string>
+    <string name="common_text_verifyAuthNameError">Wrong input name</string>
+    <string name="common_text_verifyAuthIdNumberError">Wrong ID number</string>
+    <string name="common_text_confirmDelete">Seguro que quieres eliminarlo?</string>
+    <string name="contract_fee_share">手续费分成</string>
+    <string name="common_text_stillBindPhone">Still bind to the phone number.</string>
+    <string name="common_text_bindPhonePrompt">"Due to the unstable network of the operator, SMS reception in your current region may be delayed, so we recommend you to use Google authentication.</string>
+    <string name="base_error_prompt5">The HTTPS certificate has expired and there is a security risk. Do you need to continue to access it?</string>
+
+
+    <string name="game_thirdAuthorLogin">Third-party authorized login</string>
+    <string name="game_applyInfo">Application Information</string>
+    <string name="game_applyDetail">Apply for your account information for game login （Account, nickname, avatar, etc.）</string>
+    <string name="game_refuse">Refuse</string>
+    <string name="game_authorLogin">Authorized login</string>
+    <string name="common_kyc_chargeAndwithdraw">KYC verification is required before any deposit or withdrawal. Please submit your KYC.</string>
+    <string name="common_kyc_trading">KYC verification is required before trading. Please submit your KYC.</string>
+    <string name="contract_text_mybeCost">Estimated cost</string>
+    <string name="contract_project_replay">预计回报率</string>
+    <string name="contract_project_profit">预计盈利</string>
+    <string name="contract_sting_newPriceMessage">When the latest price reaches %s, the commission shall be conducted at the market price.</string>
+    <string name="contract_sting_moreLossMessage">Trigger price and executive price of stop-loss order: must be higher than the forced liquidation price and less than the latest price.</string>
+    <string name="contract_sting_moreProfitMessage">Trigger price and executive price of take-profit order: must be higher than the latest price.</string>
+    <string name="contract_sting_lessLossMessage">Trigger price and executive price of stop-loss order: must be less than the forced liquidation price and higher than the latest price.</string>
+    <string name="contract_sting_lessProfitMessage">Trigger price and executive price of take-profit order: must be less than the latest price.</string>
+    <string name="contract_sting_moreProfitWaring">Trigger price or executive price below warning price %s may result in stop-loss failure. Do you want to continue?</string>
+    <string name="contract_sting_lessLossWaring">Trigger price or executive price above warning price %s may result in stop-loss failure. Do you want to continue?</string>
+    <string name="contract_action_continueSubmit">Continue to submit</string>
+    <string name="contract_leavgerLimit">Cancel order or close position to modify lever</string>
+    <string name="common_text_entrustListLimit">All the transaction data of coin pairs only support the display of data in the past 180 days. Please filter a single coin pair to view all orders.</string>
+    <string name="contract_swap_gift">Bonus</string>
+    <string name="contract_tips_noExperience">Bonus is not include</string>
+    <string name="contract_tips_experienceGold">The trading bonus cannot be withdrawn directly, but the profitable part could.The trading bonus can be used for opening positions, paying trading fees, funding fee and the settlement for closing positions.
+The trading bonus will be deducted at the end for paying fee or position loss</string>
+    <string name="contract_bonus_Issue">Bonus Issue</string>
+    <string name="contract_bonus_recycle">Bonus Recycle</string>
+    <string name="customSetting_action_host">host</string>
+    <string name="customSetting_action_changeHost">change Host</string>
+    <string name="customSetting_action_testing">testing</string>
+    <string name="customSetting_action_response">response</string>
+    <string name="customSetting_action_unusable">disabled</string>
+</resources>
+
+
+
+

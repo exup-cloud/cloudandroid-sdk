@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_new_select_style">
+
+    <TextView
+        android:id="@+id/tv_first_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12"
+        tools:text="first" />
+
+    <TextView
+        android:id="@+id/tv_parent_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/sp_14"
+        android:visibility="gone"
+        tools:text="inParent" />
+
+    <TextView
+        android:id="@+id/tv_second_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_first_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        tools:text="0.028835" />
+
+    <TextView
+        android:id="@+id/tv_third_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_second_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:textColor="@color/main_green"
+        android:textSize="@dimen/sp_14"
+        android:textStyle="bold"
+        tools:text="+21.38" />
+
+    <ImageView
+        android:id="@+id/cut_view"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/quotes_selected" />
+
+</RelativeLayout>

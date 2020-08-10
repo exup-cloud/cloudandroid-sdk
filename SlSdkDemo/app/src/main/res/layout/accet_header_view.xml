@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/bg_card_color"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_loan_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                style="@style/assets_page_img_style"
+                android:src="@drawable/assets_loan" />
+
+            <TextView
+                android:id="@+id/tv_leverage_borrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/leverage_borrow"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_top_up_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                style="@style/assets_page_img_style"
+                android:src="@drawable/assets_withdraw" />
+
+            <TextView
+                android:id="@+id/tv_assets_action_chargeCoin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/assets_action_chargeCoin"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_otc_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                style="@style/assets_page_img_style"
+                android:src="@drawable/assets_deposit" />
+
+            <TextView
+                android:id="@+id/tv_assets_action_withdraw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/assets_action_withdraw"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_payment_methods_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                style="@style/assets_page_img_style"
+                android:src="@drawable/assets_paymentmethod" />
+
+            <TextView
+                android:id="@+id/tv_noun_order_paymentTerm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/noun_order_paymentTerm"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_transfer_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                style="@style/assets_page_img_style"
+                android:src="@drawable/assets_transfer" />
+
+            <TextView
+                android:id="@+id/tv_assets_action_transfer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/assets_action_transfer"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/ll_red_envelope_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                style="@style/assets_page_img_style"
+                android:src="@drawable/assets_redenvelope" />
+
+            <TextView
+                android:id="@+id/tv_redpacket_redpacket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/redpacket_redpacket"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_funds_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                style="@style/assets_page_img_style"
+                android:src="@drawable/assets_capitalflow" />
+
+            <TextView
+                android:id="@+id/tv_assets_action_journalaccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/assets_action_journalaccount"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_contract_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                style="@style/assets_page_img_style"
+                android:src="@drawable/assets_capitalflow" />
+
+            <TextView
+                android:id="@+id/tv_assets_action_contractNote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/assets_action_contractNote"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
+
+        <!--合约体验金-->
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/ll_contract_coupon_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    style="@style/assets_page_img_style"
+                    android:src="@drawable/sl_contract_swap_gift" />
+
+                <TextView
+                    android:id="@+id/tv_contract_coupon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contract_swap_gift"
+                    android:textColor="@color/normal_text_color"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="9sp"
+                android:textColor="@color/white"
+                android:background="@drawable/sl_tag_blue_fill"
+                android:layout_gravity="center_horizontal"
+                android:text="NEW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_top_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_half"
+        android:background="@color/line_color"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/ll_contract_content_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_card_color"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/ll_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_withdraw_text_available"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_15"
+                android:text="@string/withdraw_text_available"
+                android:textColor="@color/normal_text_color"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_contract_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="11dp"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/sp_14" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_15"
+            android:gravity="right"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_contract_text_positionMargin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_15"
+                android:text="@string/contract_text_positionMargin"
+                android:textColor="@color/normal_text_color"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_contract_position_margin_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="11dp"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/sp_14" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_balance"
+            android:gravity="left"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_contract_text_orderMargin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_15"
+                android:text="@string/contract_text_orderMargin"
+                android:textColor="@color/normal_text_color"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_contract_order_margin_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="11dp"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/sp_14" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_10"
+        android:background="@color/bg_color" />
+
+    <RelativeLayout
+        android:id="@+id/rl_search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:background="@color/bg_card_color"
+        android:visibility="visible">
+
+        <CheckBox
+            android:id="@+id/fragment_my_asset_order_hide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_15"
+            android:button="@drawable/new_hide_small_symbol"
+            android:checked="false"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:text="@string/assets_action_privacy"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_toLeftOf="@+id/fragment_my_asset_order_hide"
+            android:background="@color/bg_card_color"
+            android:drawableLeft="@drawable/search"
+            android:drawablePadding="@dimen/dp_10"
+            android:focusable="true"
+            android:hint="@string/assets_action_search"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_color"
+            android:textSize="@dimen/sp_12"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_half"
+        android:background="@color/line_color" />
+
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/v_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_card_color"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_cancel"
+            style="@style/NewVersionCancelImage" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/NewVersionTitle"
+            android:layout_below="@+id/iv_cancel"
+            android:layout_marginTop="@dimen/dp_44"
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:ellipsize="end"
+            />
+
+        <TextView
+            android:id="@+id/tv_send_verification_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="@string/login_tip_didSendCode"
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/sp_14" />
+
+        <!--验证码-->
+        <com.yjkj.chainup.new_version.view.ComVerifyView
+            android:id="@+id/cet_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_send_verification_code"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_50"
+            android:layout_marginRight="@dimen/dp_30" />
+
+
+        <com.yjkj.chainup.new_version.view.CommonlyUsedButton
+            android:id="@+id/cubtn_view"
+            style="@style/NewVersionCommonlyUsedButtonStyle"
+            android:layout_below="@+id/cet_view"
+            app:bgColor="@color/main_blue"
+            app:bottonTextContent="@string/common_action_next" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

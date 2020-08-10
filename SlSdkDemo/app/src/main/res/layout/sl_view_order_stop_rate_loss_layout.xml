@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp">
+
+        <LinearLayout
+            android:id="@+id/ll_tab_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cb_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/sl_trade_check_selector"
+                android:enabled="false" />
+
+            <TextView
+                android:id="@+id/tv_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/cb_not_remind"
+                android:text="@string/sl_str_stop_rate"
+                android:textColor="@color/text_color"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        <!--最新价  合理价价  指数价-->
+        <RadioGroup
+            android:id="@+id/rg_trigger_type"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <com.yjkj.chainup.contract.material.MaterialRadioButton
+                android:id="@+id/tab_latest_price"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:button="@null"
+                android:ellipsize="end"
+                android:focusable="false"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/sl_str_latest_price_simple"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="12sp" />
+
+            <com.yjkj.chainup.contract.material.MaterialRadioButton
+                android:id="@+id/tab_fair_price"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/sl_position_background_selector"
+                android:button="@null"
+                android:ellipsize="end"
+                android:focusable="false"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/sl_str_fair_price_simple"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="12sp" />
+
+            <com.yjkj.chainup.contract.material.MaterialRadioButton
+                android:id="@+id/tab_index_price"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/sl_position_background_selector"
+                android:button="@null"
+                android:ellipsize="end"
+                android:focusable="false"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/sl_str_index_price_simple"
+                android:textColor="@drawable/sl_maintab_text_selector"
+                android:textSize="12sp" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/trigger_price_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sl_str_trigger_price"
+        android:textColor="@color/text_color"
+        android:textSize="14sp" />
+
+    <!--触发价格-->
+    <LinearLayout
+        android:id="@+id/ll_trigger_price_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_36"
+        android:layout_marginTop="@dimen/dp_5"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_trigger_price"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/sl_str_trigger_price"
+            android:inputType="numberDecimal"
+            android:maxLength="9"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_color"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_trigger_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="USDT"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_half"
+        android:layout_marginTop="@dimen/dp_6"
+        android:background="@color/line_color" />
+
+    <LinearLayout
+        android:id="@+id/ll_hide_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/execution_price_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sl_str_execution_price"
+            android:textColor="@color/text_color"
+            android:textSize="14sp"
+            android:layout_marginBottom="@dimen/dp_8"/>
+
+        <!--执行价格-->
+        <LinearLayout
+            android:id="@+id/ll_execution_price_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_36"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_execution_price"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/sl_str_market_price"
+                android:inputType="numberDecimal"
+                android:maxLength="9"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/sp_14" />
+
+            <com.coorchice.library.SuperTextView
+                android:visibility="gone"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/tv_market_price_hint"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_14"
+                android:text="@string/sl_str_market_price" />
+
+            <TextView
+                android:id="@+id/tv_execution_symbol"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="USDT"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_14"
+                android:gravity="center"/>
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_weight="0"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <View
+                    android:id="@+id/view_execution_line"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/line_color"
+                    android:layout_width="1dp"
+                    android:layout_height="14dp"/>
+
+                <TextView
+                    android:id="@+id/tv_market_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/main_blue"
+                    android:gravity="center"
+                    android:textSize="@dimen/sp_14"
+                    android:text="@string/contract_action_marketPrice" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_half"
+            android:layout_marginTop="@dimen/dp_6"
+            android:background="@color/line_color" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_price_remind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_4"
+                android:textColor="@color/warn_yellow"
+                android:visibility="gone"
+                android:text="@string/contract_sting_newPriceMessage"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_marginBottom="@dimen/dp_8"/>
+
+            <TextView
+                android:id="@+id/tv_price_warn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_4"
+                android:textColor="@color/main_red"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_marginBottom="@dimen/dp_8"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_expect_replay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/cb_not_remind"
+                android:text="@string/contract_project_replay"
+                android:textColor="@color/normal_text_color"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/tv_expect_profit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/cb_not_remind"
+                android:text="@string/contract_project_profit"
+                android:textColor="@color/normal_text_color"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

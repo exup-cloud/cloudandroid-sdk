@@ -1,0 +1,11 @@
+订单状态(status)说明：
+
+INIT(0,"初始订单，未成交未进入盘口"),
+NEW_(1,"新订单，未成交进入盘口"),
+FILLED(2,"完全成交"),
+PART_FILLED(3,"部分成交"),
+CANCELED(4,"已撤单"),
+PENDING_CANCEL(5,"待撤单"),
+EXPIRED(6,"异常订单");
+
+PART_FILLED_CANCELED(7,"部分成交已撤销,vue版本前端展示使用,数据库没有此状态");

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_card_color"
+    android:fitsSystemWindows="true"
+    tools:context="com.yjkj.chainup.new_version.activity.personalCenter.AboutActivity">
+
+    <com.yjkj.chainup.new_version.view.PersonalCenterView
+        android:id="@+id/v_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:personalTitle="@string/personal_text_aboutus" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v_title"
+        />
+
+
+    <com.yjkj.chainup.new_version.view.CommonlyUsedButton
+        android:id="@+id/cub_submit"
+        style="@style/PersonalButton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        app:bottonTextContent="@string/personal_action_checkUpdate" />
+
+</RelativeLayout>

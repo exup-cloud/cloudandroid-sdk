@@ -1,0 +1,53 @@
+{
+  "code": "0",
+  "msg": "成功",
+  "data": {
+    "messageType": 0,
+    "typeList": [
+      {
+        "title": "全部消息",
+        "tid": 0
+      },
+      {
+        "title": "系统消息",
+        "tid": 1
+      },
+      {
+        "title": "充值提现",
+        "tid": 2
+      },
+      {
+        "title": "安全消息",
+        "tid": 3
+      },
+      {
+        "title": "认证消息",
+        "tid": 4
+      },
+      {
+        "title": "场外消息",
+        "tid": 7
+      }
+    ],
+    "count": 2,
+    "pageSize": 5,
+    "userMessageList": [
+      {
+        "id": 14919,
+        "receiveUid": 10609,
+        "messageType": 3,
+        "messageContent": "您绑定的Email为：wangcheeng@163.com",
+        "status": 1,
+        "ctime": 1528942670000
+      },
+      {
+        "id": 14811,
+        "receiveUid": 10609,
+        "messageType": 1,
+        "messageContent": "test",
+        "status": 1,
+        "ctime": 1527908620000
+      }
+    ]
+  }
+}

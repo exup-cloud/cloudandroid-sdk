@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_history_contract_title"
+            style="@style/ScreeningPopup"
+            android:layout_marginTop="@dimen/dp_18"
+            android:text="@string/contract_text_hideCancelOrder"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+
+        <Switch
+            android:id="@+id/switch_visible_history_contract"
+            android:layout_width="@dimen/dp_35"
+            android:layout_height="@dimen/dp_18"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_15"
+            android:background="@drawable/shut_down"
+            android:checked="false"
+            android:thumb="@drawable/icon_switch_default"
+            android:track="@drawable/icon_switch_default"  />
+    </RelativeLayout>
+
+    <!--交易对-->
+    <TextView
+        android:id="@+id/tv_title_history_contract"
+        style="@style/ScreeningPopup"
+        android:layout_marginTop="@dimen/dp_23"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12"
+        tools:text="合约系列/合约期限" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_15">
+
+        <com.yjkj.chainup.new_version.view.CustomizeEditText
+            android:id="@+id/et_currency_history_contract"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_35"
+            android:layout_marginLeft="@dimen/dp_18"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/contract_tip_seiresInput"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_color"
+            android:textSize="@dimen/sp_12" />
+
+        <View
+            android:id="@+id/v_history_contract_line"
+            android:layout_width="150dp"
+            android:layout_height="@dimen/dp_half"
+            android:layout_below="@+id/et_currency_history_contract"
+            android:layout_marginLeft="@dimen/dp_18"
+            android:layout_marginTop="@dimen/dp_5"
+            android:background="@color/new_edit_line_color" />
+
+        <TextView
+            android:id="@+id/tv_line_history_contract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_18"
+            android:layout_marginRight="@dimen/dp_18"
+            android:layout_toRightOf="@+id/et_currency_history_contract"
+            android:text="/"
+            android:textColor="@color/highlight_icon_color"
+            android:textSize="@dimen/sp_20" />
+
+        <com.yjkj.chainup.new_version.view.PwdSettingView
+            android:id="@+id/pet_select_coin_history_contract"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_toRightOf="@+id/tv_line_history_contract"
+            app:icon_res2="@drawable/dropdown"
+            app:isEditable="false"
+            app:isPwdShow="false"
+            app:textContent=""
+            app:textContentSize="@dimen/sp_14" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_sustainable_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pet_select_coin_history_contract"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_15"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <com.yjkj.chainup.new_version.view.LabelRadioButton
+                android:id="@+id/rb_sustainable_history_contract"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_35"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="-5dp"
+                android:singleLine="true"
+                android:text="@string/contract_text_perpetual"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/sp_14"
+                app:label_backgroundColor="@color/main_blue"
+                app:label_distance="0dp"
+                app:label_height="16dp"
+                app:label_orientation="RIGHT_TOP"
+                app:label_strokeColor="@color/main_blue"
+                app:label_text=""
+                app:label_textSize="10sp"
+                app:label_textStyle="BOLD_ITALIC"
+                app:label_visual="true" />
+
+            <com.yjkj.chainup.new_version.view.LabelRadioButton
+                android:id="@+id/rb_week_history_contract"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_35"
+                android:layout_marginLeft="@dimen/dp_23"
+                android:layout_marginRight="@dimen/dp_23"
+                android:layout_weight="1"
+                android:background="@color/tabbar_color"
+                android:button="@null"
+                android:checked="true"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="-5dp"
+                android:singleLine="true"
+                android:text="@string/contract_text_currentWeek"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_14"
+                app:label_backgroundColor="@color/main_blue"
+                app:label_distance="0dp"
+                app:label_height="16dp"
+                app:label_orientation="RIGHT_TOP"
+                app:label_strokeColor="@color/main_blue"
+                app:label_text=""
+                app:label_textSize="10sp"
+                app:label_textStyle="BOLD_ITALIC"
+                app:label_visual="false" />
+
+            <com.yjkj.chainup.new_version.view.LabelRadioButton
+                android:id="@+id/rb_once_week_history_contract"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_35"
+                android:layout_weight="1"
+                android:background="@color/tabbar_color"
+                android:button="@null"
+                android:checked="true"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="-5dp"
+                android:singleLine="true"
+                android:text="@string/contract_text_nextWeek"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_14"
+                app:label_backgroundColor="@color/main_blue"
+                app:label_distance="0dp"
+                app:label_height="16dp"
+                app:label_orientation="RIGHT_TOP"
+                app:label_strokeColor="@color/main_blue"
+                app:label_text=""
+                app:label_textSize="10sp"
+                app:label_textStyle="BOLD_ITALIC"
+                app:label_visual="false" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <!--委托方向-->
+    <TextView
+        android:id="@+id/tv_title_history_contract_type"
+        style="@style/ScreeningPopup"
+        android:layout_marginTop="@dimen/dp_15"
+        android:text="@string/filter_fold_contractOrderType"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:orientation="horizontal">
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_all_history_contract"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="-5dp"
+            android:singleLine="true"
+            android:text="@string/common_action_sendall"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="true" />
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_buy_history_contract"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:layout_marginLeft="@dimen/dp_23"
+            android:layout_marginRight="@dimen/dp_23"
+            android:layout_weight="1"
+            android:background="@color/tabbar_color"
+            android:button="@null"
+            android:checked="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="-5dp"
+            android:singleLine="true"
+            android:text="@string/contract_text_long"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_sell_history_contract"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:layout_weight="1"
+            android:background="@color/tabbar_color"
+            android:button="@null"
+            android:checked="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="-5dp"
+            android:singleLine="true"
+            android:text="@string/contract_text_short"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+
+    </LinearLayout>
+
+    <!--方向仓位-->
+    <TextView
+        android:id="@+id/tv_title_direction_of_position"
+        style="@style/ScreeningPopup"
+        android:layout_marginTop="@dimen/dp_30"
+        android:text="仓位方向"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_position_direction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:orientation="horizontal"
+        >
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_price_all_direction_of_position"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="-5dp"
+            android:singleLine="true"
+            android:text="@string/common_action_sendall"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="true" />
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_long_position_history_contract"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:layout_marginLeft="@dimen/dp_23"
+            android:layout_marginRight="@dimen/dp_23"
+            android:layout_weight="1"
+            android:background="@color/tabbar_color"
+            android:button="@null"
+            android:checked="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="-5dp"
+            android:singleLine="true"
+            android:text="多仓"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_market_short_positions_history_contract"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:layout_weight="1"
+            android:background="@color/tabbar_color"
+            android:button="@null"
+            android:checked="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="-5dp"
+            android:singleLine="true"
+            android:text="空仓"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+    </LinearLayout>
+
+    <!--价格类型-->
+    <TextView
+        android:id="@+id/tv_title_price_type_history_contract"
+        style="@style/ScreeningPopup"
+        android:layout_marginTop="@dimen/dp_30"
+        android:text="@string/contract_text_type"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:orientation="horizontal">
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_price_all_history_contract"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="-5dp"
+            android:singleLine="true"
+            android:text="@string/common_action_sendall"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="true" />
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_price_history_contract"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:layout_marginLeft="@dimen/dp_23"
+            android:layout_marginRight="@dimen/dp_23"
+            android:layout_weight="1"
+            android:background="@color/tabbar_color"
+            android:button="@null"
+            android:checked="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="-5dp"
+            android:singleLine="true"
+            android:text="@string/contract_action_limitPrice"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_market_price_history_contract"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:layout_weight="1"
+            android:background="@color/tabbar_color"
+            android:button="@null"
+            android:checked="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="-5dp"
+            android:singleLine="true"
+            android:text="@string/contract_action_marketPrice"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+    </LinearLayout>
+
+    <!--日期-->
+    <TextView
+        android:id="@+id/tv_title_data_history_contract"
+        style="@style/ScreeningPopup"
+        android:layout_marginTop="@dimen/dp_30"
+        android:text="@string/charge_text_date"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12" />
+
+    <!--日期-->
+    <com.yjkj.chainup.new_version.view.SelectDateView
+        android:id="@+id/sdv_history_history_contract"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

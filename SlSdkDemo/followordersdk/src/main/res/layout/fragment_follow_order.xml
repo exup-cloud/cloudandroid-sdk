@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="26dp"
+            android:drawableLeft="?attr/fo_menu_left_drawable"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="@string/fo_action_filter"
+            android:textColor="?attr/fo_menu_button_color"
+            android:textSize="15sp" />
+
+        <com.follow.order.widget.tab.SlidingScaleTabLayout
+            android:id="@+id/follow_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_toLeftOf="@id/tv_menu"
+            android:background="@color/fo_transparent"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:textAlignment="center"
+            app:tl_indicator_color="@color/fo_tab_indicator_color"
+            app:tl_indicator_corner_radius="1dp"
+            app:tl_indicator_gravity="BOTTOM"
+            app:tl_indicator_height="3dp"
+            app:tl_indicator_margin_bottom="5dp"
+            app:tl_indicator_margin_top="5dp"
+            app:tl_indicator_width="14dp"
+            app:tl_tab_padding="10dp"
+            app:tl_textBold="SELECT"
+            app:tl_textSelectColor="?attr/fo_tab_item_text_sel_color"
+            app:tl_textSelectSize="@dimen/fo_tab_text_nor"
+            app:tl_textUnSelectColor="?attr/fo_tab_item_text_nor_color"
+            app:tl_textUnSelectSize="@dimen/fo_tab_text_nor" />
+    </RelativeLayout>
+
+    <com.follow.order.widget.CustomViewPager
+        android:id="@+id/vp_follow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

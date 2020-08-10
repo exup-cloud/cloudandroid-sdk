@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_card_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_card_color"
+        android:orientation="vertical">
+
+        <com.yjkj.chainup.new_version.view.PersonalCenterView
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_color"
+            app:personalTitle="@string/otc_text_merchantHomePage"
+            app:rightTitle="@string/otc_action_addBlackList"
+            app:showRightTv="true" />
+
+        <include layout="@layout/item_person_info" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"
+            android:background="@color/bg_color" />
+
+        <RadioGroup
+            android:id="@+id/rg_buy_sell"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_32"
+            android:layout_marginTop="@dimen/dp_6"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/tv_coin_map">
+
+            <RadioButton
+                android:id="@+id/rb_buy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:drawablePadding="@dimen/dp_8"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_20"
+                android:singleLine="true"
+                android:text="@string/otc_action_merchantBuy"
+                android:textColor="@drawable/kline_index_text_selector"
+                android:textSize="@dimen/sp_16" />
+
+            <RadioButton
+                android:id="@+id/rb_sell"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawablePadding="@dimen/dp_8"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_20"
+                android:singleLine="true"
+                android:text="@string/otc_action_merchantSell"
+                android:textColor="@drawable/kline_index_text_selector"
+                android:textSize="@dimen/sp_16" />
+        </RadioGroup>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

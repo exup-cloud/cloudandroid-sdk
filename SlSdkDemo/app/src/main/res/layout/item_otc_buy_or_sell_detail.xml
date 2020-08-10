@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/tv_price"
+        style="@style/ScreeningPopup"
+        android:layout_marginTop="28dp"
+        android:text="@string/contract_text_price"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12" />
+
+
+    <EditText
+        android:id="@+id/cet_price"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_below="@+id/tv_price"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:background="@null"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/hint_color"
+        android:textSize="@dimen/sp_14"
+        tools:text="3.14" />
+
+    <View
+        android:id="@+id/cet_price_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_half"
+        android:layout_below="@+id/cet_price"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:background="@color/line_color" />
+
+    <TextView
+        android:id="@+id/tv_total_money"
+        style="@style/ScreeningPopup"
+        android:layout_below="@+id/cet_price_line"
+        android:layout_marginTop="20dp"
+        android:text="@string/otc_text_orderTotal"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12" />
+
+    <RelativeLayout
+        android:id="@+id/ll_total_money_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_total_money"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15">
+
+
+        <TextView
+            android:id="@+id/tv_all_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@string/common_action_sendall"
+            android:textColor="@color/main_blue"
+            android:textSize="12sp" />
+
+        <com.yjkj.chainup.new_version.view.CustomizeEditText
+            android:id="@+id/cet_total_money"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_toLeftOf="@+id/tv_all_buy"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:inputType="numberDecimal"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_color"
+            android:textSize="@dimen/sp_14"
+            tools:text="1000" />
+
+        <View
+            android:id="@+id/v_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_half"
+            android:layout_below="@+id/cet_total_money"
+            android:background="@color/line_color" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_market_price_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_total_money_layout"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_15">
+
+        <TextView
+            android:id="@+id/tv_market_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="≈0"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_limit"
+            style="@style/ScreeningPopup"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12"
+            tools:text="@string/otc_text_priceLimit" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_fait_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_market_price_layout"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_fiat_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="@string/otc_asset_availableBalance"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+
+
+        <TextView
+            android:id="@+id/tv_anti_money_laundering"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_15"
+            android:text="@string/otc_tip_withdrawLimitTime"
+            android:textColor="@color/certification_color"
+            android:textSize="@dimen/sp_12"
+            android:visibility="gone" />
+
+        <!--交易提醒-->
+        <TextView
+            android:id="@+id/tv_trading_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="@string/otc_tip_tradeHintTitle"
+            android:textColor="@color/otc_trading_money"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_trading_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_15"
+            android:lineSpacingExtra="@dimen/dp_8"
+            android:text="@string/otc_tip_tradeHintContent"
+            android:textColor="@color/normal_text_color"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <com.yjkj.chainup.new_version.view.CommonlyUsedButton
+        android:id="@+id/cub_confirm_for_sell"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:visibility="gone"
+        app:bgColor="@color/main_blue"
+        app:bottonTextContent="@string/otc_action_placeOrder" />
+
+</RelativeLayout>

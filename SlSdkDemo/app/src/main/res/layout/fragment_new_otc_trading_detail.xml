@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_buy"
+        android:layout_width="match_parent"
+        android:background="@color/bg_card_color"
+        tools:listitem="@layout/item_otc_trading"
+        android:visibility="visible"
+        android:layout_height="match_parent" />
+    <com.yjkj.chainup.wedegit.LineAdapter4FundsLayout
+        android:id="@+id/ll_fait_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginEnd="15dp"
+        android:visibility="gone" />
+
+
+</android.support.v4.widget.SwipeRefreshLayout>

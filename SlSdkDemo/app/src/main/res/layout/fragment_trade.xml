@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_horizontal"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/page_head_height"
+            android:src="@drawable/exchange_sidepull"
+            android:id="@+id/iv_coin_map"
+            android:paddingLeft="@dimen/dp_15"
+            android:layout_alignParentLeft="true"
+            android:paddingBottom="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_15"/>
+
+        <LinearLayout
+            android:id="@+id/ll_title_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true">
+
+            <com.coorchice.library.SuperTextView
+                android:id="@+id/btn_bb"
+                android:layout_width="76dp"
+                android:layout_height="@dimen/dp_30"
+                app:stv_solid="@color/main_blue"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/mainTab_text_transaction"
+                app:stv_corner="@dimen/dp_3"
+                app:stv_right_bottom_corner="false"
+                app:stv_right_top_corner="false"
+                app:stv_left_bottom_corner="true"
+                app:stv_left_top_corner="true"
+                app:stv_stroke_width="@dimen/dp_1"
+                app:stv_stroke_color="@color/line_color"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_16" />
+
+            <com.coorchice.library.SuperTextView
+                android:id="@+id/btn_lever"
+                android:layout_width="76dp"
+                android:layout_height="@dimen/dp_30"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                app:stv_corner="@dimen/dp_3"
+                app:stv_stroke_width="@dimen/dp_1"
+                app:stv_right_bottom_corner="true"
+                app:stv_right_top_corner="true"
+                app:stv_left_bottom_corner="false"
+                app:stv_left_top_corner="false"
+                app:stv_stroke_color="@color/line_color"
+                android:text="@string/leverage_text_leverage"
+                android:textColor="@color/normal_text_color"
+                android:textSize="@dimen/sp_16" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/page_head_height"
+            android:src="@drawable/margin_more"
+            android:paddingRight="@dimen/dp_15"
+            android:layout_alignParentRight="true"
+            android:paddingBottom="@dimen/dp_20"
+            android:paddingTop="@dimen/dp_20"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>
+

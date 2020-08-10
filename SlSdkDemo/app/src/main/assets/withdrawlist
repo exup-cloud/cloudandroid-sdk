@@ -1,0 +1,36 @@
+{
+  "code": "0",
+  "msg": "成功",
+  "data": {
+    "financeList": [
+      {
+        "symbol": "BTC",
+        "amount": "0.01",
+        "fee": 0.0010000000000000,
+        "updateAt": "",
+        "txid": "",
+        "label": "BTC",
+        "addressTo": "1LJkiVMaXBW6F55g8MysUhdGgsrbTe92Zz",
+        "createdAt": "2018-06-22 15:47:43",
+        "updateAtTime": "",
+        "createdAtTime": 1529653663000,
+        "id": 2643,
+        "status_text": "未审核",
+        "status": 0
+      }
+    ],
+    "count": 1,
+    "pageSize": 10
+  }
+}
+
+
+{
+  "amount": 10000.00000000,
+  "coinSymbol": "ADA",
+  "createTime": "2018-06-21 20:53:40",
+  "transactionScene": "present_coin",
+  "status_text": "已完成",
+  "createTimeTime": 1529585620000,
+  "status": 1
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_50">
+
+
+
+    <TextView
+        android:id="@+id/item_change_payment_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:textColor="@color/text_color"
+        android:textStyle="bold"
+        tools:text="@string/common_action_sendall" />
+
+
+    <ImageView
+        android:id="@+id/item_change_payment_status"
+        android:layout_width="13dp"
+        android:layout_height="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/personal_selected" />
+
+    <View
+        android:id="@+id/item_change_payment_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_half"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:background="@color/line_color" />
+</RelativeLayout>

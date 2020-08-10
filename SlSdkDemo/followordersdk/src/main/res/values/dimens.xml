@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_size_1">11sp</dimen>
+    <dimen name="text_size_2">12sp</dimen>
+    <dimen name="text_size_3">13sp</dimen>
+    <dimen name="text_size_4">14sp</dimen>
+    <dimen name="text_size_5">15sp</dimen>
+    <dimen name="text_size_6">16sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+
+    <dimen name="fo_title_size">18sp</dimen>
+    <dimen name="fo_title_height">48dp</dimen>
+    <!-- tab -->
+    <dimen name="fo_tab_text_nor">15sp</dimen>
+    <dimen name="fo_tab_text_select">18sp</dimen>
+</resources>

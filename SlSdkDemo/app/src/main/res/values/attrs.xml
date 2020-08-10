@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleViewPager">
+        <!--选中和未选中是指示器的图片-->
+        <attr name="selectPointRes" format="reference" />
+        <attr name="normalPointRes" format="reference" />
+        <!--圆点半径-->
+        <attr name="dotWidth" format="dimension" />
+        <!--页面切换时间间隔-->
+        <attr name="interval" format="integer" />
+    </declare-styleable>
+
+    <!--登录注册相关的View-->
+    <declare-styleable name="ComItemView">
+        <attr name="leftIcon" format="reference" />
+        <attr name="showLeftIcon" format="boolean" />
+        <attr name="hintText" format="string" />
+        <attr name="text" format="string" />
+        <attr name="hintColor" format="color" />
+        <attr name="rightIcon" format="reference" />
+        <attr name="showRightIcon" format="boolean" />
+        <attr name="right2Click" format="boolean" />
+        <attr name="android:inputType" />
+    </declare-styleable>
+
+
+    <!--登录注册相关的View-->
+    <declare-styleable name="PwdSetView">
+        <attr name="isShowPwd" format="boolean" />
+        <attr name="hint" format="string" />
+        <attr name="pwdTitle" format="string" />
+        <attr name="isShowLine" format="boolean" />
+        <attr name="isNeedArea" format="boolean" />
+        <attr name="android:inputType" />
+    </declare-styleable>
+
+    <declare-styleable name="SlUpDownItemStyle">
+        <attr name="sl_itemTitle" format="string" />
+        <attr name="showExplain" format="boolean" />
+        <attr name="explainText" format="string" />
+        <attr name="contentGravity" format="enum">
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+        <attr name="contentTextColor" format="integer" />
+    </declare-styleable>
+
+    <!--合约-->
+    <declare-styleable name="ComTitleValueView">
+        <attr name="topTitle" format="string" />
+        <attr name="bottomValue" format="string" />
+        <attr name="topTitleColor" format="color" />
+        <attr name="bottomValueColor" format="color" />
+        <attr name="isShowTips" format="boolean" />
+        <attr name="isRollback" format="boolean" />
+        <attr name="topGravity" format="integer" />
+        <attr name="bottomGravity" format="integer" />
+    </declare-styleable>
+    <!--合约风险show-->
+    <declare-styleable name="ContactShowRiskView">
+        <attr name="risk_factor" format="float" />
+    </declare-styleable>
+
+    <!--自定义验证码的View-->
+    <declare-styleable name="Super4EditText">
+        <attr name="pwd" format="boolean" />
+        <attr name="showCursor" format="boolean" />
+        <attr name="maxLength" format="integer" />
+        <attr name="borderColor" format="color|reference" />
+        <attr name="focusableBlockColor" format="color|reference" />
+        <attr name="textColor" format="color|reference" />
+        <attr name="borderWidth" format="dimension" />
+        <attr name="focusableBorderWidth" format="dimension" />
+        <attr name="blockSpacing" format="dimension" />
+    </declare-styleable>
+
+
+    <!--Only 4 地区选择-->
+    <declare-styleable name="ComSelectAreaView">
+        <attr name="areaText" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="circle" format="boolean" />
+        <attr name="radius4Homepage" format="dimension" />
+    </declare-styleable>
+
+    <!--新资金流水 -->
+    <declare-styleable name="LineBreakLayout">
+        <!--标签之间左右距离 -->
+        <attr name="leftAndRightSpace" format="dimension" />
+        <!--标签行距 -->
+        <attr name="rowSpace" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ComTitleView">
+        <attr name="backIcon" format="reference" />
+        <attr name="showBackIcon" format="boolean" />
+        <attr name="title" format="string" />
+        <attr name="titleSize" format="dimension" />
+        <attr name="rightText" format="string" />
+        <attr name="rightImg" format="reference" />
+        <attr name="right2Img" format="reference" />
+        <attr name="showRightImg" format="boolean" />
+        <attr name="showRight2Img" format="boolean" />
+    </declare-styleable>
+
+    <!--获取统一验证码（mobile,email,google）-->
+    <declare-styleable name="ComGetCodeView">
+        <attr name="codeHint" format="string" />
+        <attr name="codeTextSize" format="dimension" />
+        <attr name="isPhone" format="boolean" />
+        <attr name="showIcon" format="boolean" />
+        <attr name="isGetCode" format="boolean" />
+    </declare-styleable>
+
+
+    <!--账户所在界面的公共ItemView-->
+    <declare-styleable name="AccountItemView">
+        <attr name="icon" format="reference" />
+        <attr name="showRedDot" format="boolean" />
+        <attr name="itemTitle" format="string" />
+        <attr name="StatusText" format="string" />
+        <attr name="showArrow" format="boolean" />
+        <attr name="showLine" format="boolean" />
+        <attr name="isShowLeftIcon" format="boolean" />
+        <attr name="isShowRightIcon" format="boolean" />
+    </declare-styleable>
+
+    <!--实名认证上传图片-->
+    <declare-styleable name="ComVerifyItemView">
+        <attr name="image" format="reference" />
+        <attr name="imageTitle" format="string" />
+        <attr name="imageWarn" format="string" />
+        <attr name="sampleIcon" format="reference" />
+    </declare-styleable>
+
+    <!-- Style of the circle indicator.首页轮播图 -->
+    <attr name="vpiCirclePageIndicatorStyle" format="reference" />
+    <!-- ViewPager Indicator -->
+    <declare-styleable name="CirclePageIndicator">
+
+        <!-- Whether or not the indicators should be centered. -->
+        <attr name="centered" format="boolean" />
+        <!-- Color of the filled circle that represents the current page. -->
+        <attr name="fillColor" format="color" />
+        <!-- Drawable of the filled circle that represents the current page. -->
+        <attr name="fillDrawable" format="reference" />
+        <!-- Color of the filled circles that represents pages. -->
+        <attr name="pageColor" format="color" />
+        <!-- Orientation of the indicator. -->
+        <attr name="android:orientation" />
+        <!-- Radius of the circles. This is also the spacing between circles. -->
+        <attr name="radius" format="dimension" />
+        <!-- Whether or not the selected indicator snaps to the circles. -->
+        <attr name="snap" format="boolean" />
+        <!-- Color of the open circles. -->
+        <attr name="strokeColor" format="color" />
+        <!-- Width of the stroke used to draw the circles. -->
+        <attr name="strokeWidth" format="dimension" />
+        <!-- View background -->
+        <attr name="android:background" />
+    </declare-styleable>
+    <!--懒加载ViewPager-->
+    <declare-styleable name="LazyViewPager">
+        <attr name="init_lazy_item_offset" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="DatePicker">
+        <attr name="picker_text_color" format="color" />
+        <attr name="picker_select_textColor" format="color" />
+        <attr name="picker_split" format="color" />
+        <attr name="picker_split_height" format="dimension" />
+    </declare-styleable>
+
+
+    <!--4.0-->
+
+    <declare-styleable name="NewOTCTextView">
+        <attr name="topTextContent" format="string" />
+        <attr name="bottomTextContent" format="string" />
+        <attr name="topImageViewVisible" format="boolean" />
+        <attr name="bottomImageViewVisible" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="NewOTCEditTextView">
+        <attr name="topEditTextContent" format="string" />
+        <attr name="bottomEditTextContent" format="string" />
+        <attr name="editTextRightContent" format="string" />
+        <attr name="editTextRightIVVisible" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="NewOTCTextViewEdittextView">
+        <attr name="topEditTextviewcontent" format="string" />
+        <attr name="bottomRightEditTextviewContent" format="string" />
+        <attr name="bottomhintContent" format="string" />
+        <attr name="bottomMaxLength" format="integer" />
+        <attr name="inputer" format="boolean" />
+    </declare-styleable>
+    <!--密码输入框&验证选择-->
+    <declare-styleable name="PwdSettingView">
+        <attr name="isPwdShow" format="boolean" />
+        <attr name="hint_text" format="string" />
+        <attr name="isEditable" format="boolean" />
+        <attr name="changeCity" format="boolean" />
+        <attr name="textContent" format="string" />
+        <attr name="icon_res" format="reference" />
+        <attr name="icon_res2" format="reference" />
+        <attr name="pwd_text_content_color" format="color" />
+        <attr name="textContentSize" format="dimension" />
+        <attr name="android:inputType" />
+    </declare-styleable>
+    <!--4.0版本 button-->
+    <declare-styleable name="CommonlyUsedButtonView">
+        <attr name="bgColor" format="color" />
+        <attr name="buttonTextColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="textStyleBold" format="boolean" />
+        <attr name="isShowLoading" format="boolean" />
+        <attr name="normalEnable" format="boolean" />
+        <attr name="normalSelectEnable" format="boolean" />
+        <attr name="bottonTextContent" format="string" />
+    </declare-styleable>
+
+
+    <!-- 借贷和归还  -->
+    <declare-styleable name="BorrowingAndReturnView">
+        <attr name="first_title" format="string" />
+        <attr name="first_content" format="string" />
+        <attr name="second_title" format="string" />
+        <attr name="second_content" format="string" />
+        <attr name="third_title" format="string" />
+        <attr name="third_content" format="string" />
+        <attr name="fourth_title" format="string" />
+        <attr name="fourth_content" format="string" />
+        <attr name="fifth_title" format="string" />
+        <attr name="fifth_content" format="string" />
+        <attr name="fifth_visible" format="boolean" />
+        <attr name="edittext_hint" format="string" />
+        <attr name="edittext_coin" format="string" />
+        <attr name="endText_content" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="TextViewtwoWayView">
+        <attr name="titleView" format="string" />
+        <attr name="contentView" format="string" />
+        <attr name="isShowLandR" format="boolean" />
+        <attr name="showGravity" format="enum" >
+            <enum name="LEFT" value="0" />
+            <enum name="CENTER" value="1" />
+            <enum name="RIGHT" value="2" />
+        </attr>
+    </declare-styleable>
+
+
+    <!--验证部分-->
+    <declare-styleable name="ComVerifyView">
+        <attr name="verify_type" format="integer" />
+        <attr name="verify_type_size" format="dimension" />
+        <attr name="android:inputType" />
+    </declare-styleable>
+
+    <!-- 自定义 checkbox-->
+    <declare-styleable name="NewVersionCheckBox">
+        <attr name="firstContent" format="string" />
+        <attr name="secondContent" format="string" />
+        <attr name="thirdContent" format="string" />
+        <attr name="middleContent" format="string" />
+        <attr name="isOnlyShowCenter" format="boolean" />
+        <attr name="isShowRightTop" format="boolean" />
+        <attr name="isShowClick" format="boolean" />
+        <attr name="middleColor" format="color" />
+        <attr name="middleSize" format="dimension" />
+        <attr name="imageViewWith" format="dimension" />
+    </declare-styleable>
+
+    <!-- 自己画的小三角哈哈-->
+    <declare-styleable name="CustomTrigoView">
+        <attr name="bgTrigoColor" format="color" />
+        <attr name="bgWidth" format="dimension" />
+        <attr name="bgHeight" format="dimension" />
+    </declare-styleable>
+
+    <!-- 自己画的tag-->
+    <declare-styleable name="CustomTagView">
+        <attr name="showCircular" format="boolean" />
+    </declare-styleable>
+
+    <!-- 个人页面自定义title-->
+    <declare-styleable name="CustomPersonalTitle">
+        <attr name="showTitle" format="boolean" />
+        <attr name="showRightIc" format="boolean" />
+        <attr name="showRightTv" format="boolean" />
+        <attr name="showRightIc2" format="boolean" />
+        <attr name="personalTitle" format="string" />
+        <attr name="rightTitle" format="string" />
+        <attr name="personalName" format="string" />
+        <attr name="personalAccount" format="string" />
+        <attr name="personalRightIcon" format="reference" />
+        <attr name="personalCertification" format="reference" />
+
+    </declare-styleable>
+    <declare-styleable name="TextViewAddEditTextView">
+        <attr name="title_content" format="string" />
+        <attr name="hint_content" format="string" />
+        <attr name="ispwdview" format="boolean" />
+        <attr name="textContentSize4Edit" format="dimension" />
+    </declare-styleable>
+
+    <!--带角标的View-->
+    <declare-styleable name="LabelView">
+        <attr name="label_distance" format="dimension" />
+        <attr name="label_height" format="dimension" />
+        <attr name="label_strokeWidth" format="dimension" />
+        <attr name="label_backgroundColor" format="color" />
+        <attr name="label_strokeColor" format="color" />
+        <attr name="label_text" format="string" />
+        <attr name="label_textSize" format="dimension" />
+        <attr name="label_textStyle" format="enum">
+            <enum name="NORMAL" value="0" />
+            <enum name="BOLD" value="1" />
+            <enum name="ITALIC" value="2" />
+            <enum name="BOLD_ITALIC" value="3" />
+        </attr>
+        <attr name="label_textColor" format="color" />
+        <attr name="label_visual" format="boolean" />
+        <attr name="label_showBg" format="boolean" />
+        <attr name="label_orientation" format="enum">
+            <enum name="LEFT_TOP" value="1" />
+            <enum name="RIGHT_TOP" value="2" />
+            <enum name="LEFT_BOTTOM" value="3" />
+            <enum name="RIGHT_BOTTOM" value="4" />
+        </attr>
+    </declare-styleable>
+
+    <!--筛选-->
+    <declare-styleable name="ScreeningPopupWindowView">
+        <attr name="screen_type" format="enum">
+            <enum name="COMMISSIONED" value="0" />
+            <enum name="TRADING" value="1" />
+            <enum name="TRANSFER" value="2" />
+            <enum name="OTCFUNDFLOWINGWATER" value="3" />
+            <enum name="OTCORDER" value="4" />
+            <enum name="ASSETTOPUP" value="5" />
+            <enum name="MAILSCREENING" value="6" />
+            <enum name="WITHDRAWTYPE" value="7" />
+            <enum name="HISTORYSCREENINGCONTRACT" value="8" />
+            <enum name="CONTRACTBILL" value="9" />
+            <enum name="LEVER_ASSET_CASHFLOW" value="11" />
+            <enum name="LEVER_TRANSFER_HISTORY" value="12" />
+            <enum name="CASHFLOW_B2C" value="10" />
+        </attr>
+        <attr name="screen_show_type_for_transfer" format="boolean" />
+        <attr name="screen_margin_bottom" format="integer" />
+
+    </declare-styleable>
+
+    <!--用户详情view-->
+    <declare-styleable name="UserInfoView">
+        <attr name="headerIcon" format="reference" />
+    </declare-styleable>
+
+
+    <!--合约-->
+    <declare-styleable name="PositionITemView">
+        <attr name="headTitle" format="string" />
+        <attr name="tailValue" format="string" />
+        <attr name="headTitleColor" format="color" />
+        <attr name="tailValueColor" format="color" />
+    </declare-styleable>
+
+
+    <!--列表公共Header-->
+    <declare-styleable name="ComHeaderView">
+        <attr name="sub_title" format="string" />
+        <attr name="right_title" format="string" />
+        <attr name="right_icon" format="reference" />
+        <attr name="show_right_text" format="boolean" />
+        <attr name="show_right_icon" format="boolean" />
+    </declare-styleable>
+
+    <style name="progressDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否有边框 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 是否有标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景颜色设置为透明 -->
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <declare-styleable name="MyRadioButton">
+        <attr name="drawableTop" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="KLineChartView">
+        <!--边界值-->
+        <attr name="kc_boundary_value" format="dimension" />
+
+        <!--公共的-->
+        <attr name="kc_text_size" format="dimension" />
+        <attr name="kc_text_color" format="color" />
+        <attr name="kc_marker_value_color" format="color" />
+        <attr name="kc_line_width" format="dimension" />
+        <attr name="kc_background_color" format="color" />
+        <attr name="kc_selected_line_color" format="color" />
+        <attr name="kc_selected_line_width" format="dimension" />
+        <attr name="kc_grid_line_width" format="dimension" />
+        <attr name="kc_grid_line_color" format="color" />
+        <attr name="kc_point_width" format="dimension" />
+        <!--macd-->
+        <attr name="kc_macd_width" format="dimension" />
+        <attr name="kc_dif_color" format="color" />
+        <attr name="kc_dea_color" format="color" />
+        <attr name="kc_macd_color" format="color" />
+        <!--kdj-->
+        <attr name="kc_k_color" format="color" />
+        <attr name="kc_d_color" format="color" />
+        <attr name="kc_j_color" format="color" />
+        <!--rsi-->
+        <attr name="kc_rsi1_color" format="color" />
+        <attr name="kc_rsi2_color" format="color" />
+        <attr name="kc_ris3_color" format="color" />
+        <!--boll-->
+        <attr name="kc_up_color" format="color" />
+        <attr name="kc_mb_color" format="color" />
+        <attr name="kc_dn_color" format="color" />
+        <!--main-->
+        <attr name="kc_ma5_color" format="color" />
+        <attr name="kc_ma10_color" format="color" />
+        <attr name="kc_ma20_color" format="color" />
+        <attr name="kc_candle_width" format="dimension" />
+        <attr name="kc_candle_line_width" format="dimension" />
+        <attr name="kc_selector_background_color" format="color" />
+        <attr name="kc_selector_text_size" format="dimension" />
+        <attr name="kc_candle_solid" format="boolean" />
+
+        <attr name="kc_selected_color_x" format="color" />
+        <attr name="kc_selected_color_y" format="color" />
+
+
+        <!--tab-->
+        <attr name="kc_tab_background_color" format="color" />
+        <attr name="kc_tab_text_color" format="color" />
+        <attr name="kc_tab_indicator_color" format="color" />
+    </declare-styleable>
+
+
+    <!--标题栏-->
+    <declare-styleable name="SlTitleBarLayout">
+        <attr name="slTitle" format="string" />
+    </declare-styleable>
+
+
+
+    <declare-styleable name="SlBubbleSeekBar">
+        <attr name="bsb_min" format="float|reference"/> <!--min < max, default: 0.0f-->
+        <attr name="bsb_max" format="float|reference"/> <!--min < max, default: 100.0f-->
+        <attr name="bsb_symbol" format="string"/> <!--min < max, default: 100.0f-->
+        <attr name="bsb_progress" format="float|reference"/> <!--real time progress value, default: min-->
+        <attr name="bsb_is_float_type" format="boolean"/> <!--support for float type-->
+        <attr name="bsb_track_size" format="dimension|reference"/> <!--height of right-track(on the right of thumb), default: 2dp-->
+        <!--height of left-track(on the left of thumb), default: 2dp higher than right-track's height-->
+        <attr name="bsb_second_track_size" format="dimension|reference"/>
+        <attr name="bsb_thumb_radius" format="dimension|reference"/> <!--radius of thumb, default: 2dp higher than left-track's height-->
+        <!--radius of thumb when be dragging, default: 2 times of left-track's height-->
+        <attr name="bsb_thumb_radius_on_dragging" format="dimension|reference"/>
+        <attr name="bsb_track_color" format="color|reference"/> <!--color of right-track, default: R.color.colorPrimary-->
+        <attr name="bsb_track_drawable" format="reference"/> <!--color of right-track, default: R.color.colorPrimary-->
+        <attr name="bsb_second_track_color" format="color|reference"/> <!--color of left-track, default: R.color.colorAccent-->
+        <attr name="bsb_second_track_drawable" format="reference"/> <!--color of left-track, default: R.color.colorAccent-->
+        <attr name="bsb_thumb_color" format="color|reference"/> <!--color of thumb, default: same as left-track's color-->
+        <attr name="bsb_thumb_drawable" format="reference"/> <!--color of left-track, default: R.color.colorAccent-->
+        <attr name="bsb_section_count" format="integer|reference"/> <!--shares of whole progress(max - min), default: 10-->
+        <attr name="bsb_show_section_mark" format="boolean"/> <!--show demarcation points or not, default: false-->
+        <attr name="bsb_auto_adjust_section_mark" format="boolean"/> <!--auto scroll to the nearest section_mark or not, default: false-->
+        <attr name="bsb_show_section_text" format="boolean"/> <!--show section-text or not, default: false-->
+        <attr name="bsb_section_text_size" format="dimension|reference"/> <!--text size of section-text, default: 14sp-->
+        <attr name="bsb_section_text_color" format="color|reference"/> <!--text color of section-text, default: same as right-track's color-->
+        <!--text position of section-text relative to track, sides, bottom_sides, below_section_mark, default: sides-->
+        <attr name="bsb_section_text_position">
+            <enum name="sides" value="0"/>
+            <enum name="bottom_sides" value="1"/>
+            <enum name="below_section_mark" value="2"/>
+        </attr>
+        <attr name="bsb_section_text_interval" format="integer"/> <!--the interval of two section-text, default: 1-->
+        <attr name="bsb_show_thumb_text" format="boolean"/> <!--show real time progress-text under thumb or not, default: false-->
+        <attr name="bsb_thumb_text_size" format="dimension|reference"/> <!--text size of progress-text, default: 14sp-->
+        <attr name="bsb_thumb_text_color" format="color|reference"/> <!--text color of progress-text, default: same as left-track's color-->
+        <attr name="bsb_show_progress_in_float" format="boolean"/> <!--show bubble-progress in float or not, default: false-->
+        <attr name="bsb_touch_to_seek" format="boolean"/> <!--touch anywhere on track to quickly seek, default: false-->
+        <attr name="bsb_seek_step_section" format="boolean"/> <!--seek one step by one section, the progress is discrete, default: false-->
+        <attr name="bsb_seek_by_section" format="boolean"/> <!--seek by section, the progress may not be linear, default: false-->
+        <attr name="bsb_bubble_color" format="color|reference"/> <!--color of bubble, default: same as left-track's color-->
+        <attr name="bsb_bubble_text_size" format="dimension|reference"/> <!--text size of bubble-progress, default: 14sp-->
+        <attr name="bsb_bubble_text_color" format="color|reference"/> <!--text color of bubble-progress, default: #ffffffff-->
+        <attr name="bsb_anim_duration" format="integer"/> <!--duration of animation, default: 200ms-->
+        <attr name="bsb_always_show_bubble" format="boolean"/> <!--bubble shows all time, default: false-->
+        <attr name="bsb_always_show_bubble_delay" format="integer"/> <!--the delay duration before bubble shows all the time, default: 200ms-->
+        <attr name="bsb_hide_bubble" format="boolean"/> <!--hide bubble, default: false-->
+        <attr name="bsb_rtl" format="boolean"/> <!--right to left, default: false-->
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_scale"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:drawableBottom="@drawable/kline_item_selected_shape"
+    android:drawablePadding="@dimen/dp_4"
+    android:ellipsize="end"
+    android:gravity="center"
+    android:maxLines="1"
+    android:paddingLeft="@dimen/dp_12"
+    android:paddingTop="@dimen/dp_15"
+    android:paddingRight="@dimen/dp_12"
+    android:paddingBottom="@dimen/dp_8"
+    android:singleLine="true"
+    android:text="@string/day"
+    android:textColor="@color/normal_text_color"
+    android:textSize="@dimen/sp_12" />
+
+

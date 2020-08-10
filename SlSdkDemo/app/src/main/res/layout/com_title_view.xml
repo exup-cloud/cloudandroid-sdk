@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/page_head_height"
+    android:background="@color/bg_card_color"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:id="@+id/ib_back"
+        android:layout_width="@dimen/page_head_height"
+        android:layout_height="@dimen/page_head_height"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:paddingLeft="@dimen/dp_15"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingRight="@dimen/dp_18"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/ib_back"
+        android:layout_toLeftOf="@id/tv_menu"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
+        android:maxEms="6"
+        android:maxLines="1"
+        android:textColor="@color/main_font_color"
+        android:textSize="@dimen/sp_18"
+        tools:text="TITILETITILETITILETITILTITILETITILETITILEETITILETITILETITILE"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/tv_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:textColor="@color/main_color"
+        android:textSize="@dimen/sp_16"
+        android:visibility="visible"
+        tools:text="Menu"/>
+
+    <ImageView
+        android:id="@+id/iv_right"
+        android:layout_width="@dimen/page_head_height"
+        android:layout_height="@dimen/page_head_height"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/dp_15"
+        android:src="@drawable/ic_mail_filter"
+        android:tint="@color/main_color"
+        android:visibility="gone" />
+
+
+    <ImageView
+        android:id="@+id/iv_right2nd"
+        android:layout_width="@dimen/page_head_height"
+        android:layout_height="@dimen/page_head_height"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/iv_right"
+        android:paddingLeft="@dimen/dp_15"
+        android:paddingBottom="@dimen/dp_15"
+        android:paddingTop="@dimen/dp_15"
+        android:src="@drawable/ic_history"
+        android:tint="@color/main_color"
+        android:visibility="gone" />
+</RelativeLayout>

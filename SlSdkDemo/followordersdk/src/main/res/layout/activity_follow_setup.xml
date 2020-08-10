@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/fo_status_bg_color"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".ui.activity.FollowSetupActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fo_title_height">
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="@dimen/fo_title_height"
+            android:layout_height="@dimen/fo_title_height"
+            android:layout_marginLeft="11dp"
+            android:background="@color/fo_transparent"
+            android:src="?attr/fo_back_drawable"
+            tools:src="@drawable/fo_back_light" />
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/fo_follow_setup_title"
+            android:textColor="?attr/fo_text_1_color"
+            android:textSize="@dimen/fo_title_size"
+            tools:textColor="@color/fo_light_text_1_color" />
+
+        <View
+            android:id="@+id/line_title"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="?attr/fo_line_color"
+            tools:background="@color/fo_light_line_color" />
+
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24.5dp"
+                android:text="@string/fo_follow_setup_text_1"
+                android:textColor="?attr/fo_nickname_color"
+                android:textSize="@dimen/text_size_4"
+                tools:textColor="@color/fo_light_nickname_color" />
+
+            <com.follow.order.widget.shape.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:rv_backgroundColor="?attr/fo_follow_setup_item_bg_color"
+                app:rv_cornerRadius="2dp"
+                tools:background="@color/fo_light_follow_setup_item_bg_color">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/fo_follow_setup_text_14"
+                    android:textColor="?attr/fo_tab_text_nor_color"
+                    android:textSize="@dimen/text_size_3"
+                    tools:textColor="@color/fo_light_tab_text_nor_color" />
+
+                <TextView
+                    android:id="@+id/tv_user_divide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fo_follow_setup_blue_color"
+                    android:textSize="@dimen/text_size_3"
+                    tools:text="90%" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fo_follow_setup_text_15"
+                    android:textColor="?attr/fo_tab_text_nor_color"
+                    android:textSize="@dimen/text_size_3"
+                    tools:textColor="@color/fo_light_tab_text_nor_color" />
+
+                <TextView
+                    android:id="@+id/tv_kol_divide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fo_follow_setup_blue_color"
+                    android:textSize="@dimen/text_size_3"
+                    tools:text="10%" />
+
+
+            </com.follow.order.widget.shape.RoundLinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="105dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fo_follow_setup_text_2"
+                    android:textColor="?attr/fo_nickname_color"
+                    android:textSize="@dimen/text_size_4"
+                    tools:textColor="@color/fo_light_nickname_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/fo_follow_setup_text_3"
+                    android:textColor="?attr/fo_nickname_color"
+                    android:textSize="@dimen/text_size_4"
+                    tools:textColor="@color/fo_light_nickname_color" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
+                <com.follow.order.widget.shape.RoundTextView
+                    android:id="@+id/tv_coin"
+                    android:layout_width="105dp"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/fo_follow_setup_blue_color"
+                    android:textSize="@dimen/text_size_4"
+                    app:rv_backgroundColor="?attr/fo_follow_setup_item_bg_color"
+                    app:rv_cornerRadius="2dp"
+                    tools:background="@color/fo_light_follow_setup_item_bg_color"
+                    tools:text="BTC" />
+
+                <com.follow.order.widget.shape.RoundTextView
+                    android:id="@+id/tv_exchange"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/fo_follow_setup_blue_color"
+                    android:textSize="@dimen/text_size_4"
+                    app:rv_backgroundColor="?attr/fo_follow_setup_item_bg_color"
+                    app:rv_cornerRadius="2dp"
+                    tools:background="@color/fo_light_follow_setup_item_bg_color"
+                    tools:text="OKEx" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="105dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fo_follow_setup_text_4"
+                    android:textColor="?attr/fo_nickname_color"
+                    android:textSize="@dimen/text_size_4"
+                    tools:textColor="@color/fo_light_nickname_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/fo_follow_setup_text_5"
+                    android:textColor="?attr/fo_nickname_color"
+                    android:textSize="@dimen/text_size_4"
+                    tools:textColor="@color/fo_light_nickname_color" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
+                <com.follow.order.widget.shape.RoundTextView
+                    android:id="@+id/tv_weight"
+                    android:layout_width="105dp"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/fo_follow_setup_blue_color"
+                    android:textSize="@dimen/text_size_4"
+                    app:rv_backgroundColor="?attr/fo_follow_setup_item_bg_color"
+                    app:rv_cornerRadius="2dp"
+                    tools:background="@color/fo_light_follow_setup_item_bg_color"
+                    tools:text="0.3" />
+
+                <com.follow.order.widget.shape.RoundTextView
+                    android:id="@+id/tv_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/fo_follow_setup_blue_color"
+                    android:textSize="@dimen/text_size_4"
+                    app:rv_backgroundColor="?attr/fo_follow_setup_item_bg_color"
+                    app:rv_cornerRadius="2dp"
+                    tools:background="@color/fo_light_follow_setup_item_bg_color"
+                    tools:text="使用BTC跟单（币本位）" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_weight_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:lineSpacingExtra="3dp"
+                android:text="@string/fo_order_weight_tip"
+                android:textColor="?attr/fo_text_3_color"
+                android:textSize="@dimen/text_size_2"
+                tools:textColor="@color/fo_light_text_3_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/fo_follow_setup_text_6"
+                android:textColor="?attr/fo_nickname_color"
+                android:textSize="@dimen/text_size_4"
+                tools:textColor="@color/fo_light_nickname_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
+                <com.follow.order.widget.shape.RoundLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minWidth="115dp"
+                    android:orientation="horizontal"
+                    app:rv_cornerRadius="2dp"
+                    app:rv_strokeColor="?attr/fo_follow_setup_line_color"
+                    app:rv_strokeWidth="1dp">
+
+                    <EditText
+                        android:id="@+id/et_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="@color/fo_transparent"
+                        android:gravity="center_vertical"
+                        android:inputType="number|numberDecimal"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/fo_follow_setup_blue_color"
+                        android:textColorHint="?attr/fo_follow_setup_hint_color"
+                        android:textCursorDrawable="@drawable/fo_edittext_cursor"
+                        android:textSize="@dimen/text_size_3"
+                        tools:hint="限额0.06-0.12"
+                        tools:textColorHint="@color/fo_light_text_3_color" />
+
+                    <TextView
+                        android:id="@+id/tv_follow_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:textColor="?attr/fo_nickname_color"
+                        android:textSize="@dimen/text_size_4"
+                        tools:text="BTC"
+                        tools:textColor="@color/fo_light_nickname_color" />
+                </com.follow.order.widget.shape.RoundLinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_equal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5.5dp"
+                    android:layout_marginRight="5.5dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/fo_follow_setup_text_17"
+                    android:textColor="@color/fo_desc_color"
+                    android:textSize="@dimen/text_size_3" />
+
+                <com.follow.order.widget.shape.RoundLinearLayout
+                    android:id="@+id/ll_usdt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="115dp"
+                    android:orientation="horizontal"
+                    app:rv_backgroundColor="?attr/fo_follow_setup_item_bg_color"
+                    app:rv_cornerRadius="2dp"
+                    tools:background="@color/fo_light_follow_setup_item_bg_color">
+
+                    <TextView
+                        android:id="@+id/tv_usdt"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/fo_follow_setup_blue_color"
+                        android:textSize="@dimen/text_size_4"
+                        tools:text="10000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/fo_follow_setup_text_16"
+                        android:textColor="@color/fo_follow_setup_blue_color"
+                        android:textSize="@dimen/text_size_4" />
+                </com.follow.order.widget.shape.RoundLinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/fo_follow_setup_text_10"
+                    android:textColor="?attr/fo_follow_setup_balance_color"
+                    android:textSize="@dimen/text_size_2"
+                    tools:textColor="@color/fo_light_text_3_color" />
+
+                <TextView
+                    android:id="@+id/tv_balance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:lineSpacingExtra="3dp"
+                    android:textColor="@color/fo_blue"
+                    android:textSize="@dimen/text_size_2"
+                    tools:text="1.32 BTC" />
+
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/cb_loss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:button="@drawable/fo_checked"
+                android:checked="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="3.5dp"
+                android:text="@string/fo_follow_setup_text_7"
+                android:textColor="?attr/fo_nickname_color"
+                android:textSize="@dimen/text_size_5"
+                tools:textColor="@color/fo_light_nickname_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:text="@string/fo_follow_setup_text_11"
+                    android:textColor="?attr/fo_follow_setup_desc_color"
+                    android:textSize="@dimen/text_size_3"
+                    tools:textColor="@color/fo_desc_color" />
+
+                <com.follow.order.widget.shape.RoundLinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:orientation="horizontal"
+                    app:rv_cornerRadius="1.5dp"
+                    app:rv_strokeColor="?attr/fo_follow_setup_line_color"
+                    app:rv_strokeWidth="1dp">
+
+                    <TextView
+                        android:id="@+id/tv_loss_remove"
+                        android:layout_width="35dp"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:text="‒"
+                        android:textColor="@color/fo_blue"
+                        android:textSize="@dimen/text_size_6"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?attr/fo_follow_setup_line_color"
+                        tools:background="@color/fo_light_follow_setup_line_color" />
+
+                    <EditText
+                        android:id="@+id/et_loss_precent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:background="@color/fo_transparent"
+                        android:gravity="center"
+                        android:inputType="number|numberDecimal"
+                        android:maxLength="10"
+                        android:minWidth="60dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="50%"
+                        android:textColor="?attr/fo_text_1_color"
+                        android:textCursorDrawable="@drawable/fo_edittext_cursor"
+                        android:textSize="@dimen/text_size_4"
+                        tools:textColor="@color/fo_light_text_1_color" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?attr/fo_follow_setup_line_color"
+                        tools:background="@color/fo_light_follow_setup_line_color" />
+
+                    <TextView
+                        android:id="@+id/tv_loss_add"
+                        android:layout_width="35dp"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@color/fo_blue"
+                        android:textSize="@dimen/text_size_6"
+                        android:textStyle="bold" />
+
+                </com.follow.order.widget.shape.RoundLinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:text="@string/fo_follow_setup_text_13"
+                    android:textColor="?attr/fo_follow_setup_desc_color"
+                    android:textSize="@dimen/text_size_3"
+                    tools:textColor="@color/fo_desc_color" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/cb_profit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:button="@drawable/fo_checked"
+                android:gravity="center_vertical"
+                android:paddingLeft="3.5dp"
+                android:text="@string/fo_follow_setup_text_8"
+                android:textColor="?attr/fo_nickname_color"
+                android:textSize="@dimen/text_size_5"
+                tools:textColor="@color/fo_light_nickname_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:text="@string/fo_follow_setup_text_12"
+                    android:textColor="?attr/fo_follow_setup_desc_color"
+                    android:textSize="@dimen/text_size_3"
+                    tools:textColor="@color/fo_desc_color" />
+
+                <com.follow.order.widget.shape.RoundLinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:orientation="horizontal"
+                    app:rv_cornerRadius="1.5dp"
+                    app:rv_strokeColor="?attr/fo_follow_setup_line_color"
+                    app:rv_strokeWidth="1dp">
+
+                    <TextView
+                        android:id="@+id/tv_profit_remove"
+                        android:layout_width="35dp"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:text="‒"
+                        android:textColor="@color/fo_blue"
+                        android:textSize="@dimen/text_size_6"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?attr/fo_follow_setup_line_color"
+                        tools:background="@color/fo_light_follow_setup_line_color" />
+
+                    <EditText
+                        android:id="@+id/et_profit_precent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:background="@color/fo_transparent"
+                        android:gravity="center"
+                        android:inputType="number|numberDecimal"
+                        android:maxLength="10"
+                        android:minWidth="60dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="50%"
+                        android:textColor="?attr/fo_text_1_color"
+                        android:textCursorDrawable="@drawable/fo_edittext_cursor"
+                        android:textSize="@dimen/text_size_4"
+                        tools:textColor="@color/fo_light_text_1_color" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="?attr/fo_follow_setup_line_color"
+                        tools:background="@color/fo_light_follow_setup_line_color" />
+
+                    <TextView
+                        android:id="@+id/tv_profit_add"
+                        android:layout_width="35dp"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@color/fo_blue"
+                        android:textSize="@dimen/text_size_6"
+                        android:textStyle="bold" />
+
+                </com.follow.order.widget.shape.RoundLinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:text="@string/fo_follow_setup_text_30"
+                    android:textColor="?attr/fo_follow_setup_desc_color"
+                    android:textSize="@dimen/text_size_3"
+                    tools:textColor="@color/fo_desc_color" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/fo_follow_setup_text_25"
+                android:textColor="?attr/fo_nickname_color"
+                android:textSize="@dimen/text_size_4"
+                tools:textColor="@color/fo_light_nickname_color" />
+
+            <RadioGroup
+                android:id="@+id/rg_follow_config"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rb_follow_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:button="@drawable/fo_follow_checked"
+                    android:checked="true"
+                    android:paddingLeft="6dp"
+                    android:text="@string/fo_follow_setup_text_26"
+                    android:textColor="?attr/fo_follow_desc_color"
+                    tools:textColor="@color/fo_desc_color" />
+
+                <RadioButton
+                    android:id="@+id/rb_follow_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:button="@drawable/fo_follow_checked"
+                    android:paddingLeft="6dp"
+                    android:text="@string/fo_follow_setup_text_27"
+                    android:textColor="?attr/fo_follow_desc_color"
+                    tools:textColor="@color/fo_desc_color" />
+            </RadioGroup>
+
+
+            <com.follow.order.widget.shape.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="30dp"
+                app:rv_backgroundColor="?attr/fo_follow_setup_item_bg_color"
+                app:rv_cornerRadius="2dp"
+                tools:background="@color/fo_light_follow_setup_item_bg_color">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fo_follow_setup_text_18"
+                    android:textColor="?attr/fo_nickname_color"
+                    android:textSize="@dimen/text_size_4"
+                    tools:textColor="@color/fo_light_nickname_color" />
+
+                <TextView
+                    android:id="@+id/tv_tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/fo_follow_setup_text_19"
+                    android:textColor="?attr/fo_follow_desc_color"
+                    android:textSize="@dimen/text_size_2"
+                    tools:textColor="@color/fo_desc_color" />
+            </com.follow.order.widget.shape.RoundLinearLayout>
+
+            <com.follow.order.widget.shape.RoundTextView
+                android:id="@+id/btn_follow_order"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="center"
+                android:text="@string/fo_follow_order_start"
+                android:textColor="@color/fo_white"
+                android:textSize="@dimen/text_size_6"
+                android:textStyle="bold"
+                app:rv_backgroundColor="@color/fo_blue"
+                app:rv_cornerRadius="1.5dp" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

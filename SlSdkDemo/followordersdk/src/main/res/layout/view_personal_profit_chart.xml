@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.follow.order.ui.view.PersonalProfitChartView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/fo_menu_bg_color"
+    android:orientation="vertical"
+    tools:background="@color/fo_white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="14dp">
+
+        <com.follow.order.widget.tab.CommonTabLayout
+            android:id="@+id/tab_trend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            app:tl_iconVisible="false"
+            app:tl_indicator_color="@color/fo_transparent"
+            app:tl_tab_padding="10dp"
+            app:tl_tab_space_equal="false"
+            app:tl_textSelectColor="@color/fo_light_tab_text_sel_color"
+            app:tl_textSize="@dimen/text_size_2"
+            app:tl_textUnSelectColor="?attr/fo_chart_tab_nor_color" />
+
+    </RelativeLayout>
+
+
+    <com.follow.order.widget.chart.CustomLineChart
+        android:id="@+id/line_chart"
+        android:layout_width="match_parent"
+        android:layout_height="265dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp" />
+
+</com.follow.order.ui.view.PersonalProfitChartView>

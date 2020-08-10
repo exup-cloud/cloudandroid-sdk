@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="130dp"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_card_color">
+
+
+    <TextView
+        android:id="@+id/item_new_home_page_trade_symbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12"
+        tools:text="btc" />
+
+    <TextView
+        android:id="@+id/item_new_home_page_trade_market"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_toRightOf="@+id/item_new_home_page_trade_symbol"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12"
+        tools:text="/btc" />
+
+    <TextView
+        android:id="@+id/item_new_home_page_trade_assets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_new_home_page_trade_symbol"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        tools:text="asdasdasd" />
+
+    <TextView
+        android:id="@+id/item_new_home_page_trade_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_new_home_page_trade_assets"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_3"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12"
+        tools:text="~~sajdaskd" />
+
+
+    <TextView
+        android:id="@+id/item_new_home_page_trade_gains"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_new_home_page_trade_value"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_3"
+        android:layout_marginRight="@dimen/dp_13"
+        android:gravity="center"
+        android:textColor="@color/main_red"
+        android:textSize="@dimen/sp_12"
+        tools:text="0.0%" />
+
+    <com.yjkj.chainup.wedegit.SimpleLineChart
+        android:id="@+id/slc_simplelinechart"
+        android:layout_width="94dp"
+        android:layout_height="@dimen/dp_36"
+        android:layout_below="@+id/item_new_home_page_trade_gains"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_5" />
+
+    <View
+        android:layout_width="@dimen/dp_half"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@color/homepage_login_line" />
+
+
+</RelativeLayout>

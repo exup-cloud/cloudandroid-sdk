@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fo_tab_array">
+        <item>@string/fo_tab_1</item>
+        <item>@string/fo_tab_2</item>
+    </string-array>
+    <string-array name="fo_tab_follow_array">
+        <item>@string/fo_tab_item_1</item>
+        <item>@string/fo_tab_item_2</item>
+    </string-array>
+    <string-array name="fo_tab_order_array">
+        <item>@string/fo_tab_order_item_1</item>
+        <item>@string/fo_tab_order_item_2</item>
+    </string-array>
+</resources>

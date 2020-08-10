@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/page_head_height">
+
+        <TextView
+            android:id="@+id/tv_market_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:drawablePadding="@dimen/dp_8"
+            android:ellipsize="end"
+            android:gravity="center_vertical|right"
+            android:maxLines="1"
+            android:text="@string/otc_text_desc"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="@dimen/page_head_height"
+            android:layout_height="@dimen/page_head_height"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/dp_15"
+            android:src="@drawable/screening" />
+
+        <ImageView
+            android:id="@+id/tv_screening"
+            android:layout_width="@dimen/page_head_height"
+            android:layout_height="@dimen/page_head_height"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/iv_search"
+            android:paddingLeft="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_15"
+            android:paddingBottom="@dimen/dp_15"
+            android:src="@drawable/fiat_order" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/buy_or_sell_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/title_layout">
+
+        <TextView
+            android:id="@+id/tv_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:text="@string/otc_action_buy"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/view_buy_bg"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_3"
+            android:layout_below="@+id/tv_buy"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="7dp"
+            android:background="@color/main_green" />
+
+
+        <TextView
+            android:id="@+id/tv_sell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:layout_toRightOf="@+id/tv_buy"
+            android:text="@string/otc_action_sell"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_16" />
+
+
+        <View
+            android:id="@+id/view_sell_bg"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_3"
+            android:layout_below="@+id/tv_sell"
+            android:layout_marginLeft="@dimen/dp_45"
+            android:layout_marginTop="7dp"
+            android:layout_toRightOf="@+id/tv_buy"
+            android:background="@color/main_red"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_advertising"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:layout_toRightOf="@+id/tv_sell"
+            android:text="@string/otc_text_ad"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_16"
+            android:visibility="gone" />
+
+
+        <View
+            android:id="@+id/view_dvertising_bg"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_3"
+            android:layout_below="@+id/tv_advertising"
+            android:layout_marginLeft="@dimen/dp_45"
+            android:layout_marginTop="7dp"
+            android:layout_toRightOf="@+id/tv_sell"
+            android:background="@color/main_red"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+
+
+    <com.yjkj.chainup.new_version.view.NoScrollViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/buy_or_sell_layout"
+        android:background="@color/bg_card_color" />
+
+
+    <com.yjkj.chainup.new_version.view.ScreeningPopupWindowView
+        android:id="@+id/spw_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_layout"
+        android:layout_marginTop="@dimen/dp_40"
+        android:visibility="gone"
+        app:screen_type="TRADING" />
+
+
+</RelativeLayout>

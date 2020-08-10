@@ -1,0 +1,13 @@
+{
+  "channel": "market_ethusdt_kline_30min",
+  "tick": {
+    "amount": 377.25048,
+    "vol": 1.313,
+    "high": 288.26,
+    "low": 286.41,
+    "id": 1535601600,
+    "close": 286.45,
+    "open": 286.67
+  },
+  "ts": 1535602755515
+}

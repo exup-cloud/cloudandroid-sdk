@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_coin_title"
+        style="@style/ScreeningPopup"
+        android:layout_marginTop="@dimen/dp_30"
+        android:text="@string/common_text_coinsymbol"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12" />
+
+
+    <com.yjkj.chainup.new_version.view.CustomizeEditText
+        android:id="@+id/cet_coin"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_18"
+        android:layout_marginRight="@dimen/dp_15"
+        android:gravity="center_vertical"
+        android:hint="@string/filter_input_coinsymbol"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/otc_trading_money"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_cashflow_type_title"
+        style="@style/ScreeningPopup"
+        android:layout_marginTop="@dimen/dp_15"
+        android:text="@string/contract_text_type"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:orientation="horizontal">
+
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_recharge_b2c"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:layout_marginRight="@dimen/dp_23"
+            android:layout_weight="1"
+            android:background="@color/tabbar_color"
+            android:button="@null"
+            android:checked="true"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:paddingBottom="-5dp"
+            android:text="@string/title_recharge"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="true" />
+        <!--TODO WTC,just add singleLine = "true" not working-->
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_withdraw_b2c"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_35"
+            android:layout_weight="1"
+            android:background="@color/tabbar_color"
+            android:button="@null"
+            android:checked="true"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:paddingBottom="-5dp"
+            android:text="@string/withdraw_b2c"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_title_otc_transfer_data"
+        style="@style/ScreeningPopup"
+        android:layout_marginTop="@dimen/dp_30"
+        android:text="@string/charge_text_date"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/sp_12" />
+
+    <!--日期-->
+    <com.yjkj.chainup.new_version.view.SelectDateView
+        android:id="@+id/sdv_cashflow_b2c"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
