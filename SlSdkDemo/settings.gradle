@@ -1,1 +1,0 @@
-include ':app', ':dsbridge', ':followordersdk',':logcollector',':push_library',':ws_library',':http_library'
