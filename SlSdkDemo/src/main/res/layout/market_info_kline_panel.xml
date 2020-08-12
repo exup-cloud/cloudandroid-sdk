@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/tabbar_color"
+    android:orientation="vertical">
+    <!--主图 指标-->
+    <RelativeLayout
+        android:id="@+id/rg_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_main"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_30"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:padding="@dimen/dp_10"
+            android:singleLine="true"
+            android:text="@string/kline_action_main"
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/sp_12" />
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_ma"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_40"
+            android:layout_gravity="center"
+            android:layout_toRightOf="@id/tv_main"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            android:paddingBottom="-5dp"
+            android:text="MA"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="@dimen/dp_16"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="@dimen/sp_10"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_boll"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_40"
+            android:layout_gravity="center"
+            android:layout_toRightOf="@id/rb_ma"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            android:text="BOLL"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="@dimen/dp_16"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="@dimen/sp_10"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+
+        <RadioButton
+            android:id="@+id/rb_hide_main"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:button="@null"
+            android:drawableRight="@drawable/kline_index_hide_show_selector"
+            android:gravity="center"
+            android:padding="@dimen/dp_8"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_12" />
+    </RelativeLayout>
+
+    <!--副图 指标-->
+    <RelativeLayout
+        android:id="@+id/rl_vice"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_80"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dp_2"
+        >
+
+        <TextView
+            android:id="@+id/tv_vice"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_30"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/kline_action_assistant"
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/sp_12" />
+
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_macd"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_40"
+            android:layout_toRightOf="@+id/tv_vice"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="-5dp"
+            android:text="MACD"
+            android:textColor="#828EA1"
+            android:textSize="@dimen/sp_12"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_kdj"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_40"
+            android:layout_toRightOf="@+id/rb_macd"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="-5dp"
+            android:text="KDJ"
+            android:textColor="#828EA1"
+            android:textSize="@dimen/sp_12"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_wr"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_40"
+            android:layout_below="@id/rb_macd"
+            android:layout_alignRight="@id/rb_macd"
+            android:layout_toRightOf="@+id/tv_vice"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="-5dp"
+            android:text="WR"
+            android:textColor="#828EA1"
+            android:textSize="@dimen/sp_12"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+
+
+        <com.yjkj.chainup.new_version.view.LabelRadioButton
+            android:id="@+id/rb_rsi"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_40"
+            android:layout_below="@id/rb_kdj"
+            android:layout_alignRight="@id/rb_kdj"
+            android:layout_toRightOf="@+id/rb_wr"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="-5dp"
+            android:text="RSI"
+            android:textColor="#828EA1"
+            android:textSize="@dimen/sp_12"
+            app:label_backgroundColor="@color/main_blue"
+            app:label_distance="0dp"
+            app:label_height="16dp"
+            app:label_orientation="RIGHT_TOP"
+            app:label_strokeColor="@color/main_blue"
+            app:label_text=""
+            app:label_textSize="10sp"
+            app:label_textStyle="BOLD_ITALIC"
+            app:label_visual="false" />
+
+        <RadioButton
+            android:id="@+id/rb_hide_vice"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_40"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:button="@null"
+            android:drawableLeft="@drawable/kline_index_hide_show_selector"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="" />
+    </RelativeLayout>
+
+</LinearLayout>

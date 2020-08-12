@@ -1,0 +1,32 @@
+ext {
+    change = [
+            applicationId :"com.chainup.exchange.contract",
+
+            baseUrl:"http://appapi.hiup.pro/",
+            socketAddress:"wss://ws.hiup.pro/kline-api/ws",
+            otcBaseUrl:"http://otcappapi.hiup.pro/",
+            otcSocketAddress:"wss://ws2.hiup.pro/otc-chat/chatServer/",
+            contractUrl:"http://swap.hiup.pro/",
+            contractSocketAddress:"ws://ws3.hiup.pro/wsswap/realTime",
+            redPackageUrl:"http://service.hiup.pro/hongbaoapi/",
+
+
+            keyAlias:"bikicoin",
+            storePassword:"123456",
+            homeViewStatus:"1",
+            homePageStyle:"1",
+            appswitchsaas:"0",
+            keyPassword:"123456",
+            buglyId:"e8f205a4ff",
+            exChainupBundleVersion:"4550",
+            homepageService:"0",
+            umAppKey:"5bc7f280b465f50f72000134",
+            versionCode:100025,
+            versionName:"4.0.6_beta1",
+            sobotAppKey:"72f598f55a1d4eb6975e33145676c34b",
+            pushAppId:"DMoLWodaPy95voRaXpFNj6",
+            pushAppKey:"0uZGX5jmEq77ZoNz44CjV",
+            pushAppSecret:"J9OniNjuR99qTVU6ITPLf6",
+    ]
+
+}

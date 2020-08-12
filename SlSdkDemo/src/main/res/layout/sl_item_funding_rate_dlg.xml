@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:gravity="center_vertical"
+            tools:text="12/16 04:00:00"
+            android:id="@+id/tv_time_value"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/normal_text_color"
+            android:text=""
+            android:textSize="14sp"/>
+
+        <TextView
+            tools:text="0.00100%"
+            android:id="@+id/tv_funding_rate_value"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_color"
+            android:text=""
+            android:textSize="14sp"/>
+
+    </RelativeLayout>
+

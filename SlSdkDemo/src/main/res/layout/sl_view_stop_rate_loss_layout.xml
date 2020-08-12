@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:id="@+id/ll_tab_layout"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:enabled="false"
+            android:button="@drawable/sl_trade_check_selector"
+            android:id="@+id/cb_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:textStyle="bold"
+            android:id="@+id/tv_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/cb_not_remind"
+            android:text="@string/sl_str_stop_rate"
+            android:textColor="@color/text_color"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <!--触发价格-->
+    <TextView
+        android:id="@+id/tv_trigger_price_label"
+        android:text="@string/sl_str_trigger_price"
+        android:layout_marginTop="15dp"
+        android:textSize="14sp"
+        android:textColor="@color/normal_text_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_15"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_trigger_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:inputType="numberDecimal"
+            android:hint="@string/sl_str_trigger_price"
+            android:maxLength="9"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_color"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_trigger_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            android:text="USDT" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_half"
+        android:layout_marginTop="@dimen/dp_6"
+        android:background="@color/line_color" />
+
+    <!--执行价格-->
+    <TextView
+        android:id="@+id/tv_execution_price_label"
+        android:text="@string/sl_str_execution_price"
+        android:layout_marginTop="15dp"
+        android:textSize="14sp"
+        android:textColor="@color/normal_text_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_15"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_execution_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:inputType="numberDecimal"
+            android:hint="@string/sl_str_execution_price"
+            android:maxLength="9"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_color"
+            android:textSize="@dimen/sp_14" />
+
+        <com.coorchice.library.SuperTextView
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/tv_market_price_hint"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            android:text="@string/sl_str_market_price" />
+
+        <TextView
+            android:id="@+id/tv_execution_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/normal_text_color"
+            android:textSize="@dimen/sp_14"
+            android:text="USDT" />
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_weight="0"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/view_execution_line"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/line_color"
+                android:layout_width="1dp"
+                android:layout_height="14dp"/>
+
+            <TextView
+                android:id="@+id/tv_market_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/main_blue"
+                android:textSize="@dimen/sp_14"
+                android:text="@string/contract_action_marketPrice" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_half"
+        android:layout_marginTop="@dimen/dp_6"
+        android:background="@color/line_color" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_price_remind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_4"
+            android:textColor="@color/warn_yellow"
+            android:visibility="gone"
+            android:text="@string/contract_sting_newPriceMessage"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginBottom="@dimen/dp_8"/>
+
+        <TextView
+            android:id="@+id/tv_price_warn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_4"
+            android:textColor="@color/main_red"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginBottom="@dimen/dp_8"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

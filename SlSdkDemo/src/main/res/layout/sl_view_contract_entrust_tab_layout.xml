@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:gravity="bottom"
+   >
+
+    <TextView
+        android:layout_marginLeft="15dp"
+        android:id="@+id/tv_current_entrust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contract_text_currentEntrust"
+        android:textColor="@color/text_color"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/tv_history_entrust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="@string/contract_text_historyCommision"
+        android:textColor="@color/normal_text_color"
+        android:textSize="16sp" />
+
+
+</LinearLayout>

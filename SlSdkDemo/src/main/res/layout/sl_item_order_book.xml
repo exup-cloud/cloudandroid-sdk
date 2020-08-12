@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_content"
+    android:layout_width="match_parent"
+    android:layout_height="35dp"
+    android:orientation="horizontal"
+    android:baselineAligned="false">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ProgressBar
+                android:id="@+id/pb_bid_volume"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:max="100"
+                android:progress="0"
+                android:visibility="visible"
+                android:progressDrawable="@drawable/sl_buy_progress"/>
+
+            <TextView
+                android:id="@+id/tv_bid_volume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textColor="@color/text_color"
+                android:text="--"
+                tools:text="0.3200"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_bid_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/main_green"
+                android:text="--"
+                tools:text="4386.33"
+                android:textSize="12sp"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ProgressBar
+                android:id="@+id/pb_ask_volume"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:max="100"
+                android:progress="0"
+                android:visibility="visible"
+                android:progressDrawable="@drawable/sl_sell_progress_reserve"/>
+
+            <TextView
+                android:paddingLeft="10dp"
+                android:id="@+id/tv_ask_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/main_red"
+                android:text="--"
+                tools:text="4386.33"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:layout_alignParentRight="true"
+                android:id="@+id/tv_ask_volume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textColor="@color/text_color"
+                android:text="--"
+                tools:text="0.3200"
+                android:textSize="12sp"/>
+
+        </RelativeLayout>
+    </LinearLayout>
